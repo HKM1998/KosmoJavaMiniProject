@@ -7,7 +7,7 @@ import consolegame.item.Item;
 public class Event051_ConvinienceStore_1 extends Event {
 	public Event051_ConvinienceStore_1() {
 		setEventId(051);
-		setName("편의점_1");
+		setName("폐병원");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event051_ConvinienceStore_1 extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 거부하고 상대와 싸운다");
+		selection.addSelection(" 몰래 우회한다");
 		
-		selection.addSelection(" 그냥 나간다");
+		selection.addSelection(" 들어가본다");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,10 +47,9 @@ public class Event051_ConvinienceStore_1 extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
-		script.append("이미 선반은 헤집어지고 쓸만한 물건은 많이 없어보인다. 그러자 뒤에서 소리가 들린다.\n");
-		script.append("너는 어디서 온 누구냐? 여기는 우리가 오랫동안 집으로 여기고 있던 곳이야. 어서 썩 나가.\n");
-		script.append("\n");
+		script.append("병원을 발견했다. 병원은 스산하고 어둡다. 얼른 필요한것만 챙기고 나가자.\n");
+		script.append("문이 끼익 열린다. 필요한 물품을 찾기 위해 여기 저기 찾아다닌다.\n");
+		script.append("그러다 불이 켜진 방을 발견한다.\n");
 
 		ConsolePrint.printScript(script);
 	}

@@ -18,7 +18,7 @@ public class Event010_EmptyCar extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 칼.");
+		selection.addSelection("칼.");
 		
 
 		selection.addSelection(" 어느 모르는 사람의 여권.");

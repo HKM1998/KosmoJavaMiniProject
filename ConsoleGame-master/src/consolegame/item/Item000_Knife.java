@@ -3,12 +3,12 @@ package consolegame.item;
 import consolegame.character.Character;
 import consolegame.event.Event;
 
-public class Item001_TestItem extends Item{
+public class Item000_Knife extends Item{
 
-	public Item001_TestItem() {
-		setItemId(001);
+	public Item000_Knife() {
+		setItemId(000);
 		setName("칼");
-		setPrice(200); //가격
+		setPrice(100); //가격
 		setType("무기"); // 타입 관련된 정보 저장용 만들 예정
 	}
 	

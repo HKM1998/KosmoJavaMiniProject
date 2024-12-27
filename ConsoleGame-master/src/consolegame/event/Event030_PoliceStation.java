@@ -47,10 +47,9 @@ public class Event030_PoliceStation extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
 		script.append("경찰서를 들어 갔는데 스산하다.\n");
-		script.append("아무도 없는 줄 알고 물건을 뒤지려 하자 갑자기 누구냐며 소리친다.\r\n"
-				+ "그 사람은 자신이 이 지역의 자치 경찰이라 한다.\n");
+		script.append("아무도 없는 줄 알고 물건을 뒤지려 하자 갑자기 누구냐며 소리친다.\n");
+		script.append("그 사람은 자신이 이 지역의 자치 경찰이라 한다.\n");	
 		script.append("나는 그 사람의 장단을 맞춰주며 우선 정보를 캐낼까 아니면 무기를 우선 탈취할까?\n");
 
 		ConsolePrint.printScript(script);

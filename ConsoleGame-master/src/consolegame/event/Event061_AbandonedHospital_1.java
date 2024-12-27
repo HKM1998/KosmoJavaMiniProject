@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event061_AbandonedHospital_1 extends Event {
+	public Event061_AbandonedHospital_1() {
+		setEventId(061);
+		setName("폐병원_1");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection(" 뒷통수 습격");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection(" 몰래 뒷 선반에 있는 진통제를 빼돌려 나온다");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,7 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append("어떤 눈이 퀭한 미친 의사가 마취도 없이 멀쩡해 보이는 인간의 장기를 꺼내고 있다.\n");
 
 		ConsolePrint.printScript(script);
 	}

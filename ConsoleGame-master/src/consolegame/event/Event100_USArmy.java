@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event100_USArmy extends Event {
+	public Event100_USArmy() {
+		setEventId(100);
+		setName("USArmy");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection("이 근방에 도움이 될 만한 정보가 있을까요?");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection("너무 배가 고픕니다. 먹을꺼를 얻을 수 있을까요?");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,10 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append("용산 근처를 지나던 중 미군을 만난다. 유라시아대륙과 멀리 떨어진 초강대국 미국은");
+		script.append("핵전쟁의 피해를 덜 받아 아직까지 미정부의 영향력이 제한적으로 유지되고 있다.\n");
+		script.append("전혀 믿을 수 없는 가까운 한국인 보다 멀리 있는 미군이 훨씬\n");
+		script.append("믿음직하다. 그는 마을에서 쫓겨나게 된 배경을 설명하고 미군에게 도움을 청한다.\n");
 
 		ConsolePrint.printScript(script);
 	}

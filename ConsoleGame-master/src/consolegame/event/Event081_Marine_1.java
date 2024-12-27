@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event081_Marine_1 extends Event {
+	public Event081_Marine_1() {
+		setEventId(81);
+		setName("해병대");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection(" 우리의 피를 끓게 하는구만! 그렇다면 훗날 필요하다면 우리가 도움을 주도록 하지. 훗날 필요하다면 월곡동 주변에서 '월곡 해병 전우회'를 찾아오라고.");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection(" 우리 후배 기수가 힘들어 하는 모습을 보니 힘들군. 당장 줄껀 총 한자루 이것밖에 없네.");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,7 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append("사실 저는 동네 촌장의 폭정을 피해 달아 나고 있습니다. 언젠가는 마을로 돌아가 자유민주주의를 회복시키고 싶습니다. ");
 
 		ConsolePrint.printScript(script);
 	}
