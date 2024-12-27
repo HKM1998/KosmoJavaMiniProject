@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event080_Marine extends Event {
+	public Event080_Marine() {
+		setEventId(80);
+		setName("해병대");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection(" 충성! 해병 1511기 입니다!(거짓말)");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection(" 아 저는 그냥 별 뜻 없이 지나가고 있습니다.");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,8 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append("저 멀리서 각진 걸음으로 걸어오던 해병 전투복의 무리들이 별안간 주인공 앞에 서서 ");
+		script.append("한번 해병은 영원한 해병! 우리 해병은 불순한 일당이 마을을 어지럽히는걸 용서치 않는다! 넌 누구냐\n");
 
 		ConsolePrint.printScript(script);
 	}

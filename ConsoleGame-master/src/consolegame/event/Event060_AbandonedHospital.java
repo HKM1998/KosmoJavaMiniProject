@@ -47,10 +47,8 @@ public class Event060_AbandonedHospital extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
 		script.append("이미 선반은 헤집어지고 쓸만한 물건은 많이 없어보인다. 그러자 뒤에서 소리가 들린다.\n");
 		script.append("너는 어디서 온 누구냐? 여기는 우리가 오랫동안 집으로 여기고 있던 곳이야. 어서 썩 나가.\n");
-		script.append("\n");
 
 		ConsolePrint.printScript(script);
 	}

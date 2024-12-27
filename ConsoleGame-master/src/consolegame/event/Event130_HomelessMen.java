@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event130_HomelessMen extends Event {
+	public Event130_HomelessMen() {
+		setEventId(130);
+		setName("노숙자");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
-		
 		selection.addSelection(" 싸운다");
+		
+		selection.addSelection(" 도망친다 ");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,9 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append("지나가는데 이상한 냄새가 난다. ");
+		script.append("배고픔에 굶주린 노숙자들이 뒤에서 몰래 미행을 한다. \n");
+		script.append("걸음을 빠르게 옮기지만 막다른 골목에 몰리고 만다. 그들이 습격을 해 온다.\n");
 
 		ConsolePrint.printScript(script);
 	}

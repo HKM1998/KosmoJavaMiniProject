@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event140_WeirdShopper extends Event {
+	public Event140_WeirdShopper() {
+		setEventId(140);
+		setName("이상한가판대");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection(" 칼 200");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection(" 총 500 ");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,12 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append(".\n");
+		script.append("인적이 드문 한 가운데 허름한 가판대가 있다. ");
+		script.append("해당 가판대는 주인이 없는 것 처럼 보였지만\n");
+		script.append("실제로는 주인이 있었다. 할배는 무엇이 필요하냐고 얘기 했다.\n");
+		script.append("그는 껌이나 오래된 신문은\r\n"
+				+ "필요 없다. 좀 유용한게 필요하다며 은밀히 얘기한다.\n");
 
 		ConsolePrint.printScript(script);
 	}

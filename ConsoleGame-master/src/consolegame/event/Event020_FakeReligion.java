@@ -47,7 +47,6 @@ public class Event020_FakeReligion extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
 		script.append("어느 아줌마가 웃으며 접근한다.\n");
 		script.append("이 세상이 이렇게 된건 믿음이 부족해서라 한다.\n");
 		script.append("한번 좋은 말씀 들어보지 않겠냐며 권유한다.\n");

@@ -3,11 +3,11 @@ package consolegame.item;
 import consolegame.character.Character;
 import consolegame.event.Event;
 
-public class Item002_TestItem extends Item{
+public class Item002_Bible extends Item{
 
-	public Item002_TestItem() {
+	public Item002_Bible() {
 		setItemId(002);
-		setName("어느 모르는 사람의 여권");
+		setName("성경");
 		setPrice(0); //가격
 		setType("기타"); // 타입 관련된 정보 저장용 만들 예정
 	}

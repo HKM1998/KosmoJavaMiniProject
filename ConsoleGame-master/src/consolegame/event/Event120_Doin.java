@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event120_Doin extends Event {
+	public Event120_Doin() {
+		setEventId(120);
+		setName("도인");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection("도사님은 왜 세상이 이렇게 돌아간다고 생각 하시나요?");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection("그냥 그 찬물에서 우선 나오시고 나서 생각 하시는게 나을듯 한데요. ");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,9 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append("광화문 청계천 강물 한가운데 앉아 있는 도인이 있다.");
+		script.append("그는 지나가는 주인공한테 왜 세상이 이렇게 돌아가는지 궁금하지 않냐고 한다.\n");
+		script.append("정말 뜬금없지만 그렇기에 더욱 궁금했다.\n");
 
 		ConsolePrint.printScript(script);
 	}

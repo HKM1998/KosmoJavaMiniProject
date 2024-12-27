@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event091_MerchantFamily_1 extends Event {
+	public Event091_MerchantFamily_1() {
+		setEventId(91);
+		setName("상인가족_1");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection(" 배고픔에 굶주려 허겁지겁 먹는다");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection(" 한번 스프의 냄새부터 음미한다");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,10 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append(".\n");
+		script.append("밥 한끼 드리는거야 무슨 문제겠습니까? 와서 몸 좀 녹이시지요. ");
+		script.append("장작 앞에서 몸을 녹이는 동안 스프가\n");
+		script.append("식탁에 준비되었다.\n");
 
 		ConsolePrint.printScript(script);
 	}

@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event070_Biker extends Event {
+	public Event070_Biker() {
+		setEventId(070);
+		setName("폭주족");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
-		
 		selection.addSelection(" 싸운다");
+		
+		selection.addSelection(" 순순히 내놓는다");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,8 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append("묵묵히 걷고 있던 중 멀리서 굉음을 내며 폭주족이 달려 온다. 주인공을 이내 감싸더니 무리의 리더가 접근하며 얘기한다.\n");
+		script.append("조용히 가지고 있는걸 내 놓고 가라.\n");
 
 		ConsolePrint.printScript(script);
 	}

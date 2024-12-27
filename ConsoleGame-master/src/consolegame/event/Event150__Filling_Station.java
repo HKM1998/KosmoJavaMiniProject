@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event150__Filling_Station extends Event {
+	public Event150__Filling_Station() {
+		setEventId(150);
+		setName("주유소");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection(" 칼 200");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection(" 탄약 1개 ");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,12 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append(".\n");
+		script.append("무인주유소에 있는 편의점에 잠시 들르려 하는데 ");
+		script.append("뭔가 수상쩍은 물건을 백에 담고 있는 듯한\r\n"
+				+ "자가 마스크와 선글라스를 쓴 상태로 접근한다.\n");
+		script.append("혹시 이런게 필요하지 않나요?\r\n"
+				+ "그 안에는 총과 탄약이 있다.\n");
 
 		ConsolePrint.printScript(script);
 	}

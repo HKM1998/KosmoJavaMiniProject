@@ -47,10 +47,8 @@ public class Event050_ConvinienceStore extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
 		script.append("저 멀리서 익숙한 초록색 간판이 보인다. 불빛에 이끌려 가까이 가 본다.\n");
-		script.append("\n");
-		script.append("\n");
+
 
 		ConsolePrint.printScript(script);
 	}

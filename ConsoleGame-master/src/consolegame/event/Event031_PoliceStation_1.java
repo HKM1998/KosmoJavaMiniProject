@@ -18,9 +18,9 @@ public class Event031_PoliceStation_1 extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 자신을 희생하면서 까지 남겠다니 아직도 이런 사람이 있군요.");
+		selection.addSelection("자신을 희생하면서 까지 남겠다니 아직도 이런 사람이 있군요.");
 		
-		selection.addSelection(" 저도 같이 지키고 싶습니다. 무기를 얻을 수 있을까요?");
+		selection.addSelection("저도 같이 지키고 싶습니다. 무기를 얻을 수 있을까요?");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,7 +47,6 @@ public class Event031_PoliceStation_1 extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\\n");
 		script.append("모든 사람들이 자신의 살길을 찾기 위해 나갔지만, 나는 남아 있는 몇 사람이라도 지키고 싶었어.\n");
 		script.append("\n");
 		script.append("\n");

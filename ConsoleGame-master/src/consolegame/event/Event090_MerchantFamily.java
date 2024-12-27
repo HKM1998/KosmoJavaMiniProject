@@ -4,10 +4,10 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
-public class Event040_WildDog extends Event {
-	public Event040_WildDog() {
-		setEventId(040);
-		setName("들개");
+public class Event090_MerchantFamily extends Event {
+	public Event090_MerchantFamily() {
+		setEventId(90);
+		setName("상인가족");
 		setScore(0);
 		setWeight(0);
 	}
@@ -18,9 +18,9 @@ public class Event040_WildDog extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망간다.");
+		selection.addSelection(" 정말 감사합니다. 그러나 큰 민폐를 끼칠 순 없는 노릇입니다. 밥 한끼 정도만 얻어 먹을 수 있을까요?");
 		
-		selection.addSelection(" 싸운다");
+		selection.addSelection(" 오랫동안 방랑을 하여 몸이 너무 지쳤습니다. 염치 없지만 하룻밤만 묵을 수 있을까요?");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -47,8 +47,9 @@ public class Event040_WildDog extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 그러자 으르렁 거리는 소리가 어디선가 들린다. 배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
-
+		script.append("황폐한 건물만 끝없이 이어지던 그 거리에서 \"대덕상회\"라는 간판을 단 집을 발견한다. ");
+		script.append("피로한 몸과 배고픔에 지치던 주인공은 그 집을 두드린다. 문을 여니 부부와 아들딸이 하나씩 있는 집안이다\n");
+		script.append("그 집에서는 주인공을 보며 놀랐지만, 이내 행색을 안쓰러워 하며 그를 들여보낸다.\n");
 
 		ConsolePrint.printScript(script);
 	}
