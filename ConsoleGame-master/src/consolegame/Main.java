@@ -34,7 +34,7 @@ public class Main {
 		title.run();
         // 입력 키에 따라 시작 종료
 		if(!hasSaveFile) {
-			System.out.println("\t\t[S] : 게임시작\t [E] : 게임종료\n");
+			System.out.println("[S] : 게임시작\t [E] : 게임종료\n");
 		}
         title:
         while(true) {
@@ -75,17 +75,32 @@ public class Main {
                 	eventThread.join();
                 }catch(InterruptedException e) {
                 }
+                
+                
             }catch(Exception e) {
             	
             }
-            // 결과 출력 및 대기 후 진행
             
+            // 게임 오버
+            if(!isAlive()) {
+            	
+            }
         	eventCount++;
-        	if(eventCount > 20) {
+        	if(eventCount > 10) {
         		//엔딩으로 넘어감
         		break;
         	}
         }
+        
+        
+	}
+	static boolean isAlive() {
+		if(character.getHealth() <= 0)
+			return false;
+		if(character.getMental() <= 0)
+			return false;
+		
+		return true;
 	}
 
 }
