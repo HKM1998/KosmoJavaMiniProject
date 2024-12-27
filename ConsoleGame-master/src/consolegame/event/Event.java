@@ -1,6 +1,7 @@
 package consolegame.event;
 
 import consolegame.character.Character;
+import consolegame.console.ConsolePrint;
 
 public abstract class Event {
 	private int eventId; // 이벤트ID
@@ -33,33 +34,20 @@ public abstract class Event {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public abstract void getScript();
-	public abstract void getChoice(Character c);
-	
-	// 다음 이벤트 구하는 메서드 구현 필요
-	static Event getNextEvent(Character c) {
-		Event nextEvent = null;
-		
-		
-		return nextEvent;
-	}
+	public abstract void printScript();
+	public abstract void printChoice(Character c);
+	public abstract void getResult(Character c, String pChoice);
 
 	class Selection{
 		int count = 1;
 		StringBuilder selection = new StringBuilder();
-
-		public String getSelection() {
-			return selection.toString();
-		}
-
+		
 		public void addSelection(String selection) {
-			this.selection.append("=============================\n");
 			this.selection.append(count++ + ". " + selection + "\\n");
-			this.selection.append("=============================\n");
 		}
 		
 		public void print() {
-			System.out.println(selection);
+			ConsolePrint.printSelection(selection);
 		}
 	}
 }

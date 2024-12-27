@@ -1,15 +1,12 @@
 package consolegame.console;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import consolegame.Main;
 import consolegame.item.Item;
 
 public class InventoryConsole {
 	public void print(Item item) {
-        Main.printSpace();
+        ConsolePrint.clear();
 //        if (item instanceof Weapon || item instanceof Armor) {
 //            System.out.println("-----------------------------------------------------------");
 //            System.out.println(item.getName() + "을(를) 장착하셨습니다!");
@@ -25,7 +22,7 @@ public class InventoryConsole {
 
     public String input(Scanner scan, int scene) {
         if (scene == 0) {//아이템 선택 화면
-            Main.printSpace();
+            ConsolePrint.clear();
             System.out.println("===========================================================");
             System.out.println("1. 무기        2. 방어구        3. 포션");
             System.out.println("===========================================================");

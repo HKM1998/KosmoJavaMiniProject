@@ -2,16 +2,12 @@ package consolegame;
 
 import java.util.Scanner;
 
+import consolegame.console.ConsolePrint;
 import consolegame.thread.LoadingThread;
 
 public class Main {
-	public static void printSpace() {
-        for (int i = 0; i < 60; i++) {
-            System.out.println("");
-        }
-    }
     public static void printWrongInputMessage() {
-        printSpace();
+        ConsolePrint.clear();
         System.out.println("<잘못 입력하셨습니다. 다시 입력해주세요.>");
         System.out.println("");
     }
@@ -27,7 +23,7 @@ public class Main {
             System.out.print("입력:");
             String real_ending = scan.next();
             if (real_ending.equals("1")) {
-                printSpace();
+                ConsolePrint.clear();
 
                 Thread finishGame = new Thread(new LoadingThread("finishGame"));
                 finishGame.start();
@@ -55,6 +51,12 @@ public class Main {
 	public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         
+        ConsolePrint.clear();
+        // 메인화면 출력 
+        // 입력 키에 따라 시작 종료
+        while(true) {
+        	
+        }
         
 	}
 

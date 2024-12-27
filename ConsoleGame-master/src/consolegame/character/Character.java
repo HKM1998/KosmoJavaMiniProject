@@ -19,6 +19,13 @@ public class Character {
 	
 	// 세이브 데이터 있는 경우 생성자 다르게
 	
+	public boolean removeItem(int pItemId) {
+		if(Item.hasItem(this, pItemId)) {
+			return this.item.remove(Item.findItem(this, pItemId));
+		}
+		return false;
+	}
+	
 	public int getHealth() {
 		return health;
 	}
