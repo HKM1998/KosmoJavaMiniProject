@@ -40,7 +40,7 @@ public class EventMap {
 		
 		switch (getRandomEventId()) {
 		case 0:
-			e = new Event000_TestEvent();
+			e = new Event000_Start();
 			break;
 		}
 		

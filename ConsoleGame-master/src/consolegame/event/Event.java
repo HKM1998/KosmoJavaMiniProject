@@ -8,6 +8,7 @@ public abstract class Event {
 	private String name; // 이벤트 명
 	private int weight; // 이벤트 가중치(턴에 따라 나오게 하기위함)
 	private int score; // 이벤트 결과에 따른 점수
+	private int sCount;
 	
 	// Getter/Setter
 	public int getEventId() {
@@ -34,16 +35,29 @@ public abstract class Event {
 	public void setScore(int score) {
 		this.score = score;
 	}
+	public int getsCount() {
+		return sCount;
+	}
+	public void setsCount(int sCount) {
+		this.sCount = sCount;
+	}
+	
 	public abstract void printScript();
 	public abstract void printChoice(Character c);
 	public abstract void getResult(Character c, String pChoice);
 
+	public void print(Character c) {
+		ConsolePrint.clear();
+		printScript();
+		printChoice(c);
+	}
+
 	class Selection{
-		int count = 1;
+		int count = 0;
 		StringBuilder selection = new StringBuilder();
 		
 		public void addSelection(String selection) {
-			this.selection.append(count++ + ". " + selection + "\\n");
+			this.selection.append(++count + ". " + selection + "\n");
 		}
 		
 		public void print() {

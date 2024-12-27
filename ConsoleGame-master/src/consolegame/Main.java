@@ -1,62 +1,54 @@
 package consolegame;
 
+import java.io.IOException;
 import java.util.Scanner;
 
+import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
+import consolegame.event.Event;
+import consolegame.event.Event000_Start;
+import consolegame.thread.EventThread;
 import consolegame.thread.LoadingThread;
+import consolegame.thread.TitleThread;
 
 public class Main {
-    public static void printWrongInputMessage() {
-        ConsolePrint.clear();
-        System.out.println("<잘못 입력하셨습니다. 다시 입력해주세요.>");
-        System.out.println("");
-    }
-    public static void finishGame(Scanner scan) {
-
-        while (true) {
-            for (int i = 0; i < 60; i++) {
-                System.out.println("");
-            }
-            System.out.println("게임을 종료하시겠습니까?");
-            System.out.println("1. 네        2. 아니오");
-            System.out.println("");
-            System.out.print("입력:");
-            String real_ending = scan.next();
-            if (real_ending.equals("1")) {
-                ConsolePrint.clear();
-
-                Thread finishGame = new Thread(new LoadingThread("finishGame"));
-                finishGame.start();
-                try {
-                    finishGame.join();
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                scan.close();
-                System.exit(0);
-            } else if (real_ending.equals("2")) {
-                break;
-            } else {
-                printWrongInputMessage();
-                try {
-                    Thread.sleep(1500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }
-    }
+	static boolean hasSaveFile = false;
+	public static Character character;
 	public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        
+        String in = null;
         ConsolePrint.clear();
+        
+        // 세이브 파일 확인 
+        if(SaveFileUtil.isExistSaveFile()) {
+        	hasSaveFile = true;
+        }
+        
         // 메인화면 출력 
         // 입력 키에 따라 시작 종료
+        title:
         while(true) {
+        	switch (scan.next().toUpperCase()) {
+			case "S": 
+				TitleThread thread = new TitleThread();
+				thread.run();
+				break title;
+			case "E":
+				ConsolePrint.finishGame(scan);
+				break;
+        	}
+        }
+        
+        if(!hasSaveFile) {
+        	// 세이브 파일 없을때
+        	character = new Character();
+        }
+        else {
         	
         }
+        
+        EventThread eThread = new EventThread(new Event000_Start());
+        eThread.scan = scan;
         
 	}
 
