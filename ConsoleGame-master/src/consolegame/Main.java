@@ -7,13 +7,16 @@ import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.event.Event;
 import consolegame.event.Event000_Start;
+import consolegame.event.EventMap;
 import consolegame.thread.EventThread;
 import consolegame.thread.LoadingThread;
 import consolegame.thread.TitleThread;
 
 public class Main {
 	static boolean hasSaveFile = false;
+	static int eventCount = 0;
 	public static Character character;
+	
 	public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String in = null;
@@ -25,13 +28,18 @@ public class Main {
         }
         
         // 메인화면 출력 
+
+		TitleThread titleThread = new TitleThread();
+		Thread title = new Thread(titleThread);
+		title.run();
         // 입력 키에 따라 시작 종료
+		if(!hasSaveFile) {
+			System.out.println("\t\t[S] : 게임시작\t [E] : 게임종료\n");
+		}
         title:
         while(true) {
         	switch (scan.next().toUpperCase()) {
 			case "S": 
-				TitleThread thread = new TitleThread();
-				thread.run();
 				break title;
 			case "E":
 				ConsolePrint.finishGame(scan);
@@ -47,9 +55,37 @@ public class Main {
         	
         }
         
-        EventThread eThread = new EventThread(new Event000_Start());
-        eThread.scan = scan;
-        
+        EventThread eThread = new EventThread(new Event000_Start(), scan);
+        Thread eventThread = new Thread(eThread);
+    	
+        try {
+        	eventThread.start();
+        	eventThread.join();
+        }catch(InterruptedException e) {
+        }
+
+        while(true){
+        	// 이벤트 (턴진행)
+            try {
+            	EventMap eMap = new EventMap(character);
+            	eThread = new EventThread(eMap.getEvent(), scan);
+                eventThread = new Thread(eThread);
+                try {
+                	eventThread.start();
+                	eventThread.join();
+                }catch(InterruptedException e) {
+                }
+            }catch(Exception e) {
+            	
+            }
+            // 결과 출력 및 대기 후 진행
+            
+        	eventCount++;
+        	if(eventCount > 20) {
+        		//엔딩으로 넘어감
+        		break;
+        	}
+        }
 	}
 
 }

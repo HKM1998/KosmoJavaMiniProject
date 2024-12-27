@@ -1,6 +1,8 @@
 package consolegame.item;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import consolegame.character.Character;
 import consolegame.event.Event;
@@ -40,7 +42,7 @@ public abstract class Item {
 	 * return Item 
 	 */
 	public static Item findItem(Character c, int pItemId) {
-		return c.getItem().stream().filter(id -> id.getItemId() == pItemId).toList().getFirst();
+		return (Item)c.getItem().stream().filter(id -> id.getItemId() == pItemId).findFirst().get();
 	}
 	
 	/*
@@ -50,7 +52,9 @@ public abstract class Item {
 	 * return List<Item>
 	 */
 	public static List<Item> findItemType(Character c, String pType) {
-		return c.getItem().stream().filter(id -> id.getType() == pType).toList();
+		
+		return c.getItem().stream().filter(id -> id.getType() == pType)
+				.collect(Collectors.toUnmodifiableList());
 	}
 	
 	// Getter/Setter

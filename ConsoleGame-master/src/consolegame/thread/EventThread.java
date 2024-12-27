@@ -11,8 +11,9 @@ public class EventThread implements Runnable {
 	Event event;
 	public Scanner scan;
 	
-	public EventThread(Event event) {
+	public EventThread(Event event, Scanner scan) {
 		this.event = event;
+		this.scan = scan;
 	}
 	
 	@Override
@@ -28,6 +29,7 @@ public class EventThread implements Runnable {
 					continue;
 				}else {
 					event.getResult(Main.character, input);
+					break;
 				}
 			}
 			catch(InputMismatchException e){ continue;}
