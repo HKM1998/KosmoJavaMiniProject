@@ -48,10 +48,12 @@ public class Event110_University extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
 		script.append("큰 대학을 마주쳤다. 이 대학의 중심 연단에는 수많은 학생들이 모여");
-		script.append("난립하는 세상을 어떻게 운영 해야 하는지에 대한 토론이 이루어지고 있다.\n");
+		script.append("난립하는 세상을 어떻게 운영 해야 하는지에 대한 토론이 이루어지고있다.\n");
+		script.append("대한 토론이 이루어지고있다.\n");
 		script.append("주인공은 무엇인가에 홀린 듯 연단에 갑자기 올라 가더니 마이크를 잡는다.\n");
+		script.append("갑자기 올라 가더니 마이크를 잡는다.\n");
+		
 
 		ConsolePrint.printScript(script);
 	}

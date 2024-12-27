@@ -51,8 +51,8 @@ public class Event140_WeirdShopper extends Event {
 		script.append("인적이 드문 한 가운데 허름한 가판대가 있다. ");
 		script.append("해당 가판대는 주인이 없는 것 처럼 보였지만\n");
 		script.append("실제로는 주인이 있었다. 할배는 무엇이 필요하냐고 얘기 했다.\n");
-		script.append("그는 껌이나 오래된 신문은\r\n"
-				+ "필요 없다. 좀 유용한게 필요하다며 은밀히 얘기한다.\n");
+		script.append("그는 껌이나 오래된 신문은\n");
+		script.append("필요 없다. 좀 유용한게 필요하다며 은밀히 얘기한다.\n");
 
 		ConsolePrint.printScript(script);
 	}

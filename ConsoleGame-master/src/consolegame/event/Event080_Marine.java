@@ -47,9 +47,9 @@ public class Event080_Marine extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("저 멀리서 각진 걸음으로 걸어오던 해병 전투복의 무리들이 별안간 주인공 앞에 서서 ");
-		script.append("한번 해병은 영원한 해병! 우리 해병은 불순한 일당이 마을을 어지럽히는걸 용서치 않는다! 넌 누구냐\n");
-
+		script.append("저 멀리서 각진 걸음으로 걸어오던 해병 전투복의 무리들이 별안간 주인공 앞에 서서");
+		script.append("한번 해병은 영원한 해병! 우리 해병은 불순한 일당이\n");
+		script.append("마을을 어지럽히는걸 용서치 않는다! 넌 누구냐\n");
 		ConsolePrint.printScript(script);
 	}
 
