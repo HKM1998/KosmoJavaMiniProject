@@ -47,12 +47,11 @@ public class Event150__Filling_Station extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
 		script.append("무인주유소에 있는 편의점에 잠시 들르려 하는데 ");
-		script.append("뭔가 수상쩍은 물건을 백에 담고 있는 듯한\r\n"
-				+ "자가 마스크와 선글라스를 쓴 상태로 접근한다.\n");
-		script.append("혹시 이런게 필요하지 않나요?\r\n"
-				+ "그 안에는 총과 탄약이 있다.\n");
+		script.append("뭔가 수상쩍은 물건을 백에 담고 있는 듯한\r\n");
+		script.append( "자가 마스크와 선글라스를 쓴 상태로 접근한다.\n");
+		script.append("혹시 이런게 필요하지 않나요?\n");
+		script.append("그 안에는 총과 탄약이 있다.\n");
 
 		ConsolePrint.printScript(script);
 	}
