@@ -47,7 +47,8 @@ public class Event031_PoliceStation_1 extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("모든 사람들이 자신의 살길을 찾기 위해 나갔지만, 나는 남아 있는 몇 사람이라도 지키고 싶었어.\n");
+		script.append("모든 사람들이 자신의 살길을 찾기 위해 나갔지만.\n");
+		script.append("나는 남아 있는 몇사람이라도 지키고 싶었어.\n");
 		script.append("\n");
 		script.append("\n");
 

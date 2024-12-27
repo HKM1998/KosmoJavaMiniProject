@@ -3,6 +3,7 @@ package consolegame.event;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item001_Passport;
 
 public class Event010_EmptyCar extends Event {
 	public Event010_EmptyCar() {
@@ -51,20 +52,33 @@ public class Event010_EmptyCar extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("으슥한 곳에 숨겨져 있는 자동차를 발견한다.\n");
 		script.append("안에 사람이 있는 지 확인 해 보고 주위에 사람이 없는지 확인한 뒤 창문을 깬다.\n");
-		script.append("차량에 열쇠는 없어서 운전은 불가하다. 앞좌석 대신 앞좌석 서랍을 여니 칼1개와 여권이 있다.\n");
+		script.append("차량에 열쇠는 없어서 운전은 불가하다.\n");
+		script.append("앞좌석 대신 앞좌석 서랍을 여니 칼1개와 여권이 있다.\n");
 
 		ConsolePrint.printScript(script);
 	}
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		
+		if (pChoice.equals("1")) {
+
+			// 무기가 있는경우 실행
+			if (Item.hasItemType(c, "Knife")) {
+			}
+		}
+		else if (pChoice.equals("2")) {
+
+			// 0번 아이템ID 가 있는 경우 실행
+			if (!Item.hasItem(c, 001)) {
+				c.getItem().add(new Item001_Passport());
+			}
 		}
 
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
+		
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		script.append("\n");
+		script.append("\n");
 	}
 }

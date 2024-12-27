@@ -47,8 +47,8 @@ public class Event100_USArmy extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("용산 근처를 지나던 중 미군을 만난다. 유라시아대륙과 멀리 떨어진 초강대국 미국은");
-		script.append("핵전쟁의 피해를 덜 받아 아직까지 미정부의 영향력이 제한적으로 유지되고 있다.\n");
+		script.append("용산 근처를 지나던 중 미군을 만난다. 유라시아대륙과 멀리떨어진 초강대국 미국은");
+		script.append("핵전쟁의 피해를 덜받아 아직까지 미정부의 영향력이 제한적으로 유지되고 있다.\n");
 		script.append("전혀 믿을 수 없는 가까운 한국인 보다 멀리 있는 미군이 훨씬\n");
 		script.append("믿음직하다. 그는 마을에서 쫓겨나게 된 배경을 설명하고 미군에게 도움을 청한다.\n");
 

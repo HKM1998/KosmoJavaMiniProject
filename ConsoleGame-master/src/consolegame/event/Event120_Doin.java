@@ -48,7 +48,8 @@ public class Event120_Doin extends Event {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("광화문 청계천 강물 한가운데 앉아 있는 도인이 있다.");
-		script.append("그는 지나가는 주인공한테 왜 세상이 이렇게 돌아가는지 궁금하지 않냐고 한다.\n");
+		script.append("그는 지나가는 주인공한테 왜 세상이 \n");
+		script.append("이렇게 돌아가는지 궁금하지 않냐고 한다.\n");
 		script.append("정말 뜬금없지만 그렇기에 더욱 궁금했다.\n");
 
 		ConsolePrint.printScript(script);
