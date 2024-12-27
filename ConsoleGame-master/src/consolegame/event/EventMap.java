@@ -11,7 +11,6 @@ public class EventMap {
 	public EventMap(Character c) {
 		// 이벤트 리스트 추가
 		// 이벤트 생성 및 가져오기 위한 맵 생성
-		// Array.put(000, 000); // 이벤트ID, 가중치
 		if(Item.hasItem(c, 0)) {
 			 eventArray.add(new EventMapList(0, 0)); // 이벤트ID, 가중치
 		}

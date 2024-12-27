@@ -7,14 +7,7 @@ import consolegame.thread.LoadingThread;
 
 public class ConsolePrint {
 	// 화면 클리어
-	@SuppressWarnings("deprecation")
 	public static void clear() {
-		try {
-			Runtime.getRuntime().exec("cls");
-		} catch (IOException e) {
-
-		}
-
 		for (int i = 0; i < 40; i++) {
 			System.out.println("");
 		}
@@ -85,7 +78,7 @@ public class ConsolePrint {
 	// 선택지에 따른 결과 출력
 	public static void printResult(StringBuilder pSb) {
 		clear();
-
+		printConsole(pSb);
 	}
 
 	public static void printWrongInputMessage() {
@@ -93,11 +86,11 @@ public class ConsolePrint {
 		System.out.println("");
 	}
 
-	public static void printWrongInputMessage(int count) {
-		if (count == 1)
+	public static void printWrongInputMessage(int pCount) {
+		if (pCount == 1)
 			System.out.println("<잘못 입력하셨습니다. 다시 입력해주세요.>");
 		else {
-			System.out.print("<잘못 입력하셨습니다. 1~" + count);
+			System.out.print("<잘못 입력하셨습니다. 1~" + pCount);
 			System.out.println("사이의 값을 입력해주세요.>");
 		}
 		System.out.println();
