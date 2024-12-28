@@ -1,8 +1,13 @@
 package consolegame.event;
 
+import java.util.List;
+import java.util.Random;
+
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item001_Passport;
+import consolegame.item.Item006_Ammunition;
 
 public class Event030_PoliceStation extends Event {
 	public Event030_PoliceStation() {
@@ -14,27 +19,46 @@ public class Event030_PoliceStation extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
-		// 선택지 작성
-		Selection selection = new Selection();
+	public void printChoice(Character c) {                             //구현하려고 하던 바는 경찰서에서 2번을 선택하고 칼 혹은 총으로 공격하려 했을 경우
+		// 선택지 작성                                                    //칼은 90% 확률로 지고 체력 -2, 10% 확률로 승리하고 탄약3개 획득
+		Selection selection = new Selection();                         //총은 50% 확률로 지고 체력 -2, 50% 확률로 승리하고 탄약3개 획득 이었습니다.
+                                                                       //그런데 구현을 하고 보니 아무리 해도 이걸 getResult로 내려 보내는게 잘 안되고
+		selection.addSelection("1.어쩌다가 혼자 이렇게 남게 됐나요?.");        //탄약을 3개 추가 하는 방법도 몰라서 보류 했습니다
+		                                                               
+		selection.addSelection("2.그냥 무시하고 무기만 탈취 하려 한다");
+		
+		// 특정 아이템 조회 후 사용
+		if(selection.equals("2.그냥 무시하고 무기만 탈취 하려 한다")) {          //2번을 골랐을 경우 공격하는 것 추가
+			if (Item.hasItem(c, 000)) {                                 // 칼을 가지고 있을 경우 공격
+			// 아이템 id 가 000인 아이템이 있는지
+			selection.addSelection("칼을 휘둘렀다");                       //2번 선택 후 나오는 멘트 추
+			Random random = new Random();                               //java.util.Random 임포트 후
+			
+			if (random.nextInt(10) < 8)  {                              //칼은 90% 확률로 체력 -2              
+				 c.setHealth(c.getHealth() - 2);                      
+				} else if(!Item.hasItemType(c, "Ammunition")) {         
+					c.getItem().add(new Item006_Ammunition());          //10% 확률로 승리시 탄약이 없을 때 탄약 추가				
+				} else {
+					c.getItem().add(new Item006_Ammunition());          //10% 확률로 승리시 탄약이 있을 때도 추가	
+				}	
+					
+			if (Item.hasItem(c, 8)) {                                 //총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
+				selection.addSelection("총을 쐈다");                     
+				Random random1 = new Random(); 
+				if (random1.nextInt(10) < 4)  {                       //칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
+					c.setHealth(c.getHealth() - 2);                   
+				} else if(!Item.hasItemType(c, "Ammunition")) {       //기존에 탄약이 없을 경우 추가
+					c.getItem().add(new Item006_Ammunition());        				
+				} else {											  //기존에 탄약이 있을 때도 추가
+					c.getItem().add(new Item006_Ammunition());
+				}
+			}
+			
 
-		selection.addSelection(" 어쩌다가 혼자 이렇게 남게 됐나요?.");
-		
-		selection.addSelection("그냥 무시하고 무기만 탈취 하려 한다");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
+		}
+    }           
+						
+
 
 
 		selection.print();
@@ -55,15 +79,24 @@ public class Event030_PoliceStation extends Event {
 		ConsolePrint.printScript(script);
 	}
 
-	@Override
-	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
-		}
-
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
+//	@Override                                                    
+	public void getResult(Character c, String pChoice) {             //위에 구현한 결과 getResult로 가져 오려다 포기
+//		// 0번 아이템ID 가 있는 경우 실행
+//		
+//		
+//		if (Item.hasItem(c, 000)) {
+//			c.removeItem(000);
+//		}
+//
+//		// 무기가 있는경우 실행
+//		if (random.equals())
+//		if (pChoice.equals("2")) {
+//			List<Item> Item.findItemType(c, "무기") {
+//				return c.getItem().stream().filter(id -> id.getType() == pType).toList();
+//			}
+//			}
+//       }
+//					}
+		
 	}
 }

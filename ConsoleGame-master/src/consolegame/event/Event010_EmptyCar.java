@@ -19,10 +19,10 @@ public class Event010_EmptyCar extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("칼.");
+		selection.addSelection("1.칼.");
 		
 
-		selection.addSelection(" 어느 모르는 사람의 여권.");
+		selection.addSelection("2.어느 모르는 사람의 여권.");
 		
 		
 //		// 특정 아이템 조회 후 사용
@@ -76,9 +76,14 @@ public class Event010_EmptyCar extends Event {
 		}
 
 		
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("\n");
-		script.append("\n");
+//	if (pChoice.equals("")) {	
+//		StringBuilder script = new StringBuilder();
+//		script.append(getEventId() + ". " + getName() + "\n");
+//		script.append("\n");
+//		script.append("\n");
+//	}
+	
+	
+	
 	}
 }
