@@ -3,6 +3,8 @@ package consolegame.event;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item000_Knife;
+import consolegame.item.Item005_PainKiller;
 
 public class Event150__Filling_Station extends Event {
 	public Event150__Filling_Station() {
@@ -18,9 +20,9 @@ public class Event150__Filling_Station extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 칼 200");
+		selection.addSelection("칼200");
 		
-		selection.addSelection(" 탄약 1개 ");
+		selection.addSelection("진통제200");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -51,7 +53,7 @@ public class Event150__Filling_Station extends Event {
 		script.append("뭔가 수상쩍은 물건을 백에 담고 있는 듯한\r\n");
 		script.append( "자가 마스크와 선글라스를 쓴 상태로 접근한다.\n");
 		script.append("혹시 이런게 필요하지 않나요?\n");
-		script.append("그 안에는 총과 탄약이 있다.\n");
+		script.append("그 안에는 칼과 진통제가 있다.\n");
 
 		ConsolePrint.printScript(script);
 	}
@@ -59,12 +61,19 @@ public class Event150__Filling_Station extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) {                                // 1번은 금액 200원을 쓰고 칼 획득
+			c.setMoney(c.getMoney() - 200);
+			if (!Item.hasItem(c, 000)) {
+				c.getItem().add(new Item000_Knife());
+		   }
 		}
 
 		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
+		if (pChoice.equals("2")) {                                // 2번은 금액 200원을 쓰고 진통제 획득
+			c.setMoney(c.getMoney() - 200);
+			if (!Item.hasItem(c, 005)) {
+				c.getItem().add(new Item005_PainKiller());        // 아이템 005 진통제 임포트
+		   }
 		}
 	}
 }

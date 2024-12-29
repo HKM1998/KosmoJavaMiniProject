@@ -18,9 +18,9 @@ public class Event050_ConvinienceStore extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 들어간다.");
+		selection.addSelection("들어간다.");
 		
-		selection.addSelection(" 지나친다");
+		selection.addSelection("지나친다");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -56,12 +56,12 @@ public class Event050_ConvinienceStore extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
-		}
+//		if (pChoice.equals("1")) {                          //1번 들어가면 051로 가는거 보류
+//			
+//		}
 
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
+//		if (pChoice.equals("2")) {                          //2번 지나치면 다른 이벤트로 가는거 보류
+//		
+//	}
 	}
 }

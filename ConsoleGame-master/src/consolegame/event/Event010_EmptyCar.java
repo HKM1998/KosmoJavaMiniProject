@@ -19,10 +19,10 @@ public class Event010_EmptyCar extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("1.칼.");
+		selection.addSelection("칼.");
 		
 
-		selection.addSelection("2.어느 모르는 사람의 여권.");
+		selection.addSelection("어느 모르는 사람의 여권.");
 		
 		
 //		// 특정 아이템 조회 후 사용
@@ -67,7 +67,7 @@ public class Event010_EmptyCar extends Event {
 			if (Item.hasItemType(c, "Knife")) {
 			}
 		}
-		else if (pChoice.equals("2")) {
+		else if (pChoice.equals("2")) {                //2번 선택시 Weird 엔딩 루트의 Good엔딩 조건중 하나
 
 			// 0번 아이템ID 가 있는 경우 실행
 			if (!Item.hasItem(c, 001)) {

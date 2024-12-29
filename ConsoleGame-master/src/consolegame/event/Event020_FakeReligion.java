@@ -57,18 +57,18 @@ public class Event020_FakeReligion extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
-		}
-
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
+//		if (Item.hasItem(c, 000)) {
+//			c.removeItem(000);
+//		}
+//
+//		// 무기가 있는경우 실행
+//		if (Item.hasItemType(c, "무기")) {
+//		}
 		
 		
 		
 	if (pChoice.equals("1")) {	                  //1번 선택 시 나오는 대사 추가
-			StringBuilder script = new StringBuilder();
+			StringBuilder script = new StringBuilder();                   //1번 선택시 Good 엔딩 루트의 Bad엔딩 선결조건 중 하나
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("일장연설을 듣고 나니 기가 다 빠진다.\n");
 			script.append("그러나 아줌마는 이것도 인연이라며 성경을 선물한다\n");

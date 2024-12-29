@@ -1,8 +1,12 @@
 package consolegame.event;
 
+import java.util.Random;
+
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item004_FirstAidKit;
+import consolegame.item.Item006_Ammunition;
 
 public class Event070_Biker extends Event {
 	public Event070_Biker() {
@@ -18,9 +22,9 @@ public class Event070_Biker extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 싸운다");
+		selection.addSelection("싸운다");
 		
-		selection.addSelection(" 순순히 내놓는다");
+		selection.addSelection("도망친다");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -56,13 +60,35 @@ public class Event070_Biker extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
+			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
+
+				Random random = new Random();
+
+				if (random.nextInt(10) < 1) {                     // 칼은 90% 확률로 패배 후 체력 -2
+					c.setHealth(c.getHealth() - 2);
+				} else if (!Item.hasItemType(c, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
+					c.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 없을때 추가
+				} else {
+					c.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 있을 때도 추가
+				}
+
+			}
+			if (Item.hasItem(c, 8)) {                            // 총을 가지고 있을 경우 공격
+
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 0) {                   // 총은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 구급상자 획득
+					c.setHealth(c.getHealth() - 2);
+				} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 구급상자 없을 경우 추가
+					c.getItem().add(new Item006_Ammunition());
+				} else { // 기존에 구급상자 있을 때도 추가
+					c.getItem().add(new Item006_Ammunition());
+				}
+			}
+		if (pChoice.equals("2")) {
+			c.setHealth(c.getHealth() - 1);                      // 2번 도망친다 선택시 체력 -1
 		}
 
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
 		}
 	}
 }

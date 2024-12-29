@@ -3,6 +3,9 @@ package consolegame.event;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item000_Knife;
+import consolegame.item.Item001_Passport;
+import consolegame.item.Item008_Gun;
 
 public class Event140_WeirdShopper extends Event {
 	public Event140_WeirdShopper() {
@@ -18,9 +21,9 @@ public class Event140_WeirdShopper extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 칼 200");
+		selection.addSelection("칼 200");
 		
-		selection.addSelection(" 총 500 ");
+		selection.addSelection("총 500 ");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -60,12 +63,19 @@ public class Event140_WeirdShopper extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) {                                // 1번은 금액 200원을 쓰고 칼 획득
+			c.setMoney(c.getMoney() - 200);
+			if (!Item.hasItem(c, 000)) {
+				c.getItem().add(new Item000_Knife());
+		   }
 		}
 
 		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
+		if (pChoice.equals("2")) {                                // 2번은 금액 500원을 쓰고 총 획득
+			c.setMoney(c.getMoney() - 500);
+			if (!Item.hasItem(c, 8)) {
+				c.getItem().add(new Item008_Gun());               //아이템 008 총 임포트
+	    	}
+		}	
 	}
 }

@@ -3,6 +3,8 @@ package consolegame.event;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item001_Passport;
+import consolegame.item.Item008_Gun;
 
 public class Event081_Marine_1 extends Event {
 	public Event081_Marine_1() {
@@ -60,12 +62,23 @@ public class Event081_Marine_1 extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) {                                             //1번 선택시 Weird 엔딩의 Good 엔딩 선결조건 만족
+			StringBuilder script = new StringBuilder();
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("우리의 피를 끓게 하는구만! 그렇다면 훗날 필요하다면 우리가 도움을 주도록 하지\n");   
+			script.append("훗날 필요하다면 월곡동 주변에서 '월곡 해병 전우회'를 찾아오라고.\n");
 		}
 
 		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
+		if (pChoice.equals("2")) {
+			if (!Item.hasItem(c, 8)) {
+				c.getItem().add(new Item008_Gun());                                          //2번 선택시 총을 얻는다
+			}
+			StringBuilder script = new StringBuilder();
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("우리 후배 기수가 힘들어 하는 모습을 보니 힘들군.\n");
+			script.append("당장 줄껀 총 한자루 이것밖에 없네.\n");
+			script.append("주인공은 '필승'을 외치고 떠난다\n");
 		}
 	}
 }
