@@ -64,7 +64,7 @@ public abstract class Event {
 		StringBuilder selection = new StringBuilder();
 		
 		public void addSelection(String selection) {
-			this.selection.append(++count + ". " + selection + "\n");
+			this.selection.append(++count + ". " + selection + "\n\t");
 		}
 		
 		public void print() {

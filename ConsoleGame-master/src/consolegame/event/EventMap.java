@@ -63,12 +63,17 @@ public class EventMap {
 		case 10:e = new Event010_EmptyCar();break;
 		case 20:e = new Event020_FakeReligion();break;
 		case 30:e = new Event030_PoliceStation();break;
+		case 31:e = new Event031_PoliceStation_1();break;
 		case 40:e = new Event040_WildDog();break;
 		case 50:e = new Event050_ConvinienceStore();break;
+		case 51:e = new Event051_ConvinienceStore_1();break;
 		case 60:e = new Event060_AbandonedHospital();break;
+		case 61:e = new Event061_AbandonedHospital_1();break;
 		case 70:e = new Event070_Biker();break;
 		case 80:e = new Event080_Marine();break;
+		case 81:e = new Event081_Marine_1();break;
 		case 90:e = new Event090_MerchantFamily();break;
+		case 91:e = new Event091_MerchantFamily_1();break;
 		case 100:e = new Event100_USArmy();break;
 		case 110:e = new Event110_University();break;
 		case 120:e = new Event120_Doin();break;
@@ -83,6 +88,20 @@ public class EventMap {
 		}
 		eventArray.stream().filter(x -> x.eventId == event).findFirst().get().setWeight(0);
 		return e;
+	}
+	
+	public void setEvent(int pEventId) {
+		// 특정 이벤트가 완료되면 다음 이벤트 발생을 위해 가중치가 높은 연계 이벤트 추가
+		// 반드시 이어져야할때 9999
+		// 확률일때 1~99
+		// 상대적인 확률이기 때문에 남은 이벤트 수에 따라 확률이 달라짐
+		// 주석의 C : 이어지는 이벤트		R : 랜덤 확률 이벤트
+		switch(pEventId) {
+		case 30: eventArray.add(new EventMapList(31, 9999)); break; // C 겅찰서 이벤트
+		case 50: eventArray.add(new EventMapList(51, 9999)); break; // C 편의점 이벤트
+		case 80: eventArray.add(new EventMapList(81, 9999)); break; // C 해병 이벤트
+		case 90: eventArray.add(new EventMapList(91, 9999)); break; // C 상인가족 이벤트
+		}
 	}
 }
 
