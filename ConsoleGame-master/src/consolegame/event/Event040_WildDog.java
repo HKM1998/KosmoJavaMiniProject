@@ -45,13 +45,12 @@ public class Event040_WildDog extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		StringBuilder script = new StringBuilder();
 		StringBuilder sb = new StringBuilder();
-		
-		if (pChoice.equals("1")) {                                   //1 선택할 경우 체력 1깎임
-			c.setHealth(c.getHealth() - 1); 
-			script.append(getEventId() + ". " + getName() + "\n");  //정신력-1은 구현된 메서드가 없어서 보류
-			script.append("마주치자마자 부리나케 도망쳤다.\n");
+
+		if (pChoice.equals("1")) {                              //1 선택할 경우 체력 1깎임
+			c.setHealth(c.getHealth() - 1);                     //정신력-1은 구현된 메서드가 없어서 보류
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("마주치자마자 부리나케 도망쳤다. 체력은 -1이 되었다.\n");
 		}
 
 		if (pChoice.equals("2")) {                                      // 2번을 골랐을 경우 공격하기

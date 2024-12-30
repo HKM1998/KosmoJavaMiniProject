@@ -44,18 +44,19 @@ public class Event010_EmptyCar extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		StringBuilder sb = new StringBuilder();
+		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {
-
-			// 무기가 있는경우 실행
 			if (Item.hasItemType(c, "Knife")) {
 			}
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("칼을 집어 들었다.\n");
+			
 		}
 		else if (pChoice.equals("2")) {                //2번 선택시 Weird 엔딩 루트의 Good엔딩 조건중 하나
 
 			// 0번 아이템ID 가 있는 경우 실행
 			if (!Item.hasItem(c, 001)) {
 				c.getItem().add(new Item001_Passport());
-				StringBuilder script = new StringBuilder();
 				script.append(getEventId() + ". " + getName() + "\n");
 				script.append("스스로도 이유는 모르겠지만 홀린듯 여권을 집어 들었다.\n");
 			}

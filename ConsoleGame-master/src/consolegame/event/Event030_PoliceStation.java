@@ -26,7 +26,8 @@ public class Event030_PoliceStation extends Event {
 												// 그런데 구현을 하고 보니 아무리 해도 이걸 getResult로 내려 보내는게 잘 안되고
 		selection.addSelection("어쩌다가 혼자 이렇게 남게 됐나요?."); // 탄약을 3개 추가 하는 방법도 몰라서 보류 했습니다
 
-		selection.addSelection("그냥 무시하고 무기만 탈취 하려 한다");		
+		selection.addSelection("그냥 무시하고 칼로 위협하여 무기만 탈취 하려 한다");		
+		selection.addSelection("그냥 무시하고 총으로 위협하여 무기만 탈취 하려 한다");		
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -46,7 +47,7 @@ public class Event030_PoliceStation extends Event {
 		ConsolePrint.printScript(script);
 	}
 
-//	@Override                                                    
+	@Override                                                    
 	public void getResult(Character c, String pChoice) { // 위에 구현한 결과 getResult로 가져 오려다 포기
 		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
@@ -68,30 +69,23 @@ public class Event030_PoliceStation extends Event {
 						
 					}
 				}
-
 			}
-			if (Item.hasItem(c, 8)) { // 총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
+		}
+		if (pChoice.equals("3")) {
+		if (Item.hasItem(c, 8)) { // 총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
 
-				Random random1 = new Random();
-				if (random1.nextInt(10) < 5) { // 칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
-					c.setHealth(c.getHealth() - 2);
-				} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
-					c.getItem().add(new Item006_Ammunition());
-				} else { // 기존에 탄약이 있을 때도 추가
-					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(c, 6)); // 10% 확률로 승리시 탄약이 있을 때도 추가
-						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
-					}catch(ClassCastException e) {
-						c.removeItem(6);
-						c.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
-						
-					}
-				}
-
+			Random random1 = new Random();
+			if (random1.nextInt(10) < 5) { // 칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
+				c.setHealth(c.getHealth() - 2);
+			} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
+				c.getItem().add(new Item006_Ammunition());
+			} else { // 기존에 탄약이 있을 때도 추가
+				c.getItem().add(new Item006_Ammunition());
 			}
 
 		}
-//		if (pChoice.equals("1")) {            // 031 이벤트로 가는거 보류
+		}
+//		if (pChoice.equals("1")) {                          //
 //			
 //		}
 		ConsolePrint.printResult(sb);
