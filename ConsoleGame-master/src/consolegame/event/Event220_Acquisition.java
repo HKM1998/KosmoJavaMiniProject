@@ -35,7 +35,7 @@ public class Event220_Acquisition extends Event {
 		public void getResult(String pChoice) {
 			StringBuilder script = new StringBuilder();
 			if (pChoice.equals("1")) {
-			script.append("얻은게 없다.\n");
+			script.append("당신은 얻은게 없다.\n");
 			script.append("씁슬하구만...");
 			} else if (pChoice.equals("2"));
 			script.append("세상에 이게 얼마야??? 아싸!!오늘은 고기 파티다!!!(자금 +500) ");
