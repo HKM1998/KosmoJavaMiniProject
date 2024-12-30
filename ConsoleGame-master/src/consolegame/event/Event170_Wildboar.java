@@ -20,8 +20,9 @@ public class Event170_Wildboar extends Event {
 		selection.addSelection(" 1. 세상에 너무 무서워 보인다. 도망갈까? ");
 		
 		selection.addSelection(" 2. 아 너무 배가 고프다 고기다 우히힣히히 잡아먹자.");
-
+		this.setsCount(selection.count);
 		selection.print();
+		
 	}
 
 
@@ -53,6 +54,6 @@ public class Event170_Wildboar extends Event {
 		// 2번 선택지 선택 -> 패배 시 게임 오버 
 		
 		}
-		
+		ConsolePrint.printResult(script);
 	}
 }

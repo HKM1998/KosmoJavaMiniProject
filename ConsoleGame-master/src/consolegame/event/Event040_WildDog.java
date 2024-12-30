@@ -23,8 +23,8 @@ public class Event040_WildDog extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection(" 도망간다.");
-		
-		selection.addSelection(" 싸운다");
+	
+		selection.addSelection(" 싸운다");		
 		this.setsCount(selection.count);
 		selection.print();
 	}

@@ -6,7 +6,7 @@ import consolegame.item.Item;
 
 public class Event180_Suddenpoop extends Event {
 	public Event180_Suddenpoop() {
-		setEventId(170);
+		setEventId(180);
 		setName("급똥");
 		setScore(0);
 		setWeight(0);
@@ -14,13 +14,12 @@ public class Event180_Suddenpoop extends Event {
 
 	@Override
 	public void printChoice(Character c) {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection(" 1. 꾸르르르르르... 윽..힘들더라도 조금만 참고 얼른 버려진 건물을 찾아보자.. ");
 		
 		selection.addSelection(" 2. 아흑... 참기 너무 힘든거 같다..근처 풀밭이라도 가서 해결하자. ");
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 	@Override
@@ -52,7 +51,7 @@ public class Event180_Suddenpoop extends Event {
 			script.append("푸드드드득...크흑");
 			c.setMental(getMental()-2); // 정신력 -2
 		}
-			
+		ConsolePrint.printResult(script);
 		}
 
 	private int getMental() {

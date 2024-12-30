@@ -6,7 +6,7 @@ import consolegame.event.Event;
 public class Item005_PainKiller extends Item{
 
 	public Item005_PainKiller() {
-		setItemId(005);
+		setItemId(5);
 		setName("개고기");
 		setPrice(0); //가격
 		setType("음식"); // 타입 관련된 정보 저장용 만들 예정

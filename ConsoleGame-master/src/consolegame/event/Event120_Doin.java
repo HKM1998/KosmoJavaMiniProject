@@ -21,22 +21,7 @@ public class Event120_Doin extends Event {
 		selection.addSelection("도사님은 왜 세상이 이렇게 돌아간다고 생각 하시나요?");
 		
 		selection.addSelection("그냥 그 찬물에서 우선 나오시고 나서 생각 하시는게 나을듯 한데요. ");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 
