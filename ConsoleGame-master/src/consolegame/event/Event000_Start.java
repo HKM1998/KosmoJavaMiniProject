@@ -19,7 +19,6 @@ public class Event000_Start extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection(" 도망친다.");
-
 		this.setsCount(selection.count); // 추가된 선택지 수만큼 선택지 수 설정
 		selection.print();
 	}
