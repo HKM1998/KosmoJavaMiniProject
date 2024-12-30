@@ -10,7 +10,7 @@ import consolegame.item.Item005_PainKiller;
 
 public class Event061_AbandonedHospital_1 extends Event {
 	public Event061_AbandonedHospital_1() {
-		setEventId(061);
+		setEventId(61);
 		setName("폐병원_1");
 		setScore(0);
 		setWeight(0);

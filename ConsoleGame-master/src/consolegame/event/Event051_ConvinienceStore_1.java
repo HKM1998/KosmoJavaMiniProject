@@ -8,10 +8,11 @@ import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 import consolegame.item.Item003_DogMeat;
 import consolegame.item.Item004_FirstAidKit;
+import consolegame.item.Item006_Ammunition;
 
 public class Event051_ConvinienceStore_1 extends Event {
 	public Event051_ConvinienceStore_1() {
-		setEventId(051);
+		setEventId(51);
 		setName("편의점_1");
 		setScore(0);
 		setWeight(0);
@@ -23,8 +24,8 @@ public class Event051_ConvinienceStore_1 extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("거부하고 상대와 싸운다");
-		
+		selection.addSelection("거부하고 상대와 칼로 싸운다");
+		selection.addSelection("거부하고 상대와 총으로 싸운다");
 		selection.addSelection("그냥 나간다");
 		this.setsCount(selection.count);
 		selection.print();
@@ -46,40 +47,62 @@ public class Event051_ConvinienceStore_1 extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		
-		StringBuilder sb = new StringBuilder();
-		if (pChoice.equals("2")) {                                      // 2번을 골랐을 경우 공격하기
-			if (Item.hasItem(Main.character, 000)) {                                 // 칼을 가지고 있을 경우 공격
 
-				Random random = new Random();                         
+		StringBuilder script = new StringBuilder();
+		if (pChoice.equals("1")) { // 2번을 골랐을 경우 공격하기
+			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
 
-				if (random.nextInt(10) < 7) {                           //칼은 70% 확률로 패배 후 체력-2
+				Random random = new Random();
+
+				if (random.nextInt(10) < 7) { // 칼은 70% 확률로 패배 후 체력-2
 					Main.character.setHealth(Main.character.getHealth() - 2);
-				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {       //아이템 FirstAidKit 클래스 임포트
-					Main.character.getItem().add(new Item004_FirstAidKit());         // 10% 확률로 승리시 구급상자가 없을때 추가
-				} else {                                                     
-					Main.character.getItem().add(new Item004_FirstAidKit());         // 10% 확률로 승리시 구급상자가 있을 때도 추가
+				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) { // 아이템 FirstAidKit 클래스 임포트
+					Main.character.getItem().add(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 없을때 추가
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("구급상자를 새로 얻었다!\n");
+				} else {
+					try {
+						Item004_FirstAidKit firstaidkit = (Item004_FirstAidKit) (Item.findItem(Main.character, 4)); 																												
+						firstaidkit.setFirstaidkit(firstaidkit.getFirstaidkit() + 1);
+					} catch (ClassCastException e) {
+						Main.character.removeItem(4);
+						Main.character.getItem().add(new Item004_FirstAidKit()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+						script.append(getEventId() + ". " + getName() + "\n");
+						script.append("구급상자를 추가했다!\n"); // 10% 확률로 승리시 구급상자가 있을 때도 추가
+					}
+
 				}
 
 			}
-			if (Item.hasItem(Main.character, 8)) {                                    // 총을 가지고 있을 경우 공격
+		}
+		if (pChoice.equals("2")) {
+			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격
 
 				Random random1 = new Random();
-				if (random1.nextInt(10) < 1) {                           // 총은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 구급상자 획득
+				if (random1.nextInt(10) < 1) { // 총은 10% 확률로 패배 후 체력 -2, 90% 확률로 승리 후 구급상자 획득
 					Main.character.setHealth(Main.character.getHealth() - 2);
-				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {         // 기존에 구급상자 없을 경우 추가
+				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {
 					Main.character.getItem().add(new Item004_FirstAidKit());
-				} else {                                                 // 기존에 구급상자 있을 때도 추가
-					Main.character.getItem().add(new Item004_FirstAidKit());
-				}
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("구급상자를 새로 얻었다!\n"); // 90% 확률로 승리시 구급상자가 없을 때 구급상자 추가
+				} else {
+					try {
+						Item004_FirstAidKit firstaidkit = (Item004_FirstAidKit) (Item.findItem(Main.character, 4));																												
+						firstaidkit.setFirstaidkit(firstaidkit.getFirstaidkit() + 1);
+					} catch (ClassCastException e) {
+						Main.character.removeItem(4);
+						Main.character.getItem().add(new Item004_FirstAidKit());
+						script.append(getEventId() + ". " + getName() + "\n");
+						script.append("구급상자를 추가했다!\n");
 
+					}
+				}
 			}
-			
-//		if (pChoice.equals("2")) {                                       //2번 선택시 나가는거 보류
-//			
-//		}
 
 		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+//		if (pChoice.equals("3")) {                                       //2번 선택시 나가는거 보류
+//		
+//	}
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

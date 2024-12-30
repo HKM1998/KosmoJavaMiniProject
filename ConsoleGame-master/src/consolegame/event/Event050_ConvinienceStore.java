@@ -6,7 +6,7 @@ import consolegame.item.Item;
 
 public class Event050_ConvinienceStore extends Event {
 	public Event050_ConvinienceStore() {
-		setEventId(050);
+		setEventId(50);
 		setName("편의점");
 		setScore(0);
 		setWeight(0);
@@ -19,7 +19,7 @@ public class Event050_ConvinienceStore extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection("들어간다.");
-		
+
 		selection.addSelection("지나친다");
 		this.setsCount(selection.count);
 		selection.print();
@@ -33,21 +33,21 @@ public class Event050_ConvinienceStore extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("저 멀리서 익숙한 초록색 간판이 보인다. 불빛에 이끌려 가까이 가 본다.\n");
 
-
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder script = new StringBuilder();
 		// 0번 아이템ID 가 있는 경우 실행
 //		if (pChoice.equals("1")) {                          //1번 들어가면 051로 가는거 보류
 //			
 //		}
 
-//		if (pChoice.equals("2")) {                          //2번 지나치면 다른 이벤트로 가는거 보류
-//		
-//	}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		if (pChoice.equals("2")) { // 2번 지나치면 다른 이벤트로 가는거 보류
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("어차피 누군가가 다 털었을게 뻔하단 생각에 그냥 지나친다\n");
+		}
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }
