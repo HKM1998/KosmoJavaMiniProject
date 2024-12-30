@@ -18,6 +18,7 @@ public class Event190_Meal extends Event {
 		selection.addSelection(" 1. 고기를 구워먹자. "); // (아이템: 고기) 존재 시 (체력+2, 정신력+2)	
 		selection.addSelection(" 2. 간단한 보존식량이라도 꺼내 먹고 잠시라도 허기를 달래자."); // (정신력+1)
 		selection.addSelection(" 3. 가진게 아무것도 없다.. 굶는다.."); // (체력-1, 정신력 -1)
+		this.setsCount(selection.count);
 		selection.print();
 	}
 	
@@ -52,6 +53,7 @@ public class Event190_Meal extends Event {
 		script.append("서럽다. ");
 		c.setHealth(getHealth()-1);
 		c.setMental(getMental()-1);
+		ConsolePrint.printResult(script);
 		}
 		
 		

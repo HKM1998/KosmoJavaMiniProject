@@ -23,6 +23,7 @@ public class Event200_Mart extends Event {
 			selection.addSelection(" 6.보존식량을 산다. "); // (자금- 50)
 			
 			selection.addSelection(" 7. 가진게 아무것도 없다.. 그냥 나가자."); // 
+			this.setsCount(selection.count);
 			selection.print();
 		}
 		
@@ -75,12 +76,10 @@ public class Event200_Mart extends Event {
 			script.append("배도 고프고..");
 			script.append("돈도 없고... ");
 			script.append("서럽다. ");
-		
+			ConsolePrint.printResult(script);
 		}
-			
-			
 		private int getMoney() {
-			// TODO Auto-generated method stub
+			
 			return 0;
 		}
 	
@@ -90,5 +89,6 @@ public class Event200_Mart extends Event {
 	
 		private int getHealth() {
 			return 0;
+			
 	}
 }
