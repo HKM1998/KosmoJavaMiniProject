@@ -23,7 +23,7 @@ public class Event160_GangAssassin extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection("아이를 이용하는 그 갱단을 쫓아가 처치한다");
-		
+
 		selection.addSelection("그 아이를 죽이고 떠난다");
 		this.setsCount(selection.count);
 		selection.print();
@@ -50,39 +50,38 @@ public class Event160_GangAssassin extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
-		if (pChoice.equals("1")) {                                // 1번을 골랐을 경우 공격하기
-			if (Item.hasItem(c, 000)) {                           // 칼을 가지고 있을 경우 공격
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
+			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
 
 				Random random = new Random();
 
-				if (random.nextInt(10) < 8) {                     // 칼은 80% 확률로 패배 후 체력-1
+				if (random.nextInt(10) < 8) { // 칼은 80% 확률로 패배 후 체력-1
 					c.setHealth(c.getHealth() - 1);
 				} else if (!Item.hasItemType(c, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
-					c.getItem().add(new Item006_Ammunition());   // 20% 확률로 승리시 탄약이 없을때 추가
+					c.getItem().add(new Item006_Ammunition()); // 20% 확률로 승리시 탄약이 없을때 추가
 				} else {
-					c.getItem().add(new Item006_Ammunition());   // 20% 확률로 승리시 탄약이 있을 때도 추가
+					c.getItem().add(new Item006_Ammunition()); // 20% 확률로 승리시 탄약이 있을 때도 추가
 				}
 
 			}
-			if (Item.hasItem(c, 8)) {                            // 총을 가지고 있을 경우 공격
+			if (Item.hasItem(c, 8)) { // 총을 가지고 있을 경우 공격
 
 				Random random1 = new Random();
-				if (random1.nextInt(10) < 2) {                   // 총은 20% 확률로 패배 후 체력 -1, 80% 확률로 승리 후 탄약 획득
+				if (random1.nextInt(10) < 2) { // 총은 20% 확률로 패배 후 체력 -1, 80% 확률로 승리 후 탄약 획득
 					c.setHealth(c.getHealth() - 1);
 				} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 탄약 없을 때 추가
 					c.getItem().add(new Item006_Ammunition());
-				} else { 
-					c.getItem().add(new Item006_Ammunition());   //기존에 탄약 있을 때도 추가
+				} else {
+					c.getItem().add(new Item006_Ammunition()); // 기존에 탄약 있을 때도 추가
 				}
 			}
 
-		}
-
-		if (pChoice.equals("2")) {                                // Weird to Bad엔딩 루트로 가는 선결조건)
-			StringBuilder script = new StringBuilder();
-			script.append(getEventId() + ". " + getName() + "\n");
+		} else if (pChoice.equals("2")) { // Weird to Bad엔딩 루트로 가는 선결조건)
 			script.append("그는 아이에게 사정없이 총을 난사했다.");
 		}
+		
+		ConsolePrint.printResult(script); // 결과 출력부
 	}
 }

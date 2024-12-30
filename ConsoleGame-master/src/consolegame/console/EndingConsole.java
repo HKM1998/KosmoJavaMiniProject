@@ -5,15 +5,14 @@ import java.util.Scanner;
 import consolegame.Main;
 import consolegame.event.Event;
 
-public class EventConsole {
+public class EndingConsole {
 	Event event;
 	public Scanner scan;
 	
-	public EventConsole(Event event, Scanner scan) {
+	public EndingConsole(Event event, Scanner scan) {
 		this.event = event;
 		this.scan = scan;
 	}
-	
 	
 	public void start() {
 		event.print(Main.character);

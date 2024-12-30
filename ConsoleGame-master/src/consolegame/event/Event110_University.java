@@ -44,12 +44,13 @@ public class Event110_University extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
-//		if (pChoice.equals("1")) {                           //1번선택시 Bad 엔딩이 Good 엔딩이 될 수 있는 선결 조건			
-//		}                                                    //추가적인 이벤트는 없다
-
-		// 무기가 있는경우 실행
-//		if (pChoice.equals("2")) {							//2번선택시 역시 추가적인 이벤트는 없다.
-//		}
+		StringBuilder sb = new StringBuilder();
+		if(pChoice.equals("1")) {
+			sb.append("학생들은 어리둥절 해 하며 그저 떠나가는 그의 뒷모습을 멀뚱히 바라본다.\n");
+		}else if(pChoice.equals("2")) {
+			sb.append("학생들은 가슴에 와닿는 현실적인 그의 연설에 환호를 하고, 그는 환호를 받으며 떠난다.\n");
+		}
+		
+		ConsolePrint.printResult(sb); // 결과 출력부
 	}
 }

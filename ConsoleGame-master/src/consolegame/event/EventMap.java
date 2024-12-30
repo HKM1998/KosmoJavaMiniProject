@@ -11,12 +11,8 @@ public class EventMap {
 	int totalWeight = 0;
 
 	public EventMap() {
-		Character c = Main.character;
 		// 이벤트 리스트 추가
 		// 이벤트 생성 및 가져오기 위한 맵 생성
-		if (Item.hasItem(c, 0)) {
-			eventArray.add(new EventMapList(0, 0)); // 이벤트ID, 가중치
-		}
 		eventArray.add(new EventMapList(0, 0));
 		eventArray.add(new EventMapList(10, 1));
 		eventArray.add(new EventMapList(20, 1));
@@ -37,6 +33,7 @@ public class EventMap {
 		eventArray.add(new EventMapList(170, 1));
 		eventArray.add(new EventMapList(180, 1));
 		eventArray.add(new EventMapList(190, 1));
+		eventArray.add(new EventMapList(200, 1));
 
 	}
 
@@ -77,11 +74,12 @@ public class EventMap {
 		case 120:e = new Event120_Doin();break;
 		case 130:e = new Event130_HomelessMen();break;
 		case 140:e = new Event140_WeirdShopper();break;
-		case 150:e = new Event150__Filling_Station();break;
+		case 150:e = new Event150_FillingStation();break;
 		case 160:e = new Event160_GangAssassin();break;
 		case 170:e = new Event170_Wildboar();break;
 		case 180:e = new Event180_Suddenpoop();break;
 		case 190:e = new Event190_Meal();break;
+		case 200:e = new Event200_Mart();break;
 		}
 		eventArray.stream().filter(x -> x.eventId == event).findFirst().get().setWeight(0);
 		return e;

@@ -22,7 +22,7 @@ public class Event130_HomelessMen extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection("싸운다");
-		
+
 		selection.addSelection("도망친다 ");
 		this.setsCount(selection.count);
 		selection.print();
@@ -44,28 +44,24 @@ public class Event130_HomelessMen extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
-		if (pChoice.equals("1")) {                                 // 1번을 골랐을 경우 공격하기
-			if (Item.hasItem(c, 000)) {                            // 칼을 가지고 있을 경우 공격
-
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
+			if (Item.hasItem(c, 8)) { // 총을 가지고 있을 경우 공격
+				script.append("가지고 있던 총으로 위협하자 그들은 도망가기에 급급했습니다.\n");
+			} else if (Item.hasItem(c, 0)) { // 칼을 가지고 있을 경우 공격
 				Random random = new Random();
-
-				if (random.nextInt(10) < 7) {                      // 칼은 70% 확률로 패배 후 체력-1
-					c.setHealth(c.getHealth() - 1);                // 전리품 없음
+				if (random.nextInt(10) < 7) { // 칼은 70% 확률로 패배 후 체력-1
+					c.setHealth(c.getHealth() - 1); // 전리품 없음
+					script.append("노숙자들과 싸웟으나 그들에게서 이길수 없었습니다.(체력 -1)\n");
+				}else {
+					script.append("노숙자들과 싸워 이겼으나 남은 것은 허탈함 뿐입니다.\n");
 				}
 			}
-			if (Item.hasItem(c, 8)) {                              // 총을 가지고 있을 경우 공격
-
-				Random random1 = new Random();
-				if (random1.nextInt(10) < 0) {                     // 총은 0% 확률로 패배 후 체력 -1, 100% 확률로 승리 후 전리품 획득x
-					c.setHealth(c.getHealth() - 1);
-				}
-
-			}
+		} else if (pChoice.equals("2")) { // 2번 선택 또한 대사만 있고 추가적인 이벤트는 없다.
+			script.append("노숙자들에게서 최선을 다해 도망쳤습니다.(정신력 -1)\n");
 		}
 
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
+		ConsolePrint.printResult(script); // 결과 출력부
 	}
 }

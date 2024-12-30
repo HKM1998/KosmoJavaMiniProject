@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
+import consolegame.console.EndingConsole;
 import consolegame.console.EventConsole;
 import consolegame.console.TitleConsole;
 import consolegame.event.Event;
@@ -83,6 +84,22 @@ public class Main {
 			}
 		}
 
+		while (true) {
+			// 엔딩 (
+			try {
+				Event nowEvent = eMap.getEvent();
+				character.addEvent(nowEvent); 
+				EndingConsole ending = new EndingConsole(nowEvent, scan);
+				ending.start();
+				loading.setType("moveToNextEvent");
+				Thread thread = new Thread(loading);
+				thread.join();
+			} catch (Exception e) {
+
+			}
+		}
+		
+		
 	}
 
 	static boolean isAlive() {

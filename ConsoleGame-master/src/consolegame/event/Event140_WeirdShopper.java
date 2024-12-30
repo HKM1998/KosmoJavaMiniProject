@@ -21,9 +21,9 @@ public class Event140_WeirdShopper extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("칼 200");
-		
-		selection.addSelection("총 500 ");
+		selection.addSelection("칼 (소지금 -200)");
+
+		selection.addSelection("총 (소지금 -500)");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -35,8 +35,7 @@ public class Event140_WeirdShopper extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
-		script.append("인적이 드문 한 가운데 허름한 가판대가 있다. ");
+		script.append("인적이 드문 한 가운데 허름한 가판대가 있다.\n");
 		script.append("해당 가판대는 주인이 없는 것 처럼 보였지만\n");
 		script.append("실제로는 주인이 있었다. 할배는 무엇이 필요하냐고 얘기 했다.\n");
 		script.append("그는 껌이나 오래된 신문은\n");
@@ -47,20 +46,27 @@ public class Event140_WeirdShopper extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
-		if (pChoice.equals("1")) {                                // 1번은 금액 200원을 쓰고 칼 획득
-			c.setMoney(c.getMoney() - 200);
-			if (!Item.hasItem(c, 000)) {
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		if (pChoice.equals("1")) { // 1번은 금액 200원을 쓰고 칼 획득
+			if (c.getMoney() > 200) {
+				c.setMoney(c.getMoney() - 200);
 				c.getItem().add(new Item000_Knife());
-		   }
+				script.append("소지금 200을 사용하여 칼을 구매하였습니다.(+ 칼)\n");
+			} else {
+				script.append("당신은 소지금이 부족하여 칼을 구매할 수 없었습니다.\n");
+			}
+
+		} else if (pChoice.equals("2")) { // 2번은 금액 500원을 쓰고 총 획득
+			if (c.getMoney() > 500) {
+				c.setMoney(c.getMoney() - 500);
+				c.getItem().add(new Item008_Gun()); // 아이템 008 총
+				script.append("소지금 500을 사용하여 총을 구매하였습니다.(+ 총)\n");
+			} else {
+				script.append("당신은 소지금이 부족하여 총을 구매할 수 없었습니다.\n");
+			}
 		}
 
-		// 무기가 있는경우 실행
-		if (pChoice.equals("2")) {                                // 2번은 금액 500원을 쓰고 총 획득
-			c.setMoney(c.getMoney() - 500);
-			if (!Item.hasItem(c, 8)) {
-				c.getItem().add(new Item008_Gun());               //아이템 008 총 임포트
-	    	}
-		}	
+		ConsolePrint.printResult(script); // 결과 출력부
 	}
 }

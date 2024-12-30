@@ -6,7 +6,7 @@ import consolegame.item.Item;
 
 public class Event000_Start extends Event {
 	public Event000_Start() {
-		setEventId(000);
+		setEventId(0);
 		setName("시작");
 		setScore(0);
 		setWeight(0);
@@ -18,21 +18,7 @@ public class Event000_Start extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 굶는다.");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
+		selection.addSelection(" 도망친다.");
 
 		this.setsCount(selection.count); // 추가된 선택지 수만큼 선택지 수 설정
 		selection.print();
@@ -65,14 +51,8 @@ public class Event000_Start extends Event {
 	public void getResult(Character c, String pChoice) {
 		// 텍스트 추가하기
 		StringBuilder sb = new StringBuilder();
-		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			//c.removeItem(000);
-		}
-
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
-		ConsolePrint.printResult(sb);
+		sb.append("당신은 촌장의 눈을 피해 무사히 도망쳤습니다.\n");
+		
+		ConsolePrint.printResult(sb); // 결과 출력부
 	}
 }
