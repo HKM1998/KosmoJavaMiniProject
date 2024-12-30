@@ -8,12 +8,24 @@ import consolegame.item.Item;
 public class Event091_MerchantFamily_1 extends Event {
 	public Event091_MerchantFamily_1() {
 		setEventId(91);
-		setName("상인가족_1");
+		setName("대덕상회");
 		setScore(0);
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
+	@Override
+	public void printScript() {
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		script.append("사내는 주방으로 보이는 곳으로 나를 안내하였고, \n");
+		script.append("이내 건물안에는 맛있는 음식 냄새가 가득찹니다.\n");
+		script.append(".......달그락\n");
+		script.append("사내가 미소를 지으며 스프를 내 앞에 내려놓습니다.\n");
+		script.append("\"어서 식기 전에 드세요. 제 특제 스픕니다!\"\n");
+
+		ConsolePrint.printScript(script, getIsLoaded());
+	}
+
 	@Override
 	public void printChoice() {
 		// 선택지 작성
@@ -26,39 +38,36 @@ public class Event091_MerchantFamily_1 extends Event {
 		selection.print();
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
-	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
+	public void getResult(String pChoice) { 
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("밥 한끼 드리는거야 무슨 문제겠습니까? 와서 몸 좀 녹이시지요. ");
-		script.append("장작 앞에서 몸을 녹이는 동안 스프가\n");
-		script.append("식탁에 준비되었다.\n");
-
-		ConsolePrint.printScript(script, getIsLoaded());
-	}
-
-	@Override
-	public void getResult(String pChoice) {                          //Even091의 b를 제외하고는 Weird to Bad 엔딩 조건
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
-		if (pChoice.equals("1")) {                                                //1번 선택시 체력-2
-			script.append("허겁지겁 스프를 먹다가 갑자기 졸음이 덮쳐오는 느낌이 든다.\n");
-			script.append("뭔가 잘못됨을 직감하고 '이만하면 충분한 것 같군요' 하고 나가려 하자\n");
-			script.append("누구 맘대로 장기는 놓고 가야지?\" 라며 주인공을 잡으려 한다.\n");
-			script.append("그는 초인적인 집중력으로 따돌려 내고 떠나지만 부상을 입는다\n");
-			Main.character.setHealth(Main.character.getHealth() - 2);
-		}
-
-		// 무기가 있는경우 실행
-		if (pChoice.equals("2")) {                                                //2번 선택시 잃는 것은 아무것도 없고 Weird to Bad 엔딩도 피한다
-			script.append("그는 먹기전에 스프의 냄새를 음미했다. 그러나 뭔가 냄새가 이상했다.\n");
-			script.append("그러다 불현듯 마을 촌장이 집 뒤뜰에서 몰래 키우던 아편 냄새를 떠올리고\n");
-			script.append("따뜻한 환대는 감사드립니다만 죄송하게도 급히 가야할 일이 생겼습니다.\n");
-			script.append("라며 급하게 자리를 뜨려 하자 부부는 '누구 맘대로? 장기는 놓고 가야지'\n");
-			script.append("라며 주인공을 잡으려 하지만 주인공은 총을 꺼내 위협사격을 하며 무사히 떠난다\n");
+		if (pChoice.equals("1")) { 
+			script.append("허겁지겁 스프를 먹다보니 갑자기 졸음이 몰려오는 느낌이 듭니다.\n");
+			script.append("뭔가 잘못됨을 직감하고 나가려 하자 몸이 마음대로 움직이지 않습니다.\n");
+			script.append("\"들어올땐 마음대로지만 나갈땐 아니란다?\"\n");
+			script.append("사내의 웃음기 가득한 목소리를 마지막으로 당신은 잠에 빠지고 맙니다.\n");
+			Main.character.setHealth(-1);
+		}else if (pChoice.equals("2")) { 
+			script.append("스프를 먹으려던 찰나 배고픔을 이겨내고 불현듯 이 상황에 이상함을 느낍니다.\n");
+			script.append("그러던 중 냄새에서 거슬리는 향이 느껴집니다...!\n");
+			script.append("\"따뜻한 환대는 감사합니다만 죄송하게도 급히 가야할 일이 생겼습니다.\"\n");
+			script.append("라며 급하게 자리를 뜨려 하자 부부는 \"들어올땐 마음대로지만 나갈땐 아니란다?\"\n");
+			if(Item.hasItem(Main.character, 8)) {
+				script.append("라며 당신을 잡으려 합니다.\n");
+				script.append("당신은 다급하게 총을 꺼내 위협하며 무사히 도망칠수 있었습니다.\n");
+			}else if(Item.hasItem(Main.character, 0)) {
+				script.append("라며 당신을 잡으려 합니다.\n");
+				script.append("당신은 다급하게 칼을 꺼내 위협하며 무사히 도망칠수 있었습니다.\n");
+				script.append("아뿔싸! 급하게 도망치던 중 칼을 떨어뜨리고 맙니다.\n");
+				script.append("(- 칼)\n");
+				Main.character.removeItem(0);
+			}else {
+				script.append("라며 당신을 잡으려 합니다. 당신은 다급하게 도망치려 하였지만\n");
+				script.append("이내 사내가 휘두른 몽둥이에 상처를 입고 맙니다.\n");
+				script.append("(체력 -1)\n");
+				Main.character.setHealth(Main.character.getHealth() - 1); 
+			}
 		}
 		ConsolePrint.printResult(script, getIsLoaded());
 	}

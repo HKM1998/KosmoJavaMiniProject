@@ -16,6 +16,7 @@ public class Main {
 	static boolean hasSaveFile = false;
 	static int eventCount = 0;
 	public static Character character;
+	public static EventMap eMap;
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -50,7 +51,7 @@ public class Main {
 
 		}
 
-		EventMap eMap = new EventMap();
+		eMap = new EventMap();
 		EventConsole eventConsole = new EventConsole(new Event000_Start(), scan);
 		LoadingThread loading = new LoadingThread(); 
 		eventConsole.start();
