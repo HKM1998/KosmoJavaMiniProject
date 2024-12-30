@@ -50,7 +50,6 @@ public class Event030_PoliceStation extends Event {
 	@Override                                                    
 	public void getResult(Character c, String pChoice) { // 위에 구현한 결과 getResult로 가져 오려다 포기
 		StringBuilder sb = new StringBuilder();
-		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
 			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
 

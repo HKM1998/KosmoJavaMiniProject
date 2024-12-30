@@ -46,7 +46,6 @@ public class Event040_WildDog extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		StringBuilder sb = new StringBuilder();
-		StringBuilder script = new StringBuilder();
 
 		if (pChoice.equals("1")) {                              //1 선택할 경우 체력 1깎임
 			c.setHealth(c.getHealth() - 1);                     //정신력-1은 구현된 메서드가 없어서 보류

@@ -44,7 +44,7 @@ public class Event090_MerchantFamily extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {                     //Even091의 b를 제외하고는 Weird to Bad 엔딩 조건
-		// 0번 아이템ID 가 있는 경우 실행
+		StringBuilder sb = new StringBuilder();
 //		if (pChoice.equals("1")) {                                           //1번 선택시 Event091로 가는거 보류		
 //		}
 
@@ -57,5 +57,6 @@ public class Event090_MerchantFamily extends Event {
 			script.append("주인공은 필사적으로 창문을 깨고 2층 높이에서 뛰어 내린다가 다리를 삔다.\n");
 			c.setHealth(c.getHealth() - 1);                                          
 		}
+		ConsolePrint.printResult(sb);
 	}
 }

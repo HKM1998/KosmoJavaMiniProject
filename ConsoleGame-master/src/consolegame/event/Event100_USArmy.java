@@ -44,7 +44,7 @@ public class Event100_USArmy extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {                                                   //1번 선택시 Bad엔딩의 Good 엔딩 선결 조건
 			StringBuilder script = new StringBuilder();
 			script.append(getEventId() + ". " + getName() + "\n");
@@ -63,5 +63,6 @@ public class Event100_USArmy extends Event {
 				c.getItem().add(new Item009_Can());
 		}
 	}
+		ConsolePrint.printResult(sb);
   }
 }

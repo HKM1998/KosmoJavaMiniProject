@@ -45,6 +45,7 @@ public class Event070_Biker extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
 			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
 
@@ -75,5 +76,6 @@ public class Event070_Biker extends Event {
 		}
 
 		}
+		ConsolePrint.printResult(sb);
 	}
 }

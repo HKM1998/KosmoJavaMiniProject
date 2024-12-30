@@ -28,8 +28,6 @@ public class Event080_Marine extends Event {
 	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("저 멀리서 각진 걸음으로 걸어오던 해병 전투복의 무리들이 별안간 주인공 앞에 서서");
@@ -40,6 +38,7 @@ public class Event080_Marine extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
+		StringBuilder sb = new StringBuilder();
 		// 0번 아이템ID 가 있는 경우 실행
 //		if (pChoice.equals("1")) {                        //1번 선택 시 Event 081로 넘어가는거 보류
 //			
@@ -52,5 +51,6 @@ public class Event080_Marine extends Event {
 			script.append("그 말을 우리더러 믿으라는거야? 딱봐도 거동이 수상한 불순분자로 보이는구만!\n");
 			script.append("주인공은 막무가내로 포박하려는 해병전우회를 죽이고 달아난다\n");
 		}
+		ConsolePrint.printResult(sb);
 	}
 }
