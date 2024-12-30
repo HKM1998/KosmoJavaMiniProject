@@ -6,7 +6,7 @@ import consolegame.item.Item;
 
 public class Event180_Suddenpoop extends Event {
 	public Event180_Suddenpoop() {
-		setEventId(170);
+		setEventId(180);
 		setName("급똥");
 		setScore(0);
 		setWeight(0);

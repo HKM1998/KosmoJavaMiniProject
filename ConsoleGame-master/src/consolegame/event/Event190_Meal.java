@@ -6,7 +6,7 @@ import consolegame.item.Item;
 
 public class Event190_Meal extends Event {
 	public Event190_Meal() {
-		setEventId(170);
+		setEventId(190);
 		setName("식사");
 		setScore(0);
 		setWeight(0);

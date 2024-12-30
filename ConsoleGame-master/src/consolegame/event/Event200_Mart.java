@@ -6,7 +6,7 @@ import consolegame.item.Item;
 
 public class Event200_Mart extends Event {
 	public Event200_Mart() {
-		setEventId(170);
+		setEventId(200);
 		setName("마트");
 		setScore(0);
 		setWeight(0);
