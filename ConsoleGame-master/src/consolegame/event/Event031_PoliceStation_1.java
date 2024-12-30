@@ -21,22 +21,7 @@ public class Event031_PoliceStation_1 extends Event {
 		selection.addSelection("1.자신을 희생하면서 까지 남겠다니 아직도 이런 사람이 있군요.");
 		
 		selection.addSelection("2.저도 같이 지키고 싶습니다. 무기를 얻을 수 있을까요?");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 

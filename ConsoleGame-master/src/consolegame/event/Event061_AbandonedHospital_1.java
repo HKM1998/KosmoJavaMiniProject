@@ -26,22 +26,7 @@ public class Event061_AbandonedHospital_1 extends Event {
 		selection.addSelection("뒷통수 습격");
 		
 		selection.addSelection("몰래 뒷 선반에 있는 진통제를 빼돌려 나온다");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 

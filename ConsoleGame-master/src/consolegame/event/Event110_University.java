@@ -21,22 +21,7 @@ public class Event110_University extends Event {
 		selection.addSelection("자유민주주의에 대한 본인의 신념을 설파하고 떠난다.\n");
 		
 		selection.addSelection("반드시 무력이 갖춰져야만 어떤 신념이든 관철이 가능함을 얘기하고 떠난다\n");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 
