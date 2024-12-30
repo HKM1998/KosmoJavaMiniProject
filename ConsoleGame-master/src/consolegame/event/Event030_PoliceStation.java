@@ -26,9 +26,8 @@ public class Event030_PoliceStation extends Event {
 		Selection selection = new Selection(); // 총은 50% 확률로 지고 체력 -2, 50% 확률로 승리하고 탄약3개 획득 이었습니다.
 												// 그런데 구현을 하고 보니 아무리 해도 이걸 getResult로 내려 보내는게 잘 안되고
 		selection.addSelection("어쩌다가 혼자 이렇게 남게 됐나요?."); // 탄약을 3개 추가 하는 방법도 몰라서 보류 했습니다
-
-		selection.addSelection("그냥 무시하고 칼로 위협하여 무기만 탈취 하려 한다");		
-		selection.addSelection("그냥 무시하고 총으로 위협하여 무기만 탈취 하려 한다");		
+		selection.addSelection("그냥 무시하고 칼로 위협하여 무기만 탈취 하려 합니다");		
+		selection.addSelection("그냥 무시하고 총으로 위협하여 무기만 탈취 하려 합니다");		
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -40,10 +39,11 @@ public class Event030_PoliceStation extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("경찰서를 들어 갔는데 스산하다.\n");
-		script.append("아무도 없는 줄 알고 물건을 뒤지려 하자 갑자기 누구냐며 소리친다.\n");
-		script.append("그 사람은 자신이 이 지역의 자치 경찰이라 한다.\n");
-		script.append("나는 그 사람의 장단을 맞춰주며 우선 정보를 캐낼까 아니면 무기를 우선 탈취할까?\n");
+		script.append("경찰서를 들어 갔는데 뭔가 썰렁하니 스산합니다.\n");
+		script.append("아무도 없는 줄 알고 물건을 뒤지려 하자 갑자기 누구냐!! 라며 소리칩니다.\n");
+		script.append("깜짝놀라 돌아보니 반짝반짝 빛나는 대머리에 올챙이 배가불룩 튀어나온 아재입니다.\n");
+		script.append("그 사람은 자신을 이 구역의 자치경찰이라고 하네요 허허;;\n");
+		script.append("당신은 그 사람의 장단을 맞춰주며 우선 정보를 캐낼까요 무기를 탈취할까요?\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}

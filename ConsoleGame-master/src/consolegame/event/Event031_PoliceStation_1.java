@@ -20,9 +20,8 @@ public class Event031_PoliceStation_1 extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("자신을 희생하면서 까지 남겠다니 아직도 이런 사람이 있군요.");
-		
-		selection.addSelection("저도 같이 지키고 싶습니다. 무기를 얻을 수 있을까요?");
+		selection.addSelection("자신을 희생하면서 까지 남겠다니.. 그야말로 감동입니다.");		
+		selection.addSelection("저도 같이 지키고 싶습니다. 그래서 무기를 좀 얻을 수 있을까요?");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -32,8 +31,8 @@ public class Event031_PoliceStation_1 extends Event {
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("모든 사람들이 자신의 살길을 찾기 위해 나갔지만.\n");
-		script.append("나는 남아 있는 몇사람이라도 지키고 싶었어.\n");
+		script.append("모든 사람들이 자신의 살길을 찾기 위해 나갔지만 나는\n");
+		script.append("남아 있는 몇사람이라도 지키고 싶었어. 돈키호테 같겠지만 진짜라구!\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
@@ -44,7 +43,7 @@ public class Event031_PoliceStation_1 extends Event {
 		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append(getEventId() + ". " + getName() + "\n");
-			script.append("자네도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하게\n");
+			script.append("너도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하라고\n");
 			if (!Item.hasItemType(Main.character, "Ammunition")) {
 				Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
 			} else {
@@ -61,7 +60,7 @@ public class Event031_PoliceStation_1 extends Event {
 		}
 		if (pChoice.equals("2")) {
 			script.append(getEventId() + ". " + getName() + "\n");
-			script.append("아주 노골적으로 잿밥에만 관심이 있구만. 그냥 갈길 가쇼. 그리곤 쫓아냈다.\n");
+			script.append("아주 노골적으로 잿밥에만 관심이 있구만. 그냥 갈길 가쇼. 그리곤 쫓아냈습니다.\n");
 		}
 		ConsolePrint.printResult(sb, getIsLoaded());
 	}

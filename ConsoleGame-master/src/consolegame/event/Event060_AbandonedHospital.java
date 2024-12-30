@@ -21,9 +21,8 @@ public class Event060_AbandonedHospital extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("몰래 우회한다");
-		
-		selection.addSelection("들어가본다");
+		selection.addSelection("몰래 우회합니다.");	
+		selection.addSelection("들어가봅니다");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -35,25 +34,37 @@ public class Event060_AbandonedHospital extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("병원을 발견했다. 병원은 스산하고 어둡다. 얼른 필요한것만 챙기고 나가자.\n");
-		script.append("문이 끼익 열린다. 필요한 물품을 찾기 위해 여기 저기 찾아다닌다.\n");
-		script.append("그러다 불이 켜진 방을 발견한다.\n");
+		script.append("병원을 발견했습니다. 병원은 스산하고 어둡습니다. 다리가 후들후들 거립니다.\n");
+		script.append("그런데 이런 생각에 오히려 다다르죠.\n");
+		script.append("아니 오히려 이런 곳이 인적이 드무니까 노다지 기회 아닌가?\n");
+		script.append("그래 얼른 필요한것만 챙기고 나가자. 이윽고 녹슨 문을 끼익 엽니다.\n");
+		script.append("그리곤 이 무서운 곳을 벗어나 필요한 물품을 찾기 위해 여기 저기 찾아다닙니다.\n");
+		script.append("그러다 이윽고 불이 켜진 방을 발견합니다.\n");
+		script.append("당신은 이 방을 발견하고 생각에 잠깁니다. 들어갈까? 몰래 우회할까?\n");
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {                            //1번 선택시 Good 엔딩 루트가 Bad 엔딩되는 조건 중 하나                                                                                                                                                                                                                                                                                                                                                                                                                // 1번 우회한다 선택했을 경우 차트를 획득
 			if (!Item.hasItem(Main.character, 007)) {
 				Main.character.getItem().add(new Item007_Chart());         // 아이템 차트 클래스 임포트
+				script.append("굳이 소름끼치게 들어갈께 뭐 있어? 그냥 아무거나 손에 집히는거 가지고 오지뭐~\n");
+				script.append("이런 가벼운 생각으로 도움이 될지도 모르는 차트를 가지고 나오려는 순간,\n");
+				script.append("끄아아아아아아악!!\n");
+				script.append("별안간 어마 무시한 괴성이 들렸습니다.\n");
+				script.append("당신은 호기심과 공포감의 두 줄다리기 사이에서\n");
+				script.append("이미 차트를 가지고 있으니 더 이상의 개입은 불필요하다 합리화 시킵니다.\n");
+				script.append("당신은 그렇게 자리를 황급히 뜹니다.\n");
 			}
 		}	
 		// 무기가 있는경우 실행
 //		if (pChoice.equals("2")) {                            // 2번 들어갈 경우 061로 이동하는 것 보류
 //					
 //		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		ConsolePrint.printResult(script, getIsLoaded());
      }
 
 }

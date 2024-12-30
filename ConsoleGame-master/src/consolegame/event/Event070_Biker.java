@@ -23,9 +23,9 @@ public class Event070_Biker extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("싸운다");
+		selection.addSelection("싸웁니다.");
 		
-		selection.addSelection("도망친다");
+		selection.addSelection("도망칩니다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -37,9 +37,12 @@ public class Event070_Biker extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("묵묵히 걷고 있던 중 멀리서 굉음을 내며 폭주족이 달려 온다.\n");
-		script.append("주인공을 이내 감싸더니 무리의 리더가 접근하며 얘기한다.\n");
-		script.append("조용히 가지고 있는걸 내 놓고 가라.\n");
+		script.append("당신은 오늘도 묵묵히 걷고 있습니다.\n");
+		script.append("그러다 이제는 인적이 드문 넓은 4차선 왕복도로 를 걷는 중입니다.\n");
+		script.append("그런데 저 멀리서 오토바이 무리가 뿌연 매연을 날리며 우리에게 다가옵니다.\n");
+		script.append("제발 지나가라 지나가라..애원하지만 뭔가 나에게 다가올 수록 속도가 늦쳐집니다.\n");
+		script.append("그러다 폭주족 무리는 이내 원을 그리며 주인공을 감쌉니다.\n");
+		script.append("당신은 겁에 질려 있는 와중에 무리의 리더로 보이는 사람이 천천히 접근합니다.\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}

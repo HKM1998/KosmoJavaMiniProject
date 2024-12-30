@@ -22,7 +22,7 @@ public class Event010_EmptyCar extends Event {
 
 		selection.addSelection("칼.");
 
-		selection.addSelection("어느 모르는 사람의 여권.");
+		selection.addSelection("미스테리 지도");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -34,9 +34,9 @@ public class Event010_EmptyCar extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("으슥한 곳에 숨겨져 있는 자동차를 발견한다.\n");
-		script.append("안에 사람이 있는 지 확인 해 보고 주위에 사람이 없는지 확인한 뒤 창문을 깬다.\n");
-		script.append("차량에 열쇠는 없어서 운전은 불가하다.\n");
+		script.append("으슥한 곳에 숨겨져 있는 자동차를 발견했습니다.\n");
+		script.append("아니 뭐 이런 곳에 자동차를 둬? 이건 훔쳐 달라는거 아냐? 하고 창문을 깹니다\n");
+		script.append("쨍그랑! 아오.. 파편에 약간 긁히긴 했지만 어쨋든 성공적으로 열긴 했습니다\n");
 		script.append("앞좌석 대신 앞좌석 서랍을 여니 칼1개와 여권이 있다.\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
@@ -54,12 +54,11 @@ public class Event010_EmptyCar extends Event {
 			
 		}
 		else if (pChoice.equals("2")) {                //2번 선택시 Weird 엔딩 루트의 Good엔딩 조건중 하나
-
 			// 0번 아이템ID 가 있는 경우 실행
 			if (!Item.hasItem(Main.character, 001)) {
 				Main.character.getItem().add(new Item001_Passport());
 				script.append(getEventId() + ". " + getName() + "\n");
-				script.append("스스로도 이유는 모르겠지만 홀린듯 여권을 집어 들었다.\n");
+				script.append("스스로도 이유는 모르겠지만 홀린듯 미스테리 지도를 집어 들었습니다.\n");
 			}
 		}
 

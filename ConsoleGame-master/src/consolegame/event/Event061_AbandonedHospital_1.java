@@ -22,9 +22,9 @@ public class Event061_AbandonedHospital_1 extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("뒷통수 습격");
+		selection.addSelection("뒷통수 습격!");
 		
-		selection.addSelection("몰래 뒷 선반에 있는 진통제를 빼돌려 나온다");
+		selection.addSelection("몰래 뒷 선반에 있는 진통제를 빼돌려 나옵니다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -35,7 +35,12 @@ public class Event061_AbandonedHospital_1 extends Event {
 
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("어떤 눈이 퀭한 미친 의사가 마취도 없이 멀쩡해 보이는 인간의 장기를 꺼내고 있다.\n");
+		script.append("문을 열고 보니 믿기지 않는 쇼킹한 일이 눈 앞에 벌어집니다.\n");
+		script.append("어떤 눈이 퀭한 미친 의사가 마취도 없이 멀쩡해 보이는 인간의 장기를 꺼내고 있습니다.\n");
+		script.append("장기를 적출 당하는 피해자는 더이상의 비명도 불가능한지\n");
+		script.append("으으윽.. 하는 신음소리만 내고 있습니다.\n");
+		script.append("당신은 눈 앞에 벌어지는 명백한 불의한 상황과 공포스러운 감정 앞에\n");
+		script.append(" 선택의 기로에 놓이게 됩니다.\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
