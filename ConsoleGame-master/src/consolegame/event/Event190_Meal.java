@@ -15,9 +15,9 @@ public class Event190_Meal extends Event {
 	@Override
 	public void printChoice(Character c) {
 		Selection selection = new Selection();
-		selection.addSelection("  고기를 구워먹자. "); // (아이템: 고기) 존재 시 (체력+2, 정신력+2)
-		selection.addSelection("  간단한 보존식량이라도 꺼내 먹고 잠시라도 허기를 달래자."); // (정신력+1)
-		selection.addSelection("  가진게 아무것도 없다.. 굶는다.."); // (체력-1, 정신력 -1)
+		selection.addSelection("  고기를 구워먹자. ");
+		selection.addSelection("  간단한 보존식량이라도 꺼내 먹고 잠시라도 허기를 달래자.");
+		selection.addSelection("  가진게 아무것도 없다.. 굶는다..");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -33,27 +33,30 @@ public class Event190_Meal extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		StringBuilder script = new StringBuilder();
-		if (pChoice.equals("1"))  {
+		if (pChoice.equals("1")) {
 			script.append("오랜만에 먹는 고기라 환상적인 맛이다.");
 			script.append("중독될 것 같다.");
-			
+
 			c.removeItem(10);
-			c.setHealth(c.getHealth()+2);  // 체력  +2
-			c.setMental(c.getMental()+2);  // 정신력 +2
-		}else if(pChoice.equals("2"));
-			script.append("딱딱하고 맛이 없지만");	
-			script.append("그래도 먹고 살아남아야 한다.");	
-			c.removeItem(11); // 보존식량 존재 시
-			c.setMental(c.getMental()+1);  // 정신력 +1
-		
-		if(pChoice.equals("3")); {
-		script.append("꼬르르르륵... ");
-		script.append("너무 배가 고프다.. ");
-		script.append("서럽다. ");
-		c.setHealth(c.getHealth()-1);
-		c.setMental(c.getMental()-1);
+			c.setHealth(c.getHealth() + 2);
+			c.setMental(c.getMental() + 2);
+		} else if (pChoice.equals("2"))
+			;
+		script.append("딱딱하고 맛이 없지만");
+		script.append("그래도 먹고 살아남아야 한다.");
+		c.removeItem(11);
+		c.setMental(c.getMental() + 1);
+
+		if (pChoice.equals("3"))
+			;
+		{
+			script.append("꼬르르르륵... ");
+			script.append("너무 배가 고프다.. ");
+			script.append("서럽다. ");
+			c.setHealth(c.getHealth() - 1);
+			c.setMental(c.getMental() - 1);
 		}
 		ConsolePrint.printResult(script);
-	
-}
+
+	}
 }
