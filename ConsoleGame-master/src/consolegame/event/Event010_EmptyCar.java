@@ -20,26 +20,9 @@ public class Event010_EmptyCar extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection("칼.");
-		
 
 		selection.addSelection("어느 모르는 사람의 여권.");
-		
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 
@@ -60,7 +43,7 @@ public class Event010_EmptyCar extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {
 
 			// 무기가 있는경우 실행
@@ -72,18 +55,15 @@ public class Event010_EmptyCar extends Event {
 			// 0번 아이템ID 가 있는 경우 실행
 			if (!Item.hasItem(c, 001)) {
 				c.getItem().add(new Item001_Passport());
+				StringBuilder script = new StringBuilder();
+				script.append(getEventId() + ". " + getName() + "\n");
+				script.append("스스로도 이유는 모르겠지만 홀린듯 여권을 집어 들었다.\n");
 			}
 		}
 
 		
-//	if (pChoice.equals("")) {	
-//		StringBuilder script = new StringBuilder();
-//		script.append(getEventId() + ". " + getName() + "\n");
-//		script.append("\n");
-//		script.append("\n");
-//	}
+
 	
-	
-	
+		ConsolePrint.printResult(sb);
 	}
 }

@@ -19,21 +19,6 @@ public class Event000_Start extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection(" 굶는다.");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
 		this.setsCount(selection.count); // 추가된 선택지 수만큼 선택지 수 설정
 		selection.print();
 	}

@@ -44,7 +44,7 @@ public class Event061_AbandonedHospital_1 extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
 			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
 
@@ -77,6 +77,6 @@ public class Event061_AbandonedHospital_1 extends Event {
 				c.getItem().add(new Item005_PainKiller()); // 2번 선택시 진통제만 가져간다
 			}
 		}
-
+		ConsolePrint.printResult(sb);
 	}
 }
