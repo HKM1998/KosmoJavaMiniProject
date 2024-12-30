@@ -33,8 +33,7 @@ public class Event061_AbandonedHospital_1 extends Event {
 	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
+
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("어떤 눈이 퀭한 미친 의사가 마취도 없이 멀쩡해 보이는 인간의 장기를 꺼내고 있다.\n");

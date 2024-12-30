@@ -48,7 +48,7 @@ public class Event030_PoliceStation extends Event {
 
 //	@Override                                                    
 	public void getResult(Character c, String pChoice) { // 위에 구현한 결과 getResult로 가져 오려다 포기
-
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
 			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
 
@@ -78,13 +78,20 @@ public class Event030_PoliceStation extends Event {
 				} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
 					c.getItem().add(new Item006_Ammunition());
 				} else { // 기존에 탄약이 있을 때도 추가
-					c.getItem().add(new Item006_Ammunition());
+					try {
+						Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(c, 6)); // 10% 확률로 승리시 탄약이 있을 때도 추가
+						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
+					}catch(ClassCastException e) {
+						c.removeItem(6);
+						c.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+						
+					}
 				}
 
 			}
 
 		}
-//		if (pChoice.equals("1")) {                          //
+//		if (pChoice.equals("1")) {            // 031 이벤트로 가는거 보류
 //			
 //		}
 		ConsolePrint.printResult(sb);
