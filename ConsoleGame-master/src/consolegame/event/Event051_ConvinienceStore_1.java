@@ -11,7 +11,7 @@ import consolegame.item.Item004_FirstAidKit;
 
 public class Event051_ConvinienceStore_1 extends Event {
 	public Event051_ConvinienceStore_1() {
-		setEventId(051);
+		setEventId(51);
 		setName("편의점_1");
 		setScore(0);
 		setWeight(0);
@@ -49,16 +49,22 @@ public class Event051_ConvinienceStore_1 extends Event {
 	@Override
 	public void getResult(String pChoice) {
 		
-		StringBuilder sb = new StringBuilder();
+		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {                                      
 			if (Item.hasItem(Main.character, 000)) {                                 
 				Random random = new Random();                         
 				if (random.nextInt(10) < 7) {                           
 					Main.character.setHealth(Main.character.getHealth() - 2);
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("체력을 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {       
-					Main.character.getItem().add(new Item004_FirstAidKit());         
+					Main.character.getItem().add(new Item004_FirstAidKit());  
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("구급상자를 획득했습니다!\n");
 				} else {                                                     
 					Main.character.getItem().add(new Item004_FirstAidKit());         
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("구급상자를 획득했습니다!\n");
 				}
 			}
 		}
@@ -68,19 +74,27 @@ public class Event051_ConvinienceStore_1 extends Event {
 			Random random1 = new Random();
 			if (random1.nextInt(10) < 1) {                           
 				Main.character.setHealth(Main.character.getHealth() - 2);
+				script.append(getEventId() + ". " + getName() + "\n");
+				script.append("체력을 -2 잃었습니다.\n");
 			} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {         
 				Main.character.getItem().add(new Item004_FirstAidKit());
+				script.append(getEventId() + ". " + getName() + "\n");
+				script.append("구급상자를 획득했습니다!\n");
 			} else {                                                 
 				Main.character.getItem().add(new Item004_FirstAidKit());
+				script.append(getEventId() + ". " + getName() + "\n");
+				script.append("구급상자를 획득했습니다!\n");
 			}
 
 		  }
 		}
 		
 		
-		if (pChoice.equals("3")) {                                       
-		
-	}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		if (pChoice.equals("3")) {
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("아 침착해 침착해요~ 남의 집 들쑤실 생각 없습니다~\n");
+			script.append("당신은 유유히 나간다\n");
+		}
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

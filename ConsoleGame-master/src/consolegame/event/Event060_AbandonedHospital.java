@@ -9,7 +9,7 @@ import consolegame.item.Item007_Chart;
 
 public class Event060_AbandonedHospital extends Event {
 	public Event060_AbandonedHospital() {
-		setEventId(060);
+		setEventId(60);
 		setName("폐병원");
 		setScore(0);
 		setWeight(0);
@@ -61,9 +61,9 @@ public class Event060_AbandonedHospital extends Event {
 			}
 		}	
 		// 무기가 있는경우 실행
-//		if (pChoice.equals("2")) {                            // 2번 들어갈 경우 061로 이동하는 것 보류
-//					
-//		}
+		if (pChoice.equals("2")) {                            // 2번 들어갈 경우 061로 이동하는 것 보류
+			script.append("2번 들어강 경우 061 이벤트로 이동하는것 보류상태\n");
+		}
 		ConsolePrint.printResult(script, getIsLoaded());
      }
 

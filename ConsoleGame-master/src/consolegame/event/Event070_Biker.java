@@ -11,7 +11,7 @@ import consolegame.item.Item006_Ammunition;
 
 public class Event070_Biker extends Event {
 	public Event070_Biker() {
-		setEventId(070);
+		setEventId(70);
 		setName("폭주족");
 		setScore(0);
 		setWeight(0);
@@ -23,8 +23,8 @@ public class Event070_Biker extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("싸웁니다.");
-		
+		selection.addSelection("칼로 싸웁니다.");
+		selection.addSelection("총으로 싸웁니다.");
 		selection.addSelection("도망칩니다.");
 		this.setsCount(selection.count);
 		selection.print();
@@ -49,37 +49,55 @@ public class Event070_Biker extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
-		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
-			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
-
+		StringBuilder script = new StringBuilder();
+		if (pChoice.equals("1")) {
+			if (Item.hasItem(Main.character, 000)) {
 				Random random = new Random();
-
-				if (random.nextInt(10) < 1) {                     // 칼은 90% 확률로 패배 후 체력 -2
+				if (random.nextInt(10) < 1) {
 					Main.character.setHealth(Main.character.getHealth() - 2);
-				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
-					Main.character.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 없을때 추가
+					script.append("칼로 싸웠지만 패배하고 체력을 -2 잃었습니다\n");
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
+					Main.character.getItem().add(new Item006_Ammunition());
+					script.append("탄약을 얻었습니다!.\n");
 				} else {
-					Main.character.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 있을 때도 추가
-				}
-
-			}
-			if (Item.hasItem(Main.character, 8)) {                            // 총을 가지고 있을 경우 공격
-
-				Random random1 = new Random();
-				if (random1.nextInt(10) < 0) {                   // 총은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 구급상자 획득
-					Main.character.setHealth(Main.character.getHealth() - 2);
-				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 구급상자 없을 경우 추가
-					Main.character.getItem().add(new Item006_Ammunition());
-				} else { // 기존에 구급상자 있을 때도 추가
-					Main.character.getItem().add(new Item006_Ammunition());
+					try {
+						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); 
+						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
+					} catch (ClassCastException e) {
+						Main.character.removeItem(6);
+						Main.character.getItem().add(new Item006_Ammunition());
+						script.append("탄약을 얻었습니다!.\n");
+					}
 				}
 			}
+
+		}
 		if (pChoice.equals("2")) {
-			Main.character.setHealth(Main.character.getHealth() - 1);                      // 2번 도망친다 선택시 체력 -1
-		}
+			if (Item.hasItem(Main.character, 8)) {
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 0) {
+					Main.character.setHealth(Main.character.getHealth() - 2);
+					script.append("총으로 싸웠지만 패배하고 체력을 -2 잃었습니다\n");
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
+					Main.character.getItem().add(new Item006_Ammunition());
+					script.append("탄약을 얻었습니다!.\n");
+				} else {
+					try {
+						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6));
+						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
+					} catch (ClassCastException e) {
+						Main.character.removeItem(6);
+						Main.character.getItem().add(new Item006_Ammunition());
+						script.append("탄약을 얻었습니다!.\n");
 
+					}
+				}
+			}
 		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		if (pChoice.equals("3")) {
+			Main.character.setHealth(Main.character.getHealth() - 1);
+			script.append("발바닥에 불이나게 도망쳤지만 약간의 피해를 입고 체력을 -1 잃었습니다.\n");
+		}
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

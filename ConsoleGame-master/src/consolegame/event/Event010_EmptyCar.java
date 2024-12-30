@@ -8,7 +8,7 @@ import consolegame.item.Item001_Passport;
 
 public class Event010_EmptyCar extends Event {
 	public Event010_EmptyCar() {
-		setEventId(010);
+		setEventId(10);
 		setName("빈차");
 		setScore(0);
 		setWeight(0);
@@ -21,7 +21,6 @@ public class Event010_EmptyCar extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection("칼.");
-
 		selection.addSelection("미스테리 지도");
 		this.setsCount(selection.count);
 		selection.print();
@@ -49,7 +48,6 @@ public class Event010_EmptyCar extends Event {
 		if (pChoice.equals("1")) {
 			if (Item.hasItemType(Main.character, "Knife")) {
 			}
-			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("칼을 집어 들었다.\n");
 			
 		}
@@ -57,7 +55,6 @@ public class Event010_EmptyCar extends Event {
 			// 0번 아이템ID 가 있는 경우 실행
 			if (!Item.hasItem(Main.character, 001)) {
 				Main.character.getItem().add(new Item001_Passport());
-				script.append(getEventId() + ". " + getName() + "\n");
 				script.append("스스로도 이유는 모르겠지만 홀린듯 미스테리 지도를 집어 들었습니다.\n");
 			}
 		}

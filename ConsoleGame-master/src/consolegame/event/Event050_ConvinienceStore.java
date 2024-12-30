@@ -6,7 +6,7 @@ import consolegame.item.Item;
 
 public class Event050_ConvinienceStore extends Event {
 	public Event050_ConvinienceStore() {
-		setEventId(050);
+		setEventId(50);
 		setName("편의점");
 		setScore(0);
 		setWeight(0);
@@ -18,8 +18,8 @@ public class Event050_ConvinienceStore extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("들어간다.");	
-		selection.addSelection("지나친다");
+		selection.addSelection("들어갑니다.");	
+		selection.addSelection("지나칩니다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -41,9 +41,9 @@ public class Event050_ConvinienceStore extends Event {
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		// 0번 아이템ID 가 있는 경우 실행
-//		if (pChoice.equals("1")) {                          //1번 들어가면 051로 가는거 보류
-//			
-//		}
+		if (pChoice.equals("1")) {                          //1번 들어가면 051로 가는거 보류
+			script.append("1번 선택시 051 이벤트로 가는거 보류 상태\n");
+		}
 
 		if (pChoice.equals("2")) {                          
 		script.append(getEventId() + ". " + getName() + "\n");
