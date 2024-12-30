@@ -10,7 +10,7 @@ import consolegame.item.Item006_Ammunition;
 
 public class Event030_PoliceStation extends Event {
 	public Event030_PoliceStation() {
-		setEventId(030);
+		setEventId(30);
 		setName("경찰서");
 		setScore(0);
 		setWeight(0);
@@ -27,8 +27,8 @@ public class Event030_PoliceStation extends Event {
 												// 그런데 구현을 하고 보니 아무리 해도 이걸 getResult로 내려 보내는게 잘 안되고
 		selection.addSelection("어쩌다가 혼자 이렇게 남게 됐나요?."); // 탄약을 3개 추가 하는 방법도 몰라서 보류 했습니다
 
-		selection.addSelection("그냥 무시하고 칼로 위협하여 무기만 탈취 하려 한다");		
-		selection.addSelection("그냥 무시하고 총으로 위협하여 무기만 탈취 하려 한다");		
+		selection.addSelection("그냥 무시하고 칼로 위협하여 무기만 탈취 하려 한다");
+		selection.addSelection("그냥 무시하고 총으로 위협하여 무기만 탈취 하려 한다");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -48,9 +48,9 @@ public class Event030_PoliceStation extends Event {
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
-	@Override                                                    
+	@Override
 	public void getResult(String pChoice) { // 위에 구현한 결과 getResult로 가져 오려다 포기
-		StringBuilder sb = new StringBuilder();
+		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
 			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
 
@@ -58,38 +58,67 @@ public class Event030_PoliceStation extends Event {
 
 				if (random.nextInt(10) < 9) { // 칼은 90% 확률로 체력 -2
 					Main.character.setHealth(Main.character.getHealth() - 2);
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("칼로 위협을 했지만 오히려 실패하고 체력이 -2 됐다\n");
 				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
 					Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("탄약을 새로 얻었다!\n");
 				} else {
 					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(Main.character, 6)); // 10% 확률로 승리시 탄약이 있을 때도 추가
+						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); // 10%
+																													// 확률로
+																													// 승리시
+																													// 탄약이
+																													// 있을
+																													// 때도
+																													// 추가
 						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
-					}catch(ClassCastException e) {
+					} catch (ClassCastException e) {
 						Main.character.removeItem(6);
 						Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
-						
+						script.append(getEventId() + ". " + getName() + "\n");
+						script.append("탄약을 새로 추가했다!\n");
+
 					}
 				}
 			}
 		}
 		if (pChoice.equals("3")) {
-		if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
+			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
 
-			Random random1 = new Random();
-			if (random1.nextInt(10) < 5) { // 칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
-				Main.character.setHealth(Main.character.getHealth() - 2);
-			} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
-				Main.character.getItem().add(new Item006_Ammunition());
-			} else { // 기존에 탄약이 있을 때도 추가
-				Main.character.getItem().add(new Item006_Ammunition());
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 5) { // 칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
+					Main.character.setHealth(Main.character.getHealth() - 2);
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
+					Main.character.getItem().add(new Item006_Ammunition());
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("탄약을 새로 얻었다!\n");
+				} else { // 기존에 탄약이 있을 때도 추가
+					try {
+						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); // 10%
+																													// 확률로
+																													// 승리시
+																													// 탄약이
+																													// 있을
+																													// 때도
+																													// 추가
+						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
+					} catch (ClassCastException e) {
+						Main.character.removeItem(6);
+						Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+						script.append(getEventId() + ". " + getName() + "\n");
+						script.append("탄약을 새로 추가했다!\n");
+
+					}
+				}
+
 			}
-
 		}
-		}
-//		if (pChoice.equals("1")) {                          //
+//		if (pChoice.equals("1")) {                          // 1번 선택시 031이벤트로 이동 보류
 //			
 //		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		ConsolePrint.printResult(script, getIsLoaded());
 
 	}
 }

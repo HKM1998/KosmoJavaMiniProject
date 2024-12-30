@@ -11,7 +11,7 @@ import consolegame.item.Item006_Ammunition;
 
 public class Event040_WildDog extends Event {
 	public Event040_WildDog() {
-		setEventId(040);
+		setEventId(40);
 		setName("들개");
 		setScore(0);
 		setWeight(0);
@@ -24,8 +24,8 @@ public class Event040_WildDog extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection(" 도망간다.");
-	
-		selection.addSelection(" 싸운다");		
+		selection.addSelection("칼로 싸운다");
+		selection.addSelection("총으로 싸운다");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -40,7 +40,6 @@ public class Event040_WildDog extends Event {
 		script.append("폐허가 된 도시에 어둠이 낮게 깔린다. 갑자기 으르렁 거리는 소리가 들린다.\n");
 		script.append("배고픔에 굶주린 들개 무리가 주인공을 포위한다.\n");
 
-
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
@@ -48,39 +47,27 @@ public class Event040_WildDog extends Event {
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 
-		if (pChoice.equals("1")) {                              //1 선택할 경우 체력 1깎임
-			Main.character.setHealth(Main.character.getHealth() - 1);                     //정신력-1은 구현된 메서드가 없어서 보류
+		if (pChoice.equals("1")) { // 1 선택할 경우 체력 1깎임
+			Main.character.setHealth(Main.character.getHealth() - 1); // 정신력-1은 구현된 메서드가 없어서 보류
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("마주치자마자 부리나케 도망쳤다. 체력은 -1이 되었다.\n");
 		}
 
-		if (pChoice.equals("2")) {                                      // 2번을 골랐을 경우 공격하기
-			if (Item.hasItem(Main.character, 000)) {                                 // 칼을 가지고 있을 경우 공격
+		if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하기
+			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
 
-				Random random = new Random();                         
+				Random random = new Random();
 
-				if (random.nextInt(10) < 7) {                          //칼은 70% 확률로 패배 후 체력-2
+				if (random.nextInt(10) < 7) { // 칼은 70% 확률로 패배 후 체력-2
 					Main.character.setHealth(Main.character.getHealth() - 2);
 				} else if (!Item.hasItemType(Main.character, "DogMeat")) {
-					Main.character.getItem().add(new Item003_DogMeat());            //아이템 DogMeat 클래스 임포트 
-				} else {
-					Main.character.getItem().add(new Item003_DogMeat());          // 10% 확률로 승리시 탄약이 있을 때도 추가
-				}
-
+					Main.character.getItem().add(new Item003_DogMeat()); // 아이템 DogMeat 클래스 임포트
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("개고기를 새로 얻었다!\n");
+				} // else { //개고기는 이 이벤트에서만 얻어서 else 지움
+//					Main.character.getItem().add(new Item003_DogMeat());          // 10% 확률로 승리시 탄약이 있을 때도 추가
+//				}
 			}
-			if (Item.hasItem(Main.character, 8)) {                                    // 총을 가지고 있을 경우 공격
-
-				Random random1 = new Random();
-				if (random1.nextInt(10) < 1) {                           // 칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
-					Main.character.setHealth(Main.character.getHealth() - 2);
-				} else if (!Item.hasItemType(Main.character, "DogMeat")) {         // 기존에 탄약이 없을 경우 추가
-					Main.character.getItem().add(new Item003_DogMeat());
-				} else {                                                 // 기존에 탄약이 있을 때도 추가
-					Main.character.getItem().add(new Item003_DogMeat());
-				}
-
-			}
-
 		}
 		ConsolePrint.printResult(script, getIsLoaded());
 	}

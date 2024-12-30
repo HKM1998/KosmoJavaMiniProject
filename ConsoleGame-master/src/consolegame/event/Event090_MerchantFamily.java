@@ -35,7 +35,8 @@ public class Event090_MerchantFamily extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("황폐한 건물만 끝없이 이어지던 그 거리에서 대덕상회라는 간판을 단 집을 발견한다.");
+		script.append("황폐한 건물만 끝없이 이어지던 그 거리에서\n");
+		script.append("대덕상회라는 간판을 단 집을 발견한다.\"");
 		script.append("피로한 몸과 배고픔에 지치던 주인공은 그 집을 두드린다.\n");
 		script.append("문을 여니 부부와 아들딸이 하나씩 있는 집안이다\n");
 		script.append("그 집에서는 주인공을 보며 놀랐지만, 이내 행색을 안쓰러워 하며 그를 들여보낸다.\n");

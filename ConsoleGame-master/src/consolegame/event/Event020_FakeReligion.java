@@ -8,7 +8,7 @@ import consolegame.item.Item002_Bible;
 
 public class Event020_FakeReligion extends Event {
 	public Event020_FakeReligion() {
-		setEventId(020);
+		setEventId(20);
 		setName("사이비종교");
 		setScore(0);
 		setWeight(0);
@@ -42,10 +42,8 @@ public class Event020_FakeReligion extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
 		StringBuilder script = new StringBuilder(); // 1번 선택시 Good 엔딩 루트의 Bad엔딩 선결조건 중 하나
 		script.append(getEventId() + ". " + getName() + "\n");
-
 		if (pChoice.equals("1")) { // 1번 선택 시 나오는 대사 추가
 			script.append("일장연설을 듣고 나니 기가 다 빠진다.\n");
 			script.append("그러나 아줌마는 이것도 인연이라며 성경을 선물한다\n");
@@ -54,6 +52,6 @@ public class Event020_FakeReligion extends Event {
 		} else if (pChoice.equals("2")) {
 			script.append("당신은 너무 지친 나머지 이야기를 듣지않고 지나쳤습니다.\n");
 		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }
