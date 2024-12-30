@@ -25,22 +25,7 @@ public class Event040_WildDog extends Event {
 		selection.addSelection(" 도망간다.");
 		
 		selection.addSelection(" 싸운다");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 
@@ -60,7 +45,7 @@ public class Event040_WildDog extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
+		StringBuilder sb = new StringBuilder();
 		
 		if (pChoice.equals("1")) {                              //1 선택할 경우 체력 1깎임
 			c.setHealth(c.getHealth() - 1);                     //정신력-1은 구현된 메서드가 없어서 보류
@@ -94,5 +79,6 @@ public class Event040_WildDog extends Event {
 			}
 
 		}
+		ConsolePrint.printResult(sb);
 	}
 }

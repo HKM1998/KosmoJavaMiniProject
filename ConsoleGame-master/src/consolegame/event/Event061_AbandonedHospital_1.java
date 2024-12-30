@@ -26,22 +26,7 @@ public class Event061_AbandonedHospital_1 extends Event {
 		selection.addSelection("뒷통수 습격");
 		
 		selection.addSelection("몰래 뒷 선반에 있는 진통제를 빼돌려 나온다");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 
@@ -59,7 +44,7 @@ public class Event061_AbandonedHospital_1 extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
 			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
 
@@ -92,6 +77,6 @@ public class Event061_AbandonedHospital_1 extends Event {
 				c.getItem().add(new Item005_PainKiller()); // 2번 선택시 진통제만 가져간다
 			}
 		}
-
+		ConsolePrint.printResult(sb);
 	}
 }

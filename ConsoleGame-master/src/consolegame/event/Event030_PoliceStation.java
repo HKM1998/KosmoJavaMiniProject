@@ -26,13 +26,7 @@ public class Event030_PoliceStation extends Event {
 		selection.addSelection("어쩌다가 혼자 이렇게 남게 됐나요?.");          //탄약을 3개 추가 하는 방법도 몰라서 보류 했습니다
 		                                                               
 		selection.addSelection("그냥 무시하고 무기만 탈취 하려 한다");
-		
-		
-
-						
-
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 
@@ -53,7 +47,7 @@ public class Event030_PoliceStation extends Event {
 
 //	@Override                                                    
 	public void getResult(Character c, String pChoice) {                //위에 구현한 결과 getResult로 가져 오려다 포기
-
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("2")) {                                      // 2번을 골랐을 경우 공격하는 것 추가
 			if (Item.hasItem(c, 000)) {                                 // 칼을 가지고 있을 경우 공격
 
@@ -85,6 +79,7 @@ public class Event030_PoliceStation extends Event {
 //		if (pChoice.equals("1")) {                          //
 //			
 //		}
+		ConsolePrint.printResult(sb);
 
 	}
 }
