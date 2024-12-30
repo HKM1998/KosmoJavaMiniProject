@@ -23,22 +23,7 @@ public class Event100_USArmy extends Event {
 		selection.addSelection("이 근방에 도움이 될 만한 정보가 있을까요?");
 		
 		selection.addSelection("너무 배가 고픕니다. 먹을꺼를 얻을 수 있을까요?");
-		
-//		// 특정 아이템 조회 후 사용
-//		if (Item.hasItem(c, 000))
-//			// 아이템 id 가 000인 아이템이 있는지
-//			selection.addSelection("아이템 0번을 먹는다. 체력 +2");
-//
-//		// 무기류 전체 확인
-//		for (Item i : Item.findItemType(c, "무기")) {
-//			if(i.getItemId() == 000) {
-//				
-//			}else if(i.getItemId() == 001) {
-//				
-//			}
-//		}
-
-
+		this.setsCount(selection.count);
 		selection.print();
 	}
 

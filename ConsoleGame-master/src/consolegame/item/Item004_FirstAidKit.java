@@ -6,7 +6,7 @@ import consolegame.event.Event;
 public class Item004_FirstAidKit extends Item{
 
 	public Item004_FirstAidKit() {
-		setItemId(004);
+		setItemId(4);
 		setName("구급상자");
 		setPrice(0); //가격
 		setType("구급약"); // 타입 관련된 정보 저장용 만들 예정
