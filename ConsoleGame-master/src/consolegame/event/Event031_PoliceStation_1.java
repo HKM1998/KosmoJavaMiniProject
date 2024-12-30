@@ -3,6 +3,7 @@ package consolegame.event;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item006_Ammunition;
 
 public class Event031_PoliceStation_1 extends Event {
 	public Event031_PoliceStation_1() {
@@ -18,9 +19,9 @@ public class Event031_PoliceStation_1 extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("1.자신을 희생하면서 까지 남겠다니 아직도 이런 사람이 있군요.");
+		selection.addSelection("자신을 희생하면서 까지 남겠다니 아직도 이런 사람이 있군요.");
 		
-		selection.addSelection("2.저도 같이 지키고 싶습니다. 무기를 얻을 수 있을까요?");
+		selection.addSelection("저도 같이 지키고 싶습니다. 무기를 얻을 수 있을까요?");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -38,12 +39,28 @@ public class Event031_PoliceStation_1 extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
+		StringBuilder script = new StringBuilder();
 		StringBuilder sb = new StringBuilder();
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) {
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("자네도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하게\n");
+			if (!Item.hasItemType(c, "Ammunition")) {
+				c.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+			} else {
+				try {
+					Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(c, 6)); // 10% 확률로 승리시 탄약이 있을 때도 추가
+					ammunition.setAmAmount(ammunition.getAmAmount() + 1);
+				}catch(ClassCastException e) {
+					c.removeItem(6);
+					c.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+					
+				}
+			}
+		    script.append("아저씨로부터 탄약을 얻었다.\n");
 		}
-
-		if (Item.hasItemType(c, "무기")) {
+		if (pChoice.equals("2")) {
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("아주 노골적으로 잿밥에만 관심이 있구만. 그냥 갈길 가쇼. 그리곤 쫓아냈다.\n");
 		}
 		ConsolePrint.printResult(sb);
 	}

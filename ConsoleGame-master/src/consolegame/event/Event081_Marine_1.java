@@ -46,7 +46,7 @@ public class Event081_Marine_1 extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {                                             //1번 선택시 Weird 엔딩의 Good 엔딩 선결조건 만족
 			StringBuilder script = new StringBuilder();
 			script.append(getEventId() + ". " + getName() + "\n");
@@ -65,5 +65,6 @@ public class Event081_Marine_1 extends Event {
 			script.append("당장 줄껀 총 한자루 이것밖에 없네.\n");
 			script.append("주인공은 '필승'을 외치고 떠난다\n");
 		}
+		ConsolePrint.printResult(sb);
 	}
 }

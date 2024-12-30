@@ -32,7 +32,6 @@ public class Event091_MerchantFamily_1 extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(".\n");
 		script.append("밥 한끼 드리는거야 무슨 문제겠습니까? 와서 몸 좀 녹이시지요. ");
 		script.append("장작 앞에서 몸을 녹이는 동안 스프가\n");
 		script.append("식탁에 준비되었다.\n");
@@ -42,7 +41,7 @@ public class Event091_MerchantFamily_1 extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {                          //Even091의 b를 제외하고는 Weird to Bad 엔딩 조건
-		// 0번 아이템ID 가 있는 경우 실행      
+		StringBuilder sb = new StringBuilder();      
 		if (pChoice.equals("1")) {                                                //1번 선택시 체력-2
 			StringBuilder script = new StringBuilder();
 			script.append(getEventId() + ". " + getName() + "\n");
@@ -63,5 +62,6 @@ public class Event091_MerchantFamily_1 extends Event {
 			script.append("라며 급하게 자리를 뜨려 하자 부부는 '누구 맘대로? 장기는 놓고 가야지'\n");
 			script.append("라며 주인공을 잡으려 하지만 주인공은 총을 꺼내 위협사격을 하며 무사히 떠난다\n");
 		}
+		ConsolePrint.printResult(sb);
 	}
 }
