@@ -8,7 +8,7 @@ public class Item006_Ammunition extends Item{
 	public Item006_Ammunition() {
 		setItemId(006);
 		setName("탄약");
-		setPrice(0); //가격
+		setPrice(50); //가격
 		setType("무기"); // 타입 관련된 정보 저장용 만들 예정
 	}
 	
