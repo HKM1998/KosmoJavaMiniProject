@@ -27,7 +27,7 @@ public class Event190_Meal extends Event {
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(" 무작정 걷다보니 배가 너무 고프다.. 뭐라도 꺼내 먹자. \n");
+		script.append(" 무작정 걷다보니 배가 너무 고프다.. 뭐라도 꺼내 먹자. ");
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
@@ -36,7 +36,7 @@ public class Event190_Meal extends Event {
 		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("오랜만에 먹는 고기라 환상적인 맛이다.\n");
-			script.append("중독될 것 같다.(체력 +2, 정신력 +2)\n ");
+			script.append("중독될 것 같다.(체력 +2, 정신력 +2)");
 
 			Main.character.removeItem(10);
 			Main.character.setHealth(Main.character.getHealth() + 2);
@@ -44,7 +44,7 @@ public class Event190_Meal extends Event {
 		} else if (pChoice.equals("2"))
 			;
 		script.append("딱딱하고 맛이 없지만\n");
-		script.append("그래도 먹고 살아남아야 한다.(정신력 +1)\n");
+		script.append("그래도 먹고 살아남아야 한다.(정신력 +1)");
 		Main.character.removeItem(11);
 		Main.character.setMental(Main.character.getMental() + 1);
 
@@ -53,7 +53,7 @@ public class Event190_Meal extends Event {
 		{
 			script.append("꼬르르르륵... \n");
 			script.append("너무 배가 고프다..\n ");
-			script.append("서럽다.(체력 -1, 정신력 -1) \n");
+			script.append("서럽다.(체력 -1, 정신력 -1) ");
 			Main.character.setHealth(Main.character.getHealth() - 1);
 			Main.character.setMental(Main.character.getMental() - 1);
 		}

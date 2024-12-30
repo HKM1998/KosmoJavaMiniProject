@@ -27,7 +27,7 @@ public class Event220_Acquisition extends Event {
 			StringBuilder script = new StringBuilder();
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append(" 무기력하게 길을 걷던 도중 무언가 발견했습니다. \n");
-			script.append(" 가까이 다가가서 주워보니 지갑입니다.  \n");
+			script.append(" 가까이 다가가서 주워보니 지갑입니다.  ");
 			ConsolePrint.printScript(script, getIsLoaded());
 		}
 
@@ -36,9 +36,9 @@ public class Event220_Acquisition extends Event {
 			StringBuilder script = new StringBuilder();
 			if (pChoice.equals("1")) {
 			script.append("얻은게 없다.\n");
-			script.append("씁슬하구만...\n");
+			script.append("씁슬하구만...");
 			} else if (pChoice.equals("2"));
-			script.append("세상에 이게 얼마야??? 아싸!!오늘은 고기 파티다!!!(자금 +500) \n");
+			script.append("세상에 이게 얼마야??? 아싸!!오늘은 고기 파티다!!!(자금 +500) ");
 			Main.character.setMoney(Main.character.getMoney() + 500);
 			ConsolePrint.printResult(script, getIsLoaded());
 
