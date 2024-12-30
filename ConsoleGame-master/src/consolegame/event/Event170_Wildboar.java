@@ -39,14 +39,14 @@ public class Event170_Wildboar extends Event {
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {
-			script.append("무사히 도망쳤지만 너무 급하게 뛰느라 다쳤다\n");
-			Main.character.getHealth(); // 체력 -1
+			script.append("무사히 도망쳤지만 너무 급하게 뛰느라 다쳣습니다.(체력 -1)\n");
+			Main.character.setHealth(Main.character.getHealth()-1); // 체력 -1
 		} else if (pChoice.equals("2")) {
 			script.append("맷돼지에게 공격을 해봤지만");
 			script.append("맷돼지가 너무 강하다 \n");
 			script.append("져버렸다 \n");
 			script.append("아프다..\n");
-			script.append("눈 앞이 깜깜해진다...\n");
+			script.append("눈 앞이 깜깜해진다...(게임오버)\n");
 			Main.character.setHealth(-1);
 		}
 		
