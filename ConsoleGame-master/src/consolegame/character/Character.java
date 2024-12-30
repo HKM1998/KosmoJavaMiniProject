@@ -3,6 +3,7 @@ package consolegame.character;
 import java.util.ArrayList;
 import java.util.List;
 
+import consolegame.event.Event;
 import consolegame.item.Item;
 
 public class Character {
@@ -10,7 +11,8 @@ public class Character {
 	private int mental;
 	private int money;
 	private List<Item> item = new ArrayList<Item>();
-	
+	private List<Event> event = new ArrayList<Event>();
+
 	public Character() {
 		this.health = 4;
 		this.mental = 3;
@@ -49,6 +51,12 @@ public class Character {
 	}
 	public void addItem(Item item) {
 		this.item.add(item);
+	}
+	public List<Event> getEvent() {
+		return event;
+	}
+	public void addEvent(Event event) {
+		this.event.add(event);
 	}
 	
 }

@@ -3,6 +3,9 @@ package consolegame.console;
 import java.io.IOException;
 import java.util.Scanner;
 
+import consolegame.Main;
+import consolegame.character.Character;
+import consolegame.item.Item;
 import consolegame.thread.LoadingThread;
 
 public class ConsolePrint {
@@ -13,8 +16,8 @@ public class ConsolePrint {
 		}
 	}
 
-	// 타이틀 출력
 	public static void printTitle(StringBuilder pSb) {
+		// 타이틀 출력
 		for (int i = 0; i < pSb.toString().length(); i++) {
 			System.out.print(pSb.charAt(i));
 			try {
@@ -27,8 +30,8 @@ public class ConsolePrint {
 		System.out.println("\n");
 	}
 
-	// 일반 출력
 	public static void printConsole(StringBuilder pSb) {
+		// 일반 출력
 		for (int i = 0; i < pSb.toString().length(); i++) {
 			System.out.print(pSb.charAt(i));
 			try {
@@ -41,22 +44,22 @@ public class ConsolePrint {
 	}
 
 	public static void printScript(StringBuilder pSb) {
+		// 스크립트 출력
 		System.out.println("=".repeat(100));
-		// System.out.println(pSb.toString());
-
+		printCharater(); // 캐릭터 현재 상태 출력
 		for (int i = 0; i < pSb.toString().length(); i++) {
 			System.out.print(pSb.charAt(i));
-			try {
-				Thread.sleep(20);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				Thread.sleep(20);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 		}
 		System.out.println("=".repeat(100) + "\n");
 	}
 
-	// 선택지 출력
 	public static void printSelection(StringBuilder pSb) {
+		// 선택지 출력
 		String[] selection = pSb.toString().split("\n");
 		System.out.println();
 		for (String str : selection) {
@@ -71,14 +74,17 @@ public class ConsolePrint {
 				}
 			}
 			System.out.println();
-			System.out.println("-".repeat(100) + "\n");
+			System.out.println("-".repeat(100));
 		}
 	}
 
-	// 선택지에 따른 결과 출력
 	public static void printResult(StringBuilder pSb) {
+		// 선택지에 따른 결과 출력
 		clear();
+		System.out.println("=".repeat(100));
+		printCharater(); // 캐릭터 현재 상태 출력
 		printConsole(pSb);
+		System.out.println("=".repeat(100));
 	}
 
 	public static void printWrongInputMessage() {
@@ -132,5 +138,46 @@ public class ConsolePrint {
 
 			}
 		}
+	}
+	
+	public static void printCharater() {
+		// 현재 캐릭터의 상태를 출력하는 메서드
+		Character c = Main.character;
+		System.out.print("체력 : ");
+		for(int i = 0; i < c.getHealth(); i++) {
+			System.out.print("♥");
+		}
+		System.out.print("\t");
+		System.out.print("정신력 : ");
+		for(int i = 0; i < c.getHealth(); i++) {
+			System.out.print("■");
+		}
+		System.out.print("\t");
+		System.out.print("소지금 : " + c.getMoney()+"\n");
+		System.out.println("=".repeat(100));
+	}
+	
+	public static void printItemList() {
+		// 캐릭터가 소지중인 아이템 리스트 출력
+		Character c = Main.character;
+		clear();
+		System.out.println("=".repeat(100));
+		StringBuilder sb = new StringBuilder();
+		int count = 0;
+		if(c.getItem().size() <= 0) {
+			sb.append("소지중인 아이템이 없습니다.\n");
+		}
+		else {
+			for(Item i : c.getItem()) {
+				sb.append(i.getName());
+				sb.append("\t");
+				if(count > 5) {
+					sb.append("\n");
+					count++;
+				}
+			}
+		}
+		sb.append("[E] : 돌아가기\n");
+		printConsole(sb);
 	}
 }
