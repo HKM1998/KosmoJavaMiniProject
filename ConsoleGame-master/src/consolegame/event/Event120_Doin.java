@@ -14,7 +14,7 @@ public class Event120_Doin extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -37,11 +37,11 @@ public class Event120_Doin extends Event {
 		script.append("이렇게 돌아가는지 궁금하지 않냐고 한다.\n");
 		script.append("정말 뜬금없지만 그렇기에 더욱 궁금했다.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {                       //1번 선택은 Good 엔딩의 Bad엔딩 선결조건 중 하나
@@ -55,6 +55,6 @@ public class Event120_Doin extends Event {
 			script.append("라고 말한뒤 떠난다\n");
 		}
 		
-		ConsolePrint.printResult(script); // 결과 출력부
+		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부
 	}
 }

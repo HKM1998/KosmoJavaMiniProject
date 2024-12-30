@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -15,7 +16,7 @@ public class Event031_PoliceStation_1 extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -34,25 +35,25 @@ public class Event031_PoliceStation_1 extends Event {
 		script.append("모든 사람들이 자신의 살길을 찾기 위해 나갔지만.\n");
 		script.append("나는 남아 있는 몇사람이라도 지키고 싶었어.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("자네도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하게\n");
-			if (!Item.hasItemType(c, "Ammunition")) {
-				c.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+			if (!Item.hasItemType(Main.character, "Ammunition")) {
+				Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
 			} else {
 				try {
-					Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(c, 6)); // 10% 확률로 승리시 탄약이 있을 때도 추가
+					Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(Main.character, 6)); // 10% 확률로 승리시 탄약이 있을 때도 추가
 					ammunition.setAmAmount(ammunition.getAmAmount() + 1);
 				}catch(ClassCastException e) {
-					c.removeItem(6);
-					c.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+					Main.character.removeItem(6);
+					Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
 					
 				}
 			}
@@ -62,6 +63,6 @@ public class Event031_PoliceStation_1 extends Event {
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("아주 노골적으로 잿밥에만 관심이 있구만. 그냥 갈길 가쇼. 그리곤 쫓아냈다.\n");
 		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

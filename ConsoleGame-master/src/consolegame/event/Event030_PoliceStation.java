@@ -2,6 +2,7 @@ package consolegame.event;
 
 import java.util.Random;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -20,7 +21,7 @@ public class Event030_PoliceStation extends Event {
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 
-	public void printChoice(Character c) { // 구현하려고 하던 바는 경찰서에서 2번을 선택하고 칼 혹은 총으로 공격하려 했을 경우
+	public void printChoice() { // 구현하려고 하던 바는 경찰서에서 2번을 선택하고 칼 혹은 총으로 공격하려 했을 경우
 		// 선택지 작성 //칼은 90% 확률로 지고 체력 -2, 10% 확률로 승리하고 탄약3개 획득
 		Selection selection = new Selection(); // 총은 50% 확률로 지고 체력 -2, 50% 확률로 승리하고 탄약3개 획득 이었습니다.
 												// 그런데 구현을 하고 보니 아무리 해도 이걸 getResult로 내려 보내는게 잘 안되고
@@ -44,43 +45,43 @@ public class Event030_PoliceStation extends Event {
 		script.append("그 사람은 자신이 이 지역의 자치 경찰이라 한다.\n");
 		script.append("나는 그 사람의 장단을 맞춰주며 우선 정보를 캐낼까 아니면 무기를 우선 탈취할까?\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override                                                    
-	public void getResult(Character c, String pChoice) { // 위에 구현한 결과 getResult로 가져 오려다 포기
+	public void getResult(String pChoice) { // 위에 구현한 결과 getResult로 가져 오려다 포기
 		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
-			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
 
 				Random random = new Random(); // java.util.Random 임포트 후
 
 				if (random.nextInt(10) < 9) { // 칼은 90% 확률로 체력 -2
-					c.setHealth(c.getHealth() - 2);
-				} else if (!Item.hasItemType(c, "Ammunition")) {
-					c.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+					Main.character.setHealth(Main.character.getHealth() - 2);
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
+					Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
 				} else {
 					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(c, 6)); // 10% 확률로 승리시 탄약이 있을 때도 추가
+						Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(Main.character, 6)); // 10% 확률로 승리시 탄약이 있을 때도 추가
 						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
 					}catch(ClassCastException e) {
-						c.removeItem(6);
-						c.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+						Main.character.removeItem(6);
+						Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
 						
 					}
 				}
 			}
 		}
 		if (pChoice.equals("3")) {
-		if (Item.hasItem(c, 8)) { // 총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
+		if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
 
 			Random random1 = new Random();
 			if (random1.nextInt(10) < 5) { // 칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
-				c.setHealth(c.getHealth() - 2);
-			} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
-				c.getItem().add(new Item006_Ammunition());
+				Main.character.setHealth(Main.character.getHealth() - 2);
+			} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
+				Main.character.getItem().add(new Item006_Ammunition());
 			} else { // 기존에 탄약이 있을 때도 추가
-				c.getItem().add(new Item006_Ammunition());
+				Main.character.getItem().add(new Item006_Ammunition());
 			}
 
 		}
@@ -88,7 +89,7 @@ public class Event030_PoliceStation extends Event {
 //		if (pChoice.equals("1")) {                          //
 //			
 //		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 
 	}
 }

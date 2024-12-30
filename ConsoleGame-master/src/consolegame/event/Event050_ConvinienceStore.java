@@ -14,7 +14,7 @@ public class Event050_ConvinienceStore extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -34,11 +34,11 @@ public class Event050_ConvinienceStore extends Event {
 		script.append("저 멀리서 익숙한 초록색 간판이 보인다. 불빛에 이끌려 가까이 가 본다.\n");
 
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder sb = new StringBuilder();
 		// 0번 아이템ID 가 있는 경우 실행
 //		if (pChoice.equals("1")) {                          //1번 들어가면 051로 가는거 보류
@@ -48,6 +48,6 @@ public class Event050_ConvinienceStore extends Event {
 //		if (pChoice.equals("2")) {                          //2번 지나치면 다른 이벤트로 가는거 보류
 //		
 //	}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

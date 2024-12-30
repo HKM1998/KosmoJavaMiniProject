@@ -16,12 +16,16 @@ public class EventConsole {
 	
 	
 	public void start() {
-		event.print(Main.character);
+		event.print();
 		String input;
 		while(true) {
 			try {
 				input = scan.next();
-				if(Integer.parseInt(input) > event.getsCount() || Integer.parseInt(input) <= 0) {
+				if(input.toUpperCase() == "I") {
+					ConsolePrint.printItemList();
+					event.print();
+				}
+				else if(Integer.parseInt(input) > event.getsCount() || Integer.parseInt(input) <= 0) {
 					ConsolePrint.printWrongInputMessage(event.getsCount());
 					continue;
 				}else {
@@ -30,7 +34,7 @@ public class EventConsole {
 			}
 			catch(Exception e){ continue;}
 		}
-		event.getResult(Main.character, input);
+		event.getResult(input);
 		while(true) {
 			try {
 				input = scan.next();

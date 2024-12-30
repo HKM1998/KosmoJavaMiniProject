@@ -14,7 +14,7 @@ public class Event000_Start extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -43,11 +43,11 @@ public class Event000_Start extends Event {
 		script.append("재선을 시도 하려는 촌장에게 항의를 하며 그의 횡포에 제동을 걸려 한다.\n");
 		script.append("그러다 밤에 몰래 주인공을 죽이기 위해 자객을 보낸 촌장을 피해 급하게 도망 나온다\"\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		// 텍스트 추가하기
 		StringBuilder sb = new StringBuilder();
 		sb.append("당신은 촌장의 눈을 피해 무사히 도망쳤습니다.\n");

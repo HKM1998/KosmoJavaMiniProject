@@ -2,6 +2,7 @@ package consolegame.event;
 
 import java.util.Random;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -18,7 +19,7 @@ public class Event070_Biker extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -40,42 +41,42 @@ public class Event070_Biker extends Event {
 		script.append("주인공을 이내 감싸더니 무리의 리더가 접근하며 얘기한다.\n");
 		script.append("조용히 가지고 있는걸 내 놓고 가라.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
-			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
 
 				Random random = new Random();
 
 				if (random.nextInt(10) < 1) {                     // 칼은 90% 확률로 패배 후 체력 -2
-					c.setHealth(c.getHealth() - 2);
-				} else if (!Item.hasItemType(c, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
-					c.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 없을때 추가
+					Main.character.setHealth(Main.character.getHealth() - 2);
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
+					Main.character.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 없을때 추가
 				} else {
-					c.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 있을 때도 추가
+					Main.character.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 있을 때도 추가
 				}
 
 			}
-			if (Item.hasItem(c, 8)) {                            // 총을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 8)) {                            // 총을 가지고 있을 경우 공격
 
 				Random random1 = new Random();
 				if (random1.nextInt(10) < 0) {                   // 총은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 구급상자 획득
-					c.setHealth(c.getHealth() - 2);
-				} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 구급상자 없을 경우 추가
-					c.getItem().add(new Item006_Ammunition());
+					Main.character.setHealth(Main.character.getHealth() - 2);
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 구급상자 없을 경우 추가
+					Main.character.getItem().add(new Item006_Ammunition());
 				} else { // 기존에 구급상자 있을 때도 추가
-					c.getItem().add(new Item006_Ammunition());
+					Main.character.getItem().add(new Item006_Ammunition());
 				}
 			}
 		if (pChoice.equals("2")) {
-			c.setHealth(c.getHealth() - 1);                      // 2번 도망친다 선택시 체력 -1
+			Main.character.setHealth(Main.character.getHealth() - 1);                      // 2번 도망친다 선택시 체력 -1
 		}
 
 		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

@@ -19,7 +19,7 @@ public class EventThread implements Runnable {
 	@Override
 	public void run() {
 		// 
-		event.print(Main.character);
+		event.print();
 		while(true) {
 			String input;
 			try {
@@ -28,7 +28,7 @@ public class EventThread implements Runnable {
 					ConsolePrint.printWrongInputMessage(event.getsCount());
 					continue;
 				}else {
-					event.getResult(Main.character, input);
+					event.getResult(input);
 					break;
 				}
 			}

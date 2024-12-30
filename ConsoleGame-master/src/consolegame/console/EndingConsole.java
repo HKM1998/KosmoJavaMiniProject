@@ -15,7 +15,7 @@ public class EndingConsole {
 	}
 	
 	public void start() {
-		event.print(Main.character);
+		event.print();
 		String input;
 		while(true) {
 			try {
@@ -29,7 +29,7 @@ public class EndingConsole {
 			}
 			catch(Exception e){ continue;}
 		}
-		event.getResult(Main.character, input);
+		event.getResult(input);
 		while(true) {
 			try {
 				input = scan.next();

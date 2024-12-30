@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -14,7 +15,7 @@ public class Event091_MerchantFamily_1 extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -36,32 +37,29 @@ public class Event091_MerchantFamily_1 extends Event {
 		script.append("장작 앞에서 몸을 녹이는 동안 스프가\n");
 		script.append("식탁에 준비되었다.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {                          //Even091의 b를 제외하고는 Weird to Bad 엔딩 조건
-		StringBuilder sb = new StringBuilder();      
+	public void getResult(String pChoice) {                          //Even091의 b를 제외하고는 Weird to Bad 엔딩 조건
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {                                                //1번 선택시 체력-2
-			StringBuilder script = new StringBuilder();
-			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("허겁지겁 스프를 먹다가 갑자기 졸음이 덮쳐오는 느낌이 든다.\n");
 			script.append("뭔가 잘못됨을 직감하고 '이만하면 충분한 것 같군요' 하고 나가려 하자\n");
 			script.append("누구 맘대로 장기는 놓고 가야지?\" 라며 주인공을 잡으려 한다.\n");
 			script.append("그는 초인적인 집중력으로 따돌려 내고 떠나지만 부상을 입는다\n");
-			c.setHealth(c.getHealth() - 2);
+			Main.character.setHealth(Main.character.getHealth() - 2);
 		}
 
 		// 무기가 있는경우 실행
 		if (pChoice.equals("2")) {                                                //2번 선택시 잃는 것은 아무것도 없고 Weird to Bad 엔딩도 피한다
-			StringBuilder script = new StringBuilder();
-			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("그는 먹기전에 스프의 냄새를 음미했다. 그러나 뭔가 냄새가 이상했다.\n");
 			script.append("그러다 불현듯 마을 촌장이 집 뒤뜰에서 몰래 키우던 아편 냄새를 떠올리고\n");
 			script.append("따뜻한 환대는 감사드립니다만 죄송하게도 급히 가야할 일이 생겼습니다.\n");
 			script.append("라며 급하게 자리를 뜨려 하자 부부는 '누구 맘대로? 장기는 놓고 가야지'\n");
 			script.append("라며 주인공을 잡으려 하지만 주인공은 총을 꺼내 위협사격을 하며 무사히 떠난다\n");
 		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -16,7 +17,7 @@ public class Event081_Marine_1 extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -41,11 +42,11 @@ public class Event081_Marine_1 extends Event {
 		script.append("사실 저는 동네 촌장의 폭정을 피해 달아 나고 있습니다.");
 		script.append("언젠가는 마을로 돌아가 자유민주주의를 회복시키고 싶습니다. ");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {                                             //1번 선택시 Weird 엔딩의 Good 엔딩 선결조건 만족
 			StringBuilder script = new StringBuilder();
@@ -56,8 +57,8 @@ public class Event081_Marine_1 extends Event {
 
 		// 무기가 있는경우 실행
 		if (pChoice.equals("2")) {
-			if (!Item.hasItem(c, 8)) {
-				c.getItem().add(new Item008_Gun());                                          //2번 선택시 총을 얻는다
+			if (!Item.hasItem(Main.character, 8)) {
+				Main.character.getItem().add(new Item008_Gun());                                          //2번 선택시 총을 얻는다
 			}
 			StringBuilder script = new StringBuilder();
 			script.append(getEventId() + ". " + getName() + "\n");
@@ -65,6 +66,6 @@ public class Event081_Marine_1 extends Event {
 			script.append("당장 줄껀 총 한자루 이것밖에 없네.\n");
 			script.append("주인공은 '필승'을 외치고 떠난다\n");
 		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

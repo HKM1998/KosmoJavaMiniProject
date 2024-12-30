@@ -9,8 +9,15 @@ public abstract class Event {
 	private int weight; // 이벤트 가중치(턴에 따라 나오게 하기위함)
 	private int score; // 이벤트 결과에 따른 점수
 	private int sCount;
+	private boolean isLoaded;
 	
 	// Getter/Setter
+	public boolean getIsLoaded() {
+		return isLoaded;
+	}
+	public void setLoaded(boolean isLoaded) {
+		this.isLoaded = isLoaded;
+	}
 	public int getEventId() {
 		return eventId;
 	}
@@ -43,13 +50,13 @@ public abstract class Event {
 	}
 	
 	public abstract void printScript();
-	public abstract void printChoice(Character c);
-	public abstract void getResult(Character c, String pChoice);
+	public abstract void printChoice();
+	public abstract void getResult(String pChoice);
 
-	public void print(Character c) {
+	public void print() {
 		ConsolePrint.clear();
 		printScript();
-		printChoice(c);
+		printChoice();
 	}
 
 	class Selection{
@@ -61,7 +68,7 @@ public abstract class Event {
 		}
 		
 		public void print() {
-			ConsolePrint.printSelection(selection);
+			ConsolePrint.printSelection(selection, getIsLoaded());
 		}
 	}
 }

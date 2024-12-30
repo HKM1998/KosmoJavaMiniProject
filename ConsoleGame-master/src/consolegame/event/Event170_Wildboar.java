@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -13,7 +14,7 @@ public class Event170_Wildboar extends Event {
 	}
 
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 
 		Selection selection = new Selection();
 
@@ -31,25 +32,25 @@ public class Event170_Wildboar extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append(" 전방에 최소 2톤은 나가보이는 커다란 맷돼지가 나타났다. 어떻할까? ");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("무사히 도망쳤지만 너무 급하게 뛰느라 다쳤다\n");
-			c.getHealth(); // 체력 -1
+			Main.character.getHealth(); // 체력 -1
 		} else if (pChoice.equals("2")) {
 			script.append("맷돼지에게 공격을 해봤지만");
 			script.append("맷돼지가 너무 강하다 \n");
 			script.append("져버렸다 \n");
 			script.append("아프다..\n");
 			script.append("눈 앞이 깜깜해진다...\n");
-			c.setHealth(-1);
+			Main.character.setHealth(-1);
 		}
 		
 
-		ConsolePrint.printResult(script);
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

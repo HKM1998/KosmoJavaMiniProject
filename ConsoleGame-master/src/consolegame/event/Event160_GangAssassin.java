@@ -2,6 +2,7 @@ package consolegame.event;
 
 import java.util.Random;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -18,7 +19,7 @@ public class Event160_GangAssassin extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -45,36 +46,36 @@ public class Event160_GangAssassin extends Event {
 		script.append("구역 침범에 대한 보복이다.\n");
 		script.append("그는 분노하며 반응한다.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
-			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
 
 				Random random = new Random();
 
 				if (random.nextInt(10) < 8) { // 칼은 80% 확률로 패배 후 체력-1
-					c.setHealth(c.getHealth() - 1);
-				} else if (!Item.hasItemType(c, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
-					c.getItem().add(new Item006_Ammunition()); // 20% 확률로 승리시 탄약이 없을때 추가
+					Main.character.setHealth(Main.character.getHealth() - 1);
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
+					Main.character.getItem().add(new Item006_Ammunition()); // 20% 확률로 승리시 탄약이 없을때 추가
 				} else {
-					c.getItem().add(new Item006_Ammunition()); // 20% 확률로 승리시 탄약이 있을 때도 추가
+					Main.character.getItem().add(new Item006_Ammunition()); // 20% 확률로 승리시 탄약이 있을 때도 추가
 				}
 
 			}
-			if (Item.hasItem(c, 8)) { // 총을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격
 
 				Random random1 = new Random();
 				if (random1.nextInt(10) < 2) { // 총은 20% 확률로 패배 후 체력 -1, 80% 확률로 승리 후 탄약 획득
-					c.setHealth(c.getHealth() - 1);
-				} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 탄약 없을 때 추가
-					c.getItem().add(new Item006_Ammunition());
+					Main.character.setHealth(Main.character.getHealth() - 1);
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 탄약 없을 때 추가
+					Main.character.getItem().add(new Item006_Ammunition());
 				} else {
-					c.getItem().add(new Item006_Ammunition()); // 기존에 탄약 있을 때도 추가
+					Main.character.getItem().add(new Item006_Ammunition()); // 기존에 탄약 있을 때도 추가
 				}
 			}
 
@@ -82,6 +83,6 @@ public class Event160_GangAssassin extends Event {
 			script.append("그는 아이에게 사정없이 총을 난사했다.");
 		}
 		
-		ConsolePrint.printResult(script); // 결과 출력부
+		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부
 	}
 }

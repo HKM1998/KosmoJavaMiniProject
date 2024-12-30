@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -15,7 +16,7 @@ public class Event010_EmptyCar extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -38,15 +39,15 @@ public class Event010_EmptyCar extends Event {
 		script.append("차량에 열쇠는 없어서 운전은 불가하다.\n");
 		script.append("앞좌석 대신 앞좌석 서랍을 여니 칼1개와 여권이 있다.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder sb = new StringBuilder();
 		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {
-			if (Item.hasItemType(c, "Knife")) {
+			if (Item.hasItemType(Main.character, "Knife")) {
 			}
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("칼을 집어 들었다.\n");
@@ -55,8 +56,8 @@ public class Event010_EmptyCar extends Event {
 		else if (pChoice.equals("2")) {                //2번 선택시 Weird 엔딩 루트의 Good엔딩 조건중 하나
 
 			// 0번 아이템ID 가 있는 경우 실행
-			if (!Item.hasItem(c, 001)) {
-				c.getItem().add(new Item001_Passport());
+			if (!Item.hasItem(Main.character, 001)) {
+				Main.character.getItem().add(new Item001_Passport());
 				script.append(getEventId() + ". " + getName() + "\n");
 				script.append("스스로도 이유는 모르겠지만 홀린듯 여권을 집어 들었다.\n");
 			}
@@ -65,6 +66,6 @@ public class Event010_EmptyCar extends Event {
 		
 
 	
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

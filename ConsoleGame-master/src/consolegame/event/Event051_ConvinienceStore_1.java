@@ -2,6 +2,7 @@ package consolegame.event;
 
 import java.util.Random;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -18,7 +19,7 @@ public class Event051_ConvinienceStore_1 extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -40,36 +41,36 @@ public class Event051_ConvinienceStore_1 extends Event {
 		script.append("그런데 뒤에서 소리가 들린다.너는 어디서 온 누구냐?\n");
 		script.append("여기는 우리가 오랫동안 집으로 여기고 있던 곳이야. 어서 썩 나가.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		
 		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("2")) {                                      // 2번을 골랐을 경우 공격하기
-			if (Item.hasItem(c, 000)) {                                 // 칼을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 000)) {                                 // 칼을 가지고 있을 경우 공격
 
 				Random random = new Random();                         
 
 				if (random.nextInt(10) < 7) {                           //칼은 70% 확률로 패배 후 체력-2
-					c.setHealth(c.getHealth() - 2);
-				} else if (!Item.hasItemType(c, "FirstAidKit")) {       //아이템 FirstAidKit 클래스 임포트
-					c.getItem().add(new Item004_FirstAidKit());         // 10% 확률로 승리시 구급상자가 없을때 추가
+					Main.character.setHealth(Main.character.getHealth() - 2);
+				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {       //아이템 FirstAidKit 클래스 임포트
+					Main.character.getItem().add(new Item004_FirstAidKit());         // 10% 확률로 승리시 구급상자가 없을때 추가
 				} else {                                                     
-					c.getItem().add(new Item004_FirstAidKit());         // 10% 확률로 승리시 구급상자가 있을 때도 추가
+					Main.character.getItem().add(new Item004_FirstAidKit());         // 10% 확률로 승리시 구급상자가 있을 때도 추가
 				}
 
 			}
-			if (Item.hasItem(c, 8)) {                                    // 총을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 8)) {                                    // 총을 가지고 있을 경우 공격
 
 				Random random1 = new Random();
 				if (random1.nextInt(10) < 1) {                           // 총은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 구급상자 획득
-					c.setHealth(c.getHealth() - 2);
-				} else if (!Item.hasItemType(c, "FirstAidKit")) {         // 기존에 구급상자 없을 경우 추가
-					c.getItem().add(new Item004_FirstAidKit());
+					Main.character.setHealth(Main.character.getHealth() - 2);
+				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {         // 기존에 구급상자 없을 경우 추가
+					Main.character.getItem().add(new Item004_FirstAidKit());
 				} else {                                                 // 기존에 구급상자 있을 때도 추가
-					c.getItem().add(new Item004_FirstAidKit());
+					Main.character.getItem().add(new Item004_FirstAidKit());
 				}
 
 			}
@@ -79,6 +80,6 @@ public class Event051_ConvinienceStore_1 extends Event {
 //		}
 
 		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

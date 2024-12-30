@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -16,7 +17,7 @@ public class Event060_AbandonedHospital extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -37,22 +38,22 @@ public class Event060_AbandonedHospital extends Event {
 		script.append("병원을 발견했다. 병원은 스산하고 어둡다. 얼른 필요한것만 챙기고 나가자.\n");
 		script.append("문이 끼익 열린다. 필요한 물품을 찾기 위해 여기 저기 찾아다닌다.\n");
 		script.append("그러다 불이 켜진 방을 발견한다.\n");
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {                            //1번 선택시 Good 엔딩 루트가 Bad 엔딩되는 조건 중 하나                                                                                                                                                                                                                                                                                                                                                                                                                // 1번 우회한다 선택했을 경우 차트를 획득
-			if (!Item.hasItem(c, 007)) {
-				c.getItem().add(new Item007_Chart());         // 아이템 차트 클래스 임포트
+			if (!Item.hasItem(Main.character, 007)) {
+				Main.character.getItem().add(new Item007_Chart());         // 아이템 차트 클래스 임포트
 			}
 		}	
 		// 무기가 있는경우 실행
 //		if (pChoice.equals("2")) {                            // 2번 들어갈 경우 061로 이동하는 것 보류
 //					
 //		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
      }
 
 }

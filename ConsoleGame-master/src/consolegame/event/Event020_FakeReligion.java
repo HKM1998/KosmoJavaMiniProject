@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -15,13 +16,13 @@ public class Event020_FakeReligion extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("1.그냥 들어본다.");
+		selection.addSelection("그냥 들어본다.");
 
-		selection.addSelection("2.그냥 간다.");
+		selection.addSelection("그냥 간다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -36,11 +37,11 @@ public class Event020_FakeReligion extends Event {
 		script.append("이 세상이 이렇게 된건 믿음이 부족해서라 한다.\n");
 		script.append("한번 좋은 말씀 들어보지 않겠냐며 권유한다.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder sb = new StringBuilder();
 		StringBuilder script = new StringBuilder(); // 1번 선택시 Good 엔딩 루트의 Bad엔딩 선결조건 중 하나
 		script.append(getEventId() + ". " + getName() + "\n");
@@ -48,11 +49,11 @@ public class Event020_FakeReligion extends Event {
 		if (pChoice.equals("1")) { // 1번 선택 시 나오는 대사 추가
 			script.append("일장연설을 듣고 나니 기가 다 빠진다.\n");
 			script.append("그러나 아줌마는 이것도 인연이라며 성경을 선물한다\n");
-			c.addItem(new Item002_Bible());
+			Main.character.addItem(new Item002_Bible());
 			script.append("\n아줌마에게서 성경을 얻었습니다.(+ 성경)\n");
 		} else if (pChoice.equals("2")) {
 			script.append("당신은 너무 지친 나머지 이야기를 듣지않고 지나쳤습니다.\n");
 		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

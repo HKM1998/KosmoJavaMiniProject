@@ -2,6 +2,7 @@ package consolegame.event;
 
 import java.util.Random;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -17,7 +18,7 @@ public class Event130_HomelessMen extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -39,20 +40,20 @@ public class Event130_HomelessMen extends Event {
 		script.append("배고픔에 굶주린 노숙자들이 뒤에서 몰래 미행을 한다. \n");
 		script.append("걸음을 빠르게 옮기지만 막다른 골목에 몰리고 만다. 그들이 습격을 해 온다.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
-			if (Item.hasItem(c, 8)) { // 총을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격
 				script.append("가지고 있던 총으로 위협하자 그들은 도망가기에 급급했습니다.\n");
-			} else if (Item.hasItem(c, 0)) { // 칼을 가지고 있을 경우 공격
+			} else if (Item.hasItem(Main.character, 0)) { // 칼을 가지고 있을 경우 공격
 				Random random = new Random();
 				if (random.nextInt(10) < 7) { // 칼은 70% 확률로 패배 후 체력-1
-					c.setHealth(c.getHealth() - 1); // 전리품 없음
+					Main.character.setHealth(Main.character.getHealth() - 1); // 전리품 없음
 					script.append("노숙자들과 싸웟으나 그들에게서 이길수 없었습니다.(체력 -1)\n");
 				}else {
 					script.append("노숙자들과 싸워 이겼으나 남은 것은 허탈함 뿐입니다.\n");
@@ -62,6 +63,6 @@ public class Event130_HomelessMen extends Event {
 			script.append("노숙자들에게서 최선을 다해 도망쳤습니다.(정신력 -1)\n");
 		}
 
-		ConsolePrint.printResult(script); // 결과 출력부
+		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부
 	}
 }

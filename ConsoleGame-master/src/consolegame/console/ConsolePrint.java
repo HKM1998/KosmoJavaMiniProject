@@ -43,21 +43,58 @@ public class ConsolePrint {
 		System.out.println();
 	}
 
+	public static void printConsole(StringBuilder pSb, boolean isLoaded) {
+		// 일반 출력
+		if (isLoaded) {
+			System.out.print(pSb.toString());
+		} else {
+			for (int i = 0; i < pSb.toString().length(); i++) {
+				System.out.print(pSb.charAt(i));
+				try {
+					Thread.sleep(20);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		System.out.println();
+	}
+
 	public static void printScript(StringBuilder pSb) {
 		// 스크립트 출력
 		System.out.println("=".repeat(100));
 		printCharater(); // 캐릭터 현재 상태 출력
 		for (int i = 0; i < pSb.toString().length(); i++) {
 			System.out.print(pSb.charAt(i));
-//			try {
-//				Thread.sleep(20);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		System.out.println("=".repeat(100) + "\n");
 	}
 
+	public static void printScript(StringBuilder pSb, boolean isLoaded) {
+		// 스크립트 출력
+		System.out.println("=".repeat(100));
+		printCharater(); // 캐릭터 현재 상태 출력
+		if(isLoaded) {
+			System.out.print(pSb.toString());
+		}
+		else {
+			for (int i = 0; i < pSb.toString().length(); i++) {
+				System.out.print(pSb.charAt(i));
+				try {
+					Thread.sleep(20);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		System.out.println("=".repeat(100) + "\n");
+	}
+	
 	public static void printSelection(StringBuilder pSb) {
 		// 선택지 출력
 		String[] selection = pSb.toString().split("\n");
@@ -73,11 +110,36 @@ public class ConsolePrint {
 					e.printStackTrace();
 				}
 			}
+			System.out.println("[I] : 소지 아이템 확인");
 			System.out.println();
 			System.out.println("-".repeat(100));
 		}
 	}
 
+	public static void printSelection(StringBuilder pSb, boolean isLoaded) {
+		// 선택지 출력
+		String[] selection = pSb.toString().split("\n");
+		System.out.println();
+		for (String str : selection) {
+			System.out.println("-".repeat(100));
+			if(isLoaded) {
+				System.out.print(str);
+			}else {
+				for (int i = 0; i < str.toString().length(); i++) {
+					System.out.print(str.charAt(i));
+					try {
+						Thread.sleep(30);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			System.out.println("[I] : 소지 아이템 확인");
+			System.out.println();
+			System.out.println("-".repeat(100));
+		}
+	}
+	
 	public static void printResult(StringBuilder pSb) {
 		// 선택지에 따른 결과 출력
 		clear();
@@ -86,6 +148,16 @@ public class ConsolePrint {
 		printConsole(pSb);
 		System.out.println("=".repeat(100));
 	}
+	
+	public static void printResult(StringBuilder pSb, boolean isLoaded) {
+		// 선택지에 따른 결과 출력
+		clear();
+		System.out.println("=".repeat(100));
+		printCharater(); // 캐릭터 현재 상태 출력
+		printConsole(pSb, isLoaded);
+		System.out.println("=".repeat(100));
+	}
+
 
 	public static void printWrongInputMessage() {
 		System.out.println("<잘못 입력하셨습니다. 다시 입력해주세요.>");
@@ -139,39 +211,36 @@ public class ConsolePrint {
 			}
 		}
 	}
-	
+
 	public static void printCharater() {
 		// 현재 캐릭터의 상태를 출력하는 메서드
-		Character c = Main.character;
 		System.out.print("체력 : ");
-		for(int i = 0; i < c.getHealth(); i++) {
+		for (int i = 0; i < Main.character.getHealth(); i++) {
 			System.out.print("♥");
 		}
 		System.out.print("\t");
 		System.out.print("정신력 : ");
-		for(int i = 0; i < c.getHealth(); i++) {
+		for (int i = 0; i < Main.character.getHealth(); i++) {
 			System.out.print("■");
 		}
 		System.out.print("\t");
-		System.out.print("소지금 : " + c.getMoney()+"\n");
+		System.out.print("소지금 : " + Main.character.getMoney() + "\n");
 		System.out.println("=".repeat(100));
 	}
-	
+
 	public static void printItemList() {
 		// 캐릭터가 소지중인 아이템 리스트 출력
-		Character c = Main.character;
 		clear();
 		System.out.println("=".repeat(100));
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
-		if(c.getItem().size() <= 0) {
+		if (Main.character.getItem().size() <= 0) {
 			sb.append("소지중인 아이템이 없습니다.\n");
-		}
-		else {
-			for(Item i : c.getItem()) {
+		} else {
+			for (Item i : Main.character.getItem()) {
 				sb.append(i.getName());
 				sb.append("\t");
-				if(count > 5) {
+				if (count > 5) {
 					sb.append("\n");
 					count++;
 				}

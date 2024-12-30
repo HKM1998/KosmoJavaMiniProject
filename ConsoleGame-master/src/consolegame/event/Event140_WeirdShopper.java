@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -17,7 +18,7 @@ public class Event140_WeirdShopper extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -41,32 +42,32 @@ public class Event140_WeirdShopper extends Event {
 		script.append("그는 껌이나 오래된 신문은\n");
 		script.append("필요 없다. 좀 유용한게 필요하다며 은밀히 얘기한다.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { // 1번은 금액 200원을 쓰고 칼 획득
-			if (c.getMoney() > 200) {
-				c.setMoney(c.getMoney() - 200);
-				c.getItem().add(new Item000_Knife());
+			if (Main.character.getMoney() > 200) {
+				Main.character.setMoney(Main.character.getMoney() - 200);
+				Main.character.getItem().add(new Item000_Knife());
 				script.append("소지금 200을 사용하여 칼을 구매하였습니다.(+ 칼)\n");
 			} else {
 				script.append("당신은 소지금이 부족하여 칼을 구매할 수 없었습니다.\n");
 			}
 
 		} else if (pChoice.equals("2")) { // 2번은 금액 500원을 쓰고 총 획득
-			if (c.getMoney() > 500) {
-				c.setMoney(c.getMoney() - 500);
-				c.getItem().add(new Item008_Gun()); // 아이템 008 총
+			if (Main.character.getMoney() > 500) {
+				Main.character.setMoney(Main.character.getMoney() - 500);
+				Main.character.getItem().add(new Item008_Gun()); // 아이템 008 총
 				script.append("소지금 500을 사용하여 총을 구매하였습니다.(+ 총)\n");
 			} else {
 				script.append("당신은 소지금이 부족하여 총을 구매할 수 없었습니다.\n");
 			}
 		}
 
-		ConsolePrint.printResult(script); // 결과 출력부
+		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부
 	}
 }

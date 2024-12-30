@@ -14,7 +14,7 @@ public class Event110_University extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -39,11 +39,11 @@ public class Event110_University extends Event {
 		script.append("갑자기 올라 가더니 마이크를 잡는다.\n");
 		
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder sb = new StringBuilder();
 		if(pChoice.equals("1")) {
 			sb.append("학생들은 어리둥절 해 하며 그저 떠나가는 그의 뒷모습을 멀뚱히 바라본다.\n");
@@ -51,6 +51,6 @@ public class Event110_University extends Event {
 			sb.append("학생들은 가슴에 와닿는 현실적인 그의 연설에 환호를 하고, 그는 환호를 받으며 떠난다.\n");
 		}
 		
-		ConsolePrint.printResult(sb); // 결과 출력부
+		ConsolePrint.printResult(sb, getIsLoaded()); // 결과 출력부
 	}
 }

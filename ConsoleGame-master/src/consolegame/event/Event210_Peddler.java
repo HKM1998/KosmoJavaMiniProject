@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -14,7 +15,7 @@ public class Event210_Peddler extends Event {
 	}
 
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		Selection selection = new Selection();
 		selection.addSelection(" 칼을 판다. ");
 		selection.addSelection(" 모르는 사람의 여권을 판다. ");
@@ -40,24 +41,24 @@ public class Event210_Peddler extends Event {
 		script.append(" (가지고있는 물건을 판매할수 있을것 같다.) \n");
 		script.append(" 안녕하세요? \n");
 		script.append(" 물건 좀 팔려고 합니다. \n");
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("감사합니다");
 			
 
 		
-			c.setHealth(c.getHealth() + 2);
-			c.setMental(c.getMental() + 2);
+			Main.character.setHealth(Main.character.getHealth() + 2);
+			Main.character.setMental(Main.character.getMental() + 2);
 		} else if (pChoice.equals("2"))
 			;
 		script.append("");
 		script.append("");
-		c.removeItem(11);
+		Main.character.removeItem(11);
 		
 
 		if (pChoice.equals("3"))
@@ -68,7 +69,7 @@ public class Event210_Peddler extends Event {
 			script.append("");
 			
 		}
-		ConsolePrint.printResult(script);
+		ConsolePrint.printResult(script, getIsLoaded());
 
 	}
 }

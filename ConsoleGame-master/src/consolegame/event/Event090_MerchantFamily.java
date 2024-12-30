@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -14,7 +15,7 @@ public class Event090_MerchantFamily extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
-	public void printChoice(Character c) {
+	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
 
@@ -39,11 +40,11 @@ public class Event090_MerchantFamily extends Event {
 		script.append("문을 여니 부부와 아들딸이 하나씩 있는 집안이다\n");
 		script.append("그 집에서는 주인공을 보며 놀랐지만, 이내 행색을 안쓰러워 하며 그를 들여보낸다.\n");
 
-		ConsolePrint.printScript(script);
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {                     //Even091의 b를 제외하고는 Weird to Bad 엔딩 조건
+	public void getResult(String pChoice) {                     //Even091의 b를 제외하고는 Weird to Bad 엔딩 조건
 		StringBuilder sb = new StringBuilder();
 //		if (pChoice.equals("1")) {                                           //1번 선택시 Event091로 가는거 보류		
 //		}
@@ -55,8 +56,8 @@ public class Event090_MerchantFamily extends Event {
 			script.append("그런거야 뭐가 어렵겠습니까? 윗층에 있는 빈방으로 드시지요.\n");
 			script.append("그러나 이내 뒤에서 문이 덜커덩 잠기더니 묵직한 무기를 들고 오는 소리가 들린다.\n");
 			script.append("주인공은 필사적으로 창문을 깨고 2층 높이에서 뛰어 내린다가 다리를 삔다.\n");
-			c.setHealth(c.getHealth() - 1);                                          
+			Main.character.setHealth(Main.character.getHealth() - 1);                                          
 		}
-		ConsolePrint.printResult(sb);
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }
