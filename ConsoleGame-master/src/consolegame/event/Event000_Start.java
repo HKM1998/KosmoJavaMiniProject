@@ -63,6 +63,8 @@ public class Event000_Start extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
+		// 텍스트 추가하기
+		StringBuilder sb = new StringBuilder();
 		// 0번 아이템ID 가 있는 경우 실행
 		if (Item.hasItem(c, 000)) {
 			//c.removeItem(000);
@@ -71,5 +73,6 @@ public class Event000_Start extends Event {
 		// 무기가 있는경우 실행
 		if (Item.hasItemType(c, "무기")) {
 		}
+		ConsolePrint.printResult(sb);
 	}
 }

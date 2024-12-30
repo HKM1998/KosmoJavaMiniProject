@@ -32,7 +32,7 @@ public class LoadingThread implements Runnable{
 			System.out.println("");
 		}
 		System.out.print("게임을 종료합니다");
-		for(int i=0; i<20; i++ ) {
+		for(int i=0; i<10; i++ ) {
 			System.out.print('.');
 
 			try {
