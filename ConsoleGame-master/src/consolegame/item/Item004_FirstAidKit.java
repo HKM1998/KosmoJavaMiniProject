@@ -5,6 +5,7 @@ import consolegame.event.Event;
 
 public class Item004_FirstAidKit extends Item{
 
+	int firstAidkit;
 	public Item004_FirstAidKit() {
 		setItemId(4);
 		setName("구급상자");
@@ -12,6 +13,14 @@ public class Item004_FirstAidKit extends Item{
 		setType("구급약"); // 타입 관련된 정보 저장용 만들 예정
 	}
 	
+	public int getFirstaidkit() {
+		return firstAidkit;
+	}
+
+	public void setFirstaidkit(int firstAidkit) {
+		this.firstAidkit = firstAidkit;
+	}
+
 	@Override
 	public void effect(Character c, Event e) {
 		// 아이템의 효과 동작

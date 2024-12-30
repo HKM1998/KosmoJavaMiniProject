@@ -9,7 +9,7 @@ import consolegame.item.Item007_Chart;
 
 public class Event060_AbandonedHospital extends Event {
 	public Event060_AbandonedHospital() {
-		setEventId(060);
+		setEventId(60);
 		setName("폐병원");
 		setScore(0);
 		setWeight(0);
@@ -43,17 +43,19 @@ public class Event060_AbandonedHospital extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {                            //1번 선택시 Good 엔딩 루트가 Bad 엔딩되는 조건 중 하나                                                                                                                                                                                                                                                                                                                                                                                                                // 1번 우회한다 선택했을 경우 차트를 획득
 			if (!Item.hasItem(Main.character, 007)) {
 				Main.character.getItem().add(new Item007_Chart());         // 아이템 차트 클래스 임포트
+				script.append(getEventId() + ". " + getName() + "\n");
+				script.append("몰래 차트를 얻고 빠져나간다!\n");
 			}
 		}	
 		// 무기가 있는경우 실행
 //		if (pChoice.equals("2")) {                            // 2번 들어갈 경우 061로 이동하는 것 보류
 //					
 //		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		ConsolePrint.printResult(script, getIsLoaded());
      }
 
 }

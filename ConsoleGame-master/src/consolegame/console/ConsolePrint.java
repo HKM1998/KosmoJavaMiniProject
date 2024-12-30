@@ -1,10 +1,8 @@
 package consolegame.console;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.item.Item;
 import consolegame.thread.LoadingThread;
 
@@ -118,7 +116,7 @@ public class ConsolePrint {
 
 	public static void printSelection(StringBuilder pSb, boolean isLoaded) {
 		// 선택지 출력
-		String[] selection = pSb.toString().split("\n");
+		String[] selection = pSb.toString().split("\t");
 		System.out.println();
 		for (String str : selection) {
 			System.out.println("-".repeat(100));
@@ -134,10 +132,9 @@ public class ConsolePrint {
 					}
 				}
 			}
-			System.out.println("[I] : 소지 아이템 확인");
-			System.out.println();
 			System.out.println("-".repeat(100));
 		}
+		System.out.println("[I] : 소지 아이템 확인");
 	}
 	
 	public static void printResult(StringBuilder pSb) {
@@ -156,6 +153,7 @@ public class ConsolePrint {
 		printCharater(); // 캐릭터 현재 상태 출력
 		printConsole(pSb, isLoaded);
 		System.out.println("=".repeat(100));
+		System.out.println("[아무 키나 입력하여 진행]");
 	}
 
 
@@ -226,27 +224,5 @@ public class ConsolePrint {
 		System.out.print("\t");
 		System.out.print("소지금 : " + Main.character.getMoney() + "\n");
 		System.out.println("=".repeat(100));
-	}
-
-	public static void printItemList() {
-		// 캐릭터가 소지중인 아이템 리스트 출력
-		clear();
-		System.out.println("=".repeat(100));
-		StringBuilder sb = new StringBuilder();
-		int count = 0;
-		if (Main.character.getItem().size() <= 0) {
-			sb.append("소지중인 아이템이 없습니다.\n");
-		} else {
-			for (Item i : Main.character.getItem()) {
-				sb.append(i.getName());
-				sb.append("\t");
-				if (count > 5) {
-					sb.append("\n");
-					count++;
-				}
-			}
-		}
-		sb.append("[E] : 돌아가기\n");
-		printConsole(sb);
 	}
 }

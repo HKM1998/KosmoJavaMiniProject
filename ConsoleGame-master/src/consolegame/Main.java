@@ -1,6 +1,5 @@
 package consolegame;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import consolegame.character.Character;
@@ -11,9 +10,7 @@ import consolegame.console.TitleConsole;
 import consolegame.event.Event;
 import consolegame.event.Event000_Start;
 import consolegame.event.EventMap;
-import consolegame.thread.EventThread;
 import consolegame.thread.LoadingThread;
-import consolegame.thread.TitleThread;
 
 public class Main {
 	static boolean hasSaveFile = false;
@@ -22,7 +19,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		String in = null;
 		ConsolePrint.clear();
 
 		// 세이브 파일 확인
@@ -62,8 +58,9 @@ public class Main {
 		while (true) {
 			// 이벤트 (턴진행)
 			try {
-				Event nowEvent = eMap.getEvent();
-				character.addEvent(nowEvent); // 어떤 이벤트를 진행했는지 확인
+				Event nowEvent = eMap.getEvent();// 어떤 이벤트를 진행했는지 확인
+				eMap.setEvent(nowEvent.getEventId()); 
+				eMap.setEvent(eventCount);
 				eventConsole = new EventConsole(nowEvent, scan);
 				eventConsole.start();
 				loading.setType("moveToNextEvent");

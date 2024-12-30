@@ -17,13 +17,15 @@ public class EventConsole {
 	
 	public void start() {
 		event.print();
+		event.setLoaded(true);
 		String input;
 		while(true) {
 			try {
 				input = scan.next();
-				if(input.toUpperCase() == "I") {
-					ConsolePrint.printItemList();
+				if(input.toUpperCase().equals("I")) {
+					InventoryConsole.print(scan);
 					event.print();
+					continue;
 				}
 				else if(Integer.parseInt(input) > event.getsCount() || Integer.parseInt(input) <= 0) {
 					ConsolePrint.printWrongInputMessage(event.getsCount());
@@ -34,6 +36,7 @@ public class EventConsole {
 			}
 			catch(Exception e){ continue;}
 		}
+		event.setLoaded(false);
 		event.getResult(input);
 		while(true) {
 			try {

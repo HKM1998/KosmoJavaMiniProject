@@ -11,7 +11,7 @@ import consolegame.item.Item006_Ammunition;
 
 public class Event070_Biker extends Event {
 	public Event070_Biker() {
-		setEventId(070);
+		setEventId(70);
 		setName("폭주족");
 		setScore(0);
 		setWeight(0);
