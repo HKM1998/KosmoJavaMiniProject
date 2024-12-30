@@ -18,10 +18,9 @@ public class Event110_University extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("쫓기고 있는 본인의 상황에 대한 설명과 자유민주주의에 대한 본인의 신념을 설파하고 떠난다.");
+		selection.addSelection("자유민주주의에 대한 본인의 신념을 설파하고 떠난다.\n");
 		
-		selection.addSelection("그 어떤 신념도 현실적인 무력을 일정 정도 갖추지 않으면 무위라는걸 알리며\n");
-		selection.addSelection("본인의 상황을 예로 들고, 현실적인 힘도 갖추기를 강력하게 제안하고 떠난다.\n");
+		selection.addSelection("반드시 무력이 갖춰져야만 어떤 신념이든 관철이 가능함을 얘기하고 떠난다\n");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -61,12 +60,11 @@ public class Event110_University extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
-		}
+//		if (pChoice.equals("1")) {                           //1번선택시 Bad 엔딩이 Good 엔딩이 될 수 있는 선결 조건			
+//		}                                                    //추가적인 이벤트는 없다
 
 		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
+//		if (pChoice.equals("2")) {							//2번선택시 역시 추가적인 이벤트는 없다.
+//		}
 	}
 }

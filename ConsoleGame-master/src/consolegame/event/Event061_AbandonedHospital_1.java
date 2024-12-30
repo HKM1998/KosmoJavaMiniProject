@@ -1,8 +1,13 @@
 package consolegame.event;
 
+import java.util.Random;
+
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item001_Passport;
+import consolegame.item.Item004_FirstAidKit;
+import consolegame.item.Item005_PainKiller;
 
 public class Event061_AbandonedHospital_1 extends Event {
 	public Event061_AbandonedHospital_1() {
@@ -18,9 +23,9 @@ public class Event061_AbandonedHospital_1 extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 뒷통수 습격");
+		selection.addSelection("뒷통수 습격");
 		
-		selection.addSelection(" 몰래 뒷 선반에 있는 진통제를 빼돌려 나온다");
+		selection.addSelection("몰래 뒷 선반에 있는 진통제를 빼돌려 나온다");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -55,12 +60,38 @@ public class Event061_AbandonedHospital_1 extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
+			if (Item.hasItem(c, 000)) { // 칼을 가지고 있을 경우 공격
+
+				Random random = new Random();
+
+				if (random.nextInt(10) < 4) { // 칼은 40% 확률로 패배 후 체력-1
+					c.setHealth(c.getHealth() - 1);
+				} else if (!Item.hasItemType(c, "FirstAidKit")) { // 아이템 FirstAidKit 클래스 임포트
+					c.getItem().add(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 없을때 추가
+				} else {
+					c.getItem().add(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 있을 때도 추가
+				}
+
+			}
+			if (Item.hasItem(c, 8)) { // 총을 가지고 있을 경우 공격
+
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 0) { // 총은 % 확률로 패배 후 체력 -1, 100% 확률로 승리 후 구급상자 획득
+					c.setHealth(c.getHealth() - 1);
+				} else if (!Item.hasItemType(c, "FirstAidKit")) { // 기존에 구급상자 없을 경우 추가
+					c.getItem().add(new Item004_FirstAidKit());
+				} else { // 기존에 구급상자 있을 때도 추가
+					c.getItem().add(new Item004_FirstAidKit());
+				}
+			}
+
+		}
+		if (pChoice.equals("2")) {
+			if (!Item.hasItem(c, 005)) {
+				c.getItem().add(new Item005_PainKiller()); // 2번 선택시 진통제만 가져간다
+			}
 		}
 
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
-		}
 	}
 }

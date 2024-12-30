@@ -18,11 +18,11 @@ public class Event090_MerchantFamily extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 정말 감사합니다. 그러나 큰 민폐를 끼칠 순 없는 노릇입니다. \n"
+		selection.addSelection(" 정말 감사합니다. 그러나 큰 민폐를 끼칠 순 없는 노릇입니다.\n"
 				                 + "밥 한끼 정도만 얻어 먹을 수 있을까요?");
 		
-		selection.addSelection(" 오랫동안 방랑을 하여 몸이 너무 지쳤습니다. \n"
-				                 + "염치 없지만 하룻밤만 묵을 수 있을까요?");
+		selection.addSelection(" 오랫동안 방랑을 하여 몸이 너무 지쳤습니다.\n"
+				                 + "염치 없지만 하룻밤만 묵을 수 있을까요?\n");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -58,14 +58,19 @@ public class Event090_MerchantFamily extends Event {
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {
+	public void getResult(Character c, String pChoice) {                     //Even091의 b를 제외하고는 Weird to Bad 엔딩 조건
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
-		}
+//		if (pChoice.equals("1")) {                                           //1번 선택시 Event091로 가는거 보류		
+//		}
 
 		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
+		if (pChoice.equals("2")) {                                            //2번 선택시 창문으로 뛰어 내리고 체력 -1
+			StringBuilder script = new StringBuilder();
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("그런거야 뭐가 어렵겠습니까? 윗층에 있는 빈방으로 드시지요.\n");
+			script.append("그러나 이내 뒤에서 문이 덜커덩 잠기더니 묵직한 무기를 들고 오는 소리가 들린다.\n");
+			script.append("주인공은 필사적으로 창문을 깨고 2층 높이에서 뛰어 내린다가 다리를 삔다.\n");
+			c.setHealth(c.getHealth() - 1);                                          
 		}
 	}
 }

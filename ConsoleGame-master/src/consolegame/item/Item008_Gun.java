@@ -3,13 +3,13 @@ package consolegame.item;
 import consolegame.character.Character;
 import consolegame.event.Event;
 
-public class Item003_DogMeat extends Item{
+public class Item008_Gun extends Item{
 
-	public Item003_DogMeat() {
-		setItemId(003);
-		setName("개고기");
+	public Item008_Gun() {
+		setItemId(8);
+		setName("총");
 		setPrice(0); //가격
-		setType("음식"); // 타입 관련된 정보 저장용 만들 예정
+		setType("무기"); // 타입 관련된 정보 저장용 만들 예정
 	}
 	
 	@Override

@@ -1,8 +1,11 @@
 package consolegame.event;
 
+import java.util.Random;
+
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item004_FirstAidKit;
 
 public class Event130_HomelessMen extends Event {
 	public Event130_HomelessMen() {
@@ -18,9 +21,9 @@ public class Event130_HomelessMen extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 싸운다");
+		selection.addSelection("싸운다");
 		
-		selection.addSelection(" 도망친다 ");
+		selection.addSelection("도망친다 ");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -57,8 +60,23 @@ public class Event130_HomelessMen extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) {                                 // 1번을 골랐을 경우 공격하기
+			if (Item.hasItem(c, 000)) {                            // 칼을 가지고 있을 경우 공격
+
+				Random random = new Random();
+
+				if (random.nextInt(10) < 7) {                      // 칼은 70% 확률로 패배 후 체력-1
+					c.setHealth(c.getHealth() - 1);                // 전리품 없음
+				}
+			}
+			if (Item.hasItem(c, 8)) {                              // 총을 가지고 있을 경우 공격
+
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 0) {                     // 총은 0% 확률로 패배 후 체력 -1, 100% 확률로 승리 후 전리품 획득x
+					c.setHealth(c.getHealth() - 1);
+				}
+
+			}
 		}
 
 		// 무기가 있는경우 실행

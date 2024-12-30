@@ -18,9 +18,9 @@ public class Event080_Marine extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 충성! 해병 1511기 입니다!(거짓말)");
+		selection.addSelection("충성! 해병 1511기 입니다!(거짓말)");
 		
-		selection.addSelection(" 아 저는 그냥 별 뜻 없이 지나가고 있습니다.");
+		selection.addSelection("아 저는 그냥 별 뜻 없이 지나가고 있습니다.");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -56,12 +56,16 @@ public class Event080_Marine extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
-		}
+//		if (pChoice.equals("1")) {                        //1번 선택 시 Event 081로 넘어가는거 보류
+//			
+//		}
 
 		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
+		if (pChoice.equals("2")) {
+			StringBuilder script = new StringBuilder();
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("그 말을 우리더러 믿으라는거야? 딱봐도 거동이 수상한 불순분자로 보이는구만!\n");
+			script.append("주인공은 막무가내로 포박하려는 해병전우회를 죽이고 달아난다\n");
 		}
 	}
 }

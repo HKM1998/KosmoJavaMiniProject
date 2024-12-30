@@ -1,8 +1,12 @@
 package consolegame.event;
 
+import java.util.Random;
+
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item004_FirstAidKit;
+import consolegame.item.Item006_Ammunition;
 
 public class Event160_GangAssassin extends Event {
 	public Event160_GangAssassin() {
@@ -18,9 +22,9 @@ public class Event160_GangAssassin extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection(" 칼 200");
+		selection.addSelection("아이를 이용하는 그 갱단을 쫓아가 처치한다");
 		
-		selection.addSelection(" 탄약 1개 ");
+		selection.addSelection("그 아이를 죽이고 떠난다");
 		
 //		// 특정 아이템 조회 후 사용
 //		if (Item.hasItem(c, 000))
@@ -52,7 +56,7 @@ public class Event160_GangAssassin extends Event {
 		script.append("그런데 이 아이는 뭔가 뒤에서 미행을 하는 듯한 느낌이 든다. \n");
 		script.append("아이이기에 애써 무시하고 가지만 이내 총성이 뒤에서 들린다.\n");
 		script.append("그 구역을 장악하고 있던 갱단이 뒤에서 조종하고 있던 아이였다.\n");
-		script.append("먼 곳 주차된 곳에서 몰래 보며 그 아이에게 시킨것이다. 구역 침범에 대한 보복이다.\n");
+		script.append("멀리 주차된 곳에서 몰래 보며 그 아이에게 시킨것이다. .\n");
 		script.append("구역 침범에 대한 보복이다.\n");
 		script.append("그는 분노하며 반응한다.\n");
 
@@ -62,12 +66,38 @@ public class Event160_GangAssassin extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) {                                // 1번을 골랐을 경우 공격하기
+			if (Item.hasItem(c, 000)) {                           // 칼을 가지고 있을 경우 공격
+
+				Random random = new Random();
+
+				if (random.nextInt(10) < 8) {                     // 칼은 80% 확률로 패배 후 체력-1
+					c.setHealth(c.getHealth() - 1);
+				} else if (!Item.hasItemType(c, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
+					c.getItem().add(new Item006_Ammunition());   // 20% 확률로 승리시 탄약이 없을때 추가
+				} else {
+					c.getItem().add(new Item006_Ammunition());   // 20% 확률로 승리시 탄약이 있을 때도 추가
+				}
+
+			}
+			if (Item.hasItem(c, 8)) {                            // 총을 가지고 있을 경우 공격
+
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 2) {                   // 총은 20% 확률로 패배 후 체력 -1, 80% 확률로 승리 후 탄약 획득
+					c.setHealth(c.getHealth() - 1);
+				} else if (!Item.hasItemType(c, "Ammunition")) { // 기존에 탄약 없을 때 추가
+					c.getItem().add(new Item006_Ammunition());
+				} else { 
+					c.getItem().add(new Item006_Ammunition());   //기존에 탄약 있을 때도 추가
+				}
+			}
+
 		}
 
-		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
+		if (pChoice.equals("2")) {                                // Weird to Bad엔딩 루트로 가는 선결조건)
+			StringBuilder script = new StringBuilder();
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("그는 아이에게 사정없이 총을 난사했다.");
 		}
 	}
 }

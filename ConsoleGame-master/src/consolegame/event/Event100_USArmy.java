@@ -3,6 +3,8 @@ package consolegame.event;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
+import consolegame.item.Item001_Passport;
+import consolegame.item.Item009_Can;
 
 public class Event100_USArmy extends Event {
 	public Event100_USArmy() {
@@ -58,12 +60,23 @@ public class Event100_USArmy extends Event {
 	@Override
 	public void getResult(Character c, String pChoice) {
 		// 0번 아이템ID 가 있는 경우 실행
-		if (Item.hasItem(c, 000)) {
-			c.removeItem(000);
+		if (pChoice.equals("1")) {                                                   //1번 선택시 Bad엔딩의 Good 엔딩 선결 조건
+			StringBuilder script = new StringBuilder();
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("우리 미국은 자유민주주의의 우방세력을 다시 재건할 계획을 가지고 있다.\n");
+			script.append("만약 어느 정도 힘을 키우고 마을로 돌아가게 된다면 우리에게 연락해라.\n");
+			script.append("가능하다면 도움을 줄 수 있도록 윗선에 보고 하겠다\"\n");
+			c.setMental(c.getMental() + 1);
 		}
 
 		// 무기가 있는경우 실행
-		if (Item.hasItemType(c, "무기")) {
+		if (pChoice.equals("2")) {                                                   //1번 선택시 Bad엔딩의 Good 엔딩 선결 조건
+			StringBuilder script = new StringBuilder();
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("안타깝지만 우리도 많은걸 줄 순 없다\n");
+			if (!Item.hasItem(c, 9)) {
+				c.getItem().add(new Item009_Can());
 		}
 	}
+  }
 }
