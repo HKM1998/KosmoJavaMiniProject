@@ -28,8 +28,6 @@ public class Event031_PoliceStation_1 extends Event {
 	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("모든 사람들이 자신의 살길을 찾기 위해 나갔지만.\n");
@@ -40,13 +38,13 @@ public class Event031_PoliceStation_1 extends Event {
 
 	@Override
 	public void getResult(Character c, String pChoice) {
-		// 0번 아이템ID 가 있는 경우 실행
+		StringBuilder sb = new StringBuilder();
 		if (Item.hasItem(c, 000)) {
 			c.removeItem(000);
 		}
 
-		// 무기가 있는경우 실행
 		if (Item.hasItemType(c, "무기")) {
 		}
+		ConsolePrint.printResult(sb);
 	}
 }

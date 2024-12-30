@@ -41,7 +41,8 @@ public class Event060_AbandonedHospital extends Event {
 	}
 
 	@Override
-	public void getResult(Character c, String pChoice) {		
+	public void getResult(Character c, String pChoice) {
+		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {                            //1번 선택시 Good 엔딩 루트가 Bad 엔딩되는 조건 중 하나                                                                                                                                                                                                                                                                                                                                                                                                                // 1번 우회한다 선택했을 경우 차트를 획득
 			if (!Item.hasItem(c, 007)) {
 				c.getItem().add(new Item007_Chart());         // 아이템 차트 클래스 임포트
@@ -51,7 +52,7 @@ public class Event060_AbandonedHospital extends Event {
 //		if (pChoice.equals("2")) {                            // 2번 들어갈 경우 061로 이동하는 것 보류
 //					
 //		}
-	
+		ConsolePrint.printResult(sb);
      }
 
 }

@@ -19,6 +19,7 @@ public class Event030_PoliceStation extends Event {
 
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
+
 	public void printChoice(Character c) { // 구현하려고 하던 바는 경찰서에서 2번을 선택하고 칼 혹은 총으로 공격하려 했을 경우
 		// 선택지 작성 //칼은 90% 확률로 지고 체력 -2, 10% 확률로 승리하고 탄약3개 획득
 		Selection selection = new Selection(); // 총은 50% 확률로 지고 체력 -2, 50% 확률로 승리하고 탄약3개 획득 이었습니다.
@@ -86,6 +87,7 @@ public class Event030_PoliceStation extends Event {
 //		if (pChoice.equals("1")) {                          //
 //			
 //		}
+		ConsolePrint.printResult(sb);
 
 	}
 }
