@@ -54,7 +54,7 @@ public class Event061_AbandonedHospital_1 extends Event {
 					script.append("칼로 공격했지만 패배하고 (체력 -1) 잃었습니다.\n");
 				} else {
 					Main.character.addItem(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 있을 때도 추가
-					script.append("(구급상자)를 획득했다!.\n");
+					script.append("구급상자를 획득했다!.\n");
 				}
 			} else {
 				script.append("아뿔싸 당신은 칼이 없습니다!\n");
