@@ -44,35 +44,35 @@ public class Event200_Mart extends Event {
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
-		if (pChoice.equals("1")) {
+		if (pChoice.equals("1") && Main.character.getMoney() >100) {
 			script.append("음 조금 녹슨것 같지만\n");
 			script.append("뭐 괜찮겠지.( 칼을 얻었습니다, 자금-100 )");
 			Main.character.addItem(new Item000_Knife());
 			Main.character.setMoney(Main.character.getMoney() - 100);
-		} else if (pChoice.equals("2")) {
+		} else if (pChoice.equals("2")&& Main.character.getMoney() >50) {
 			script.append("마음에 드는 맛은 아니지만..뭐..\n");
 			script.append("이거라도 챙겨야겠지.( 통조림을 얻었습니다, 자금-50 )");
 			Main.character.addItem(new Item009_Can());
 			Main.character.setMoney(Main.character.getMoney() - 50);
-		} else if (pChoice.equals("3")) {
+		} else if (pChoice.equals("3")&& Main.character.getMoney() >200) {
 			script.append("음 이거라면 누구든 \n");
 			script.append("상대할수 있을것 같은 자신감이 솟는다.\n");
 			script.append("난 강해졌다.( 총을 얻었습니다, 자금-200)");
 			Main.character.addItem(new Item008_Gun());
 			Main.character.setMoney(Main.character.getMoney() - 200);
-		} else if (pChoice.equals("4")) {
+		} else if (pChoice.equals("4")&& Main.character.getMoney() >50) {
 
 			script.append("아차 탄약도 챙겨야지.( 탄약을 얻었습니다, 자금-50)");
 			Main.character.addItem(new Item006_Ammunition());
 			Main.character.setMoney(Main.character.getMoney() - 50);
-		} else if (pChoice.equals("5")) {
+		} else if (pChoice.equals("5")&& Main.character.getMoney() >200) {
 
 			script.append("어떤 동물의 고기인지는\n");
 			script.append("모르겠으나 어쨋든\n");
 			script.append("맛있어 보이는 고기다.( 고기를 얻었습니다, 자금-200)");
 			Main.character.addItem(new Item010_Meat());
 			Main.character.setMoney(Main.character.getMoney() - 200);
-		} else if (pChoice.equals("6")) {
+		} else if (pChoice.equals("6")&& Main.character.getMoney() >50) {
 			script.append("이 제품의 표지만 봐도\n");
 			script.append("굉장히 맛이 있을것\n");
 			script.append("같아 보이진 않는다.\n");
@@ -84,8 +84,13 @@ public class Event200_Mart extends Event {
 			script.append("배도 고프고..\n");
 			script.append("돈도 없고... \n");
 			script.append("서럽다. ");
-			ConsolePrint.printResult(script, getIsLoaded());
+			
 		}
+		else {
+			script.append("돈이 없어서 물건을 살수 없다.\n");
+			script.append("씁슬하구만...\n");
+		}
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 
 }

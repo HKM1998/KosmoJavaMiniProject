@@ -42,9 +42,9 @@ public class Event081_Marine_1 extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { 
 			script.append("리더로 보이는 사람이 웃으며 말합니다.\n");   
-			script.append("\"하하하! 거짓말인것 알고 있었네 사실대로 말해서 다행이야.\"");
+			script.append("\"하하하! 거짓말인것 알고 있었네 사실대로 말해서 다행이야.\"\n");
 			script.append("뒤에서 총을 내리는 소리가 들립니다.\n");   
-			script.append("\"무작정 대려온 것에 대해 사과하지 편하게 쉬다 가게\"");
+			script.append("\"무작정 대려온 것에 대해 사과하지 편하게 쉬다 가게\"\n");
 			script.append("당신은 눈치가 보였으나 강제로 쉬다가 떠납니다.\n");   
 			script.append("(체력 +1, 정신력 -1)\n");   
 			Main.character.setHealth(Main.character.getHealth() + 1);

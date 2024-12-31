@@ -17,6 +17,7 @@ public class Event000_Start extends Event {
 
 		selection.addSelection("마약을 전부 불태우고 도망간다");
 		selection.addSelection("마약을 가지고 도망간다");
+
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -35,6 +36,7 @@ public class Event000_Start extends Event {
 		script.append("조금씩 보이기 시작하는게 떠오릅니다.\n");
 		script.append("그리곤 이내 이 마약을 어떻게 할지 고민에 빠지게 됩니다.\n\n");
 		script.append("전부 불지르고 도망갈 것인가? 마약을 가지고 도망갈것인가?\n");
+
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}

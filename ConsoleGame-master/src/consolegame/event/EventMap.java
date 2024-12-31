@@ -1,10 +1,11 @@
 package consolegame.event;
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class EventMap {
 	ArrayList<EventMapList> eventArray = new ArrayList<EventMapList>();
-	int totalWeight = 0;
 
 	public EventMap() {
 		// 이벤트 리스트 추가
@@ -36,17 +37,14 @@ public class EventMap {
 	}
 
 	private int getRandomEventId() {
-		totalWeight = 0;
-		eventArray.forEach(x -> totalWeight += x.weight);
-		eventArray.forEach(x -> x.percent = x.weight / totalWeight);
-		double random = Math.random();
+		Random random = new Random();
 		int find = 0;
-		double sum = 0;
+		double bestValue = Double.MAX_VALUE;
 		for (EventMapList e : eventArray) {
-			sum += e.percent;
-			if (sum >= random) {
+			double value = -Math.log(random.nextDouble())/e.weight;
+			if (value < bestValue) {
+				bestValue = value;
 				find = e.eventId;
-				break;
 			}
 		}
 
@@ -78,7 +76,7 @@ public class EventMap {
 		case 130:e = new Event130_HomelessMen();break;
 		case 140:e = new Event140_WeirdShopper();break;
 		case 150:e = new Event150_FillingStation();break;
-		case 160:e = new Event160_GangAssassin();break;
+		case 160:e = new Event160_Assassin();break;
 		case 170:e = new Event170_Wildboar();break;
 		case 180:e = new Event180_Suddenpoop();break;
 		case 190:e = new Event190_Meal();break;
@@ -86,7 +84,7 @@ public class EventMap {
 		case 210:e = new Event210_Peddler();break;
 		case 220:e = new Event220_Acquisition();break;
 		}
-		eventArray.stream().filter(x -> x.eventId == event).findFirst().get().setWeight(0);
+		eventArray.stream().filter(x -> x.eventId == event).collect(Collectors.toList()).forEach(li -> eventArray.remove(li));
 		return e;
 	}
 	
@@ -108,12 +106,10 @@ public class EventMap {
 class EventMapList {
 	int eventId;
 	double weight;
-	double percent;
 
 	EventMapList(int e, int w) {
 		this.eventId = e;
 		this.weight = w;
-		this.percent = 0;
 	}
 
 	public int getEventId() {
@@ -130,13 +126,5 @@ class EventMapList {
 
 	public void setWeight(double weight) {
 		this.weight = weight;
-	}
-
-	public double getPercent() {
-		return percent;
-	}
-
-	public void setPercent(double percent) {
-		this.percent = percent;
 	}
 }

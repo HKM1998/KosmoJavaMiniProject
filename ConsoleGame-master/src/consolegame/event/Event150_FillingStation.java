@@ -61,10 +61,12 @@ public class Event150_FillingStation extends Event {
 				script.append("당신은 소지금이 부족하여 작은상자를 구매할 수 없었습니다.");
 			}
 			if(pChoice.equals("3")) {
-				script.append("당신은 남자의 상자와 목숨을 빼았았다.(+칼, +진통제, +쓰레기짓)");
+				if (Main.character.getMoney() > 0) {
+				script.append("당신은 남자의 상자와 목숨을  전부 빼았았다.(+칼, +진통제, +쓰레기짓)");
 				Main.character.addItem(new Item000_Knife());
 				Main.character.addItem(new Item005_PainKiller());
-				Main.character.addItem(new Item012_Thash());				
+				Main.character.addItem(new Item012_Thash());	
+				}
 			}
 			
 		}

@@ -2,7 +2,6 @@ package consolegame.console;
 
 import java.util.Scanner;
 
-import consolegame.Main;
 import consolegame.event.Event;
 
 public class EventConsole {

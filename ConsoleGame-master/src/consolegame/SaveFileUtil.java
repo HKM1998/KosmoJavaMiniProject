@@ -2,11 +2,8 @@ package consolegame;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class SaveFileUtil {
 	// 세이브 파일 관련 핸들링

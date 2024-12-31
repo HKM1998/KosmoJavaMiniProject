@@ -3,7 +3,6 @@ package consolegame.console;
 import java.util.Scanner;
 
 import consolegame.Main;
-import consolegame.item.Item;
 import consolegame.thread.LoadingThread;
 
 public class ConsolePrint {
@@ -180,9 +179,8 @@ public class ConsolePrint {
 				System.out.println("");
 			}
 			System.out.println("게임을 종료하시겠습니까?");
-			System.out.println("1. 네        2. 아니오");
+			System.out.println("[1] 네        [2] 아니오");
 			System.out.println("");
-			System.out.print("입력:");
 			String inputStr = scan.next();
 			if (inputStr.equals("1")) {
 				ConsolePrint.clear();
@@ -218,7 +216,7 @@ public class ConsolePrint {
 		}
 		System.out.print("\t");
 		System.out.print("정신력 : ");
-		for (int i = 0; i < Main.character.getHealth(); i++) {
+		for (int i = 0; i < Main.character.getMental(); i++) {
 			System.out.print("■");
 		}
 		System.out.print("\t");
