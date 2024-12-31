@@ -7,12 +7,13 @@ import consolegame.event.Event;
 import consolegame.event.Event000_Start;
 
 public class MainConsole {
+	private static boolean isGameOver = false;
 	public static void start(Scanner scan) {
 		int eventCount = 0;
-
+		
 		EventConsole eventConsole = new EventConsole(new Event000_Start(), scan);
 		eventConsole.start();
-
+		
 		while (true) {
 			// 이벤트 (턴진행)
 			try {
@@ -37,10 +38,16 @@ public class MainConsole {
 		}
 	}
 
+	public static void setGameOver(boolean isGameOver) {
+		MainConsole.isGameOver = isGameOver;
+	}
+
 	static boolean isAlive() {
 		if (Main.character.getHealth() <= 0)
 			return false;
 		if (Main.character.getMental() <= 0)
+			return false;
+		if (isGameOver)
 			return false;
 
 		return true;

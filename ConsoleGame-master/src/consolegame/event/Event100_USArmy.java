@@ -47,14 +47,14 @@ public class Event100_USArmy extends Event {
 			script.append("\"(안타깝지만 민간인과 공유할 수 있는 정보는 없다.)\n");
 			script.append("Get out, We'll open fire..\"\n");
 			script.append("(꺼져라 안그러면 발포한다.)\"\n");
-			script.append("총구를 들이대는 모습에 당신은 무서워서 서둘러 도망쳐나왔습니다.\n");
-			script.append("(정신력 +1)\n");
-			Main.character.setMental(Main.character.getMental() + 1);
+			script.append("총구를 들이대는 모습에 당신은 무서워서 서둘러 도망쳐나오다가 발목을 접질럿습니다.\n");
+			script.append("(체력-1)\n");
+			Main.character.setHealth(Main.character.getHealth()-1);
 		}else if (pChoice.equals("2")) {
 			script.append("\"What the poor, take this get out kkk\"\n");
 			script.append("\"(그지새낀가. 이거나 받고 꺼져ㅋㅋㅋ)\"\n");
-			script.append("그들은 당신에게 낡은 통조림 하나를 던집니다 .\n");
-			script.append("(+ 통조림)\n");
+			script.append("그들은 당신에게 낡은 통조림 하나를 던집니다.\n");
+			script.append("(+ 통조림 한개를 얻었습니다.)\n");
 			if (!Item.hasItem(Main.character, 9)) {
 				Main.character.getItem().add(new Item009_Can());
 		}

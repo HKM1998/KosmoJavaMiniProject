@@ -39,7 +39,8 @@ public class Event180_Suddenpoop extends Event {
 			script.append("주변에 건물이라곤 전혀 찾을수없다.\n");
 			script.append("아무래도 큰일난것 같다.\n");
 			script.append("눈앞이 아득해진다.\n");
-			script.append("이런.. 당신은 결국 가다가 참지 못하고 바지에 똥을 싸버렸습니다.(정신력 -3, +악취)");
+			script.append("이런.. 당신은 결국 가다가 참지 못하고 바지에 똥을 싸버렸습니다.");
+			script.append("다 큰 어른이 이런 실수를 하다니 그래도 수치를 견디고 나아갑니다.(정신력 -3, +악취)");
 			Main.character.addItem(new Item014_Stink());; // 악취 아이템
 			Main.character.setMental(Main.character.getMental() - 3);
 
