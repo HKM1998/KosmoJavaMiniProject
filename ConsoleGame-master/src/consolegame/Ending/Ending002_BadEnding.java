@@ -1,10 +1,17 @@
 package consolegame.Ending;
 
+import consolegame.console.ConsolePrint;
+
 public class Ending002_BadEnding extends Ending {
 
+	public Ending002_BadEnding(){
+		this.setEndingId(5);
+		this.setEndingName("죄책감");}
+	
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder(); // 이벤트 060 Item.007차트 엔딩 선결조건
+		script.append("엔딩 " + getEndingId()+". " + getEndingName());
 		script.append("여행을 하던 도중 뭔가 적을 곳이 필요하던 당신은 가방속을 뒤지다");
 		script.append("예전에 폐병원에서 가지고 달아났던 차트를 발견합니다.");
 		script.append("차트의 빈공간에 글을 적으려는 순간 여기 저기 보이는 핏자국을 발견합니다.");
@@ -15,9 +22,13 @@ public class Ending002_BadEnding extends Ending {
 		script.append("바로 실종된 당신의 친구가 죽었던 곳인겁니다.");
 		script.append("용기를 조금 냈었다면 친구의 복수를 할 수 있었을텐데..");
 		script.append("하는 후회가 당신을 덮쳐오지만 선택을 되돌릴 수는 없습니다.");
-		script.append("결국 그는 자신의 비겁함에 대한 원망, 죄책감에 짖눌리다.");
+		script.append(".     \n");
+		script.append(".     \n");
+		script.append(".     \n");
+		script.append("결국 당신은 자신의 비겁함에 대한 원망, 죄책감에 짖눌리다.");
 		script.append("결국은 길거리의 부랑자로 살아가게 됩니다.");
 
+		ConsolePrint.printEndingScript(script);
 	}
 
 }
