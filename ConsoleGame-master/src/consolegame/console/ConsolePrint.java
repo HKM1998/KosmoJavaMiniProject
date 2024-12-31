@@ -3,7 +3,6 @@ package consolegame.console;
 import java.util.Scanner;
 
 import consolegame.Main;
-import consolegame.item.Item;
 import consolegame.thread.LoadingThread;
 
 public class ConsolePrint {

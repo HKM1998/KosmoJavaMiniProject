@@ -2,7 +2,6 @@ package consolegame.event;
 
 import consolegame.Main;
 import consolegame.console.ConsolePrint;
-import consolegame.console.TitleConsole;
 
 public class Event170_Wildboar extends Event {
 	public Event170_Wildboar() {

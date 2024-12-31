@@ -1,19 +1,15 @@
 package consolegame.item;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import consolegame.character.Character;
-import consolegame.event.Event;
 
-public abstract class Item {
+public class Item {
 	private int itemId; // 아이템ID
 	private String name; // 아이템 명
 	private int price; // 가격
 	private String type; // 아이템 타입
-	
-	public abstract void effect(Character c,Event e); // 효과 지정(이벤트에 따라 다름, 캐릭터에 영향)
 
 	/*
 	 * hasItem : 아이템 id 기반 아이템이 있는지 확인

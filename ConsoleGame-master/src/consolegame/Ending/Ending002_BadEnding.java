@@ -3,9 +3,8 @@ package consolegame.Ending;
 public class Ending002_BadEnding extends Ending{
 
 	@Override
-	StringBuilder getScript() {
+	void printScript() {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
