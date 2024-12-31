@@ -8,8 +8,8 @@ import consolegame.item.Item;
 public class InventoryConsole {
 	public static void print(Scanner scan) {
         ConsolePrint.clear();
-		System.out.println("=".repeat(100));
 		StringBuilder sb = new StringBuilder();
+        System.out.println("=".repeat(100));
 		int count = 0;
 		if (Main.character.getItem().size() <= 0) {
 			sb.append("소지중인 아이템이 없습니다.\n");
@@ -23,9 +23,9 @@ public class InventoryConsole {
 				}
 			}
 		}
-		System.out.println("=".repeat(100));
-		sb.append("[E] : 돌아가기\n");
 		ConsolePrint.printConsole(sb);
+        System.out.println("=".repeat(100));
+        System.out.println("[E] : 돌아가기");
 
         while (!scan.next().toUpperCase().equals("E")) {}
     }
