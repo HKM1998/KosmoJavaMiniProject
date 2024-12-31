@@ -214,10 +214,20 @@ public class ConsolePrint {
 		for (int i = 0; i < Main.character.getHealth(); i++) {
 			System.out.print("♥");
 		}
+		if(Main.character.getHealth() < Main.character.getMaxHealth()) {
+			for(int i = Main.character.getHealth() ; i < Main.character.getMaxHealth(); i++) {
+				System.out.print("♡");
+			}
+		}
 		System.out.print("\t");
 		System.out.print("정신력 : ");
 		for (int i = 0; i < Main.character.getMental(); i++) {
-			System.out.print("■");
+			System.out.print("●");
+		}
+		if(Main.character.getMental() < Main.character.getMaxMental()) {
+			for(int i = Main.character.getMental() ; i < Main.character.getMaxMental(); i++) {
+				System.out.print("○");
+			}
 		}
 		System.out.print("\t");
 		System.out.print("소지금 : " + Main.character.getMoney() + "\n");
