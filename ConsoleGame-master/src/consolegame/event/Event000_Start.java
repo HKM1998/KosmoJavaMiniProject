@@ -2,6 +2,7 @@ package consolegame.event;
 
 import consolegame.Main;
 import consolegame.console.ConsolePrint;
+import consolegame.item.Item015_Drug;
 
 public class Event000_Start extends Event {
 	public Event000_Start() {
@@ -15,8 +16,8 @@ public class Event000_Start extends Event {
 	public void printChoice() {
 		Selection selection = new Selection();
 
-		selection.addSelection("마약을 전부 불태우고 도망간다");
-		selection.addSelection("마약을 가지고 도망간다");
+		selection.addSelection("마약을 전부 불태우고 돈가방만 챙겨서 튄다");
+		selection.addSelection("마약과 돈가방을 들고 튄다");
 
 		this.setsCount(selection.count);
 		selection.print();
@@ -31,11 +32,12 @@ public class Event000_Start extends Event {
 		script.append("늘 그렇듯 뒷산에서 산책을 하다가 그날따라 유난히 옆길로 새고 싶어합니다.\n");
 		script.append("그래서 산길이 나지 않은 곳으로 깊이 들어갑니다.\n");
 		script.append("그런데 당신은 뒷산에서 동네 갱단이 몰래 재배하고 있는 아편밭을 발견합니다.\n");
+		script.append("아편 밭의 옆엔 돈가방과 포장된 약 한무더기가 보입니다.\n");
 		script.append("이제 막 폐허에서 꽃을 피우려 하는 이 시기에 마약이라니!\n");
 		script.append("그리고 다시생각해보니 최근에 이전에는 없었던 마약에취한 부랑자들이\n");
 		script.append("조금씩 보이기 시작하는게 떠오릅니다.\n");
 		script.append("그리곤 이내 이 마약을 어떻게 할지 고민에 빠지게 됩니다.\n\n");
-		script.append("전부 불지르고 도망갈 것인가? 마약을 가지고 도망갈것인가?\n");
+		script.append("불지르고 돈만들고 튈 것인가? 전부 들고 튈 것인가?\n");
 
 
 		ConsolePrint.printScript(script, getIsLoaded());
@@ -47,12 +49,14 @@ public class Event000_Start extends Event {
 		
 		
 		if (pChoice.equals("1")) {
-			script.append("당신은 마약에 불을 질렀습니다! 그리고 곧바로 도망을 칩니다.\n");
+			script.append("당신은 마약에 불을 질렀습니다! 그리고 돈가방을 챙기고 도망을 칩니다.\n");
+			Main.character.setMoney(Main.character.getMoney()+500);
 		}
 		
 		if (pChoice.equals("2")) {
-			script.append("당신은 어차피 없앨 마약이라면 본인이 가져가는게 낫다라 생각하고 도망칩니다.\n");
+			script.append("당신은 어차피 없앨 마약이라면 본인이 가져가는게 낫다라 생각하고 돈가방도 챙겨 도망칩니다.\n");
 			Main.character.setMoney(Main.character.getMoney() + 500);
+			Main.character.addItem(new Item015_Drug());
 		}
 		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부
 	}
