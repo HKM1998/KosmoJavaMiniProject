@@ -154,7 +154,19 @@ public class ConsolePrint {
 		System.out.println("=".repeat(100));
 		System.out.println("[아무 키나 입력하여 진행]");
 	}
-
+	public static void printEndingScript(StringBuilder pSb) {
+		clear();
+		System.out.println("=".repeat(100));
+		for (int i = 0; i < pSb.toString().length(); i++) {
+			System.out.print(pSb.charAt(i));
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("=".repeat(100) + "\n");
+	}
 
 	public static void printWrongInputMessage() {
 		System.out.println("<잘못 입력하셨습니다. 다시 입력해주세요.>");
