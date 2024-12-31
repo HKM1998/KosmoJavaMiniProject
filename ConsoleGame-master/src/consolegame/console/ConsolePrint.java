@@ -218,7 +218,7 @@ public class ConsolePrint {
 		}
 		System.out.print("\t");
 		System.out.print("정신력 : ");
-		for (int i = 0; i < Main.character.getHealth(); i++) {
+		for (int i = 0; i < Main.character.getMental(); i++) {
 			System.out.print("■");
 		}
 		System.out.print("\t");
