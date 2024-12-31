@@ -47,7 +47,7 @@ public class Event030_PoliceStation extends Event {
 		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) { //
 			script.append(getEventId() + ". " + getName() + "\n");
-			script.append("이벤트031로 넘어가는 선택지");
+			script.append("경찰서로 안으로 들어가게 된다");
 		}
 
 		if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
