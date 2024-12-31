@@ -14,7 +14,7 @@ public class Event000_Start extends Event {
 	public void printChoice() {
 		Selection selection = new Selection();
 
-		selection.addSelection(" 도망친다.");
+		selection.addSelection(" 전부 불태우고 도망친다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
