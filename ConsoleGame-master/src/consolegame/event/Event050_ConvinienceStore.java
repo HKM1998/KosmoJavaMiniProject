@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.console.ConsolePrint;
 
 public class Event050_ConvinienceStore extends Event {
@@ -37,8 +38,10 @@ public class Event050_ConvinienceStore extends Event {
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
-		if (pChoice.equals("1")) { // 1번 들어가면 051로 가는거 보류
-			script.append("1번 선택시 051 이벤트로 가는거 보류 상태\n");
+		if (pChoice.equals("1")) { 
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("당신은 망설임 없이 편의점 안으로 들어갑니다.\n");
+			Main.eMap.setEvent(this.getEventId()); 
 		}
 
 		if (pChoice.equals("2")) {
