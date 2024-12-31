@@ -37,20 +37,18 @@ public class Event000_Start extends Event {
 		script.append("당신은 이 마약들을 어떻게 할지 고민에 빠지게 됩니다.\n\n");
 		script.append("불태우고 돈만들고 튈 것인가? 마약과 돈 전부 들고 튈 것인가?\n");
 
-
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
-		
-		
+
 		if (pChoice.equals("1")) {
 			script.append("당신은 마약에 불을 질렀습니다! 그리고 돈가방을 챙기고 도망을 칩니다.\n");
-			Main.character.setMoney(Main.character.getMoney()+500);
+			Main.character.setMoney(Main.character.getMoney() + 500);
 		}
-		
+
 		if (pChoice.equals("2")) {
 			script.append("당신은 어차피 없앨 마약이라면 본인이 가져가는게 낫다라 생각하고 돈가방도 챙겨 도망칩니다.\n");
 			Main.character.setMoney(Main.character.getMoney() + 500);

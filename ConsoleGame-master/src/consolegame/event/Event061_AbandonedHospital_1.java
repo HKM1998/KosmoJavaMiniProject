@@ -51,37 +51,37 @@ public class Event061_AbandonedHospital_1 extends Event {
 
 				if (random.nextInt(10) < 4) { // 칼은 40% 확률로 패배 후 체력-1
 					Main.character.setHealth(Main.character.getHealth() - 1);
-					script.append("칼로 공격했지만 패배하고 체력을 -1 잃었습니다.\n");
+					script.append("칼로 공격했지만 패배하고 (체력 -1) 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) { // 아이템 FirstAidKit 클래스 임포트
 					Main.character.addItem(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 없을때 추가
-					script.append("구급상자를 획득했다!.\n");
+					script.append("(구급상자)를 획득했다!.\n");
 				} else {
 					Main.character.addItem(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 있을 때도 추가
-					script.append("구급상자를 획득했다!.\n");
+					script.append("(구급상자)를 획득했다!.\n");
 				}
 			}
 
 		}
 		if (pChoice.equals("2")) {
-		if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격
+			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격
 
-			Random random1 = new Random();
-			if (random1.nextInt(10) < 0) { // 총은 % 확률로 패배 후 체력 -1, 100% 확률로 승리 후 구급상자 획득
-				Main.character.setHealth(Main.character.getHealth() - 1);
-				script.append("총으로 공격했지만 패배하고 체력을 -1 잃었습니다.\n");
-			} else if (!Item.hasItemType(Main.character, "FirstAidKit")) { // 기존에 구급상자 없을 경우 추가
-				Main.character.addItem(new Item004_FirstAidKit());
-				script.append("구급상자를 획득했다!.\n");
-			} else { // 기존에 구급상자 있을 때도 추가
-				Main.character.addItem(new Item004_FirstAidKit());
-				script.append("구급상자를 획득했다!.\n");
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 0) { // 총은 % 확률로 패배 후 체력 -1, 100% 확률로 승리 후 구급상자 획득
+					Main.character.setHealth(Main.character.getHealth() - 1);
+					script.append("총으로 공격했지만 패배하고 (체력 -1) 잃었습니다.\n");
+				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) { // 기존에 구급상자 없을 경우 추가
+					Main.character.addItem(new Item004_FirstAidKit());
+					script.append("(구급상자)를 획득했다!.\n");
+				} else { // 기존에 구급상자 있을 때도 추가
+					Main.character.addItem(new Item004_FirstAidKit());
+					script.append("(구급상자)를 획득했다!.\n");
+				}
 			}
-		  }
 		}
 		if (pChoice.equals("3")) {
 			if (!Item.hasItem(Main.character, 005)) {
 				Main.character.addItem(new Item005_PainKiller()); // 2번 선택시 진통제만 가져간다
-				script.append("진통제를 획득했다!.\n");
+				script.append("(진통제)를 획득했다!.\n");
 			}
 		}
 		ConsolePrint.printResult(script, getIsLoaded());
