@@ -8,6 +8,7 @@ import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 import consolegame.item.Item003_DogMeat;
 import consolegame.item.Item004_FirstAidKit;
+import consolegame.item.Item006_Ammunition;
 
 public class Event051_ConvinienceStore_1 extends Event {
 	public Event051_ConvinienceStore_1() {

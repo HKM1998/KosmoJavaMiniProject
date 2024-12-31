@@ -4,15 +4,29 @@ import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
-import consolegame.item.Item001_Passport;
 import consolegame.item.Item008_Gun;
 
 public class Event081_Marine_1 extends Event {
 	public Event081_Marine_1() {
 		setEventId(81);
-		setName("해병대");
+		setName("해병대 전우회");
 		setScore(0);
 		setWeight(0);
+	}
+	// 이벤트 스크립트 바로 화면에 출력
+	@Override
+	public void printScript() {
+		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
+		// 아래는 예시
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		script.append("잠시 그들에게 둘러쌓여 걷다보니 무너진 빌딩 사이 멀쩡한 건물이 나타납니다.\n");
+		script.append("사무실 안의 의자에 강제로 앉혀집니다.\n\n");
+		script.append("털썩 !\n\n");
+		script.append("그들 중 리더로 보이는 사람이 당신에게 말을 겁니다.\n\n");
+		script.append("\"그래. 1511기라고? 어디서 근무했지?\"\n\n");
+
+		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	// 선택지 생성 메서드 반드시 오버라이딩
@@ -21,51 +35,40 @@ public class Event081_Marine_1 extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("우리의 피를 끓게 하는구만! 그렇다면 훗날 필요하다면 우리가 도움을 주도록 하지.\n"
-				+ "훗날 필요하다면 월곡동 주변에서 '월곡 해병 전우회'를 찾아오라고.");
+		selection.addSelection("당신은 식은땀을 흘리며 거짓말에 대해 사과합니다.");
 		
-		
-		
-		selection.addSelection(" 우리 후배 기수가 힘들어 하는 모습을 보니 힘들군.\n"
-				+ "당장 줄껀 총 한자루 이것밖에 없네.");
+		selection.addSelection("당신은 당당하게 당장 생각나는 지역을 말합니다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
-	@Override
-	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("사실 저는 동네 촌장의 폭정을 피해 달아 나고 있습니다.");
-		script.append("언젠가는 마을로 돌아가 자유민주주의를 회복시키고 싶습니다. ");
-
-		ConsolePrint.printScript(script, getIsLoaded());
-	}
-
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
-		if (pChoice.equals("1")) {                                             //1번 선택시 Weird 엔딩의 Good 엔딩 선결조건 만족
-			StringBuilder script = new StringBuilder();
-			script.append(getEventId() + ". " + getName() + "\n");
-			script.append("우리의 피를 끓게 하는구만! 그렇다면 훗날 필요하다면 우리가 도움을 주도록 하지\n");   
-			script.append("훗날 필요하다면 월곡동 주변에서 '월곡 해병 전우회'를 찾아오라고.\n");
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		if (pChoice.equals("1")) { 
+			script.append("리더로 보이는 사람이 웃으며 말합니다.\n");   
+			script.append("\"하하하! 거짓말인것 알고 있었네 사실대로 말해서 다행이야.\"");
+			script.append("뒤에서 총을 내리는 소리가 들립니다.\n");   
+			script.append("\"무작정 대려온 것에 대해 사과하지 편하게 쉬다 가게\"");
+			script.append("당신은 눈치가 보였으나 강제로 쉬다가 떠납니다.\n");   
+			script.append("(체력 +1, 정신력 -1)\n");   
+			Main.character.setHealth(Main.character.getHealth() + 1);
+			Main.character.setMental(Main.character.getMental() - 1);
 		}
-
-		// 무기가 있는경우 실행
-		if (pChoice.equals("2")) {
-			if (!Item.hasItem(Main.character, 8)) {
-				Main.character.getItem().add(new Item008_Gun());                                          //2번 선택시 총을 얻는다
+		else if (pChoice.equals("2")) {
+			script.append("\"백령도! 백령도에서 근무했습니다.\"\n");
+			script.append("당당하게 말하는 모습에 리더로 보이는 사람은 흡족한 미소를 짓습니다.\n");
+			script.append("\"내가 거기서 근무했었지! 자네 위험하게 다니지 말고 이거 하나 챙겨가게나\"\n");
+			if(!Item.hasItem(Main.character, 8)) {
+				script.append("탄약이 없는 총을 넘겨 받습니다.\n");
+				Main.character.addItem(new Item008_Gun());
+			}else {
+				script.append("비타민을 넘겨 받습니다. 비타민을 먹자 정신이 맑아지는 것이 느껴집니다.\n");
+				script.append("(정신력 +1)\n");
+				Main.character.setMental(Main.character.getMental() + 1);
 			}
-			StringBuilder script = new StringBuilder();
-			script.append(getEventId() + ". " + getName() + "\n");
-			script.append("우리 후배 기수가 힘들어 하는 모습을 보니 힘들군.\n");
-			script.append("당장 줄껀 총 한자루 이것밖에 없네.\n");
-			script.append("주인공은 '필승'을 외치고 떠난다\n");
 		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

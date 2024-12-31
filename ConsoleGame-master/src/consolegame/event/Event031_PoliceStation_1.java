@@ -40,7 +40,6 @@ public class Event031_PoliceStation_1 extends Event {
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
-		StringBuilder sb = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("너도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하라고\n");
 			if (!Item.hasItemType(Main.character, "Ammunition")) {
@@ -50,7 +49,7 @@ public class Event031_PoliceStation_1 extends Event {
 				try {
 					Item006_Ammunition ammunition = (Item006_Ammunition)(Item.findItem(Main.character, 6)); 
 					ammunition.setAmAmount(ammunition.getAmAmount() + 1);
-				}catch(ClassCastException e) {
+				} catch (ClassCastException e) {
 					Main.character.removeItem(6);
 					Main.character.getItem().add(new Item006_Ammunition()); 
 					script.append("탄약을 추가적으로 얻었습니다!\n");
@@ -61,6 +60,6 @@ public class Event031_PoliceStation_1 extends Event {
 		if (pChoice.equals("2")) {
 			script.append("아주 노골적으로 잿밥에만 관심이 있구만. 그냥 갈길 가쇼. 그리곤 쫓아냈습니다.\n");
 		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

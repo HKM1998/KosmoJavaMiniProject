@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -7,54 +8,52 @@ import consolegame.item.Item;
 public class Event120_Doin extends Event {
 	public Event120_Doin() {
 		setEventId(120);
-		setName("도인");
+		setName("한강 도인");
 		setScore(0);
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
-	@Override
-	public void printChoice() {
-		// 선택지 작성
-		Selection selection = new Selection();
-
-		selection.addSelection("도사님은 왜 세상이 이렇게 돌아간다고 생각 하시나요?");
-		
-		selection.addSelection("그냥 그 찬물에서 우선 나오시고 나서 생각 하시는게 나을듯 한데요. ");
-		this.setsCount(selection.count);
-		selection.print();
-	}
-
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("광화문 청계천 강물 한가운데 앉아 있는 도인이 있다.");
-		script.append("그는 지나가는 주인공한테 왜 세상이 \n");
+		script.append("당신은 길을 걷던 중 한강에 도착했다!\n");
+		script.append("날씨는 추웟으나 오랫만에 보는 한강에 주변을 걷기로 하였다.\n\n");
+		script.append("흠칫.....!\n\n");
+		script.append("뜬금없이 산책로에 가부좌를 틀고 앉아 있는 도인이 있다.\n");
+		script.append("그는 지나가는 당신에게 왜 세상이 \n");
 		script.append("이렇게 돌아가는지 궁금하지 않냐고 한다.\n");
-		script.append("정말 뜬금없지만 그렇기에 더욱 궁금했다.\n");
+		script.append("정말 뜬금없는 상황이기에 더욱 도인의 생각이 궁금해졌다.\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
+	}
+	
+	@Override
+	public void printChoice() {
+		Selection selection = new Selection();
+
+		selection.addSelection("\"도사님은 왜 세상이 이렇게 돌아간다고 생각 하시나요?\"");
+		
+		selection.addSelection("당신은 추위에 떨며 말한다.\n\"그런 생각을 하실 때가 아닌것 같은데요.\"");
+		this.setsCount(selection.count);
+		selection.print();
 	}
 
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		if (pChoice.equals("1")) {                       //1번 선택은 Good 엔딩의 Bad엔딩 선결조건 중 하나
+		if (pChoice.equals("1")) {
 			script.append("도인이 내뱉는 음양오행과 양명햑을 동원한 그럴듯한 그의 설명에\n");
-			script.append("뭔가 세상 사람들이 근본적으로 잘못 되었다는 생각이 싹트게 된다.\n");
-		}
-
-		// 무기가 있는경우 실행
-		if (pChoice.equals("2")) {                       //2번 선택 또한 대사만 있고 추가적인 이벤트는 없다.
-			script.append("도인은 '그저 눈 앞에 있는 것에만 급급하여 자명한 것을 못보는구나. 안타깝구나'\n");
-			script.append("라고 말한뒤 떠난다\n");
+			script.append("홀린듯이 듣고 있다보니 추위에 몸이 어는 듯한 느낌이 든다.\n");
+			script.append("(체력 -1)\n");
+			Main.character.setHealth(Main.character.getHealth() - 1);
+		}else if (pChoice.equals("2")) { 
+			script.append("도인은 \"그저 눈 앞에 있는 것에만 급급하여 자명한 것을 못보는구나. 안타깝구나\n\n");
+			script.append("라고 말한뒤 떠났습니다.\n");
+			script.append("당신은 어이없어 하면 산책을 마저하고 자리를 떠납니다.\n");
 		}
 		
-		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

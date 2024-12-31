@@ -59,9 +59,6 @@ public class Event010_EmptyCar extends Event {
 			}
 		}
 
-		
-
-	
 		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

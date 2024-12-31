@@ -30,7 +30,7 @@ public class Event170_Wildboar extends Event {
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(" 전방에 최소 2톤은 나가보이는 커다란 맷돼지가 나타났다. 어떻할까? ");
+		script.append(" 당신의 전방에 최소 2톤은 나가보이는 커다란 맷돼지가 나타났다. 어떻할까? ");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
@@ -47,7 +47,8 @@ public class Event170_Wildboar extends Event {
 			script.append("져버렸다 \n");
 			script.append("아프다..\n");
 			script.append("눈 앞이 깜깜해진다...(게임오버)");
-			Main.character.setHealth(-1);
+
+
 		}
 		
 

@@ -1,5 +1,6 @@
 package consolegame.event;
 
+import consolegame.Main;
 import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
@@ -7,50 +8,45 @@ import consolegame.item.Item;
 public class Event110_University extends Event {
 	public Event110_University() {
 		setEventId(110);
-		setName("성균관대학교");
+		setName("인근대학교");
 		setScore(0);
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
+	@Override
+	public void printScript() {
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		script.append("길을 걷던 중 당신은 대학을 발견했다.\n");
+		script.append("당신은 고민을 하던 중 학교 안을 둘러보기로 하였다..\n");
+		script.append("갑자기 교내 스피커에서 방송이 시작되더니\n");
+		script.append("교내 운영에 대한 방송을 시작하더니 친숙한 노래들이 들려오기 시작한다.\n");
+
+		ConsolePrint.printScript(script, getIsLoaded());
+	}
+	
 	@Override
 	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
-
-		selection.addSelection("자유민주주의에 대한 본인의 신념을 설파하고 떠난다.\n");
-		
-		selection.addSelection("반드시 무력이 갖춰져야만 어떤 신념이든 관철이 가능함을 얘기하고 떠난다\n");
+		selection.addSelection("오랫만에 듣는 노래에 흠뻑 빠져 감상한다.");
+		selection.addSelection("교내에 사람이 있다는 사실에 긴장하며 자리를 벗어난다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
-
-	// 이벤트 스크립트 바로 화면에 출력
-	@Override
-	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("큰 대학을 마주쳤다. 이 대학의 중심 연단에는 수많은 학생들이 모여");
-		script.append("난립하는 세상을 어떻게 운영 해야 하는지에 대한 토론이 이루어지고있다.\n");
-		script.append("대한 토론이 이루어지고있다.\n");
-		script.append("주인공은 무엇인가에 홀린 듯 연단에 갑자기 올라 가더니 마이크를 잡는다.\n");
-		script.append("갑자기 올라 가더니 마이크를 잡는다.\n");
-		
-
-		ConsolePrint.printScript(script, getIsLoaded());
-	}
-
+	
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
 		if(pChoice.equals("1")) {
-			sb.append("학생들은 어리둥절 해 하며 그저 떠나가는 그의 뒷모습을 멀뚱히 바라본다.\n");
+			script.append("당신은 오랫만에 듣는 노래에 지쳣던 마음이 회복되는 것을 느꼈습니다.\n");
+			script.append("(정신력 +1)\n");
+			Main.character.setMental(Main.character.getMental() + 1);
 		}else if(pChoice.equals("2")) {
-			sb.append("학생들은 가슴에 와닿는 현실적인 그의 연설에 환호를 하고, 그는 환호를 받으며 떠난다.\n");
+			script.append("당신은 다행히 사람과 마주치기 전에 학교에서 벗어날 수 있었습니다.\n");
 		}
 		
-		ConsolePrint.printResult(sb, getIsLoaded()); // 결과 출력부
+		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부
 	}
 }

@@ -16,6 +16,22 @@ public class Event130_HomelessMen extends Event {
 		setWeight(0);
 	}
 
+	// 이벤트 스크립트 바로 화면에 출력
+	@Override
+	public void printScript() {
+		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
+		// 아래는 예시
+		StringBuilder script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
+		script.append("당신은 길거리를 지나던 중 이상한 냄새를 맡았습니다.\n");
+		script.append("무언가 당신을 뒤에서 쫒아 오는 것이 느껴집니다.\n\n");
+		script.append("............달그락 소리와 합께\n ");
+		script.append("배고픔에 굶주린 노숙자들이 뒤에서 당신을 덮치려 합니다.\n");
+		script.append("빠르게 달려 장소를 옮기지만 막다른 골목에 몰리고 말았습니다.\n");
+
+		ConsolePrint.printScript(script, getIsLoaded());
+	}
+
 	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
@@ -28,21 +44,7 @@ public class Event130_HomelessMen extends Event {
 		this.setsCount(selection.count);
 		selection.print();
 	}
-
-	// 이벤트 스크립트 바로 화면에 출력
-	@Override
-	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("지나가는데 이상한 냄새가 난다. ");
-		script.append("배고픔에 굶주린 노숙자들이 뒤에서 몰래 미행을 한다. \n");
-		script.append("걸음을 빠르게 옮기지만 막다른 골목에 몰리고 만다. 그들이 습격을 해 온다.\n");
-
-		ConsolePrint.printScript(script, getIsLoaded());
-	}
-
+	
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
@@ -59,8 +61,11 @@ public class Event130_HomelessMen extends Event {
 					script.append("노숙자들과 싸워 이겼으나 남은 것은 허탈함 뿐입니다.\n");
 				}
 			}
-		} else if (pChoice.equals("2")) { // 2번 선택 또한 대사만 있고 추가적인 이벤트는 없다.
-			script.append("노숙자들에게서 최선을 다해 도망쳤습니다.(정신력 -1)\n");
+		} else if (pChoice.equals("2")) { 
+			script.append("노숙자들에게서 최선을 다해 도망쳤고 이내 아무도 쫒아오지 않는 것이 느껴집니다.\n");
+			script.append("당신은 이곳에 안전한 곳이 없다는 생각에 정신이 아득해집니다.\n");
+			script.append("(정신력 -1)\n");
+			Main.character.setMental(Main.character.getMental() - 1);
 		}
 
 		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부

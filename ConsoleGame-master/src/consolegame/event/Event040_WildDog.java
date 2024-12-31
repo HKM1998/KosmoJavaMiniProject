@@ -22,7 +22,6 @@ public class Event040_WildDog extends Event {
 	public void printChoice() {
 		// 선택지 작성
 		Selection selection = new Selection();
-
 		selection.addSelection("도망갑니다.");	
 		selection.addSelection("칼로 싸웁니다");		
 		selection.addSelection("총으로 싸웁니다");		
@@ -42,7 +41,6 @@ public class Event040_WildDog extends Event {
 		script.append("내가 아무리 떠돌이 신세여도 그렇지 들개한테 잡아 먹히는 엔딩이 맞냐?\n");
 		script.append("라고 중얼거린 당신은 이내 선택을 합니다.\n");
 
-
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
@@ -51,7 +49,7 @@ public class Event040_WildDog extends Event {
 		StringBuilder script = new StringBuilder();
 
 		if (pChoice.equals("1")) {                             
-			Main.character.setHealth(Main.character.getHealth() - 1);                     
+			Main.character.setHealth(Main.character.getHealth() - 1);      
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("마주치자마자 부리나케 도망쳤다. 체력은 -1이 되었습니다.\n");
 		}
@@ -59,7 +57,7 @@ public class Event040_WildDog extends Event {
 		if (pChoice.equals("2")) {                                      
 			if (Item.hasItem(Main.character, 000)) {                                 
 				Random random = new Random();                         
-				if (random.nextInt(10) < 7) {                          
+				if (random.nextInt(10) < 7) {                 
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append("칼로 맞서싸웠으나 패배했고 체력은 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "DogMeat")) {

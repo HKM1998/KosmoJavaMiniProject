@@ -33,7 +33,6 @@ public class Event050_ConvinienceStore extends Event {
 		script.append("저 멀리서 익숙한 초록색 간판이 보인다. 불빛에 이끌려 가까이 가 봅니다.\n");
 		script.append("역시 이때쯤이면 나타날 때가 됐죠~ 다름아닌 편의점이군요.\n");
 
-
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
