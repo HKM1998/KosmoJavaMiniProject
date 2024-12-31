@@ -32,49 +32,48 @@ public class Event130_HomelessMen extends Event {
 		Selection selection = new Selection();
 
 		selection.addSelection("싸운다");
-
 		selection.addSelection("도망친다 ");
 		this.setsCount(selection.count);
 		selection.print();
 	}
-	
+
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
-			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격
+		if (pChoice.equals("1")) {
+			Random random = new Random();
+			if (Item.hasItem(Main.character, 8)) {
 				script.append("가지고 있던 총으로 위협하자 그들은 도망가기에 급급했습니다.\n");
 				script.append("그들은 도망치는 길에 돈을 떨어뜨렸습니다!\n");
 				script.append("(소지금 +200)\n");
-				Main.character.setMoney(Main.character.getMoney() + 200); 
-			} else if (Item.hasItem(Main.character, 0)) { // 칼을 가지고 있을 경우 공격
-				Random random = new Random();
-				if (random.nextInt(10) < 7) { // 칼은 70% 확률로 패배 후 체력-1
-					Main.character.setHealth(Main.character.getHealth() - 1); // 전리품 없음
+				Main.character.setMoney(Main.character.getMoney() + 200);
+			} else if (Item.hasItem(Main.character, 0)) {
+				if (random.nextInt(10) < 7) {
+					Main.character.setHealth(Main.character.getHealth() - 1);
 					script.append("노숙자들과 싸웟으나 그들에게서 이길수 없었습니다.(체력 -1)\n");
-				}else {
+				} else {
 					script.append("노숙자들에게서 싸움에서 압도적으로 이겼습니다!\n");
 					script.append("그들에게서 돈을 강탈합니다.\n");
 					script.append("(소지금 +100)\n");
 					Main.character.setMoney(Main.character.getMoney() + 50); // 30% 소지금 중가
 				}
 			} else {
-				int rand = (int)(Math.random()*10);
-				if(rand > 7) {
+				int rand = random.nextInt(10);
+				if (rand > 7) {
 					script.append("노숙자들과 싸워 이겼으나 남은 것은 허탈함 뿐입니다.\n");
-				} else if(rand>3){
+				} else if (rand > 3) {
 					script.append("노숙자들과 싸우는 중 상처를 입고 도망칩니다.\n");
 					script.append("(체력 -1)\n");
 					Main.character.setHealth(Main.character.getHealth() - 1); // 30% 체력 감소
-				}else {
+				} else {
 					script.append("노숙자들에게서 싸움에서 압도적으로 이겼습니다!\n");
 					script.append("그들에게서 돈을 강탈합니다.\n");
 					script.append("(소지금 +100)\n");
 					Main.character.setMoney(Main.character.getMoney() + 100); // 30% 소지금 중가
 				}
 			}
-		} else if (pChoice.equals("2")) { 
+		} else if (pChoice.equals("2")) {
 			script.append("노숙자들에게서 최선을 다해 도망쳤고 이내 아무도 쫒아오지 않는 것이 느껴집니다.\n");
 			script.append("당신은 이곳에 안전한 곳이 없다는 생각에 정신이 아득해집니다.\n");
 			script.append("(정신력 -1)\n");

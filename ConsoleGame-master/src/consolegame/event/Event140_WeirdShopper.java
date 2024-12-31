@@ -15,8 +15,6 @@ public class Event140_WeirdShopper extends Event {
 
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("인적이 드문 골목길 한 가운데 허름한 가판대가 있습니다.\n");
@@ -32,13 +30,12 @@ public class Event140_WeirdShopper extends Event {
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
+	
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("칼 (소지금 -200)");
-
 		selection.addSelection("총 (소지금 -500)");
 		this.setsCount(selection.count);
 		selection.print();
@@ -50,9 +47,10 @@ public class Event140_WeirdShopper extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { // 1번은 금액 200원을 쓰고 칼 획득
 			if (Main.character.getMoney() > 200) {
+				script.append("소지금 200을 사용하여 칼을 구매하였습니다.\n");
+				script.append("(+ 칼)\n");
 				Main.character.setMoney(Main.character.getMoney() - 200);
 				Main.character.getItem().add(new Item000_Knife());
-				script.append("소지금 200을 사용하여 칼을 구매하였습니다.(+ 칼)\n");
 			} else {
 				script.append("당신은 소지금이 부족하여 칼을 구매할 수 없었습니다.\n");
 			}
@@ -61,7 +59,8 @@ public class Event140_WeirdShopper extends Event {
 			if (Main.character.getMoney() > 500) {
 				Main.character.setMoney(Main.character.getMoney() - 500);
 				Main.character.getItem().add(new Item008_Gun()); // 아이템 008 총
-				script.append("소지금 500을 사용하여 총을 구매하였습니다.(+ 총)\n");
+				script.append("소지금 500을 사용하여 총을 구매하였습니다.\n");
+				script.append("(+ 총)\n");
 			} else {
 				script.append("당신은 소지금이 부족하여 총을 구매할 수 없었습니다.\n");
 			}
