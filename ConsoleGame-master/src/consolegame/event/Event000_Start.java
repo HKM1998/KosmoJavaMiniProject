@@ -13,6 +13,17 @@ public class Event000_Start extends Event {
 	}
 
 	@Override
+	public void printChoice() {
+		Selection selection = new Selection();
+
+		selection.addSelection("마약을 전부 불태우고 돈가방만 챙겨서 튄다");
+		selection.addSelection("마약과 돈가방을 들고 튄다");
+
+		this.setsCount(selection.count);
+		selection.print();
+	}
+
+	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
@@ -30,33 +41,17 @@ public class Event000_Start extends Event {
 	}
 
 	@Override
-	public void printChoice() {
-		Selection selection = new Selection();
-
-		selection.addSelection("마약을 전부 불태우고 돈가방만 챙겨서 튄다");
-		selection.addSelection("마약과 돈가방을 들고 튄다");
-
-		this.setsCount(selection.count);
-		selection.print();
-	}
-	
-	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+
 		if (pChoice.equals("1")) {
 			script.append("당신은 마약에 불을 질렀습니다! 그리고 돈가방을 챙기고 여행을 떠납니다.\n");
 			script.append("(소지금 +500)\n");
 			Main.character.setMoney(Main.character.getMoney()+500);
-<<<<<<< HEAD
 		}
 
 		if (pChoice.equals("2")) {
 			script.append("당신은 어차피 없앨 마약이라면 본인이 가져가는게 낫다라 생각하고 돈가방도 챙겨 떠납니다.\n");
-=======
-		}else if (pChoice.equals("2")) {
-			script.append("당신은 어차피 없앨 마약이라면 본인이 가져가는게 낫다라 생각하고 돈가방도 챙겨 도망칩니다.\n");
->>>>>>> 591cec4b0b5e7b05fb851139a56f0d52f9e487cf
 			script.append("(소지금 +500)\n");
 			script.append("(+ 약)\n");
 			Main.character.setMoney(Main.character.getMoney() + 500);
