@@ -2,6 +2,7 @@ package consolegame.event;
 
 import consolegame.Main;
 import consolegame.console.ConsolePrint;
+import consolegame.console.TitleConsole;
 
 public class Event170_Wildboar extends Event {
 	public Event170_Wildboar() {
@@ -45,7 +46,7 @@ public class Event170_Wildboar extends Event {
 			script.append("져버렸다 \n");
 			script.append("아프다..\n");
 			script.append("눈 앞이 깜깜해진다...(게임오버)");
-
+			
 		}
 		
 

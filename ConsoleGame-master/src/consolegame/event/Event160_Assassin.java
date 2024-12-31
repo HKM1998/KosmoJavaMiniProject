@@ -37,7 +37,7 @@ public class Event160_Assassin extends Event {
 		script.append("마을촌장이 나에게 보낸 암살자였다.\n");
 		script.append("당신은 반사적으로 몸을 틀어 총을 피했다.\n");
 		script.append("당신이 촌장의 재배농장을 불태운것에 대한 행동의 보복인듯 하다.\n");
-		script.append("어떻할까?");
+		script.append("어떻할까?\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
