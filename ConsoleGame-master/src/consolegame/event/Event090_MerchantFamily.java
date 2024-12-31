@@ -44,6 +44,7 @@ public class Event090_MerchantFamily extends Event {
 			script.append("가족 중 아버지로 보이는 사내가 사람 좋은 미소를 머금고 말합니다.\n");
 			script.append("\"일단 안으로 들어오세요\"\n");
 			script.append("당신은 미심쩍은 느낌이 들었지만 배가 고픈 나머지 의심없이 건물안으로 들어갑니다.\n");
+			Main.eMap.setEvent(this.getEventId()); 
 		}
 		else if (pChoice.equals("2")) { 
 			script.append("가족 중 아버지로 보이는 사내가 사람 좋은 미소를 머금고 말합니다.\n");
