@@ -1,9 +1,7 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 import consolegame.item.Item014_Stink;
 
 public class Event180_Suddenpoop extends Event {

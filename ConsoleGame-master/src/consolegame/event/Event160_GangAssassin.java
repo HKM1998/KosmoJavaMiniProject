@@ -3,10 +3,8 @@ package consolegame.event;
 import java.util.Random;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
-import consolegame.item.Item004_FirstAidKit;
 import consolegame.item.Item006_Ammunition;
 import consolegame.item.Item012_Thash;
 import consolegame.item.Item013_Bleeding;
@@ -19,24 +17,17 @@ public class Event160_GangAssassin extends Event {
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
-
 		selection.addSelection("아이를 이용하는 그 갱단을 찾아 되갚아주자.");
-
 		selection.addSelection("그 아이의 모든걸 빼앗은뒤 죽이고 떠난다");
 		this.setsCount(selection.count);
 		selection.print();
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("이 건물 저 건물 들어가며 물건을 뒤지던 당신은\n");
@@ -96,7 +87,6 @@ public class Event160_GangAssassin extends Event {
 			Main.character.setHealth(Main.character.getHealth()-1);
 			Main.character.setMental(Main.character.getMental()+2);
 			Main.character.addItem(new Item012_Thash()); // 쓰레기
-	//		
 		}
 		
 		ConsolePrint.printResult(script, getIsLoaded()); 

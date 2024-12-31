@@ -1,9 +1,7 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 
 public class Event120_Doin extends Event {
 	public Event120_Doin() {

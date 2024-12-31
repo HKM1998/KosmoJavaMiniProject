@@ -1,9 +1,7 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 
 public class Event090_MerchantFamily extends Event {
 	public Event090_MerchantFamily() {
@@ -27,10 +25,8 @@ public class Event090_MerchantFamily extends Event {
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("\"정말 감사합니다. 혹시 실례가 안된다면\n밥 한끼 정도만 얻어 먹을 수 있을까요?\"");

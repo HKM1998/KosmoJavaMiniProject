@@ -1,9 +1,7 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 import consolegame.item.Item000_Knife;
 import consolegame.item.Item005_PainKiller;
 import consolegame.item.Item012_Thash;
@@ -16,10 +14,8 @@ public class Event150_FillingStation extends Event {
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("큰 상자 (소지금 -200)");
@@ -30,11 +26,8 @@ public class Event150_FillingStation extends Event {
 		selection.print();
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("저 멀리 무인주유소가 보이는듯 하다. \n");

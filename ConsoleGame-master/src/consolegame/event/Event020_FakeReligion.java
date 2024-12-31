@@ -1,9 +1,7 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 import consolegame.item.Item002_Bible;
 
 public class Event020_FakeReligion extends Event {
@@ -42,6 +40,7 @@ public class Event020_FakeReligion extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
+		StringBuilder sb = new StringBuilder();
 		StringBuilder script = new StringBuilder(); // 1번 선택시 Good 엔딩 루트의 Bad엔딩 선결조건 중 하나
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { // 1번 선택 시 나오는 대사 추가
@@ -52,6 +51,6 @@ public class Event020_FakeReligion extends Event {
 		} else if (pChoice.equals("2")) {
 			script.append("당신은 너무 지친 나머지 이야기를 듣지않고 지나쳤습니다.\n");
 		}
-		ConsolePrint.printResult(script, getIsLoaded());
+		ConsolePrint.printResult(sb, getIsLoaded());
 	}
 }

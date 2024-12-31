@@ -2,10 +2,6 @@ package consolegame.event;
 
 import java.util.ArrayList;
 
-import consolegame.Main;
-import consolegame.character.Character;
-import consolegame.item.Item;
-
 public class EventMap {
 	ArrayList<EventMapList> eventArray = new ArrayList<EventMapList>();
 	int totalWeight = 0;
@@ -34,6 +30,8 @@ public class EventMap {
 		eventArray.add(new EventMapList(180, 1));
 		eventArray.add(new EventMapList(190, 1));
 		eventArray.add(new EventMapList(200, 1));
+		eventArray.add(new EventMapList(210, 1));
+		eventArray.add(new EventMapList(220, 1));
 
 	}
 
@@ -85,6 +83,8 @@ public class EventMap {
 		case 180:e = new Event180_Suddenpoop();break;
 		case 190:e = new Event190_Meal();break;
 		case 200:e = new Event200_Mart();break;
+		case 210:e = new Event210_Peddler();break;
+		case 220:e = new Event220_Acquisition();break;
 		}
 		eventArray.stream().filter(x -> x.eventId == event).findFirst().get().setWeight(0);
 		return e;

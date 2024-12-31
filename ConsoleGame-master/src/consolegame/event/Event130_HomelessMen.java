@@ -3,10 +3,8 @@ package consolegame.event;
 import java.util.Random;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
-import consolegame.item.Item004_FirstAidKit;
 
 public class Event130_HomelessMen extends Event {
 	public Event130_HomelessMen() {
@@ -16,11 +14,8 @@ public class Event130_HomelessMen extends Event {
 		setWeight(0);
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 길거리를 지나던 중 이상한 냄새를 맡았습니다.\n");
@@ -32,10 +27,8 @@ public class Event130_HomelessMen extends Event {
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("싸운다");

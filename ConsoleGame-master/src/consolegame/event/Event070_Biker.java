@@ -3,10 +3,8 @@ package consolegame.event;
 import java.util.Random;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
-import consolegame.item.Item004_FirstAidKit;
 import consolegame.item.Item006_Ammunition;
 
 public class Event070_Biker extends Event {

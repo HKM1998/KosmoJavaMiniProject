@@ -1,10 +1,8 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
-import consolegame.item.Item001_Passport;
 import consolegame.item.Item007_Chart;
 
 public class Event060_AbandonedHospital extends Event {
@@ -15,23 +13,18 @@ public class Event060_AbandonedHospital extends Event {
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("몰래 우회합니다.");	
+		selection.addSelection("몰래 우회합니다.");
 		selection.addSelection("들어가봅니다");
 		this.setsCount(selection.count);
 		selection.print();
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("병원을 발견했습니다. 병원은 스산하고 어둡습니다. 다리가 후들후들 거립니다.\n");
@@ -48,9 +41,9 @@ public class Event060_AbandonedHospital extends Event {
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		if (pChoice.equals("1")) {                            //1번 선택시 Good 엔딩 루트가 Bad 엔딩되는 조건 중 하나                                                                                                                                                                                                                                                                                                                                                                                                                // 1번 우회한다 선택했을 경우 차트를 획득
+		if (pChoice.equals("1")) { // 1번 우회한다 선택했을 경우 차트를 획득
 			if (!Item.hasItem(Main.character, 007)) {
-				Main.character.getItem().add(new Item007_Chart());         // 아이템 차트 클래스 임포트
+				Main.character.getItem().add(new Item007_Chart()); // 아이템 차트 클래스 임포트
 				script.append("굳이 소름끼치게 들어갈께 뭐 있어? 그냥 아무거나 손에 집히는거 가지고 오지뭐~\n");
 				script.append("이런 가벼운 생각으로 도움이 될지도 모르는 차트를 가지고 나오려는 순간,\n");
 				script.append("끄아아아아아아악!!\n");
@@ -59,12 +52,11 @@ public class Event060_AbandonedHospital extends Event {
 				script.append("이미 차트를 가지고 있으니 더 이상의 개입은 불필요하다 합리화 시킵니다.\n");
 				script.append("당신은 그렇게 자리를 황급히 뜹니다.\n");
 			}
-		}	
-		// 무기가 있는경우 실행
-		if (pChoice.equals("2")) {                            // 2번 들어갈 경우 061로 이동하는 것 보류
+		}
+		if (pChoice.equals("2")) { // 2번 들어갈 경우 061로 이동하는 것 보류
 			script.append("2번 들어강 경우 061 이벤트로 이동하는것 보류상태\n");
 		}
 		ConsolePrint.printResult(script, getIsLoaded());
-     }
+	}
 
 }

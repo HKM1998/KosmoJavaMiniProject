@@ -1,11 +1,8 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 import consolegame.item.Item000_Knife;
-import consolegame.item.Item001_Passport;
 import consolegame.item.Item008_Gun;
 
 public class Event140_WeirdShopper extends Event {

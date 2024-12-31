@@ -1,7 +1,6 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 
@@ -28,7 +27,6 @@ public class Event091_MerchantFamily_1 extends Event {
 
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("배고픔에 굶주려 허겁지겁 먹는다");

@@ -1,7 +1,6 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 import consolegame.item.Item008_Gun;
@@ -13,11 +12,9 @@ public class Event081_Marine_1 extends Event {
 		setScore(0);
 		setWeight(0);
 	}
-	// 이벤트 스크립트 바로 화면에 출력
+	
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("잠시 그들에게 둘러쌓여 걷다보니 무너진 빌딩 사이 멀쩡한 건물이 나타납니다.\n");
@@ -29,14 +26,11 @@ public class Event081_Marine_1 extends Event {
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("당신은 식은땀을 흘리며 거짓말에 대해 사과합니다.");
-		
 		selection.addSelection("당신은 당당하게 당장 생각나는 지역을 말합니다.");
 		this.setsCount(selection.count);
 		selection.print();

@@ -16,10 +16,8 @@ public class Event061_AbandonedHospital_1 extends Event {
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("뒷통수를 칼로 습격!");
@@ -29,10 +27,8 @@ public class Event061_AbandonedHospital_1 extends Event {
 		selection.print();
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("문을 열고 보니 믿기지 않는 쇼킹한 일이 눈 앞에 벌어집니다.\n");

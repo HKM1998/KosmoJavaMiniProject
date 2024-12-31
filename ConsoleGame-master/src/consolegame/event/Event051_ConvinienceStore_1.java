@@ -3,12 +3,9 @@ package consolegame.event;
 import java.util.Random;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
-import consolegame.item.Item003_DogMeat;
 import consolegame.item.Item004_FirstAidKit;
-import consolegame.item.Item006_Ammunition;
 
 public class Event051_ConvinienceStore_1 extends Event {
 	public Event051_ConvinienceStore_1() {
@@ -18,24 +15,19 @@ public class Event051_ConvinienceStore_1 extends Event {
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("거부하고 상대와 칼로 싸웁니다.");
-		selection.addSelection("거부하고 상대와 총으로 싸웁니다.");		
+		selection.addSelection("거부하고 상대와 총으로 싸웁니다.");
 		selection.addSelection("그냥 나갑니다");
 		this.setsCount(selection.count);
 		selection.print();
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("이미 선반은 헤집어지고 쓸만한 물건은 많이 없어보입니다.\n");
@@ -49,48 +41,47 @@ public class Event051_ConvinienceStore_1 extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		
+
 		StringBuilder script = new StringBuilder();
-		if (pChoice.equals("1")) {                                      
-			if (Item.hasItem(Main.character, 000)) {                                 
-				Random random = new Random();                         
-				if (random.nextInt(10) < 7) {                           
+		if (pChoice.equals("1")) {
+			if (Item.hasItem(Main.character, 000)) {
+				Random random = new Random();
+				if (random.nextInt(10) < 7) {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("체력을 -2 잃었습니다.\n");
-				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {       
-					Main.character.getItem().add(new Item004_FirstAidKit());  
+				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {
+					Main.character.getItem().add(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("구급상자를 획득했습니다!\n");
-				} else {                                                     
-					Main.character.getItem().add(new Item004_FirstAidKit());         
+				} else {
+					Main.character.getItem().add(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("구급상자를 획득했습니다!\n");
 				}
 			}
 		}
 		if (pChoice.equals("2")) {
-		if (Item.hasItem(Main.character, 8)) {                                    
+			if (Item.hasItem(Main.character, 8)) {
 
-			Random random1 = new Random();
-			if (random1.nextInt(10) < 1) {                           
-				Main.character.setHealth(Main.character.getHealth() - 2);
-				script.append(getEventId() + ". " + getName() + "\n");
-				script.append("체력을 -2 잃었습니다.\n");
-			} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {         
-				Main.character.getItem().add(new Item004_FirstAidKit());
-				script.append(getEventId() + ". " + getName() + "\n");
-				script.append("구급상자를 획득했습니다!\n");
-			} else {                                                 
-				Main.character.getItem().add(new Item004_FirstAidKit());
-				script.append(getEventId() + ". " + getName() + "\n");
-				script.append("구급상자를 획득했습니다!\n");
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 1) {
+					Main.character.setHealth(Main.character.getHealth() - 2);
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("체력을 -2 잃었습니다.\n");
+				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {
+					Main.character.getItem().add(new Item004_FirstAidKit());
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("구급상자를 획득했습니다!\n");
+				} else {
+					Main.character.getItem().add(new Item004_FirstAidKit());
+					script.append(getEventId() + ". " + getName() + "\n");
+					script.append("구급상자를 획득했습니다!\n");
+				}
+
 			}
-
-		  }
 		}
-		
-		
+
 		if (pChoice.equals("3")) {
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("아 침착해 침착해요~ 남의 집 들쑤실 생각 없습니다~\n");

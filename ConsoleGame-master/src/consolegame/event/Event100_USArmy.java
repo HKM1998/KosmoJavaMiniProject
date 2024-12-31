@@ -1,10 +1,8 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
-import consolegame.item.Item001_Passport;
 import consolegame.item.Item009_Can;
 
 public class Event100_USArmy extends Event {

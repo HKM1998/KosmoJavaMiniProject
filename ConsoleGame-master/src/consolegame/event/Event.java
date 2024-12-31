@@ -1,6 +1,5 @@
 package consolegame.event;
 
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 
 public abstract class Event {

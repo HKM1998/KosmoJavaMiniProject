@@ -1,7 +1,6 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 import consolegame.item.Item001_Passport;
@@ -14,10 +13,8 @@ public class Event010_EmptyCar extends Event {
 		setWeight(0);
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("칼.");
@@ -26,11 +23,8 @@ public class Event010_EmptyCar extends Event {
 		selection.print();
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
-		// 화면 출력 스크립트 작성 형식은 추후 지정할 예정
-		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("으슥한 곳에 숨겨져 있는 자동차를 발견했습니다.\n");
@@ -51,8 +45,7 @@ public class Event010_EmptyCar extends Event {
 			script.append("칼을 집어 들었다.\n");
 			
 		}
-		else if (pChoice.equals("2")) {                //2번 선택시 Weird 엔딩 루트의 Good엔딩 조건중 하나
-			// 0번 아이템ID 가 있는 경우 실행
+		else if (pChoice.equals("2")) {     
 			if (!Item.hasItem(Main.character, 001)) {
 				Main.character.getItem().add(new Item001_Passport());
 				script.append("스스로도 이유는 모르겠지만 홀린듯 미스테리 지도를 집어 들었습니다.\n");

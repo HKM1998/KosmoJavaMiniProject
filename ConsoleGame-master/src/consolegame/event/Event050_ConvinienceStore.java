@@ -1,8 +1,6 @@
 package consolegame.event;
 
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 
 public class Event050_ConvinienceStore extends Event {
 	public Event050_ConvinienceStore() {
@@ -18,7 +16,7 @@ public class Event050_ConvinienceStore extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("들어갑니다.");	
+		selection.addSelection("들어갑니다.");
 		selection.addSelection("지나칩니다.");
 		this.setsCount(selection.count);
 		selection.print();
@@ -39,17 +37,16 @@ public class Event050_ConvinienceStore extends Event {
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
-		// 0번 아이템ID 가 있는 경우 실행
-		if (pChoice.equals("1")) {                          //1번 들어가면 051로 가는거 보류
+		if (pChoice.equals("1")) { // 1번 들어가면 051로 가는거 보류
 			script.append("1번 선택시 051 이벤트로 가는거 보류 상태\n");
 		}
 
-		if (pChoice.equals("2")) {                          
-		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("근데 너무 대로변에 있어서 이미 쓸만한 물건은 다 가져 갔겠네\n");
-		script.append("오히려 이상한 놈이 매복할 수 있으니 안 가는게 센스지~\n");
-		script.append("당신은 미련 없이 편의점을 지나친다.\n");
-	}
+		if (pChoice.equals("2")) {
+			script.append(getEventId() + ". " + getName() + "\n");
+			script.append("근데 너무 대로변에 있어서 이미 쓸만한 물건은 다 가져 갔겠네\n");
+			script.append("오히려 이상한 놈이 매복할 수 있으니 안 가는게 센스지~\n");
+			script.append("당신은 미련 없이 편의점을 지나친다.\n");
+		}
 		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

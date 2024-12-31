@@ -1,9 +1,7 @@
 package consolegame.event;
 
 import consolegame.Main;
-import consolegame.character.Character;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 
 public class Event080_Marine extends Event {
 	public Event080_Marine() {
@@ -13,7 +11,6 @@ public class Event080_Marine extends Event {
 		setWeight(0);
 	}
 
-	// 이벤트 스크립트 바로 화면에 출력
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
