@@ -30,7 +30,7 @@ public class Event100_USArmy extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("\"이 근방에 도움이 될 만한 정보가 있을까요?\"");
+		selection.addSelection("\"Excuse me, may I ask something?\"");
 		
 		selection.addSelection("\"너무 배가 고파서 그런데. 혹시 먹을 것을 얻을 수 있을까요?\"");
 		this.setsCount(selection.count);
@@ -43,14 +43,17 @@ public class Event100_USArmy extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { 
 			script.append("그들은 당신을 쳐다보며 말합니다.\n");
-			script.append("\"안타깝지만 민간인과 공유할 수 있는 정보는 없다.\n");
-			script.append("잠시 쉬었다 왔던 길로 돌아가라.\"\n");
-			script.append("얻어낸 정보는 없지만 믿음직한 그들의 모습에 잠시나마 마음이 편안해집니다.\n");
+			script.append("\"No information can be shared with civilians.\n");
+			script.append("\"(안타깝지만 민간인과 공유할 수 있는 정보는 없다.)\n");
+			script.append("Get out, We'll open fire..\"\n");
+			script.append("(꺼져라 안그러면 발포한다.)\"\n");
+			script.append("총구를 들이대는 모습에 당신은 무서워서 서둘러 도망쳐나왔습니다.\n");
 			script.append("(정신력 +1)\n");
 			Main.character.setMental(Main.character.getMental() + 1);
 		}else if (pChoice.equals("2")) {
-			script.append("\"안타깝지만 우리도 많은걸 줄 순 없다. 이거라도 가져가도록.\"\n");
-			script.append("그들은 당신에게 통조림 하나를 건냅니다.\n");
+			script.append("\"What the poor, take this get out kkk\"\n");
+			script.append("\"(그지새낀가. 이거나 받고 꺼져ㅋㅋㅋ)\"\n");
+			script.append("그들은 당신에게 낡은 통조림 하나를 던집니다 .\n");
 			script.append("(+ 통조림)\n");
 			if (!Item.hasItem(Main.character, 9)) {
 				Main.character.getItem().add(new Item009_Can());
