@@ -24,6 +24,7 @@ public class MainConsole {
 				eventConsole.start();
 				loading.setType("moveToNextEvent");
 				Thread thread = new Thread(loading);
+				thread.run();
 				thread.join();
 			} catch (Exception e) {
 
@@ -31,7 +32,7 @@ public class MainConsole {
 
 			// 게임 오버
 			if (!isAlive()) {
-				GameOverConsole.start();
+				GameOverConsole.start(scan);
 				break;
 			}
 			eventCount++;
