@@ -49,15 +49,15 @@ public class Event051_ConvinienceStore_1 extends Event {
 				if (random.nextInt(10) < 7) {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append(getEventId() + ". " + getName() + "\n");
-					script.append("(체력 -2) 잃었습니다.\n");
+					script.append("체력을 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {
 					Main.character.addItem(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
-					script.append("(구급상자)를 획득했습니다!\n");
+					script.append("구급상자를 획득했습니다!\n");
 				} else {
 					Main.character.addItem(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
-					script.append("(구급상자)를 획득했습니다!\n");
+					script.append("구급상자를 획득했습니다!\n");
 				}
 			}
 		}
@@ -68,15 +68,15 @@ public class Event051_ConvinienceStore_1 extends Event {
 				if (random1.nextInt(10) < 1) {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append(getEventId() + ". " + getName() + "\n");
-					script.append("(체력 -2) 잃었습니다.\n");
+					script.append("체력을 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {
 					Main.character.addItem(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
-					script.append("(구급상자)를 획득했습니다!\n");
+					script.append("구급상자를 획득했습니다!\n");
 				} else {
 					Main.character.addItem(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
-					script.append("(구급상자)를 획득했습니다!\n");
+					script.append("구급상자를 획득했습니다!\n");
 				}
 
 			}

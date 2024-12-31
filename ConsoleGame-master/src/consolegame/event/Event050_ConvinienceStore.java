@@ -38,10 +38,10 @@ public class Event050_ConvinienceStore extends Event {
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
-		if (pChoice.equals("1")) {
+		if (pChoice.equals("1")) { 
 			script.append(getEventId() + ". " + getName() + "\n");
 			script.append("당신은 망설임 없이 편의점 안으로 들어갑니다.\n");
-			Main.eMap.setEvent(this.getEventId());
+			Main.eMap.setEvent(this.getEventId()); 
 		}
 
 		if (pChoice.equals("2")) {

@@ -41,9 +41,9 @@ public class Event060_AbandonedHospital extends Event {
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		if (pChoice.equals("1")) {
+		if (pChoice.equals("1")) { // 1번 우회한다 선택했을 경우 차트를 획득
 			if (!Item.hasItem(Main.character, 007)) {
-				Main.character.getItem().add(new Item007_Chart());
+				Main.character.getItem().add(new Item007_Chart()); // 아이템 차트 클래스 임포트
 				script.append("굳이 소름끼치게 들어갈께 뭐 있어? 그냥 아무거나 손에 집히는거 가지고 오지뭐~\n");
 				script.append("이런 가벼운 생각으로 도움이 될지도 모르는 차트를 가지고 나오려는 순간,\n");
 				script.append("끄아아아아아아악!!\n");
@@ -53,10 +53,9 @@ public class Event060_AbandonedHospital extends Event {
 				script.append("당신은 그렇게 자리를 황급히 뜹니다.\n");
 			}
 		}
-		if (pChoice.equals("2")) {
-			script.append("약간 후들거리긴 하지만 오히려 이런 곳이 노다지 일수도 있지!\n");
-			script.append("당신은 끼이익 문을 열며 안으로 들어선다\n");
-			Main.eMap.setEvent(this.getEventId());
+		if (pChoice.equals("2")) { // 텍스트 작성 필요
+			script.append("\n");
+			Main.eMap.setEvent(this.getEventId()); 
 		}
 		ConsolePrint.printResult(script, getIsLoaded());
 	}
