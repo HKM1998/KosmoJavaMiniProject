@@ -14,7 +14,7 @@ public class EndingConsole {
 
 	public static void start(Scanner scan) {
 		int endingId = getEndingId();
-		Ending ending = null; 
+		Ending ending = null;
 		if (endingId == 1) {
 			ending = new Ending001_GoodEnding();
 		} else if (endingId == 2) {
@@ -37,6 +37,19 @@ public class EndingConsole {
 			}
 		}
 		ending.printScript();
+
+		// 입력 키에 따라 시작 종료
+		System.out.println("[R] : 재시작\t [E] : 게임종료\n");
+		
+		title: while (true) {
+			switch (scan.next().toUpperCase()) {
+			case "R":
+				break title;
+			case "E":
+				ConsolePrint.finishGame(scan);
+				break;
+			}
+		}
 	}
 
 	static int getEndingId() {

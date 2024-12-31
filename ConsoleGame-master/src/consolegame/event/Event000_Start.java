@@ -48,11 +48,14 @@ public class Event000_Start extends Event {
 		
 		if (pChoice.equals("1")) {
 			script.append("당신은 마약에 불을 질렀습니다! 그리고 돈가방을 챙기고 도망을 칩니다.\n");
+			script.append("(소지금 +500)\n");
 			Main.character.setMoney(Main.character.getMoney()+500);
 		}
 		
 		if (pChoice.equals("2")) {
 			script.append("당신은 어차피 없앨 마약이라면 본인이 가져가는게 낫다라 생각하고 돈가방도 챙겨 도망칩니다.\n");
+			script.append("(소지금 +500)\n");
+			script.append("(+ 약)\n");
 			Main.character.setMoney(Main.character.getMoney() + 500);
 			Main.character.addItem(new Item015_Drug());
 		}
