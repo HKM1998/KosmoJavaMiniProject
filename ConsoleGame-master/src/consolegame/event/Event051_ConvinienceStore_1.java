@@ -10,7 +10,7 @@ import consolegame.item.Item004_FirstAidKit;
 public class Event051_ConvinienceStore_1 extends Event {
 	public Event051_ConvinienceStore_1() {
 		setEventId(51);
-		setName("편의점_1");
+		setName("편의점내부");
 		setScore(0);
 		setWeight(0);
 	}
@@ -51,11 +51,11 @@ public class Event051_ConvinienceStore_1 extends Event {
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("체력을 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {
-					Main.character.getItem().add(new Item004_FirstAidKit());
+					Main.character.addItem(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("구급상자를 획득했습니다!\n");
 				} else {
-					Main.character.getItem().add(new Item004_FirstAidKit());
+					Main.character.addItem(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("구급상자를 획득했습니다!\n");
 				}
@@ -70,11 +70,11 @@ public class Event051_ConvinienceStore_1 extends Event {
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("체력을 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) {
-					Main.character.getItem().add(new Item004_FirstAidKit());
+					Main.character.addItem(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("구급상자를 획득했습니다!\n");
 				} else {
-					Main.character.getItem().add(new Item004_FirstAidKit());
+					Main.character.addItem(new Item004_FirstAidKit());
 					script.append(getEventId() + ". " + getName() + "\n");
 					script.append("구급상자를 획득했습니다!\n");
 				}

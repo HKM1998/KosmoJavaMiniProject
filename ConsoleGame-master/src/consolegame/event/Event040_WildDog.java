@@ -55,10 +55,10 @@ public class Event040_WildDog extends Event {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append("칼로 맞서싸웠으나 패배했고 체력은 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "DogMeat")) {
-					Main.character.getItem().add(new Item003_DogMeat());
+					Main.character.addItem(new Item003_DogMeat());
 					script.append("개고기를 새로 얻었습니다!\n");
 				} else {
-					Main.character.getItem().add(new Item003_DogMeat());
+					Main.character.addItem(new Item003_DogMeat());
 				}
 
 			}
@@ -71,10 +71,10 @@ public class Event040_WildDog extends Event {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append("총으로 맞서 싸우려 했으나 패배했고 체력은 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "DogMeat")) {
-					Main.character.getItem().add(new Item003_DogMeat());
+					Main.character.addItem(new Item003_DogMeat());
 					script.append("개고기를 새로 얻었습니다!\n");
 				} else {
-					Main.character.getItem().add(new Item003_DogMeat());
+					Main.character.addItem(new Item003_DogMeat());
 				}
 
 			}

@@ -53,10 +53,10 @@ public class Event061_AbandonedHospital_1 extends Event {
 					Main.character.setHealth(Main.character.getHealth() - 1);
 					script.append("칼로 공격했지만 패배하고 체력을 -1 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "FirstAidKit")) { // 아이템 FirstAidKit 클래스 임포트
-					Main.character.getItem().add(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 없을때 추가
+					Main.character.addItem(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 없을때 추가
 					script.append("구급상자를 획득했다!.\n");
 				} else {
-					Main.character.getItem().add(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 있을 때도 추가
+					Main.character.addItem(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 있을 때도 추가
 					script.append("구급상자를 획득했다!.\n");
 				}
 			}
@@ -70,17 +70,17 @@ public class Event061_AbandonedHospital_1 extends Event {
 				Main.character.setHealth(Main.character.getHealth() - 1);
 				script.append("총으로 공격했지만 패배하고 체력을 -1 잃었습니다.\n");
 			} else if (!Item.hasItemType(Main.character, "FirstAidKit")) { // 기존에 구급상자 없을 경우 추가
-				Main.character.getItem().add(new Item004_FirstAidKit());
+				Main.character.addItem(new Item004_FirstAidKit());
 				script.append("구급상자를 획득했다!.\n");
 			} else { // 기존에 구급상자 있을 때도 추가
-				Main.character.getItem().add(new Item004_FirstAidKit());
+				Main.character.addItem(new Item004_FirstAidKit());
 				script.append("구급상자를 획득했다!.\n");
 			}
 		  }
 		}
 		if (pChoice.equals("3")) {
 			if (!Item.hasItem(Main.character, 005)) {
-				Main.character.getItem().add(new Item005_PainKiller()); // 2번 선택시 진통제만 가져간다
+				Main.character.addItem(new Item005_PainKiller()); // 2번 선택시 진통제만 가져간다
 				script.append("진통제를 획득했다!.\n");
 			}
 		}

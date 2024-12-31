@@ -37,7 +37,6 @@ public class Event010_EmptyCar extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
 		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			if (Item.hasItemType(Main.character, "Knife")) {
@@ -47,11 +46,11 @@ public class Event010_EmptyCar extends Event {
 		}
 		else if (pChoice.equals("2")) {     
 			if (!Item.hasItem(Main.character, 001)) {
-				Main.character.getItem().add(new Item001_Passport());
+				Main.character.addItem(new Item001_Passport());
 				script.append("스스로도 이유는 모르겠지만 홀린듯 미스테리 지도를 집어 들었습니다.\n");
 			}
 		}
 
-		ConsolePrint.printResult(sb, getIsLoaded());
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }
