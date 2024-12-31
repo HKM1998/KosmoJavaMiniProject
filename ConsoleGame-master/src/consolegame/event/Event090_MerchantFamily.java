@@ -31,7 +31,7 @@ public class Event090_MerchantFamily extends Event {
 
 		selection.addSelection("\"정말 감사합니다. 혹시 실례가 안된다면\n밥 한끼 정도만 얻어 먹을 수 있을까요?\"");
 
-		selection.addSelection("\"정말 감사합니다. 혹시 실례가 안된다면\n하루만 쉬어갈 수 있을까요?\"\n");
+		selection.addSelection("\"정말 감사합니다. 혹시 실례가 안된다면\n하루만 쉬어갈 수 있을까요?\"");
 		this.setsCount(selection.count);
 		selection.print();
 	}

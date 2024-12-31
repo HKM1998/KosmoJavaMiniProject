@@ -22,14 +22,11 @@ public class Event080_Marine extends Event {
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
-	// 선택지 생성 메서드 반드시 오버라이딩
 	@Override
 	public void printChoice() {
-		// 선택지 작성
 		Selection selection = new Selection();
 
 		selection.addSelection("\"충성! 해병 1511기 입니다!\"(거짓말)");
-		
 		selection.addSelection("\"아 저는 그냥 지나가는 시민입니다.\"");
 		this.setsCount(selection.count);
 		selection.print();
@@ -43,7 +40,7 @@ public class Event080_Marine extends Event {
 			script.append("\"흠...해병 출신인가? 우선 전우회 건물로 이동해서 이야기를 듣기로하지\"\n");
 			script.append("그들은 당신을 의심하는 눈초리를 거두지 않았습니다.\n");
 			script.append("거짓말에 식은땀을 흘리며 해병 전우회로 끌려갑니다.\n");
-			Main.eMap.setEvent(this.getEventId()); // 연결 이벤트 설정
+			Main.eMap.setEvent(this.getEventId()); 
 		}else if (pChoice.equals("2")) {
 			script.append("\"그 말을 우리더러 믿으라는거야? 딱봐도 거동이 수상한 불순분자로 보이는구만!\"\n");
 			script.append("당신은 자연스러운 연기를 펼쳤으나 그들에게서 벗어나는 것에 실패했습니다.\n");
