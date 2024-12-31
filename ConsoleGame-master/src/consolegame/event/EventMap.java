@@ -73,6 +73,7 @@ public class EventMap {
 		case 100:e = new Event100_USArmy();break;
 		case 110:e = new Event110_University();break;
 		case 120:e = new Event120_Doin();break;
+		case 121:e = new Event121_Philosophy();break;
 		case 130:e = new Event130_HomelessMen();break;
 		case 140:e = new Event140_WeirdShopper();break;
 		case 150:e = new Event150_FillingStation();break;
@@ -99,6 +100,7 @@ public class EventMap {
 		case 50: eventArray.add(new EventMapList(51, 9999)); break; // C 편의점 이벤트
 		case 80: eventArray.add(new EventMapList(81, 9999)); break; // C 해병 이벤트
 		case 90: eventArray.add(new EventMapList(91, 9999)); break; // C 상인가족 이벤트
+		case 120: eventArray.add(new EventMapList(121, 5)); break; // R 상인가족 이벤트
 		}
 	}
 }

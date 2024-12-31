@@ -23,19 +23,20 @@ public class Main {
 		}
 
 		// 메인화면 출력
+		while(true) {
+			TitleConsole.start(scan);
+			eMap = new EventMap();
 
-		TitleConsole.start(scan);
-		eMap = new EventMap();
+			if (!hasSaveFile) {
+				// 세이브 파일 없을때
+				character = new Character();
+			} else {
 
-		if (!hasSaveFile) {
-			// 세이브 파일 없을때
-			character = new Character();
-		} else {
-
+			}
+			
+			MainConsole.start(scan); // 메인 이벤트 시작
+			
 		}
-		
-		MainConsole.start(scan); // 메인 이벤트 시작
-		
 		
 	}
 
