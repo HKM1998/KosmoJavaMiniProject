@@ -5,14 +5,12 @@ import java.util.Scanner;
 import consolegame.Main;
 import consolegame.event.Event;
 import consolegame.event.Event000_Start;
-import consolegame.thread.LoadingThread;
 
 public class MainConsole {
 	public static void start(Scanner scan) {
 		int eventCount = 0;
 
 		EventConsole eventConsole = new EventConsole(new Event000_Start(), scan);
-		LoadingThread loading = new LoadingThread(); 
 		eventConsole.start();
 
 		while (true) {
@@ -22,10 +20,6 @@ public class MainConsole {
 				Main.eMap.setEvent(nowEvent.getEventId()); 
 				eventConsole = new EventConsole(nowEvent, scan);
 				eventConsole.start();
-				loading.setType("moveToNextEvent");
-				Thread thread = new Thread(loading);
-				thread.run();
-				thread.join();
 			} catch (Exception e) {
 
 			}

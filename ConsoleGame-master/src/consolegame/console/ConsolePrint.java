@@ -180,9 +180,8 @@ public class ConsolePrint {
 				System.out.println("");
 			}
 			System.out.println("게임을 종료하시겠습니까?");
-			System.out.println("1. 네        2. 아니오");
+			System.out.println("[1] 네        [2] 아니오");
 			System.out.println("");
-			System.out.print("입력:");
 			String inputStr = scan.next();
 			if (inputStr.equals("1")) {
 				ConsolePrint.clear();

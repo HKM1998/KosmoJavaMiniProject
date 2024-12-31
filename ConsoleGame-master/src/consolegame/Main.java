@@ -35,23 +35,6 @@ public class Main {
 		}
 		
 		MainConsole.start(scan); // 메인 이벤트 시작
-
-		
-//
-//		while (true) {
-//			// 엔딩 (
-//			try {
-//				Event nowEvent = eMap.getEvent();
-//				character.addEvent(nowEvent); 
-//				EndingConsole ending = new EndingConsole(nowEvent, scan);
-//				ending.start();
-//				loading.setType("moveToNextEvent");
-//				Thread thread = new Thread(loading);
-//				thread.join();
-//			} catch (Exception e) {
-//
-//			}
-//		}
 		
 		
 	}
