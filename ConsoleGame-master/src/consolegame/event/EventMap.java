@@ -76,7 +76,7 @@ public class EventMap {
 		case 130:e = new Event130_HomelessMen();break;
 		case 140:e = new Event140_WeirdShopper();break;
 		case 150:e = new Event150_FillingStation();break;
-		case 160:e = new Event160_GangAssassin();break;
+		case 160:e = new Event160_Assassin();break;
 		case 170:e = new Event170_Wildboar();break;
 		case 180:e = new Event180_Suddenpoop();break;
 		case 190:e = new Event190_Meal();break;
