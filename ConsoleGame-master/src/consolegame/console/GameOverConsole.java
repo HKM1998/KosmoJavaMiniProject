@@ -32,6 +32,7 @@ public class GameOverConsole {
 	static void printGameOver() {
 		// TitleConsole 출력부 와 동일한 구조로 게임오버 출력하게
 		StringBuilder script = new StringBuilder();
+		ConsolePrint.clear();
 		script.append("   ####     ##     #    #   ######     ###    #    #   ######   #####   \r\n"
 				+ "  ##  ##   #  #    ##  ##   #         ## ##   #    #   #        #    #  \r\n"
 				+ " ##       #    #   # ## #   #        ##   ##  #    #   #        #    #  \r\n"
