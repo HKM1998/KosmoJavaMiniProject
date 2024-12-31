@@ -42,9 +42,8 @@ public class Event010_EmptyCar extends Event {
 			if (Item.hasItemType(Main.character, "Knife")) {
 			}
 			script.append("칼을 집어 들었다.\n");
-			
-		}
-		else if (pChoice.equals("2")) {     
+
+		} else if (pChoice.equals("2")) {
 			if (!Item.hasItem(Main.character, 001)) {
 				Main.character.addItem(new Item001_Passport());
 				script.append("스스로도 이유는 모르겠지만 홀린듯 미스테리 지도를 집어 들었습니다.\n");

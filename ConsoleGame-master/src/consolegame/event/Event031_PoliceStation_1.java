@@ -40,7 +40,7 @@ public class Event031_PoliceStation_1 extends Event {
 			script.append("너도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하라고\n");
 			if (!Item.hasItemType(Main.character, "Ammunition")) {
 				Main.character.addItem(new Item006_Ammunition());
-				script.append("탄약을 새로 얻었습니다!\n");
+				script.append("(탄약+1)을 새로 얻었습니다!\n");
 			} else {
 				try {
 					Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6));
@@ -48,7 +48,7 @@ public class Event031_PoliceStation_1 extends Event {
 				} catch (ClassCastException e) {
 					Main.character.removeItem(6);
 					Main.character.addItem(new Item006_Ammunition());
-					script.append("탄약을 추가적으로 얻었습니다!\n");
+					script.append("(탄약+1)을 추가적으로 얻었습니다!\n");
 
 				}
 			}
