@@ -43,8 +43,7 @@ public class Event120_Doin extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {
 			script.append("도인이 내뱉는 음양오행과 양명햑을 동원한 그럴듯한 그의 설명에\n");
-			script.append("홀린듯이 듣고 있다보니 추위에 몸이 어는 듯한 느낌이 든다.\n");
-			script.append("(체력 -1)\n");
+			script.append("홀린듯이 듣고 있다보니 추위에 몸이 어는 듯한 느낌이 든다.(체력 -1)\n");
 			Main.character.setHealth(Main.character.getHealth() - 1);
 		}else if (pChoice.equals("2")) { 
 			script.append("도인은 \"그저 눈 앞에 있는 것에만 급급하여 자명한 것을 못보는구나. 안타깝구나\n\n");
