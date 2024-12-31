@@ -23,9 +23,9 @@ public class Event070_Biker extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("싸운다");
-		
-		selection.addSelection("도망친다");
+		selection.addSelection("칼로 싸웁니다.");
+		selection.addSelection("총으로 싸웁니다.");
+		selection.addSelection("도망칩니다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -37,46 +37,67 @@ public class Event070_Biker extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("묵묵히 걷고 있던 중 멀리서 굉음을 내며 폭주족이 달려 온다.\n");
-		script.append("주인공을 이내 감싸더니 무리의 리더가 접근하며 얘기한다.\n");
-		script.append("조용히 가지고 있는걸 내 놓고 가라.\n");
+		script.append("당신은 오늘도 묵묵히 걷고 있습니다.\n");
+		script.append("그러다 이제는 인적이 드문 넓은 4차선 왕복도로 를 걷는 중입니다.\n");
+		script.append("그런데 저 멀리서 오토바이 무리가 뿌연 매연을 날리며 우리에게 다가옵니다.\n");
+		script.append("제발 지나가라 지나가라..애원하지만 뭔가 나에게 다가올 수록 속도가 늦쳐집니다.\n");
+		script.append("그러다 폭주족 무리는 이내 원을 그리며 주인공을 감쌉니다.\n");
+		script.append("당신은 겁에 질려 있는 와중에 무리의 리더로 보이는 사람이 천천히 접근합니다.\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder sb = new StringBuilder();
-		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
-			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
-
+		StringBuilder script = new StringBuilder();
+		if (pChoice.equals("1")) {
+			if (Item.hasItem(Main.character, 000)) {
 				Random random = new Random();
-
-				if (random.nextInt(10) < 1) {                     // 칼은 90% 확률로 패배 후 체력 -2
+				if (random.nextInt(10) < 1) {
 					Main.character.setHealth(Main.character.getHealth() - 2);
-				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 아이템 Ammunition 클래스 임포트
-					Main.character.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 없을때 추가
+					script.append("칼로 싸웠지만 패배하고 체력을 -2 잃었습니다\n");
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
+					Main.character.getItem().add(new Item006_Ammunition());
+					script.append("탄약을 얻었습니다!.\n");
 				} else {
-					Main.character.getItem().add(new Item006_Ammunition());   // 10% 확률로 승리시 탄약이 있을 때도 추가
-				}
-
-			}
-			if (Item.hasItem(Main.character, 8)) {                            // 총을 가지고 있을 경우 공격
-
-				Random random1 = new Random();
-				if (random1.nextInt(10) < 0) {                   // 총은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 구급상자 획득
-					Main.character.setHealth(Main.character.getHealth() - 2);
-				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 구급상자 없을 경우 추가
-					Main.character.getItem().add(new Item006_Ammunition());
-				} else { // 기존에 구급상자 있을 때도 추가
-					Main.character.getItem().add(new Item006_Ammunition());
+					try {
+						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); 
+						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
+					} catch (ClassCastException e) {
+						Main.character.removeItem(6);
+						Main.character.getItem().add(new Item006_Ammunition());
+						script.append("탄약을 얻었습니다!.\n");
+					}
 				}
 			}
+
+		}
 		if (pChoice.equals("2")) {
-			Main.character.setHealth(Main.character.getHealth() - 1);                      // 2번 도망친다 선택시 체력 -1
-		}
+			if (Item.hasItem(Main.character, 8)) {
+				Random random1 = new Random();
+				if (random1.nextInt(10) < 0) {
+					Main.character.setHealth(Main.character.getHealth() - 2);
+					script.append("총으로 싸웠지만 패배하고 체력을 -2 잃었습니다\n");
+				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
+					Main.character.getItem().add(new Item006_Ammunition());
+					script.append("탄약을 얻었습니다!.\n");
+				} else {
+					try {
+						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6));
+						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
+					} catch (ClassCastException e) {
+						Main.character.removeItem(6);
+						Main.character.getItem().add(new Item006_Ammunition());
+						script.append("탄약을 얻었습니다!.\n");
 
+					}
+				}
+			}
 		}
-		ConsolePrint.printResult(sb, getIsLoaded());
+		if (pChoice.equals("3")) {
+			Main.character.setHealth(Main.character.getHealth() - 1);
+			script.append("발바닥에 불이나게 도망쳤지만 약간의 피해를 입고 체력을 -1 잃었습니다.\n");
+		}
+		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }

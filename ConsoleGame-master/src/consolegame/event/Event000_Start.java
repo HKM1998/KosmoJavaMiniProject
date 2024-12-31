@@ -30,18 +30,12 @@ public class Event000_Start extends Event {
 		// 아래는 예시
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("\"세계 3차대전 핵전쟁 이후 인류는 황폐화된 문명 위에 다시 시작하고 있습니다.\n");
-		script.append("거대하고 강력했던 단일한 정부는 없어지고 마치 그리스 시대의 폴리스 처럼 \n");
-		script.append("군소 난립하는 자치단체들이 이끌어 가는 시대입니다.\n");
-		script.append("그 중 3차 세계 대전 이후에 태어난 나는 서울의 도봉동에서 태어나 자랐으며 \n");
-		script.append("크게 해당 지역을 벗어나지 않으며 자라온 인물입니다.\n");
-		script.append("전쟁 전 역사 선생님이었던 아버지의 영향을 받아\n");
-		script.append("자유민주주의라는 이념에 의해 번성하던 세상에 대한 교육을 받고 자라났습니다.\n");
-		script.append("그에겐 자유민주주의를 통한 국민에 의한 통치야 말로\n");
-		script.append("번성하는 세계로 가는 당연한 선택이었습니다.\n");
-		script.append("그러나 그 이전까지는 투표로 선출 됐지만 임기제한을 무시하며\n");
-		script.append("재선을 시도 하려는 촌장에게 항의를 하며 그의 횡포에 제동을 걸려 합니다.\n");
-		script.append("그러다 밤에 몰래 주인공을 죽이기 위해 자객을 보낸 촌장을 피해 급하게 도망나왔습니다.\"\n");
+		script.append("\"3차세계 대전 이후 폐허가 된 세상에서 당신은 어느 마을에 태어났습니다.\n");
+		script.append("평범한 여느 남자 아이들처럼 사고를 치기도 하며 사랑을 받기도 하며 자라났습니다. \n");
+		script.append("그렇게 자라나 막 성인이 된 당신은 마을 여기 저기서 일을 하게 됩니다.\n");
+		script.append("그러나 어느 순간 열지 말아야 할 판도라의 상자를 열게 되는데 \n");
+		script.append("촌장의 뒷뜰에 몰래 재배 되고 있는 아편을 발견합니다.\n");
+		script.append("그리곤 이내 이 아편을 어떻게 할지 고민에 빠지게 됩니다.\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}

@@ -18,9 +18,8 @@ public class Event050_ConvinienceStore extends Event {
 		// 선택지 작성
 		Selection selection = new Selection();
 
-		selection.addSelection("들어간다.");
-
-		selection.addSelection("지나친다");
+		selection.addSelection("들어갑니다.");	
+		selection.addSelection("지나칩니다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -31,7 +30,8 @@ public class Event050_ConvinienceStore extends Event {
 
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("저 멀리서 익숙한 초록색 간판이 보인다. 불빛에 이끌려 가까이 가 본다.\n");
+		script.append("저 멀리서 익숙한 초록색 간판이 보인다. 불빛에 이끌려 가까이 가 봅니다.\n");
+		script.append("역시 이때쯤이면 나타날 때가 됐죠~ 다름아닌 편의점이군요.\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
@@ -40,14 +40,16 @@ public class Event050_ConvinienceStore extends Event {
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
 		// 0번 아이템ID 가 있는 경우 실행
-//		if (pChoice.equals("1")) {                          //1번 들어가면 051로 가는거 보류
-//			
-//		}
-
-		if (pChoice.equals("2")) { // 2번 지나치면 다른 이벤트로 가는거 보류
-			script.append(getEventId() + ". " + getName() + "\n");
-			script.append("어차피 누군가가 다 털었을게 뻔하단 생각에 그냥 지나친다\n");
+		if (pChoice.equals("1")) {                          //1번 들어가면 051로 가는거 보류
+			script.append("1번 선택시 051 이벤트로 가는거 보류 상태\n");
 		}
+
+		if (pChoice.equals("2")) {                          
+		script.append(getEventId() + ". " + getName() + "\n");
+		script.append("근데 너무 대로변에 있어서 이미 쓸만한 물건은 다 가져 갔겠네\n");
+		script.append("오히려 이상한 놈이 매복할 수 있으니 안 가는게 센스지~\n");
+		script.append("당신은 미련 없이 편의점을 지나친다.\n");
+	}
 		ConsolePrint.printResult(script, getIsLoaded());
 	}
 }
