@@ -53,8 +53,9 @@ public class Event060_AbandonedHospital extends Event {
 				script.append("당신은 그렇게 자리를 황급히 뜹니다.\n");
 			}
 		}
-		if (pChoice.equals("2")) { // 2번 들어갈 경우 061로 이동하는 것 보류
-			script.append("2번 들어강 경우 061 이벤트로 이동하는것 보류상태\n");
+		if (pChoice.equals("2")) { // 텍스트 작성 필요
+			script.append("\n");
+			Main.eMap.setEvent(this.getEventId()); 
 		}
 		ConsolePrint.printResult(script, getIsLoaded());
 	}

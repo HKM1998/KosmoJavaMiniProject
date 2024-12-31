@@ -57,7 +57,7 @@ public class Event030_PoliceStation extends Event {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append("체력이 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
-					Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+					Main.character.addItem(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
 					script.append("탄약을 새로 얻었습니다!.\n");
 				} else {
 					try {
@@ -65,7 +65,7 @@ public class Event030_PoliceStation extends Event {
 						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
 					} catch (ClassCastException e) {
 						Main.character.removeItem(6);
-						Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+						Main.character.addItem(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
 						script.append("탄약을 새로 얻었습니다!.\n");
 
 					}
@@ -79,7 +79,7 @@ public class Event030_PoliceStation extends Event {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append("체력이 -2 잃었습니다.\n");
 				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
-					Main.character.getItem().add(new Item006_Ammunition());
+					Main.character.addItem(new Item006_Ammunition());
 					script.append("탄약을 새로 얻었습니다!.\n");
 				} else { // 기존에 탄약이 있을 때도 추가
 					try {
@@ -87,7 +87,7 @@ public class Event030_PoliceStation extends Event {
 						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
 					} catch (ClassCastException e) {
 						Main.character.removeItem(6);
-						Main.character.getItem().add(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
+						Main.character.addItem(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
 						script.append("탄약을 새로 얻었습니다!.\n");
 
 					}

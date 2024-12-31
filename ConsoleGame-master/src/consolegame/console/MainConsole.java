@@ -17,7 +17,6 @@ public class MainConsole {
 			// 이벤트 (턴진행)
 			try {
 				Event nowEvent = Main.eMap.getEvent();// 어떤 이벤트를 진행했는지 확인
-				Main.eMap.setEvent(nowEvent.getEventId()); 
 				eventConsole = new EventConsole(nowEvent, scan);
 				eventConsole.start();
 			} catch (Exception e) {

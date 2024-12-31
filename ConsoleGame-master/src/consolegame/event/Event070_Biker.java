@@ -55,7 +55,7 @@ public class Event070_Biker extends Event {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append("칼로 싸웠지만 패배하고 체력을 -2 잃었습니다\n");
 				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
-					Main.character.getItem().add(new Item006_Ammunition());
+					Main.character.addItem(new Item006_Ammunition());
 					script.append("탄약을 얻었습니다!.\n");
 				} else {
 					try {
@@ -63,7 +63,7 @@ public class Event070_Biker extends Event {
 						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
 					} catch (ClassCastException e) {
 						Main.character.removeItem(6);
-						Main.character.getItem().add(new Item006_Ammunition());
+						Main.character.addItem(new Item006_Ammunition());
 						script.append("탄약을 얻었습니다!.\n");
 					}
 				}
@@ -77,7 +77,7 @@ public class Event070_Biker extends Event {
 					Main.character.setHealth(Main.character.getHealth() - 2);
 					script.append("총으로 싸웠지만 패배하고 체력을 -2 잃었습니다\n");
 				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
-					Main.character.getItem().add(new Item006_Ammunition());
+					Main.character.addItem(new Item006_Ammunition());
 					script.append("탄약을 얻었습니다!.\n");
 				} else {
 					try {
@@ -85,7 +85,7 @@ public class Event070_Biker extends Event {
 						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
 					} catch (ClassCastException e) {
 						Main.character.removeItem(6);
-						Main.character.getItem().add(new Item006_Ammunition());
+						Main.character.addItem(new Item006_Ammunition());
 						script.append("탄약을 얻었습니다!.\n");
 
 					}
