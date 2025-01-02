@@ -1,5 +1,6 @@
 package consolegame.console;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import consolegame.Main;
@@ -16,28 +17,8 @@ public class EndingConsole {
 
 	public static void start(Scanner scan) {
 		int endingId = getEndingId();
-		Ending ending = null;
-		if (endingId == 1) {
-			ending = new Ending001_GoodEnding();
-		} else if (endingId == 2) {
-			ending = new Ending002_BadEnding();
-		} else if (Item.hasItem(Main.character, 17)) {
-			ending = new Ending005_Philosophy();
-		} else {
+		Ending ending = getEndingObject(endingId);
 
-			// 1~4 사이의 랜덤값
-			switch ((int) (Math.random() * 100) % 2 + 1) {
-			case 1:
-				ending = new Ending003_NormalEnding_01();
-				break;
-			case 2:
-				ending = new Ending004_NormalEnding_02();
-				break;
-			case 3:
-				ending = new Ending006_NormalEnding_04();
-				break;
-			}
-		}
 		ending.printScript();
 
 		// 입력 키에 따라 시작 종료
@@ -55,7 +36,37 @@ public class EndingConsole {
 	}
 
 	static int getEndingId() {
-
-		return 0;
+		int resultId = 0;
+		if (Item.hasItem(Main.character, 1) 
+				&& Item.hasItem(Main.character, 18) 
+				&& !Item.hasItem(Main.character, 12)) {
+			// 알수 없는 지도, 경찰의 친구 이고, 쓰레기짓 안 한 경우 굿엔딩
+			resultId = 1;
+		} else if (Item.hasItem(Main.character, 7) && Item.hasItem(Main.character, 12)) {
+			// 사이코의사의 차트, 쓰레기짓 인경우 배드엔딩
+			resultId = 2;
+		} else if (Item.hasItem(Main.character, 17) && !Item.hasItem(Main.character, 12)) {
+			// 철학2레벨, 쓰레기짓 안한 경우 철학엔딩
+			resultId = 5;
+		} 
+		return resultId;
+	}
+	
+	static Ending getEndingObject(int endingId) {
+		switch(endingId) {
+		case 1:return new Ending001_GoodEnding();
+		case 2:return new Ending002_BadEnding();
+		case 5:return new Ending005_Philosophy();
+		default: // 특정 지정된 이벤트가 아닌 경우 노말 3개 이벤트 안에서 랜덤하게 출력
+			switch (new Random().nextInt(3)) {
+			case 0:
+				return new Ending003_NormalEnding_01();
+			case 1:
+				return new Ending004_NormalEnding_02();
+			case 2:
+				return new Ending006_NormalEnding_04();
+			}
+			return new Ending003_NormalEnding_01(); // 디폴트 이벤트 변경 필요?
+		}
 	}
 }

@@ -4,6 +4,7 @@ import consolegame.Main;
 import consolegame.console.ConsolePrint;
 import consolegame.item.Item;
 import consolegame.item.Item006_Ammunition;
+import consolegame.item.Item018_FriendOfPolice;
 
 public class Event031_PoliceStation_1 extends Event {
 	public Event031_PoliceStation_1() {
@@ -39,7 +40,8 @@ public class Event031_PoliceStation_1 extends Event {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {
-			script.append("\"너도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하라고\"\n");
+			script.append("\"너도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하라고\n");
+			script.append("혹시 위험한 일에 휘말리면 날 불러 이것도 인연인데 도와주도록 하지!\"\n");
 			script.append("경찰은 당신에게 탄약을 건냅니다.\n");
 			if (!Item.hasItemType(Main.character, "Ammunition")) {
 				Main.character.addItem(new Item006_Ammunition());
@@ -55,6 +57,9 @@ public class Event031_PoliceStation_1 extends Event {
 
 				}
 			}
+			script.append("(+ 경찰의 친구)\n");
+			Main.character.addItem(new Item018_FriendOfPolice());
+			Main.eMap.setEvent(getEventId());
 		} else if (pChoice.equals("2")) {
 			script.append("당신의 말에 경찰은 표정이 딱닥해지며 말합니다.\n");
 			script.append("\"아주 노골적으로 잿밥에만 관심이 있구만. 그냥 갈길 가쇼.\"\n");

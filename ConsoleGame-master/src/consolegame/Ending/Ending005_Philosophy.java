@@ -11,7 +11,7 @@ public class Ending005_Philosophy extends Ending{
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
-		script.append("엔딩 " + getEndingId()+". " + getEndingName());
+		script.append("엔딩 " + getEndingId()+". " + getEndingName() + "\n");
 		script.append("당신은 정체불명의 도인을 만나면서\n");
 		script.append("세상의 본질과 인간의 내면성 그리고\n");
 		script.append("그에 대한 해답에 대해 긴 시간 고민을 가지고\n");
