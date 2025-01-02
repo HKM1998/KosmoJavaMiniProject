@@ -1,6 +1,6 @@
 package consolegame.Ending;
 
-import consolegame.console.Console;
+
 import consolegame.console.ConsolePrint;
 
 public class Ending003_NormalEnding_01 extends Ending{

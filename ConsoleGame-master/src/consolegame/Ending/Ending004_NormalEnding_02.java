@@ -3,7 +3,9 @@ package consolegame.Ending;
 import consolegame.console.ConsolePrint;
 
 public class Ending004_NormalEnding_02 extends Ending {
-
+	public Ending004_NormalEnding_02() {
+		this.setEndingId(4);   
+		this.setEndingName("쉘터");}
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
@@ -19,9 +21,11 @@ public class Ending004_NormalEnding_02 extends Ending {
 		script.append("정신이 혼미해집니다.\n");
 		script.append("\n당신의 앞엔 피부가 녹아내린듯한\n");
 		script.append("남성인지 여성인지도 알수가없는 끔찍한 몰골의 괴한이 서있습니다.\n");
-		script.append("그 괴한의 말을 끝으로 당신은 정신을 잃게 됩니다.\n");
+		script.append("\n괴한은 당신의 몸 구석구석 냄새를 맡으며..귓가에 대고 소곤거립니다.\n");
 		script.append("\n이 히히히 남자다 히히히ㅣㅎ .\n");
-		script.append("\n에햏헤ㅎ ㅔㅎ 남자 냄새 히히ㅣㅎ .\n");
+		script.append("\n킁 카.. 스읍 하.아.. .\n");
+		script.append("\n에햏헤ㅎ ㅔㅎ 구린 남자 냄새 히히ㅣㅎ .\n");
+		script.append("\n냄새 조아 이히 히히 히ㅣㅎ .\n");
 		script.append("\n이히히히 내꺼다 히히히ㅣㅎ .\n");
 		script.append(" \n");
 		script.append(" .-\"        \"-.      \"-.\r\n"
@@ -35,7 +39,7 @@ public class Ending004_NormalEnding_02 extends Ending {
 				+ "      \\          /\r\n"
 				+ "       `--------`");
 		script.append("\n 키히 ㅎ히히히 \n");
-		script.append("\n 괴한의 소름 끼치는 목소리와 함께 당신의 기억은 여기서 끊어지고 맙니다. \n");
+		script.append("\n 괴한의 소름 끼치는 소리와 함께 당신의 기억은 여기서 끊어지고 맙니다. \n");
 		ConsolePrint.printScript(script);
 
 	}
