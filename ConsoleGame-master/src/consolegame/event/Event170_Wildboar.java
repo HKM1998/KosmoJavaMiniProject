@@ -39,8 +39,12 @@ public class Event170_Wildboar extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("당신은 다급하게 도망치기 시작합니다.\n");
 			script.append("무사히 도망쳤지만 너무 급하게 뛰느라 부상을 입고 말았습니다.");

@@ -42,8 +42,12 @@ public class Event150_FillingStation extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) { // 1번은 금액 200원을 쓰고 칼 획득
 			if (Main.character.getMoney() > 200) {
 				script.append("소지금 200을 사용하여 큰 상자를 구매하였습니다.\n");

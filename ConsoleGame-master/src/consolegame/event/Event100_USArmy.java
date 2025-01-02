@@ -38,8 +38,12 @@ public class Event100_USArmy extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("그들은 당신을 쳐다보며 말합니다.\n");
 			script.append("\"No information can be shared with civilians.\n");

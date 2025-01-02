@@ -43,8 +43,12 @@ public class Event210_Peddler extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("당신 가격 너무 후려치는거 아냐..?\n");
 			script.append("그래도 돈이 필요하니까.. 후..\n");

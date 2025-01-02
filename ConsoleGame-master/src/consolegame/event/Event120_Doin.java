@@ -40,8 +40,12 @@ public class Event120_Doin extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("도인이 내뱉는 음양오행과 양명햑을 동원한 그럴듯한 설명에\n");
 			script.append("당신은 도인의 말을 듣고 여러 생각이 들기 시작합니다.\n");

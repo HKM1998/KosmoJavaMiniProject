@@ -45,8 +45,12 @@ public class Event121_Philosophy extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("정체 불명의 도인은 혀를 차면서 당신에게 말합니다.\n\n");
 			script.append("\"쯔쯧. 원인에 대해서 생각조차 하지 않다니 한심하구나.\"\n\n");
