@@ -30,7 +30,7 @@ public class MainConsole {
 				break;
 			}
 			eventCount++;
-			if (eventCount > 15) {
+			if (eventCount > 10) {
 				// 엔딩으로 넘어감
 				EndingConsole.start(scan);
 				break;
