@@ -2,7 +2,6 @@ package consolegame.event;
 
 import consolegame.Main;
 import consolegame.console.ConsolePrint;
-import consolegame.item.Item;
 import consolegame.item.Item006_Ammunition;
 import consolegame.item.Item018_FriendOfPolice;
 
