@@ -40,8 +40,12 @@ public class Event090_MerchantFamily extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("가족 중 아버지로 보이는 사내가 사람 좋은 미소를 머금고 말합니다.\n");
 			script.append("\"일단 안으로 들어오세요\"\n");

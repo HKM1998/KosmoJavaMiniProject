@@ -34,8 +34,12 @@ public class Event080_Marine extends Event {
 	
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) { 
 			script.append("\"흠...해병 출신인가? 우선 전우회 건물로 이동해서 이야기를 듣기로하지\"\n");
 			script.append("그들은 당신을 의심하는 눈초리를 거두지 않았습니다.\n");

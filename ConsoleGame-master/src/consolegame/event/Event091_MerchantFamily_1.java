@@ -39,8 +39,12 @@ public class Event091_MerchantFamily_1 extends Event {
 
 	@Override
 	public void getResult(String pChoice) { 
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) { 
 			script.append("허겁지겁 스프를 먹다보니 갑자기 졸음이 몰려오는 느낌이 듭니다.\n");
 			script.append("뭔가 잘못됨을 직감하고 나가려 하자 몸이 마음대로 움직이지 않습니다.\n");

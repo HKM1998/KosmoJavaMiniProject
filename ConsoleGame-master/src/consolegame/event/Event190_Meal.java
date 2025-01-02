@@ -35,8 +35,12 @@ public class Event190_Meal extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("당신은 분명히 여자아이를 보았지만\n");
 			script.append("당장 혼자 사용할 물자도 부족한데 나눠줄 수는 없다고 생각했습니다.\n");

@@ -35,8 +35,12 @@ public class Event110_University extends Event {
 	
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if(pChoice.equals("1")) {
 			script.append("당신은 오랫만에 듣는 노래에 지쳣던 마음이 회복되는 것을 느꼈습니다.\n");
 			script.append("(정신력 +1)\n");

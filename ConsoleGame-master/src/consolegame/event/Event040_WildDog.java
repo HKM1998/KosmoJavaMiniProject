@@ -42,8 +42,12 @@ public class Event040_WildDog extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("당신은 도망쳐야 겠다는 생각이 들자마자\n");
 			script.append("부리나케 도망치기 시작했습니다.\n");

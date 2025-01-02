@@ -38,8 +38,12 @@ public class Event081_Marine_1 extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("리더로 보이는 사람이 웃으며 말합니다.\n");
 			script.append("\"하하하! 거짓말인것 알고 있었네 사실대로 말해서 다행이야.\"\n");

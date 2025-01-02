@@ -13,7 +13,7 @@ public class Event050_ConvinienceStore extends Event {
 	
 	@Override
 	public void printScript() {
-
+		
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 길을 걷던중 불빛에 이끌려 한 건물에 가까이 다가가 봅니다.\n");
@@ -40,8 +40,12 @@ public class Event050_ConvinienceStore extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("당신은 고민 끝에 편의점 안으로 들어가기로 결정합니다.\n");
 			Main.eMap.setEvent(this.getEventId());
