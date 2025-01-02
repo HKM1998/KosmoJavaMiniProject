@@ -5,12 +5,12 @@ import consolegame.console.ConsolePrint;
 public class Ending001_GoodEnding extends Ending {
 
 	public Ending001_GoodEnding(){
-		this.setEndingId(5);
+		this.setEndingId(1);
 		this.setEndingName("소탕");}
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder(); // 이벤트 010 Item001_Passport 엔딩 선결조건(Passport지만 스크립트 상 미스테리 지도)
-		script.append("엔딩 " + getEndingId()+". " + getEndingName());
+		StringBuilder script = new StringBuilder();                   // 이벤트 010 UncheckedMap 엔딩 선결조건 + 
+		script.append("엔딩 " + getEndingId()+". " + getEndingName()); //이벤트 031에서 1번 선택하면 탄약을 선물 받으면서 아저씨로부터 필요할 때 부르면 가겠다는 약속도 듣는 선택지가 생긴다
 		script.append("빈차에서 알수없는 지도를 얻은 당신은");
 		script.append("이게 무슨 지도일까 곰곰히 생각합니다.");
 		script.append("산 등고선 어딘가 쯤에 표시된 x표..");
