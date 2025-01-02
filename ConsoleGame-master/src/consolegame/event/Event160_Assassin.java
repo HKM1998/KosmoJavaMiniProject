@@ -28,7 +28,7 @@ public class Event160_Assassin extends Event {
 		script.append("갑자기 뒤에서 총성이 들립니다.\n");
 		script.append("당신은 운이 좋게 총알에 스칩니다.\n");
 		script.append("여자아이는 마약상이 나에게 보낸 암살자였습니다.\n");
-		script.append("당신이 마약상의 재배농장을 불태운 것에 대한 행동의 보복인 듯 보입니다.\n");
+		script.append("당신이 마약상의 물건을 건드린 행동의 보복인 듯 보입니다.\n");
 		script.append("너무 어린데 어떻하지...?\n");
 
 		ConsolePrint.printScript(script, getIsLoaded());
@@ -38,7 +38,7 @@ public class Event160_Assassin extends Event {
 	public void printChoice() {
 		Selection selection = new Selection();
 		selection.addSelection("날 죽이려 아이를 이용하는 못된 마약상에게 되갚아줘야겠다.");
-		selection.addSelection("감히 날 죽이려 하다니 괘씸하다. 아이의 모든걸 빼앗은 뒤 죽이고 떠난다");
+		selection.addSelection("감히 날 죽이려 하다니 괘씸하다. 아이의 모든걸 빼앗은 뒤 죽이고 떠난다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}

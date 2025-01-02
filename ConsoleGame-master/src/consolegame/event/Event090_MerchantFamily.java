@@ -1,5 +1,7 @@
 package consolegame.event;
 
+import java.util.Random;
+
 import consolegame.Main;
 import consolegame.console.ConsolePrint;
 
@@ -54,9 +56,11 @@ public class Event090_MerchantFamily extends Event {
 			script.append("\"그걸 믿은거야?\"\n\n");
 			script.append("나는 사내를 필사적으로 뿌리치고 창문으로 뛰어 내립니다..\n");
 			script.append("쨍그랑..........\n");
-			int damege = (int) (Math.random() * 10) % 4;
-			if(damege == 0)
+			int damege = new Random().nextInt(4);
+			if(damege == 0) {
+				script.append("놀랍군요!\n");
 				script.append("당신은 엄청난 운동신경을 발휘해 무사히 착지했습니다.\n");
+			}
 			else {
 				script.append("당신은 착지를 잘못하여 발목을 삐였습니다.\n");
 				script.append("(체력 -" + damege + ")\n");

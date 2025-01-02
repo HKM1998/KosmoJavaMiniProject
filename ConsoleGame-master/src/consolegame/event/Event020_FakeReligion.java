@@ -17,7 +17,7 @@ public class Event020_FakeReligion extends Event {
 
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("어느 아줌마가 웃으며 접근한다.\n");
+		script.append("어느 아줌마가 웃으며 접근합니다.\n");
 		script.append("\"총각 어딜 그렇게 가~ 여기 한번 좋은 말씀 있는데 좀 듣고가~\"\n");
 		script.append("피하려고 했지만 아줌마가 막무가내로 앞을 막아서며 열정적으로 전도합니다.\n");
 

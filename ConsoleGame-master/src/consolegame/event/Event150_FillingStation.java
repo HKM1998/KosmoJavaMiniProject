@@ -66,7 +66,7 @@ public class Event150_FillingStation extends Event {
 			
 		}else if(pChoice.equals("3")) {
 			if (Main.character.getMoney() > 0) {
-			script.append("당신은 남자의 상자와 목숨을  전부 빼았았다.\n");
+			script.append("당신은 남자의 상자와 목숨을  전부 빼았았습니다.\n");
 			script.append("(+칼, +진통제, +쓰레기짓)\n");
 			Main.character.addItem(new Item000_Knife());
 			Main.character.addItem(new Item005_PainKiller());

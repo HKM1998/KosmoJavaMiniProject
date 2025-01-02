@@ -53,6 +53,7 @@ public class Event180_Suddenpoop extends Event {
 			script.append("안되겠다 지금 당장 바지를 내리고 싸야할것 같다.\n");
 			script.append("수치스럽다.\n");
 			script.append("푸드드드득...크흑\n");
+			script.append("당신은 엄청난 수치심에 사로잡힙니다.\n");
 			script.append("(정신력 -2)\n");
 			Main.character.setMental(Main.character.getMental() - 2);
 		}

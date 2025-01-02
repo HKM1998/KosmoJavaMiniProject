@@ -45,23 +45,23 @@ public class Event070_Biker extends Event {
 		StringBuilder script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			if (Item.hasItem(Main.character, 000)) {
+				script.append("당신은 다급하게 칼을 꺼내 폭주족에게 맞서기 시작합니다.\n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append(".     \n");
 				Random random = new Random();
-				if (random.nextInt(10) < 1) {
+				if (random.nextInt(10) < 3) {
+					script.append("하지만 칼로는 폭주족과 싸워서 이길 수 없었습니다.\n");
+					script.append("당신은 상처를 입고 도망칩니다....\n");
+					script.append("(체력 -2)\n");
 					Main.character.setHealth(Main.character.getHealth() - 2);
-					script.append("칼로 싸웠지만 패배하고 체력을 -2 잃었습니다\n");
-				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
-					Main.character.addItem(new Item006_Ammunition());
-					script.append("탄약을 얻었습니다!.\n");
 				} else {
-					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); 
-						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
-					} catch (ClassCastException e) {
-						Main.character.removeItem(6);
-						Main.character.addItem(new Item006_Ammunition());
-						script.append("탄약을 얻었습니다!.\n");
-					}
-				}
+					script.append("놀라운 피지컬로 당신은 폭주족을 쫒아내는 것에 성공합니다.\n");
+					script.append("그들은 무언가를 떨어뜨리며 도망칩니다.\n");
+					script.append("떨어뜨리고 간 물건을 자세히 보니 탄약입니다!\n");
+					script.append("(+ 탄약)\n");
+					Main.character.addItem(new Item006_Ammunition());
+				} 
 			} else {
 				script.append("아뿔싸 당신은 칼이 없습니다!\n");
 				script.append("다급하게 도망치려 하지만 몸에 상처가 남고 맙니다.\n");
@@ -71,24 +71,23 @@ public class Event070_Biker extends Event {
 
 		} else if (pChoice.equals("2")) {
 			if (Item.hasItem(Main.character, 8)) {
+				script.append("당신은 다급하게 총을 꺼내 폭주족에게 맞서기 시작합니다.\n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append(".     \n");
 				Random random1 = new Random();
-				if (random1.nextInt(10) < 0) {
+				if (random1.nextInt(10) < 1) {
+					script.append("하지만 총 한자루로는 폭주족을 전부 물리치기에는 부족했습니다.\n");
+					script.append("당신은 상처를 입고 도망칩니다....\n");
+					script.append("(체력 -2)\n");
 					Main.character.setHealth(Main.character.getHealth() - 2);
-					script.append("총으로 싸웠지만 패배하고 체력을 -2 잃었습니다\n");
-				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
-					Main.character.addItem(new Item006_Ammunition());
-					script.append("탄약을 얻었습니다!.\n");
 				} else {
-					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6));
-						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
-					} catch (ClassCastException e) {
-						Main.character.removeItem(6);
-						Main.character.addItem(new Item006_Ammunition());
-						script.append("탄약을 얻었습니다!.\n");
-
-					}
-				}
+					script.append("놀라운 피지컬로 당신은 폭주족을 쫒아내는 것에 성공합니다.\n");
+					script.append("그들은 무언가를 떨어뜨리며 도망칩니다.\n");
+					script.append("떨어뜨리고 간 물건을 자세히 보니 탄약입니다!\n");
+					script.append("(+ 탄약)\n");
+					Main.character.addItem(new Item006_Ammunition());
+				} 
 			} else {
 				script.append("아뿔싸 당신은 총이 없습니다!\n");
 				script.append("다급하게 도망치려 하지만 몸에 상처가 남고 맙니다.\n");

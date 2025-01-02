@@ -16,6 +16,10 @@ public class Event170_Wildboar extends Event {
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
+		script.append("쿵...\n");
+		script.append("쿵...\n");
+		script.append("쿵...\n");
+		script.append("쿵...\n");
 		script.append("당신의 전방에 최소 2톤은 나가보이는 커다란 맷돼지가 나타났다.\n");
 		script.append("어떻할까?\n");
 
