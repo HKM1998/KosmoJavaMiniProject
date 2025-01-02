@@ -22,11 +22,11 @@ public class Ending003_NormalEnding_01 extends Ending{
 		script.append("당신은 이러한 상념을 끝으로 눈 앞이 깜깜해진다.\n");
 		script.append("\n\n\n\n  ###  #######  ###   \r\n"
 				+ " #   # #  #  #   #    \r\n"
-				+ " #   #    #      #    \r\n"
-				+ "#    #    #      #    \r\n"
-				+ "#    #   #      #     \r\n"
-				+ "#   #    #      #   # \r\n"
-				+ "#   #    #      #   # \r\n"
+				+ "                      \r\n"
+				+ "    #    #      # # # \r\n"
+				+ "    #    #      #     \r\n"
+				+ "  # #    #      # # # \r\n"
+				+ "#   #    #      #     \r\n"
 				+ " ###    ###    ###### \n\n\n\n");
 		ConsolePrint.printScript(script);
 	}
