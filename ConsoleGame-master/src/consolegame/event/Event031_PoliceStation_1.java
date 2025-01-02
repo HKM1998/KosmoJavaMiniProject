@@ -43,23 +43,11 @@ public class Event031_PoliceStation_1 extends Event {
 			script.append("\"너도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하라고\n");
 			script.append("혹시 위험한 일에 휘말리면 날 불러 이것도 인연인데 도와주도록 하지!\"\n");
 			script.append("경찰은 당신에게 탄약을 건냅니다.\n");
-			if (!Item.hasItemType(Main.character, "Ammunition")) {
-				Main.character.addItem(new Item006_Ammunition());
-				script.append("(+ 탄약)\n");
-			} else {
-				try {
-					script.append("(+ 탄약)\n");
-					Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6));
-					ammunition.setAmAmount(ammunition.getAmAmount() + 1);
-				} catch (ClassCastException e) {
-					Main.character.removeItem(6);
-					Main.character.addItem(new Item006_Ammunition());
-
-				}
-			}
+			Main.character.addItem(new Item006_Ammunition());
+			script.append("(+ 탄약)\n");
 			script.append("(+ 경찰의 친구)\n");
 			Main.character.addItem(new Item018_FriendOfPolice());
-			Main.eMap.setEvent(getEventId());
+			Main.eMap.setEvent(getEventId()); // 경찰서 이벤트 무사히 마무리 된경우 10번 이벤트 가중치 증가
 		} else if (pChoice.equals("2")) {
 			script.append("당신의 말에 경찰은 표정이 딱닥해지며 말합니다.\n");
 			script.append("\"아주 노골적으로 잿밥에만 관심이 있구만. 그냥 갈길 가쇼.\"\n");

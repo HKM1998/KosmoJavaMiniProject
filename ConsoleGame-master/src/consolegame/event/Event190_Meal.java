@@ -7,7 +7,7 @@ import consolegame.item.Item012_Thash;
 public class Event190_Meal extends Event {
 	public Event190_Meal() {
 		setEventId(190);
-		setName("밥주기");
+		setName("배고픈 여자아이");
 		setScore(0);
 		setWeight(0);
 	}
@@ -38,8 +38,9 @@ public class Event190_Meal extends Event {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {
-			script.append("당신은 못본 척 여자아이를 그냥 지나쳤습니다.\n");
-
+			script.append("당신은 분명히 여자아이를 보았지만\n");
+			script.append("당장 혼자 사용할 물자도 부족한데 나눠줄 수는 없다고 생각했습니다.\n");
+			script.append("못본 척 여자아이를 그냥 지나쳤습니다.\n");
 		} else if (pChoice.equals("2")) {
 			script.append("\"뭐야 이건? 꺼져\"\n");
 			script.append("당신은 접근하는 소녀를 발로 걷어차고는 지나쳤습니다.\n");

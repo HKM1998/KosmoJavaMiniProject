@@ -30,17 +30,18 @@ public class Event140_WeirdShopper extends Event {
 
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
-	
+
 	@Override
 	public void printChoice() {
 		Selection selection = new Selection();
 
 		selection.addSelection("칼 (소지금 -200)");
 		selection.addSelection("총 (소지금 -500)");
+		selection.addSelection("필요한 것은 없다. 그냥 자리를 떠난다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
-	
+
 	@Override
 	public void getResult(String pChoice) {
 		StringBuilder script = new StringBuilder();
@@ -64,8 +65,11 @@ public class Event140_WeirdShopper extends Event {
 			} else {
 				script.append("당신은 소지금이 부족하여 총을 구매할 수 없었습니다.\n");
 			}
+		} else if (pChoice.equals("3")) { 
+			script.append("가판대의 할아버지가 제시한 물건은 당신에게 필요없는 물건입니다.\n");
+			script.append("\"저한테는 그런 것도 필요없습니다\"\n");
+			script.append("라고 말하고는 자리를 떠납니다.\n");
 		}
-
 		ConsolePrint.printResult(script, getIsLoaded()); // 결과 출력부
 	}
 }

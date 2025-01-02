@@ -106,12 +106,12 @@ public class Event210_Peddler extends Event {
 			script.append("정말 아깝지만.\n");
 			script.append("돈이 필요하니 어쩔수없지.\n");
 			script.append("(자금+100)\n");
-			Main.character.removeItem(9);
+			Main.character.removeItem(10);
 			Main.character.setMoney(Main.character.getMoney() + 100);
 		} else if (pChoice.equals("11")) {
 			script.append("이건 별로 먹고싶지않다.\n");
 			script.append("(자금+10)\n");
-			Main.character.removeItem(9);
+			Main.character.removeItem(11);
 			Main.character.setMoney(Main.character.getMoney() + 10);
 		}else {
 			script.append("아무 것도 팔고싶지 않다.\n");
