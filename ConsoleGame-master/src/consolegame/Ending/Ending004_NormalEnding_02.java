@@ -2,7 +2,7 @@ package consolegame.Ending;
 
 import consolegame.console.ConsolePrint;
 
-public class Ending004_NormalEnding_02 extends Ending{
+public class Ending004_NormalEnding_02 extends Ending {
 
 	@Override
 	public void printScript() {
@@ -37,7 +37,7 @@ public class Ending004_NormalEnding_02 extends Ending{
 		script.append("\n 키히 ㅎ히히히 \n");
 		script.append("\n 괴한의 소름 끼치는 목소리와 함께 당신의 기억은 여기서 끊어지고 맙니다. \n");
 		ConsolePrint.printScript(script);
-	
+
 	}
-	
+
 }
