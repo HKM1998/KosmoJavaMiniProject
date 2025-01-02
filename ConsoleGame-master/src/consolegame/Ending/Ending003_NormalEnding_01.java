@@ -6,8 +6,9 @@ import consolegame.console.ConsolePrint;
 public class Ending003_NormalEnding_01 extends Ending{
 	
 	public Ending003_NormalEnding_01() {
-		this.setEndingId(5);   
-		this.setEndingName("운수 좋은 날");}
+		this.setEndingId(3);   
+		this.setEndingName("운수 좋은 날");
+		}
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
