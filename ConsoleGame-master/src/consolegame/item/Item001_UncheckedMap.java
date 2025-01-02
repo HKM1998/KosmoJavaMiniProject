@@ -1,8 +1,8 @@
 package consolegame.item;
 
-public class Item001_Passport extends Item{
+public class Item001_UncheckedMap extends Item{
 
-	public Item001_Passport() {
+	public Item001_UncheckedMap() {
 		setItemId(1);
 		setName("어느 모르는 사람의 여권");
 		setPrice(0); //가격

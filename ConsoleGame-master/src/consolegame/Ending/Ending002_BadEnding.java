@@ -5,12 +5,12 @@ import consolegame.console.ConsolePrint;
 public class Ending002_BadEnding extends Ending {
 
 	public Ending002_BadEnding(){
-		this.setEndingId(5);
+		this.setEndingId(2);
 		this.setEndingName("죄책감");}
 	
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder(); // 이벤트 060 Item.007차트 엔딩 선결조건
+		StringBuilder script = new StringBuilder(); // 이벤트 060 Item.007차트 엔딩 선결조건 + 이벤트 13 노숙자들과 싸우는 선택지에서 종이를 잊어 버리는 선택지가 나온다
 		script.append("엔딩 " + getEndingId()+". " + getEndingName());
 		script.append("여행을 하던 도중 뭔가 적을 곳이 필요하던 당신은 가방속을 뒤지다");
 		script.append("예전에 폐병원에서 가지고 달아났던 차트를 발견합니다.");
