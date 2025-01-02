@@ -19,8 +19,9 @@ public class Event030_PoliceStation extends Event {
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append("경찰서를 들어 갔는데 뭔가 썰렁하니 스산함이 느껴집니다.\n");
-		script.append("아무도 없는 줄 알고 물건을 뒤지려 하자");
+		script.append("당신은 길을 걷다 경찰서를 발견합니다.\n");
+		script.append("뭔가 느낌이 이상했지만 확인을 해보려고 합니다.\n");
+		script.append("우선 확인을 위해 안을 들여다 보려 문으로 다가갑니다.");
 		script.append("갑자기 \"누구냐!!\" 라며 소리치는 소리가 들립니다.\n");
 		script.append("깜짝놀라 돌아보니 반짝반짝 빛나는 대머리에 올챙이 배가 불룩 튀어나온 아재입니다.\n");
 		script.append("그 사람은 자신을 이 구역의 자치경찰이라고 주장합니다.\n");
@@ -44,51 +45,51 @@ public class Event030_PoliceStation extends Event {
 		StringBuilder script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { //
-			script.append("자세한 이야기를 듣고싶은거야? 그렇다면 상세하게 설명해주지");
+			script.append("\"자세한 이야기를 듣고싶은거야? 그렇다면 상세하게 설명해주지\n");
+			script.append("잠시 자리에 앉아서 얘기하지\"\n");
+			script.append("당신은 그의 말에 따라 경찰서 내부로 이동합니다.\n");
+			Main.eMap.setEvent(getEventId());
 		}else if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
 			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
 				Random random = new Random(); // java.util.Random 임포트 후
+				script.append("당신은 그에게서 무기를 빼앗기 위해 칼을 꺼내들고 달려듭니다.\n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append(".     \n");
 				if (random.nextInt(10) < 9) { // 칼은 90% 확률로 체력 -2
+					script.append("생각보다 경찰의 힘이 너무 강력했습니다.\n");
+					script.append("당신은 상처를 입고 도망갑니다.\n");
+					script.append("(체력 -2)\n");
 					Main.character.setHealth(Main.character.getHealth() - 2);
-					script.append("체력이 -2 잃었습니다.\n");
-				} else if (!Item.hasItemType(Main.character, "Ammunition")) {
-					Main.character.addItem(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
-					script.append("탄약을 새로 얻었습니다!.\n");
 				} else {
-					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); 
-						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
-					} catch (ClassCastException e) {
-						Main.character.removeItem(6);
-						Main.character.addItem(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
-						script.append("(탄약+1)을 새로 얻었습니다!.\n");
-					}
-				}
+					script.append("당신은 무사히 경찰을 제압하는데 성공했습니다.\n");
+					script.append("(+ 탄약)\n");
+					Main.character.addItem(new Item006_Ammunition()); // 10% 확률로 승리시 탄약 추가
+				} 
 			} else {
 				script.append("아뿔싸 당신은 칼이 없습니다!\n");
 				script.append("다급하게 도망치려 하지만 몸에 상처가 남고 맙니다.\n");
-				script.append("(체력 -1)\n");
-				Main.character.setHealth(Main.character.getHealth() - 1);
+				script.append("(체력 -2)\n");
+				Main.character.setHealth(Main.character.getHealth() - 2);
 			}
 		}else if (pChoice.equals("3")) {
-			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
+			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격
+				script.append("당신은 그에게서 무기를 빼앗기 위해 총을 꺼내들고 위협합니다.\n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append(".     \n");
 				Random random1 = new Random();
-				if (random1.nextInt(10) < 5) { // 칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
+				if (random1.nextInt(10) < 5) { // 총은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
+					script.append("경찰은 겁내지 않고 당신에게 달려들었습니다.\n");
+					script.append("생각보다 경찰의 힘이 너무 강력했습니다.\n");
+					script.append("당신은 상처를 입고 도망갑니다.\n");
+					script.append("(체력 -2)\n");
 					Main.character.setHealth(Main.character.getHealth() - 2);
-					script.append("체력이 -2 잃었습니다.\n");
-				} else if (!Item.hasItemType(Main.character, "Ammunition")) { // 기존에 탄약이 없을 경우 추가
-					Main.character.addItem(new Item006_Ammunition());
-					script.append("탄약을 새로 얻었습니다!.\n");
-				} else { // 기존에 탄약이 있을 때도 추가
-					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); 
-						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
-					} catch (ClassCastException e) {
-						Main.character.removeItem(6);
-						Main.character.addItem(new Item006_Ammunition()); // 10% 확률로 승리시 탄약이 없을 때 탄약 추가
-						script.append("(탄약+1)을 새로 얻었습니다!.\n");
-					}
-				}
+				} else { // 기존에 탄약이 없을 경우 추가
+					script.append("당신은 무사히 경찰을 제압하는데 성공했습니다.\n");
+					script.append("(+ 탄약)\n");
+					Main.character.addItem(new Item006_Ammunition()); // 10% 확률로 승리시 탄약 추가
+				} 
 			} else {
 				script.append("아뿔싸 당신은 총이 없습니다!\n");
 				script.append("다급하게 도망치려 하지만 몸에 상처가 남고 맙니다.\n");

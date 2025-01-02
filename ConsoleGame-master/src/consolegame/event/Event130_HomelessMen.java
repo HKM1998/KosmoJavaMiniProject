@@ -59,6 +59,10 @@ public class Event130_HomelessMen extends Event {
 					Main.character.setMoney(Main.character.getMoney() + 50); // 30% 소지금 중가
 				}
 			} else {
+				script.append("당신은 가진 무기가 없어 맨손으로 그들과 맞서기 시작합니다.\n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append(".     \n");
 				int rand = random.nextInt(10);
 				if (rand > 7) {
 					script.append("노숙자들과 싸워 이겼으나 남은 것은 허탈함 뿐입니다.\n");

@@ -38,7 +38,7 @@ public class Event160_Assassin extends Event {
 	public void printChoice() {
 		Selection selection = new Selection();
 		selection.addSelection("날 죽이려 아이를 이용하는 못된 마약상에게 되갚아줘야겠다.");
-		selection.addSelection("감히 날 죽이려 하다니 괘씸하다. 아이의 모든걸 빼앗은 뒤 죽이고 떠난다");
+		selection.addSelection("감히 날 죽이려 하다니 괘씸하다. 아이의 모든걸 빼앗은 뒤 죽이고 떠난다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}

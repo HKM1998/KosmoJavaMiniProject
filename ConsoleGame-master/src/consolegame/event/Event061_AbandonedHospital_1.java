@@ -36,7 +36,7 @@ public class Event061_AbandonedHospital_1 extends Event {
 
 		selection.addSelection("뒷통수를 칼로 습격!");
 		selection.addSelection("뒷통수를 총으로 습격!");
-		selection.addSelection("몰래 뒷 선반에 있는 진통제를 빼돌려 나옵니다.");
+		selection.addSelection("몰래 뒷 선반에 있는 진통제를 빼돌려 도망친다.");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -48,13 +48,24 @@ public class Event061_AbandonedHospital_1 extends Event {
 		Random random = new Random();
 		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
 			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
-
+				script.append("당신은 조심스럽게 칼을 꺼내들고 살금살금 의사의 뒤로 다가갑니다.\n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append(".     \n");
 				if (random.nextInt(10) < 4) { // 칼은 40% 확률로 패배 후 체력-1
+					script.append("의사는 당신이 접근하는 것을 눈치채고 오히려 당신을 공격합니다.\n");
+					script.append("생각보다 의사의 저항이 거세 당신은 상처를 입고 제압에 성공합니다.\n");
+					script.append("하지만 이미 의사가 장기를 꺼내던 사람은 죽은 뒤였고\n");
+					script.append("당신은 상처를 입은 채 병원에서 벗어납니다.\n");
+					script.append("(체력 -1)\n");
 					Main.character.setHealth(Main.character.getHealth() - 1);
-					script.append("칼로 공격했지만 패배하고 (체력 -1) 잃었습니다.\n");
 				} else {
-					Main.character.addItem(new Item004_FirstAidKit()); // 10% 확률로 승리시 구급상자가 있을 때도 추가
-					script.append("구급상자를 획득했다!.\n");
+					script.append("의사는 당신이 접근하는 것을 눈치채고 오히려 당신을 공격합니다.\n");
+					script.append("생각보다 의사의 저항이 거세 당신은 상처를 입고 제압에 성공합니다.\n");
+					script.append("하지만 이미 의사가 장기를 꺼내던 사람은 죽은 뒤였고\n");
+					script.append("쓰러진 의사의 옆에 놓여진 상자를 발견하곤 상자를 가지고 병원을 벗어납니다.\n");
+					script.append("(+ 구급상자)\n");
+					Main.character.addItem(new Item004_FirstAidKit()); 
 				}
 			} else {
 				script.append("아뿔싸 당신은 칼이 없습니다!\n");
@@ -64,13 +75,16 @@ public class Event061_AbandonedHospital_1 extends Event {
 			}
 		} else if (pChoice.equals("2")) {
 			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격
-				if (random.nextInt(10) < 0) { // 총은 % 확률로 패배 후 체력 -1, 100% 확률로 승리 후 구급상자 획득
-					Main.character.setHealth(Main.character.getHealth() - 1);
-					script.append("총으로 공격했지만 패배하고 (체력 -1) 잃었습니다.\n");
-				} else { // 기존에 구급상자 있을 때도 추가
-					Main.character.addItem(new Item004_FirstAidKit());
-					script.append("(구급상자)를 획득했다!.\n");
-				}
+				script.append("당신은 조심스럽게 총을 꺼내들고 의사의 뒷통수를 겨눕니다.\n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append("의사는 당신이 접근하는 것을 눈치채고 오히려 당신을 공격하려 했으나\n");
+				script.append("총을 보고는 얌전히 투항합니다.\n");
+				script.append("하지만 이미 의사가 장기를 꺼내던 사람은 죽은 뒤였고\n");
+				script.append("쓰러진 의사의 옆에 놓여진 상자를 발견하곤 상자를 가지고 병원을 벗어납니다.\n");
+				script.append("(+ 구급상자)\n");
+				Main.character.addItem(new Item004_FirstAidKit());
 			} else {
 				script.append("아뿔싸 당신은 총이 없습니다!\n");
 				script.append("다급하게 도망치려 하지만 몸에 상처가 남고 맙니다.\n");
@@ -79,7 +93,9 @@ public class Event061_AbandonedHospital_1 extends Event {
 			}
 		} else if (pChoice.equals("3")) {
 			Main.character.addItem(new Item005_PainKiller()); // 2번 선택시 진통제만 가져간다
-			script.append("(진통제)를 획득했다!.\n");
+			script.append("당신은 모르는 사람을 위해 위험을 감수하지 않았습니다.\n");
+			script.append("뒤에 놓여진 진통제를 집어들고는 조심스래 병원을 빠져나갑니다.\n");
+			script.append("(+ 진통제)\n");
 		}
 		ConsolePrint.printResult(script, getIsLoaded());
 	}
