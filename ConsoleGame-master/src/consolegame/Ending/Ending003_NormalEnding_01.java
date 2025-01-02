@@ -12,6 +12,7 @@ public class Ending003_NormalEnding_01 extends Ending{
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
+		script.append("엔딩 " + getEndingId()+". " + getEndingName() + "\n");
 		script.append("당신은 멍하니 길을 걷다가 맨홀에 빠졌다.\n");
 		script.append("우당 탕 탕 쾅! 쿵!!!!!.\n");
 		script.append("어딘가 부러졌는지 몸이 움직이지 않는다..\n");

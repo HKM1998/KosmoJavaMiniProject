@@ -11,6 +11,7 @@ public class Ending004_NormalEnding_02 extends Ending {
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
+		script.append("엔딩 " + getEndingId()+". " + getEndingName() + "\n");
 		script.append("\n당신은 계속 떠돌며 방황하다 우연히 지하쉘터를 발견하게 되었습니다.\n");
 		script.append("고된 여정으로 인해 판단력이 흐려진 나머지 겁도 없이 쉘터 내부로 들어갔습니다.\n");
 		script.append("\n쉘터의 내부창고엔 10년은 거뜬히 먹을수있을 양의 보존식량과.\n");
