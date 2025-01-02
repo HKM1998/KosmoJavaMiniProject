@@ -92,38 +92,40 @@ public class Event210_Peddler extends Event {
 			script.append("(자금 +50)\n");
 			Main.character.removeItem(5);
 			Main.character.setMoney(Main.character.getMoney() + 50);
-		} else if (pChoice.equals("6")) {
+		} else if (pChoice.equals("7")) {
 			script.append("당분간 쓸 일이 없을지도 모르지\n");
 			script.append("제값만 쳐주쇼.\n");
 			script.append("제길..이거 구하기 힘든거라고!\n");
 			script.append("(자금 +10)\n");
 			Main.character.removeItem(6);
 			Main.character.setMoney(Main.character.getMoney() + 10);
-		} else if (pChoice.equals("7")) {
+		} else if (pChoice.equals("8")) {
 			script.append("당분간 쓸 일이 없을지도 모르지\n");
 			script.append("제값만 좀 쳐주쇼.\n");
 			script.append("제기랄..괜히 팔았나\n");
 			script.append("(자금 +100)\n");
-			Main.character.removeItem(8);
+			Main.character.removeItem(7);
 			Main.character.setMoney(Main.character.getMoney() + 100);
 		} else if (pChoice.equals("9")) {
+			script.append("당분간 쓸 일이 없을지도 모르지\n");
+			script.append("제값만 좀 쳐주쇼.\n");
+			script.append("제기랄..괜히 팔았나\n");
+			script.append("(자금 +10)\n");
+			Main.character.removeItem(8);
+			Main.character.setMoney(Main.character.getMoney() + 200);
+		} else if (pChoice.equals("10")) {
 			script.append("아깝지만.\n");
 			script.append("돈이 필요하니 어쩔수없지.\n");
-			script.append("(자금+10)\n");
+			script.append("(자금+100)\n");
 			Main.character.removeItem(9);
-			Main.character.setMoney(Main.character.getMoney() + 10);
-		} else if (pChoice.equals("10")) {
+			Main.character.setMoney(Main.character.getMoney() + 100);
+		} else if (pChoice.equals("11")) {
 			script.append("정말 아깝지만.\n");
 			script.append("돈이 필요하니 어쩔수없지.\n");
 			script.append("(자금+100)\n");
 			Main.character.removeItem(10);
 			Main.character.setMoney(Main.character.getMoney() + 100);
-		} else if (pChoice.equals("11")) {
-			script.append("이건 별로 먹고싶지않다.\n");
-			script.append("(자금+10)\n");
-			Main.character.removeItem(11);
-			Main.character.setMoney(Main.character.getMoney() + 10);
-		}else {
+		} else {
 			script.append("아무 것도 팔고싶지 않다.\n");
 			script.append("그냥 지나가자.\n");
 		}

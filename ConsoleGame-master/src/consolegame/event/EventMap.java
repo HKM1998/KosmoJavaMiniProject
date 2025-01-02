@@ -112,7 +112,7 @@ public class EventMap {
 			catch(NullPointerException e) {} // 10번 이벤트가 이미 끝났으면 NullPointerException 발생 가능
 			break; 
 		case 50: eventArray.add(new EventMapList(51, 9999)); break; // C 편의점 이벤트
-		case 60: eventArray.add(new EventMapList(61, 9999)); break; // C 편의점 이벤트
+		case 60: eventArray.add(new EventMapList(61, 9999)); break; // C 폐병원 이벤트
 		case 80: eventArray.add(new EventMapList(81, 9999)); break; // C 해병 이벤트
 		case 90: eventArray.add(new EventMapList(91, 9999)); break; // C 상인가족 이벤트
 		case 120: eventArray.add(new EventMapList(121, 5)); break; // R 도인 이벤트
