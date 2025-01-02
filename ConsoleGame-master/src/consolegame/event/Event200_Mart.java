@@ -43,8 +43,12 @@ public class Event200_Mart extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1") && Main.character.getMoney() > 100) {
 			script.append("음 조금 녹슨것 같지만\n");
 			script.append("뭐 괜찮겠지.\n");

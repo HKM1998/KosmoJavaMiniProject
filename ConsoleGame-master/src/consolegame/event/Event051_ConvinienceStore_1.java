@@ -43,8 +43,12 @@ public class Event051_ConvinienceStore_1 extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		Random random = new Random();
 		if (pChoice.equals("1")) {
 			if (Item.hasItem(Main.character, 000)) {

@@ -42,8 +42,12 @@ public class Event060_AbandonedHospital extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) { // 1번 우회한다 선택했을 경우 차트를 획득
 			if (!Item.hasItem(Main.character, 007)) {
 				script.append("당신은 호기심과 공포감의 두 줄다리기 사이에서\n");

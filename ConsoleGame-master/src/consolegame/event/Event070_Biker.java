@@ -42,7 +42,12 @@ public class Event070_Biker extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			if (Item.hasItem(Main.character, 000)) {
 				script.append("당신은 다급하게 칼을 꺼내 폭주족에게 맞서기 시작합니다.\n");

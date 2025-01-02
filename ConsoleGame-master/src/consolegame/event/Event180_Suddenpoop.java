@@ -37,8 +37,12 @@ public class Event180_Suddenpoop extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("주변에 건물이라곤 전혀 찾을 수 없습니다.\n");
 			script.append("아무래도 큰일난것 같습니다.\n");
