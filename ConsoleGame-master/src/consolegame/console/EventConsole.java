@@ -7,43 +7,50 @@ import consolegame.event.Event;
 public class EventConsole {
 	Event event;
 	public Scanner scan;
-	
 	public EventConsole(Event event, Scanner scan) {
 		this.event = event;
 		this.scan = scan;
 	}
 	
-	
 	public void start() {
 		event.print();
 		event.setLoaded(true);
 		String input;
-		while(true) {
+		while (true) {
 			try {
 				input = scan.next();
-				if(input.toUpperCase().equals("I")) {
+				if (input.toUpperCase().equals("I")) {
 					InventoryConsole.print(scan);
 					event.print();
 					continue;
-				}
-				else if(Integer.parseInt(input) > event.getsCount() || Integer.parseInt(input) <= 0) {
+				} else if (Integer.parseInt(input) > event.getsCount() || Integer.parseInt(input) <= 0) {
 					ConsolePrint.printWrongInputMessage(event.getsCount());
 					continue;
-				}else {
+				} else {
 					break;
 				}
+			} catch (Exception e) {
+				continue;
 			}
-			catch(Exception e){ continue;}
 		}
 		event.setLoaded(false);
 		event.getResult(input);
-		while(true) {
+		event.setLoaded(true);
+		while (true) {
 			try {
 				input = scan.next();
-				break;
-			}
-			catch(Exception e){ continue;}
+				if (input.toUpperCase().equals("I")) {
+					InventoryConsole.print(scan);
+					event.getResult(input);
+					continue;
+				} else {
+					break;
+				}
+
+			} catch (Exception e) {
+				continue;
+			}			
 		}
-		
+		event.setLoaded(false);
 	}
 }

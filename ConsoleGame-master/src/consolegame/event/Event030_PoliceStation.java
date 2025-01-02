@@ -41,11 +41,15 @@ public class Event030_PoliceStation extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
+		if (getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { //
 			script.append("자세한 이야기를 듣고싶은거야? 그렇다면 상세하게 설명해주지");
-		}else if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
+		} else if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가
 			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격
 				Random random = new Random(); // java.util.Random 임포트 후
 				if (random.nextInt(10) < 9) { // 칼은 90% 확률로 체력 -2
@@ -56,7 +60,7 @@ public class Event030_PoliceStation extends Event {
 					script.append("탄약을 새로 얻었습니다!.\n");
 				} else {
 					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); 
+						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6));
 						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
 					} catch (ClassCastException e) {
 						Main.character.removeItem(6);
@@ -70,7 +74,7 @@ public class Event030_PoliceStation extends Event {
 				script.append("(체력 -1)\n");
 				Main.character.setHealth(Main.character.getHealth() - 1);
 			}
-		}else if (pChoice.equals("3")) {
+		} else if (pChoice.equals("3")) {
 			if (Item.hasItem(Main.character, 8)) { // 총을 가지고 있을 경우 공격 (008은 8진수 인식 오류로 8로 수정)
 				Random random1 = new Random();
 				if (random1.nextInt(10) < 5) { // 칼은 50% 확률로 패배 후 체력 -2, 50% 확률로 승리 후 탄약 획득
@@ -81,7 +85,7 @@ public class Event030_PoliceStation extends Event {
 					script.append("탄약을 새로 얻었습니다!.\n");
 				} else { // 기존에 탄약이 있을 때도 추가
 					try {
-						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6)); 
+						Item006_Ammunition ammunition = (Item006_Ammunition) (Item.findItem(Main.character, 6));
 						ammunition.setAmAmount(ammunition.getAmAmount() + 1);
 					} catch (ClassCastException e) {
 						Main.character.removeItem(6);
