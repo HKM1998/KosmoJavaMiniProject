@@ -32,10 +32,18 @@ public class Event020_FakeReligion extends Event {
 		this.setsCount(selection.count);
 		selection.print();
 	}
+	
+
 
 	@Override
-	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder(); 
+	public void getResult(String pChoice) {		
+		
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		
+		script = new StringBuilder(); 
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { 
 			script.append("일장연설을 듣고 나니 기가 다 빠집니다.\n");

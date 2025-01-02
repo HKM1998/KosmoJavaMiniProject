@@ -13,6 +13,8 @@ public class Event010_EmptyCar extends Event {
 		setWeight(0);
 	}
 
+
+	
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
@@ -41,10 +43,15 @@ public class Event010_EmptyCar extends Event {
 		this.setsCount(selection.count);
 		selection.print();
 	}
-
+	
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+	
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {
 			script.append("조수석 서랍을 열어보니 신문지에 감싸진 무언가가 있습니다.\n");

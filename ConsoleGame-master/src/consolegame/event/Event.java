@@ -9,6 +9,7 @@ public abstract class Event {
 	private int score; // 이벤트 결과에 따른 점수
 	private int sCount;
 	private boolean isLoaded;
+	StringBuilder script = new StringBuilder();
 	
 	// Getter/Setter
 	public boolean getIsLoaded() {

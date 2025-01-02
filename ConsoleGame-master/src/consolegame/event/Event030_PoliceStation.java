@@ -42,7 +42,11 @@ public class Event030_PoliceStation extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
+		if (getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { //
 			script.append("\"자세한 이야기를 듣고싶은거야? 그렇다면 상세하게 설명해주지\n");

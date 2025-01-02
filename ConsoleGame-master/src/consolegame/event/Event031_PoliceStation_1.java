@@ -37,8 +37,12 @@ public class Event031_PoliceStation_1 extends Event {
 
 	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		script.append(getEventId() + ". " + getName() + "\n");
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}		
+		script.append(getEventId() + ". " + getName() + "\n");		
+		script = new StringBuilder();
 		if (pChoice.equals("1")) {
 			script.append("\"너도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하라고\n");
 			script.append("혹시 위험한 일에 휘말리면 날 불러 이것도 인연인데 도와주도록 하지!\"\n");

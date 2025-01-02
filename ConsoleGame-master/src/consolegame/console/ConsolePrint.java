@@ -152,6 +152,7 @@ public class ConsolePrint {
 		printCharater(); // 캐릭터 현재 상태 출력
 		printConsole(pSb, isLoaded);
 		System.out.println("=".repeat(100));
+		System.out.println("[I] : 소지 아이템 확인");
 		System.out.println("[아무 키나 입력하여 진행]");
 	}
 	public static void printEndingScript(StringBuilder pSb) {
