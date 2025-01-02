@@ -14,7 +14,11 @@ public class Event180_Suddenpoop extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("크흡.. 걷던 도중 대장의 움직임이 심상치 않다.\n");
 		script.append(".     \n");
@@ -27,8 +31,10 @@ public class Event180_Suddenpoop extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("꾸르르르르르... 윽..힘들더라도 조금만 참고 얼른 버려진 건물을 찾아보자.");
 		selection.addSelection("아흑... 참기 너무 힘든거 같다..근처 풀밭이라도 가서 해결하자. ");
 		this.setsCount(selection.count);
@@ -41,8 +47,8 @@ public class Event180_Suddenpoop extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("주변에 건물이라곤 전혀 찾을 수 없습니다.\n");
 			script.append("아무래도 큰일난것 같습니다.\n");

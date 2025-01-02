@@ -15,7 +15,11 @@ public class Event060_AbandonedHospital extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 길을 걷던 중 병원을 발견했습니다.\n");
 		script.append("병원 내부는 스산하고 어두워 보입니다.\n");
@@ -33,7 +37,10 @@ public class Event060_AbandonedHospital extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("몰래 지나간다.");
 		selection.addSelection("들어가봅니다");
 		this.setsCount(selection.count);
@@ -46,8 +53,8 @@ public class Event060_AbandonedHospital extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) { // 1번 우회한다 선택했을 경우 차트를 획득
 			if (!Item.hasItem(Main.character, 007)) {
 				script.append("당신은 호기심과 공포감의 두 줄다리기 사이에서\n");

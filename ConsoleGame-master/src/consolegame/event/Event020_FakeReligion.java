@@ -14,8 +14,11 @@ public class Event020_FakeReligion extends Event {
 
 	@Override
 	public void printScript() {
-
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("어느 아줌마가 웃으며 접근합니다.\n");
 		script.append("\"총각 어딜 그렇게 가~ 여기 한번 좋은 말씀 있는데 좀 듣고가~\"\n");
@@ -26,7 +29,10 @@ public class Event020_FakeReligion extends Event {
 	
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("그냥 들어봅니다.");
 		selection.addSelection("그냥 갑니다.");
 		this.setsCount(selection.count);
@@ -37,7 +43,6 @@ public class Event020_FakeReligion extends Event {
 
 	@Override
 	public void getResult(String pChoice) {		
-		
 		if(getIsLoaded()) {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;

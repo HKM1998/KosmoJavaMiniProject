@@ -16,7 +16,11 @@ public class Event130_HomelessMen extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 길거리를 지나던 중 이상한 냄새를 맡았습니다.\n");
 		script.append("무언가 당신을 뒤에서 쫒아 오는 것이 느껴집니다.\n\n");
@@ -29,8 +33,10 @@ public class Event130_HomelessMen extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("싸운다");
 		selection.addSelection("도망친다 ");
 		this.setsCount(selection.count);
@@ -43,8 +49,8 @@ public class Event130_HomelessMen extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			Random random = new Random();
 			if (Item.hasItem(Main.character, 8)) {

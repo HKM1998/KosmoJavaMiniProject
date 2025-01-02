@@ -24,8 +24,4 @@ public class Ending006_NormalEnding_04 extends Ending{
 		ConsolePrint.printEndingScript(script);
 		
 	}
-	public static void main(String[] args) {
-		Ending006_NormalEnding_04 ed = new Ending006_NormalEnding_04();
-		ed.printScript();
-	}
 }

@@ -13,7 +13,11 @@ public class Event110_University extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("길을 걷던 중 당신은 대학을 발견했다.\n");
 		script.append("당신은 고민을 하던 중 학교 안을 둘러보기로 하였다..\n");
@@ -25,8 +29,10 @@ public class Event110_University extends Event {
 	
 	@Override
 	public void printChoice() {
-		// 선택지 작성
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("오랫만에 듣는 노래에 흠뻑 빠져 감상한다.");
 		selection.addSelection("교내에 사람이 있다는 사실에 긴장하며 자리를 벗어난다.");
 		this.setsCount(selection.count);
@@ -39,8 +45,8 @@ public class Event110_University extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if(pChoice.equals("1")) {
 			script.append("당신은 오랫만에 듣는 노래에 지쳣던 마음이 회복되는 것을 느꼈습니다.\n");
 			script.append("(정신력 +1)\n");

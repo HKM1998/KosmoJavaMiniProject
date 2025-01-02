@@ -13,30 +13,37 @@ public class Event210_Peddler extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
-		script.append(" 길을 가다보니 보따리 상인을 발견했습니다. \n");
-		script.append(" (가지고있는 물건을 판매할수 있을것 같습니다.) \n\n");
-		script.append(" \"안녕하세요? \n");
-		script.append(" 물건 좀 팔려고 합니다.\" ");
+		script.append("길을 가다보니 보따리 상인을 발견했습니다. \n");
+		script.append("(가지고있는 물건을 판매할수 있을것 같습니다.) \n\n");
+		script.append("\"안녕하세요? \n");
+		script.append("물건 좀 팔려고 합니다.\"\n");
 		ConsolePrint.printScript(script, getIsLoaded());
 	}
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-		selection.addSelection(" 칼을 판다. ");
-		selection.addSelection(" 모르는 사람의 여권을 판다. ");
-		selection.addSelection(" 성경을 판다.");
-		selection.addSelection(" 개고기를 판다.");
-		selection.addSelection(" 구급상자를 판다.");
-		selection.addSelection(" 진통제를 판다.");
-		selection.addSelection(" 탄약을 판다.");
-		selection.addSelection(" 총을 판다.");
-		selection.addSelection(" 통조림을 판다.");
-		selection.addSelection(" 고기를 판다.");
-		selection.addSelection(" 보존식량을 판다.");
-		selection.addSelection(" 아무것도 팔지않고 간다");
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
+		selection.addSelection("칼을 판다. ");
+		selection.addSelection("알 수 없는 지도를 판다. ");
+		selection.addSelection("성경을 판다.");
+		selection.addSelection("개고기를 판다.");
+		selection.addSelection("구급상자를 판다.");
+		selection.addSelection("진통제를 판다.");
+		selection.addSelection("탄약을 판다.");
+		selection.addSelection("총을 판다.");
+		selection.addSelection("통조림을 판다.");
+		selection.addSelection("고기를 판다.");
+		selection.addSelection("보존식량을 판다.");
+		selection.addSelection("아무것도 팔지않고 간다");
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -47,8 +54,8 @@ public class Event210_Peddler extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("당신 가격 너무 후려치는거 아냐..?\n");
 			script.append("그래도 돈이 필요하니까.. 후..\n");

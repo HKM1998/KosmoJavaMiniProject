@@ -12,9 +12,9 @@ public class Ending004_NormalEnding_02 extends Ending {
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
 		script.append("엔딩 " + getEndingId()+". " + getEndingName() + "\n");
-		script.append("\n당신은 계속 떠돌며 방황하다 우연히 지하쉘터를 발견하게 되었습니다.\n");
+		script.append("당신은 계속 떠돌며 방황하다 우연히 지하쉘터를 발견하게 되었습니다.\n");
 		script.append("고된 여정으로 인해 판단력이 흐려진 나머지 겁도 없이 쉘터 내부로 들어갔습니다.\n");
-		script.append("\n쉘터의 내부창고엔 10년은 거뜬히 먹을수있을 양의 보존식량과.\n");
+		script.append("쉘터의 내부창고엔 10년은 거뜬히 먹을수있을 양의 보존식량과.\n");
 		script.append("각종 통조림, 그리고 식량이 산처럼 쌓여있습니다.\n");
 		script.append("\n당신은 너무 신이 난 나머지 경계심을 풀고 쉘터의 이곳 저곳을 돌아다닙니다.\n");
 		script.append("\n쉘터의 다른 창고를 둘러보니 이곳엔 생존에 필요한 도구와 무기가 가득합니다.\n");
@@ -30,8 +30,8 @@ public class Ending004_NormalEnding_02 extends Ending {
 		script.append("\n에햏헤ㅎ ㅔㅎ 구린 남자 냄새 히히ㅣㅎ .\n");
 		script.append("\n냄새 조아 이히 히히 히ㅣㅎ .\n");
 		script.append("\n이히히히 내꺼다 히히히ㅣㅎ .\n");
-		script.append(" \n");
-		script.append(" .-\"        \"-.      \"-.\r\n"
+		script.append(""
+				+ "     .-\"\"-.\\\"-.\r\n"
 				+ "     /            \\\r\n"
 				+ "    |,  .-.  .-.  ,|\r\n"
 				+ "    | )(_o/  \\o_)( |\r\n"
@@ -41,9 +41,9 @@ public class Ending004_NormalEnding_02 extends Ending {
 				+ "      | \\IIIIII/ |\r\n"
 				+ "      \\          /\r\n"
 				+ "       `--------`");
-		script.append("\n 키히 ㅎ히히히 \n");
-		script.append("\n 괴한의 소름 끼치는 소리와 함께 당신의 기억은 여기서 끊어지고 맙니다. \n");
-		ConsolePrint.printScript(script);
+		script.append("\n키히 ㅎ히히히 \n");
+		script.append("\n괴한의 소름 끼치는 소리와 함께 당신의 기억은 여기서 끊어지고 맙니다. \n");
+		ConsolePrint.printEndingScript(script);
 
 	}
 

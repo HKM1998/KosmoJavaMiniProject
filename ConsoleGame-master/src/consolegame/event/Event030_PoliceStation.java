@@ -17,11 +17,15 @@ public class Event030_PoliceStation extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 길을 걷다 경찰서를 발견합니다.\n");
 		script.append("뭔가 느낌이 이상했지만 확인을 해보려고 합니다.\n");
-		script.append("우선 확인을 위해 안을 들여다 보려 문으로 다가갑니다.");
+		script.append("우선 확인을 위해 안을 들여다 보려 문으로 다가갑니다.\n");
 		script.append("갑자기 \"누구냐!!\" 라며 소리치는 소리가 들립니다.\n");
 		script.append("깜짝놀라 돌아보니 반짝반짝 빛나는 대머리에 올챙이 배가 불룩 튀어나온 아재입니다.\n");
 		script.append("그 사람은 자신을 이 구역의 자치경찰이라고 주장합니다.\n");
@@ -32,7 +36,10 @@ public class Event030_PoliceStation extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("\"어쩌다가 혼자 이렇게 남게 되셧나요?\"");
 		selection.addSelection("그냥 무시하고 칼로 위협하여 무기만 탈취하려 합니다.");
 		selection.addSelection("그냥 무시하고 총으로 위협하여 무기만 탈취하려 합니다.");
@@ -50,7 +57,7 @@ public class Event030_PoliceStation extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { //
 			script.append("\"자세한 이야기를 듣고싶은거야? 그렇다면 상세하게 설명해주지\n");
-			script.append("잠시 자리에 앉아서 얘기하지\"\n");
+			script.append("잠시 안으로 들어오게 자리에 앉아서 얘기하지\"\n");
 			script.append("당신은 그의 말에 따라 경찰서 내부로 이동합니다.\n");
 			Main.eMap.setEvent(getEventId());
 		}else if (pChoice.equals("2")) { // 2번을 골랐을 경우 공격하는 것 추가

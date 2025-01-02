@@ -15,7 +15,11 @@ public class Event081_Marine_1 extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("잠시 그들에게 둘러쌓여 걷다보니 무너진 빌딩 사이 멀쩡한 건물이 나타납니다.\n");
 		script.append("사무실 안의 의자에 강제로 앉혀집니다.\n\n");
@@ -28,8 +32,10 @@ public class Event081_Marine_1 extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("당신은 식은땀을 흘리며 거짓말에 대해 사과합니다.");
 		selection.addSelection("당신은 당당하게 당장 생각나는 지역을 말합니다.");
 		this.setsCount(selection.count);
@@ -42,8 +48,8 @@ public class Event081_Marine_1 extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("리더로 보이는 사람이 웃으며 말합니다.\n");
 			script.append("\"하하하! 거짓말인것 알고 있었네 사실대로 말해서 다행이야.\"\n");

@@ -14,7 +14,11 @@ public class Event190_Meal extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 우연히 거리를 걷던 중\n");
 		script.append("주변 건물의 잔해에서 한 여자아이와 마주쳤습니다.\n");
@@ -25,7 +29,10 @@ public class Event190_Meal extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("먹을걸 주지 않고 무시한다.");
 		selection.addSelection("당신도 먹을게 없다 나눠주지 않고 쫒아낸다.");
 		selection.addSelection("거절하고 모든걸 빼았는다.");
@@ -38,9 +45,9 @@ public class Event190_Meal extends Event {
 		if(getIsLoaded()) {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
-		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
+		}			
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");	
 		if (pChoice.equals("1")) {
 			script.append("당신은 분명히 여자아이를 보았지만\n");
 			script.append("당장 혼자 사용할 물자도 부족한데 나눠줄 수는 없다고 생각했습니다.\n");

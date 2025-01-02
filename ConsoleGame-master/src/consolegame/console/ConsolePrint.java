@@ -91,32 +91,10 @@ public class ConsolePrint {
 		}
 		System.out.println("=".repeat(100) + "\n");
 	}
-	
-	public static void printSelection(StringBuilder pSb) {
-		// 선택지 출력
-		String[] selection = pSb.toString().split("\n");
-		System.out.println();
-		for (String str : selection) {
-			System.out.println("-".repeat(100));
-
-			for (int i = 0; i < str.toString().length(); i++) {
-				System.out.print(str.charAt(i));
-				try {
-					Thread.sleep(30);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			System.out.println("[I] : 소지 아이템 확인");
-			System.out.println();
-			System.out.println("-".repeat(100));
-		}
-	}
 
 	public static void printSelection(StringBuilder pSb, boolean isLoaded) {
 		// 선택지 출력
 		String[] selection = pSb.toString().split("\t");
-		System.out.println();
 		for (String str : selection) {
 			System.out.println("-".repeat(100));
 			if(isLoaded) {
@@ -148,10 +126,7 @@ public class ConsolePrint {
 	public static void printResult(StringBuilder pSb, boolean isLoaded) {
 		// 선택지에 따른 결과 출력
 		clear();
-		System.out.println("=".repeat(100));
-		printCharater(); // 캐릭터 현재 상태 출력
-		printConsole(pSb, isLoaded);
-		System.out.println("=".repeat(100));
+		printScript(pSb, isLoaded);
 		System.out.println("[I] : 소지 아이템 확인");
 		System.out.println("[아무 키나 입력하여 진행]");
 	}

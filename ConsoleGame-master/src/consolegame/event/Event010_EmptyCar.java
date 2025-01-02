@@ -17,7 +17,11 @@ public class Event010_EmptyCar extends Event {
 	
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("으슥한 곳에 숨겨져 있는 자동차를 발견했습니다.\n");
 		script.append("\"아니 뭐 이런 곳에 자동차를 둬? 이건 훔쳐 달라는거 아냐?\"\n");
@@ -36,7 +40,10 @@ public class Event010_EmptyCar extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 
 		selection.addSelection("조수석 서랍");
 		selection.addSelection("운전석 햇빛가리개");
@@ -50,7 +57,6 @@ public class Event010_EmptyCar extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}
-	
 		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {

@@ -10,6 +10,7 @@ public abstract class Event {
 	private int sCount;
 	private boolean isLoaded;
 	StringBuilder script = new StringBuilder();
+	Selection selection = new Selection();
 	
 	// Getter/Setter
 	public boolean getIsLoaded() {

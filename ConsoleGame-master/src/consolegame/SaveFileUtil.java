@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class SaveFileUtil {
 	// 세이브 파일 관련 핸들링
+	// 시간 문제로 미구현
 	private static String filePath = "C:\\windows\\SAVE.txt";
 	// 파일 읽기
 	public HashMap<String, String> getSaveFile(){

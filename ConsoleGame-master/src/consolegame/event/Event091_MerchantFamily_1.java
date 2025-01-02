@@ -15,7 +15,11 @@ public class Event091_MerchantFamily_1 extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("사내는 주방으로 보이는 곳으로 나를 안내하였고, \n");
 		script.append("이내 건물안에는 맛있는 음식 냄새가 가득찹니다.\n");
@@ -28,10 +32,11 @@ public class Event091_MerchantFamily_1 extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("배고픔에 굶주려 허겁지겁 먹는다");
-		
 		selection.addSelection("한번 스프의 냄새부터 음미한다");
 		this.setsCount(selection.count);
 		selection.print();
@@ -43,8 +48,8 @@ public class Event091_MerchantFamily_1 extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) { 
 			script.append("허겁지겁 스프를 먹다보니 갑자기 졸음이 몰려오는 느낌이 듭니다.\n");
 			script.append("뭔가 잘못됨을 직감하고 나가려 하자 몸이 마음대로 움직이지 않습니다.\n");

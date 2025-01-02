@@ -17,7 +17,11 @@ public class Event051_ConvinienceStore_1 extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 편의점 안으로 이동해 내부를 둘러봅니다.\n");
 		script.append("이미 선반은 헤집어지고 쓸만한 물건은 많이 없어보입니다.\n");
@@ -33,7 +37,10 @@ public class Event051_ConvinienceStore_1 extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("거부하고 상대와 칼로 싸웁니다.");
 		selection.addSelection("거부하고 상대와 총으로 싸웁니다.");
 		selection.addSelection("그냥 나갑니다");
@@ -47,8 +54,8 @@ public class Event051_ConvinienceStore_1 extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		Random random = new Random();
 		if (pChoice.equals("1")) {
 			if (Item.hasItem(Main.character, 000)) {

@@ -18,7 +18,11 @@ public class Event061_AbandonedHospital_1 extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("문을 열고 들어가 보니 믿기지 않는 쇼킹한 일이 눈 앞에 벌어집니다.\n");
 		script.append("어떤 눈이 퀭한 미친 의사가 마취도 없이 멀쩡해 보이는 인간의 장기를 꺼내고 있습니다.\n");
@@ -32,8 +36,10 @@ public class Event061_AbandonedHospital_1 extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("뒷통수를 칼로 습격!");
 		selection.addSelection("뒷통수를 총으로 습격!");
 		selection.addSelection("몰래 뒷 선반에 있는 진통제를 빼돌려 도망친다.");
@@ -46,9 +52,9 @@ public class Event061_AbandonedHospital_1 extends Event {
 		if(getIsLoaded()) {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
-		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
+		}			
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");	
 		Random random = new Random();
 		if (pChoice.equals("1")) { // 1번을 골랐을 경우 공격하기
 			if (Item.hasItem(Main.character, 000)) { // 칼을 가지고 있을 경우 공격

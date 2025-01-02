@@ -30,7 +30,7 @@ public class EndingConsole {
 				break title;
 			case "E":
 				ConsolePrint.finishGame(scan);
-				break;
+				break title;
 			}
 		}
 	}

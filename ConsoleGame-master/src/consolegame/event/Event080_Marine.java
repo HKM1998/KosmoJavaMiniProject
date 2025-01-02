@@ -13,7 +13,11 @@ public class Event080_Marine extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("멀리서 각진 걸음으로 걸어오던 해병 전투복의 무리가 점점 다가옵니다.\n");
 		script.append("당신은 도망치려 하였으나 그들이 들고 있는 총을 보고는 도망치기를 포기합니다.\n\n");
@@ -24,8 +28,10 @@ public class Event080_Marine extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("\"충성! 해병 1511기 입니다!\"(거짓말)");
 		selection.addSelection("\"아 저는 그냥 지나가는 시민입니다.\"");
 		this.setsCount(selection.count);
@@ -38,8 +44,8 @@ public class Event080_Marine extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) { 
 			script.append("\"흠...해병 출신인가? 우선 전우회 건물로 이동해서 이야기를 듣기로하지\"\n");
 			script.append("그들은 당신을 의심하는 눈초리를 거두지 않았습니다.\n");

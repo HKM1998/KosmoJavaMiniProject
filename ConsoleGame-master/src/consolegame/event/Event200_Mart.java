@@ -19,7 +19,11 @@ public class Event200_Mart extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("길을가다 마트를 발견했다. \n");
 		script.append("뭐라도 좀 사러가자.\n");
@@ -29,7 +33,10 @@ public class Event200_Mart extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("칼을 산다. ");
 		selection.addSelection("통조림을 산다. ");
 		selection.addSelection("총을 산다. ");
@@ -47,40 +54,40 @@ public class Event200_Mart extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
-		if (pChoice.equals("1") && Main.character.getMoney() > 100) {
+		script.append(getEventId() + ". " + getName() + "\n");		
+		if (pChoice.equals("1") && Main.character.getMoney() >= 100) {
 			script.append("음 조금 녹슨것 같지만\n");
 			script.append("뭐 괜찮겠지.\n");
 			script.append("(+ 칼, 자금 -100)\n");
 			Main.character.addItem(new Item000_Knife());
 			Main.character.setMoney(Main.character.getMoney() - 100);
-		} else if (pChoice.equals("2") && Main.character.getMoney() > 50) {
+		} else if (pChoice.equals("2") && Main.character.getMoney() >= 50) {
 			script.append("마음에 드는 맛은 아니지만..뭐..\n");
 			script.append("이거라도 챙겨야겠지.\n");
 			script.append("(+ 통조림, 자금 -50)\n");
 			Main.character.addItem(new Item009_Can());
 			Main.character.setMoney(Main.character.getMoney() - 50);
-		} else if (pChoice.equals("3") && Main.character.getMoney() > 200) {
+		} else if (pChoice.equals("3") && Main.character.getMoney() >= 200) {
 			script.append("음 이거라면 누구든 \n");
 			script.append("상대할수 있을것 같은 자신감이 솟는다.\n");
 			script.append("난 강해졌다.\n");
 			script.append("(+ 총, 자금 -200)\n");
 			Main.character.addItem(new Item008_Gun());
 			Main.character.setMoney(Main.character.getMoney() - 200);
-		} else if (pChoice.equals("4") && Main.character.getMoney() > 50) {
+		} else if (pChoice.equals("4") && Main.character.getMoney() >= 50) {
 			script.append("아차 탄약도 챙겨야지.\n");
 			script.append("(+ 탄약, 자금 -50\n)");
 			Main.character.addItem(new Item006_Ammunition());
 			Main.character.setMoney(Main.character.getMoney() - 50);
-		} else if (pChoice.equals("5") && Main.character.getMoney() > 200) {
+		} else if (pChoice.equals("5") && Main.character.getMoney() >= 200) {
 			script.append("어떤 동물의 고기인지는\n");
 			script.append("모르겠으나 어쨋든\n");
 			script.append("맛있어 보이는 고기다.\n");
 			script.append("(+ 고기, 자금 -200)\n");
 			Main.character.addItem(new Item010_Meat());
 			Main.character.setMoney(Main.character.getMoney() - 200);
-		} else if (pChoice.equals("6") && Main.character.getMoney() > 50) {
+		} else if (pChoice.equals("6") && Main.character.getMoney() >= 50) {
 			script.append("이 제품의 표지만 봐도\n");
 			script.append("굉장히 맛이 있을것\n");
 			script.append("같아 보이진 않는다.\n");

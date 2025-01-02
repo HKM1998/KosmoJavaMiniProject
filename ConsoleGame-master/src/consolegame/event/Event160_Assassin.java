@@ -15,7 +15,11 @@ public class Event160_Assassin extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("이 건물 저 건물 들어가며 물건을 뒤지던 당신은\n");
 		script.append("어느날 행색이 초라하고 꼬질꼬질한 여자아이를 조우하고 말았습니다.\n");
@@ -36,7 +40,10 @@ public class Event160_Assassin extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("날 죽이려 아이를 이용하는 못된 마약상에게 되갚아줘야겠다.");
 		selection.addSelection("감히 날 죽이려 하다니 괘씸하다. 아이의 모든걸 빼앗은 뒤 죽이고 떠난다.");
 		this.setsCount(selection.count);
@@ -49,8 +56,8 @@ public class Event160_Assassin extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) { 
 			script.append("당신은 마약상의 부하들 찾아가 \n");
 			script.append("몇몇 살해하였으나\n");

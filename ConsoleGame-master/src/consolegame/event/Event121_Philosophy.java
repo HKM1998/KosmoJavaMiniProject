@@ -15,8 +15,11 @@ public class Event121_Philosophy extends Event {
 
 	@Override
 	public void printScript() {
-
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 길을 걷던 중 어딘가에서 본 형체가 있는 것을 목격했습니다.\n");
 		script.append("가까이 다가가보니 이전 한강에서 마주친 이상한 도인입니다.\n\n");
@@ -30,12 +33,14 @@ public class Event121_Philosophy extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("\"이 할아버지 또 이러시네 세상이 개판인데 그럴 때냐구요!\"");
 		selection.addSelection("당신은 정신이 이상해 보이는 상대에게 동정심을 느껴 돈을 주고 떠납니다.\n"
 				+ "할아버지 날도 추운데 이거 드릴테니 얼른 들어가서 쉬세요.\n");
-		if(Item.hasItem(Main.character, 16) && !Item.hasItem(Main.character, 12)) {
+		if(Item.hasItem(Main.character, 16)) {
 			selection.addSelection("\"살인으로 흘린 피가 이 땅을 죽음의 병으로 물들이고 있습니다.\n"
 					+"세상이 어떻게 돌아가는지 이전에 왜 이렇게 되었는지 주변을 돌아보아야 합니다\"\n");
 		}
@@ -49,8 +54,8 @@ public class Event121_Philosophy extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("정체 불명의 도인은 혀를 차면서 당신에게 말합니다.\n\n");
 			script.append("\"쯔쯧. 원인에 대해서 생각조차 하지 않다니 한심하구나.\"\n\n");
@@ -59,7 +64,9 @@ public class Event121_Philosophy extends Event {
 			script.append("\"젊은이 고마우이~ 이걸로 알사탕이나 사먹을게\"\n\n");
 			script.append("역시나 정신이 이상한 사람이 맞았습니다.\n");
 			script.append("그래도 다른 사람을 도왔다는 만족감에 당신은 기분이 좋아집니다.\n");
+			script.append("(소지금 -100)");
 			script.append("(정신력 +1)\n");
+			Main.character.setMoney(Main.character.getMoney() - 100);
 			Main.character.setMental(Main.character.getMental() + 1);
 		}else if (pChoice.equals("3")) { 
 			script.append("당신은 도인을 만난 후 그동안 생각해온 답에 대해 일장 연설을 시작합니다.\n");

@@ -13,19 +13,12 @@ public class Event000_Start extends Event {
 	}
 
 	@Override
-	public void printChoice() {
-		Selection selection = new Selection();
-
-		selection.addSelection("마약을 전부 불태우고 돈가방만 챙겨서 튄다");
-		selection.addSelection("마약과 돈가방을 들고 튄다");
-
-		this.setsCount(selection.count);
-		selection.print();
-	}
-
-	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("\"3차세계 대전 이후 폐허가 된 이후의 세계인 2055년,\n");
 		script.append("당신은 특별한 재주나 능력은 없어도 그저 성실히 살아가고 있습니다.\n");
@@ -42,10 +35,27 @@ public class Event000_Start extends Event {
 	}
 
 	@Override
+	public void printChoice() {
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
+
+		selection.addSelection("마약을 전부 불태우고 돈가방만 챙겨서 튄다");
+		selection.addSelection("마약과 돈가방을 들고 튄다");
+
+		this.setsCount(selection.count);
+		selection.print();
+	}
+
+	@Override
 	public void getResult(String pChoice) {
-		StringBuilder script = new StringBuilder();
-		
-		
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) {
 			script.append("당신은 마약에 불을 질렀습니다! 그리고 돈가방을 챙기고 도망을 칩니다.\n");
 			script.append("(소지금 +500)\n");

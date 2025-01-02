@@ -18,17 +18,18 @@ public class GameOverConsole {
 			ConsolePrint.printConsole(script);
 		} else // 그외에 출력 (ex, 바로 게임오버만)
 			printGameOver();
-			title: while (true) {
-				switch (scan.next().toUpperCase()) {
-				case "S":
-					break title;
-				case "E":
-					ConsolePrint.finishGame(scan);
-					break;
+		title: while (true) {
+			switch (scan.next().toUpperCase()) {
+			case "S":
+				break title;
+			case "E":
+				ConsolePrint.finishGame(scan);
+				break title;
 			}
 		}
 		return;
 	}
+
 	static void printGameOver() {
 		// TitleConsole 출력부 와 동일한 구조로 게임오버 출력하게
 		StringBuilder script = new StringBuilder();
@@ -41,11 +42,11 @@ public class GameOverConsole {
 				+ "  ## ###  #    #   #    #   #         ## ##     ##     #        #   #   \r\n"
 				+ "   ### #  #    #   #    #   ######     ###      ##     ######   #    #  \r\n"
 				+ "                                                                         \n\n\n");
-		
+
 		ConsolePrint.printTitle(script);
 
-		if (!Main.hasSaveFile) {
-			System.out.println("[S] : 타이틀로 돌아가기\t [E] : 게임종료\n");
-		}
+		System.out.println("[S] : 타이틀로 돌아가기\t [E] : 게임종료\n");
+//		if (!Main.hasSaveFile) {
+//		}
 	}
 }

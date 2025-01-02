@@ -15,7 +15,11 @@ public class Event090_MerchantFamily extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("황폐한 건물만 끝없이 이어지던 거리에서\n");
 		script.append("당신은 대덕상회라는 간판을 단 집을 발견였습니다.\"");
@@ -29,10 +33,11 @@ public class Event090_MerchantFamily extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("\"정말 감사합니다. 혹시 실례가 안된다면\n밥 한끼 정도만 얻어 먹을 수 있을까요?\"");
-
 		selection.addSelection("\"정말 감사합니다. 혹시 실례가 안된다면\n하루만 쉬어갈 수 있을까요?\"");
 		this.setsCount(selection.count);
 		selection.print();
@@ -44,8 +49,8 @@ public class Event090_MerchantFamily extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("가족 중 아버지로 보이는 사내가 사람 좋은 미소를 머금고 말합니다.\n");
 			script.append("\"일단 안으로 들어오세요\"\n");

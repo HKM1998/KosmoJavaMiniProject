@@ -17,7 +17,11 @@ public class Event040_WildDog extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("폐허가 된 도시에 어둠이 깔리자\n");
 		script.append("어디선가 으르렁 거리는 소리가 들리기 시작합니다.\n");
@@ -31,8 +35,10 @@ public class Event040_WildDog extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("도망갑니다.");
 		selection.addSelection("칼로 싸웁니다");
 		selection.addSelection("총으로 싸웁니다");
@@ -46,8 +52,8 @@ public class Event040_WildDog extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("당신은 도망쳐야 겠다는 생각이 들자마자\n");
 			script.append("부리나케 도망치기 시작했습니다.\n");

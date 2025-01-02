@@ -16,7 +16,11 @@ public class Event150_FillingStation extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("저 멀리 무인주유소가 보이는듯 합니다. \n");
 		script.append("당신이 주유소에 가까워질수록 주유소 입구에서 무언가 수상한 상자를\n");
@@ -30,12 +34,13 @@ public class Event150_FillingStation extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("큰 상자(소지금 -200)");
 		selection.addSelection("작은 상자(소지금 -100)");
 		selection.addSelection("돈을 지불하지않고 두개다 빼앗고 남자도 죽인다.");
-		
 		this.setsCount(selection.count);
 		selection.print();
 	}
@@ -46,8 +51,8 @@ public class Event150_FillingStation extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) { // 1번은 금액 200원을 쓰고 칼 획득
 			if (Main.character.getMoney() > 200) {
 				script.append("소지금 200을 사용하여 큰 상자를 구매하였습니다.\n");

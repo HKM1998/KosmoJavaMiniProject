@@ -17,7 +17,11 @@ public class Event070_Biker extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 오늘도 묵묵히 걷고 있습니다.\n");
 		script.append("그러다 이제는 인적이 드문 넓은 4차선 왕복도로 를 걷는 중입니다.\n");
@@ -31,8 +35,10 @@ public class Event070_Biker extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("칼로 싸웁니다.");
 		selection.addSelection("총으로 싸웁니다.");
 		selection.addSelection("도망칩니다.");
@@ -46,8 +52,8 @@ public class Event070_Biker extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			if (Item.hasItem(Main.character, 000)) {
 				script.append("당신은 다급하게 칼을 꺼내 폭주족에게 맞서기 시작합니다.\n");

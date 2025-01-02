@@ -30,7 +30,7 @@ public class Ending003_NormalEnding_01 extends Ending{
 				+ "    # #    #      # # #     \r\n"
 				+ "  #   #    #      #         \r\n"
 				+ "   ###    ###    ###### ### \n\n\n\n");
-		ConsolePrint.printScript(script);
+		ConsolePrint.printEndingScript(script);
 	}
 	
 }

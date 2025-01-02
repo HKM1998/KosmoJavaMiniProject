@@ -14,14 +14,15 @@ public class InventoryConsole {
 		int count = 0;
 		sb.append("[인벤토리]\n");
 		if (Main.character.getItem().size() <= 0) {
-			sb.append("소지중인 아이템이 없습니다.\n");
+			sb.append("소지중인 아이템이 없습니다.");
 		} else {
 			for (Item i : Main.character.getItem()) {
 				sb.append(i.getItemId() + ". " + i.getName());
-				sb.append("\t");
+				sb.append("    ");
+				count++;
 				if (count > 5) {
 					sb.append("\n");
-					count++;
+					count = 0;
 				}
 			}
 		}

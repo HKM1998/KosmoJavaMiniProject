@@ -14,7 +14,11 @@ public class Event120_Doin extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 길을 걷던 중 한강에 도착했다!\n");
 		script.append("날씨는 추웟으나 오랫만에 보는 한강에 주변을 걷기로 하였다.\n\n");
@@ -29,10 +33,11 @@ public class Event120_Doin extends Event {
 	
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("\"도사님은 왜 세상이 이렇게 돌아간다고 생각 하시나요?\"");
-		
 		selection.addSelection("당신은 추위에 떨며 말한다.\n\"그런 생각을 하실 때가 아닌것 같은데요.\"");
 		this.setsCount(selection.count);
 		selection.print();
@@ -44,8 +49,8 @@ public class Event120_Doin extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("도인이 내뱉는 음양오행과 양명햑을 동원한 그럴듯한 설명에\n");
 			script.append("당신은 도인의 말을 듣고 여러 생각이 들기 시작합니다.\n");

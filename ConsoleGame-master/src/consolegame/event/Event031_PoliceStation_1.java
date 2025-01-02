@@ -15,7 +15,11 @@ public class Event031_PoliceStation_1 extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("경찰서 내부로 이동해 자리에 앉자 경찰은 자신의 이야기를 하기 시작합니다.\n\n");
 		script.append("\"모든 사람들이 자신의 살길을 찾기 위해 나갔지만 나는\n");
@@ -26,8 +30,10 @@ public class Event031_PoliceStation_1 extends Event {
 
 	@Override
 	public void printChoice() {
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("\"자신을 희생하면서 까지 남겠다니.. 그야말로 감동입니다.\"");
 		selection.addSelection("\"저도 같이 지키고 싶습니다. 그래서 무기를 좀 얻을 수 있을까요?\"");
 		this.setsCount(selection.count);
@@ -40,8 +46,8 @@ public class Event031_PoliceStation_1 extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("\"너도 이런 험난한 곳에서 자기 한몸 정도는 잘 지킬수 있도록 하라고\n");
 			script.append("혹시 위험한 일에 휘말리면 날 불러 이것도 인연인데 도와주도록 하지!\"\n");

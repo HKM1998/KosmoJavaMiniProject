@@ -14,7 +14,11 @@ public class Event100_USArmy extends Event {
 
 	@Override
 	public void printScript() {
-		StringBuilder script = new StringBuilder();
+		if(getIsLoaded()) {
+			ConsolePrint.printResult(script, getIsLoaded());
+			return;
+		}
+		script = new StringBuilder();
 		script.append(getEventId() + ". " + getName() + "\n");
 		script.append("당신은 폐허를 지나던 중 미군을 마주쳤습니다.\n");
 		script.append("아직까지 미군은 정상적으로 유지되고 있는 것으로 보입니다!\n");
@@ -26,11 +30,11 @@ public class Event100_USArmy extends Event {
 
 	@Override
 	public void printChoice() {
-		// 선택지 작성
-		Selection selection = new Selection();
-
+		if(getIsLoaded()) {
+			selection.print();
+			return;
+		}
 		selection.addSelection("\"Excuse me, may I ask something?\"");
-
 		selection.addSelection("\"너무 배가 고파서 그런데. 혹시 먹을 것을 얻을 수 있을까요?\"");
 		this.setsCount(selection.count);
 		selection.print();
@@ -42,8 +46,8 @@ public class Event100_USArmy extends Event {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;
 		}		
-		script.append(getEventId() + ". " + getName() + "\n");		
 		script = new StringBuilder();
+		script.append(getEventId() + ". " + getName() + "\n");		
 		if (pChoice.equals("1")) {
 			script.append("그들은 당신을 쳐다보며 말합니다.\n");
 			script.append("\"No information can be shared with civilians.\n");
