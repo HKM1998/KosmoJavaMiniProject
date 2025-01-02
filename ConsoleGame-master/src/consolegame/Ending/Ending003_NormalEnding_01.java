@@ -4,11 +4,14 @@ import consolegame.console.Console;
 import consolegame.console.ConsolePrint;
 
 public class Ending003_NormalEnding_01 extends Ending{
-
+	
+	public Ending003_NormalEnding_01() {
+		this.setEndingId(5);   
+		this.setEndingName("운수 좋은 날");}
 	@Override
 	public void printScript() {
 		StringBuilder script = new StringBuilder();
-		script.append("당신은 멍하니 길을 걷던 도중 맨홀에 빠졌다.\n");
+		script.append("당신은 멍하니 길을 걷다가 맨홀에 빠졌다.\n");
 		script.append("우당 탕 탕 쾅! 쿵!!!!!.\n");
 		script.append("어딘가 부러졌는지 몸이 움직이지 않는다..\n");
 		script.append("너무 어지럽다.. 아프다.\n");

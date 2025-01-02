@@ -24,14 +24,16 @@ public class Ending004_NormalEnding_02 extends Ending{
 		script.append("\n에햏헤ㅎ ㅔㅎ 남자 냄새 히히ㅣㅎ .\n");
 		script.append("\n이히히히 내꺼다 히히히ㅣㅎ .\n");
 		script.append(" \n");
-		script.append("\n///// // ///////r\n"
-				+ "    |  o   o /// |\r\n"
-				+ "    |    -^-     |\r\n"
-				+ "    |  \\__()_   |\r\n"
-				+ "     \\___%____/\r\n"
-				+ "       |     |\r\n"
-				+ "      /       \\\r\n"
-				+ "     /_________\\");
+		script.append(" .-\"        \"-.      \"-.\r\n"
+				+ "     /            \\\r\n"
+				+ "    |,  .-.  .-.  ,|\r\n"
+				+ "    | )(_o/  \\o_)( |\r\n"
+				+ "    |/     /\\     \\|\r\n"
+				+ "    (_     ^^     _)\r\n"
+				+ "     \\__|IIIIII|__/\r\n"
+				+ "      | \\IIIIII/ |\r\n"
+				+ "      \\          /\r\n"
+				+ "       `--------`");
 		script.append("\n 키히 ㅎ히히히 \n");
 		script.append("\n 괴한의 소름 끼치는 목소리와 함께 당신의 기억은 여기서 끊어지고 맙니다. \n");
 		ConsolePrint.printScript(script);
