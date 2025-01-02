@@ -10,7 +10,6 @@ public class Event091_MerchantFamily_1 extends Event {
 		setEventId(91);
 		setName("대덕상회");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

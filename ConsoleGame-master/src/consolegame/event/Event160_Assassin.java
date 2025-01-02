@@ -10,7 +10,6 @@ public class Event160_Assassin extends Event {
 		setEventId(160);
 		setName("마약상의암살시도");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

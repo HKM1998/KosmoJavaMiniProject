@@ -5,7 +5,6 @@ import consolegame.console.ConsolePrint;
 public abstract class Event {
 	private int eventId; // 이벤트ID
 	private String name; // 이벤트 명
-	private int weight; // 이벤트 가중치(턴에 따라 나오게 하기위함)
 	private int score; // 이벤트 결과에 따른 점수
 	private int sCount;
 	private boolean isLoaded;
@@ -30,12 +29,6 @@ public abstract class Event {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getWeight() {
-		return weight;
-	}
-	public void setWeight(int weight) {
-		this.weight = weight;
 	}
 	public int getScore() {
 		return score;

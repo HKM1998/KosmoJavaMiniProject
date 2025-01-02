@@ -9,7 +9,6 @@ public class Event190_Meal extends Event {
 		setEventId(190);
 		setName("배고픈 여자아이");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

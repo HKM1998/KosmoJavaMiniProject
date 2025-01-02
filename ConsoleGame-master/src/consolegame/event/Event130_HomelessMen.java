@@ -11,7 +11,6 @@ public class Event130_HomelessMen extends Event {
 		setEventId(130);
 		setName("노숙자");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

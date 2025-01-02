@@ -9,7 +9,6 @@ public class Event180_Suddenpoop extends Event {
 		setEventId(180);
 		setName("급똥");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

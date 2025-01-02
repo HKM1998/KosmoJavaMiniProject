@@ -10,7 +10,6 @@ public class Event010_EmptyCar extends Event {
 		setEventId(10);
 		setName("빈차");
 		setScore(0);
-		setWeight(0);
 	}
 
 

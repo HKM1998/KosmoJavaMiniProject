@@ -9,7 +9,6 @@ public class Event170_Wildboar extends Event {
 		setEventId(170);
 		setName("맷돼지 조우");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

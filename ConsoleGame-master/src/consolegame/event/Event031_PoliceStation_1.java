@@ -10,7 +10,6 @@ public class Event031_PoliceStation_1 extends Event {
 		setEventId(31);
 		setName("경찰서내부");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

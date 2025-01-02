@@ -8,7 +8,6 @@ public class Event050_ConvinienceStore extends Event {
 		setEventId(50);
 		setName("편의점");
 		setScore(0);
-		setWeight(0);
 	}
 	
 	@Override

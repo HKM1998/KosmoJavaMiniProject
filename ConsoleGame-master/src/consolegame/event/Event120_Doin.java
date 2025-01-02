@@ -9,7 +9,6 @@ public class Event120_Doin extends Event {
 		setEventId(120);
 		setName("한강 도인");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

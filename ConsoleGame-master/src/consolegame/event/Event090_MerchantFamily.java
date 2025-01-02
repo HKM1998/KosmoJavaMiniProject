@@ -10,7 +10,6 @@ public class Event090_MerchantFamily extends Event {
 		setEventId(90);
 		setName("상인가족");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

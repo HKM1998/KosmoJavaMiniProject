@@ -9,7 +9,6 @@ public class Event000_Start extends Event {
 		setEventId(0);
 		setName("시작");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

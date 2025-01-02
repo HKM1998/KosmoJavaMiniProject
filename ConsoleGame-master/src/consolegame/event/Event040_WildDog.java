@@ -12,7 +12,6 @@ public class Event040_WildDog extends Event {
 		setEventId(40);
 		setName("들개");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

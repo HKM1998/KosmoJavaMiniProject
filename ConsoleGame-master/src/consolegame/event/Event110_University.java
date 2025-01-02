@@ -8,7 +8,6 @@ public class Event110_University extends Event {
 		setEventId(110);
 		setName("인근대학교");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

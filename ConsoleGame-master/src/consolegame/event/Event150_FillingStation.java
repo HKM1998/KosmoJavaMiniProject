@@ -11,7 +11,6 @@ public class Event150_FillingStation extends Event {
 		setEventId(150);
 		setName("주유소");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

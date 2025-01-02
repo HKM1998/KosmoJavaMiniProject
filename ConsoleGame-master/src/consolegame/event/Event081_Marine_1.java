@@ -10,7 +10,6 @@ public class Event081_Marine_1 extends Event {
 		setEventId(81);
 		setName("해병대 전우회");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

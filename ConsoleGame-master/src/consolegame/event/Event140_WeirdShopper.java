@@ -10,7 +10,6 @@ public class Event140_WeirdShopper extends Event {
 		setEventId(140);
 		setName("이상한가판대");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

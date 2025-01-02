@@ -14,7 +14,6 @@ public class Event200_Mart extends Event {
 		setEventId(200);
 		setName("마트");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

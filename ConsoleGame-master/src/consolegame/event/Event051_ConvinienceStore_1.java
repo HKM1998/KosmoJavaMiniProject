@@ -12,7 +12,6 @@ public class Event051_ConvinienceStore_1 extends Event {
 		setEventId(51);
 		setName("편의점 내부");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

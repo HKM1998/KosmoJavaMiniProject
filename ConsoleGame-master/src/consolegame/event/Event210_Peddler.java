@@ -8,7 +8,6 @@ public class Event210_Peddler extends Event {
 		setEventId(210);
 		setName("행상인");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

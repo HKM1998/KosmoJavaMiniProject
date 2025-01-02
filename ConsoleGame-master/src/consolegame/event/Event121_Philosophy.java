@@ -10,7 +10,6 @@ public class Event121_Philosophy extends Event {
 		setEventId(121);
 		setName("철학의 길");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

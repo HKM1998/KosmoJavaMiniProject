@@ -13,7 +13,6 @@ public class Event061_AbandonedHospital_1 extends Event {
 		setEventId(61);
 		setName("폐병원_1");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

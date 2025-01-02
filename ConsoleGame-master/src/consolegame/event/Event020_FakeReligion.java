@@ -9,7 +9,6 @@ public class Event020_FakeReligion extends Event {
 		setEventId(20);
 		setName("사이비종교");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

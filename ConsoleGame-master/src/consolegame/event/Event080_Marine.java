@@ -8,7 +8,6 @@ public class Event080_Marine extends Event {
 		setEventId(80);
 		setName("해병대");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

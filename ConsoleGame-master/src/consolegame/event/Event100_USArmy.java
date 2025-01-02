@@ -9,7 +9,6 @@ public class Event100_USArmy extends Event {
 		setEventId(100);
 		setName("USArmy");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override

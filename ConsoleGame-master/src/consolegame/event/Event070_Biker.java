@@ -12,7 +12,6 @@ public class Event070_Biker extends Event {
 		setEventId(70);
 		setName("폭주족");
 		setScore(0);
-		setWeight(0);
 	}
 
 	@Override
