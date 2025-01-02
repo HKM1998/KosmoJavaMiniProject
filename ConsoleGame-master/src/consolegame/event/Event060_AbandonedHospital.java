@@ -46,14 +46,20 @@ public class Event060_AbandonedHospital extends Event {
 		script.append(getEventId() + ". " + getName() + "\n");
 		if (pChoice.equals("1")) { // 1번 우회한다 선택했을 경우 차트를 획득
 			if (!Item.hasItem(Main.character, 007)) {
-				Main.character.getItem().add(new Item007_Chart()); // 아이템 차트 클래스 임포트
-				script.append("굳이 소름끼치게 들어갈께 뭐 있어? 그냥 아무거나 손에 집히는거 가지고 오지뭐~\n");
-				script.append("이런 가벼운 생각으로 도움이 될지도 모르는 차트를 가지고 나오려는 순간,\n");
-				script.append("끄아아아아아아악!!\n");
-				script.append("별안간 어마 무시한 괴성이 들렸습니다.\n");
 				script.append("당신은 호기심과 공포감의 두 줄다리기 사이에서\n");
-				script.append("이미 차트를 가지고 있으니 더 이상의 개입은 불필요하다 합리화 시킵니다.\n");
+				script.append("불이 켜진방을 그냥 지나치기로 결정 했습니다.\n");
+				script.append("굳이 소름끼치게 들어갈게 뭐 있어? 그냥 아무거나 손에 잡히는거 가지고 나오지 뭐~\n");
+				script.append("이런 가벼운 생각으로 다른 방을 둘러보던 중 알 수 없는 의료 차트를 발견합니다.\n");
+				script.append("자신도 모르게 차트를 가지고 나오려는 순간 어마 무시한 괴성이 들렸오기 시작했습니다.\n");
+				script.append("\"끄아아아아아아악!!\"\n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append(".     \n");
+				script.append("당신은 애써 여러 생각을 무시하고 위협을 무릅쓰지 않고 벗어나기로 정합니다.\n");
+				script.append("그리고는 개입은 불필요하다 합리화 시킵니다.\n");
 				script.append("당신은 그렇게 자리를 황급히 뜹니다.\n");
+				script.append("(+ 정체 불명의 의료 차트)\n");
+				Main.character.getItem().add(new Item007_Chart()); // 아이템 차트 클래스 add
 			}
 		}else if (pChoice.equals("2")) {
 			script.append("약간 후들거리긴 하지만 오히려 이런 곳이 노다지 일수도 있지!\n");

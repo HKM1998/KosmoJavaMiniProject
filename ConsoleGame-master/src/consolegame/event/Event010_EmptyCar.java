@@ -46,6 +46,7 @@ public class Event010_EmptyCar extends Event {
 		} else if (pChoice.equals("2")) {
 			script.append("스스로도 이유는 모르겠지만 홀린듯 알 수 없는 지도를 집어 들었습니다.\n");
 			Main.character.addItem(new Item001_UncheckedMap());
+			Main.eMap.setEvent(getEventId());
 		}
 
 		ConsolePrint.printResult(script, getIsLoaded());
