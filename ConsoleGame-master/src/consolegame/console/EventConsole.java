@@ -34,14 +34,14 @@ public class EventConsole {
 			}
 		}
 		event.setLoaded(false);
-		event.getResult(input);
+		event.printResult(input);
 		event.setLoaded(true);
 		while (true) {
 			try {
 				input = scan.next();
 				if (input.toUpperCase().equals("I")) {
 					InventoryConsole.print(scan);
-					event.getResult(input);
+					event.printResult(input);
 					continue;
 				} else {
 					break;

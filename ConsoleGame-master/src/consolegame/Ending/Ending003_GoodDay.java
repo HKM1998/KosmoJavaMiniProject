@@ -3,9 +3,9 @@ package consolegame.Ending;
 
 import consolegame.console.ConsolePrint;
 
-public class Ending003_NormalEnding_01 extends Ending{
+public class Ending003_GoodDay extends Ending{
 	
-	public Ending003_NormalEnding_01() {
+	public Ending003_GoodDay() {
 		this.setEndingId(3);   
 		this.setEndingName("운수 좋은 날");
 		}

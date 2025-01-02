@@ -2,9 +2,9 @@ package consolegame.Ending;
 
 import consolegame.console.ConsolePrint;
 
-public class Ending006_NormalEnding_04 extends Ending{
+public class Ending006_Outcast extends Ending{
 
-	public Ending006_NormalEnding_04(){
+	public Ending006_Outcast(){
 		this.setEndingId(6);
 		this.setEndingName("추방자");
 	}

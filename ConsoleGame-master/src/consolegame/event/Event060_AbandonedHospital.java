@@ -47,7 +47,7 @@ public class Event060_AbandonedHospital extends Event {
 	}
 
 	@Override
-	public void getResult(String pChoice) {
+	public void printResult(String pChoice) {
 		if(getIsLoaded()) {
 			ConsolePrint.printResult(script, getIsLoaded());
 			return;

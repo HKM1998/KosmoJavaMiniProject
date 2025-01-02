@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 import consolegame.Main;
 import consolegame.Ending.Ending;
-import consolegame.Ending.Ending001_GoodEnding;
-import consolegame.Ending.Ending002_BadEnding;
-import consolegame.Ending.Ending003_NormalEnding_01;
-import consolegame.Ending.Ending004_NormalEnding_02;
+import consolegame.Ending.Ending001_Annihilate;
+import consolegame.Ending.Ending002_Guilt;
+import consolegame.Ending.Ending003_GoodDay;
+import consolegame.Ending.Ending004_UndergroundShelter;
 import consolegame.Ending.Ending005_Philosophy;
-import consolegame.Ending.Ending006_NormalEnding_04;
+import consolegame.Ending.Ending006_Outcast;
 import consolegame.item.Item;
 
 public class EndingConsole {
@@ -57,18 +57,18 @@ public class EndingConsole {
 	
 	static Ending getEndingObject(int endingId) {
 		switch(endingId) {
-		case 1:return new Ending001_GoodEnding();
-		case 2:return new Ending002_BadEnding();
+		case 1:return new Ending001_Annihilate();
+		case 2:return new Ending002_Guilt();
 		case 5:return new Ending005_Philosophy();
-		case 4:return new Ending004_NormalEnding_02();
+		case 4:return new Ending004_UndergroundShelter();
 		default: // 특정 지정된 이벤트가 아닌 경우 노말 3개 이벤트 안에서 랜덤하게 출력
 			switch (new Random().nextInt(2)) {
 			case 0:
-				return new Ending003_NormalEnding_01();
+				return new Ending003_GoodDay();
 			case 1:
-				return new Ending006_NormalEnding_04();
+				return new Ending006_Outcast();
 			}
-			return new Ending003_NormalEnding_01(); // 디폴트 이벤트 변경 필요?
+			return new Ending003_GoodDay(); // 디폴트 이벤트 변경 필요?
 		}
 	}
 }

@@ -2,9 +2,9 @@ package consolegame.Ending;
 
 import consolegame.console.ConsolePrint;
 
-public class Ending001_GoodEnding extends Ending {
+public class Ending001_Annihilate extends Ending {
 
-	public Ending001_GoodEnding(){
+	public Ending001_Annihilate(){
 		this.setEndingId(1);
 		this.setEndingName("소탕");}
 	@Override

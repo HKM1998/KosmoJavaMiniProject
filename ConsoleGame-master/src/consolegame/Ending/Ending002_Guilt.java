@@ -2,9 +2,9 @@ package consolegame.Ending;
 
 import consolegame.console.ConsolePrint;
 
-public class Ending002_BadEnding extends Ending {
+public class Ending002_Guilt extends Ending {
 
-	public Ending002_BadEnding(){
+	public Ending002_Guilt(){
 		this.setEndingId(2);
 		this.setEndingName("죄책감");}
 	

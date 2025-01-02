@@ -2,11 +2,11 @@ package consolegame.Ending;
 
 import consolegame.console.ConsolePrint;
 
-public class Ending004_NormalEnding_02 extends Ending {
+public class Ending004_UndergroundShelter extends Ending {
 	
-	public Ending004_NormalEnding_02() {
+	public Ending004_UndergroundShelter() {
 		this.setEndingId(4);   
-		this.setEndingName("좋은 곳");
+		this.setEndingName("지하쉘터");
 		}
 	@Override
 	public void printScript() {

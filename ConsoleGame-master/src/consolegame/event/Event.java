@@ -45,7 +45,7 @@ public abstract class Event {
 	
 	public abstract void printScript();
 	public abstract void printChoice();
-	public abstract void getResult(String pChoice);
+	public abstract void printResult(String pChoice);
 
 	public void print() {
 		ConsolePrint.clear();
