@@ -1,4 +1,4 @@
-package consolegame.Ending;
+package consolegame.ending;
 
 
 import consolegame.console.ConsolePrint;

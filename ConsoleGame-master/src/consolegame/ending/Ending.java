@@ -1,4 +1,4 @@
-package consolegame.Ending;
+package consolegame.ending;
 
 public abstract class Ending {
 	int endingId;

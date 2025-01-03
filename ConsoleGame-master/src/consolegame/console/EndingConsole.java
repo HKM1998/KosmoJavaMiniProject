@@ -4,13 +4,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 import consolegame.Main;
-import consolegame.Ending.Ending;
-import consolegame.Ending.Ending001_Annihilate;
-import consolegame.Ending.Ending002_Guilt;
-import consolegame.Ending.Ending003_GoodDay;
-import consolegame.Ending.Ending004_UndergroundShelter;
-import consolegame.Ending.Ending005_Philosophy;
-import consolegame.Ending.Ending006_Outcast;
+import consolegame.ending.Ending;
+import consolegame.ending.Ending001_Annihilate;
+import consolegame.ending.Ending002_Guilt;
+import consolegame.ending.Ending003_GoodDay;
+import consolegame.ending.Ending004_UndergroundShelter;
+import consolegame.ending.Ending005_Philosophy;
+import consolegame.ending.Ending006_Outcast;
 import consolegame.item.Item;
 
 public class EndingConsole {
